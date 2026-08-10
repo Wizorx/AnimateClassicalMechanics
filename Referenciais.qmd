@@ -1,0 +1,437 @@
+---
+title: Referenciais Não Inerciais
+jupyter: python3
+---
+
+
+## Referencial girante
+
+Vamos considerar dois referenciais, um inercial e o outro em rotação com respeito ao primeiro.
+
+- $S$ é inercial
+
+- $S'$ é girante
+
+- $\vec{R}$ é a posição da origem de $S'$ com respeito a $S$
+
+- $\vec{r}=\vec{R}+\vec{r}'$
+
+Um ponto arbitrário $P$ tem posição $\vec{r}$ com respeito ao referencial inercial e $\vec{r}'$ com respeito ao referencial girante. Se $S'$ realiza uma rotação infinitesimal, a posição de $P$ com relação a $S$ muda.
+
+$$
+\vec{v}=\vec{\omega}\times\vec{r}
+$$
+
+Rotações infinitesimais podem ser representadas por um vetor:
+
+$$
+d\vec{r}=d\vec{\theta}\times\vec{r}
+$$
+
+$$
+\begin{aligned}
+\vec{\omega}&=\frac{d\vec{\theta}}{dt}\\
+\frac{d\vec{r}}{dt}&=\vec{\omega}\times\vec{r}\\
+P\ \text{fixo em } S'!
+\end{aligned}
+$$
+
+Se temos uma partícula se movendo em $S'$, temos
+
+$$
+\left(\frac{d\vec{r}}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{r}}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\vec{r}
+$$
+
+Essa relação vale para qualquer outro vetor:
+
+$$
+\left(\frac{d\vec{Q}}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{Q}}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\vec{Q}
+$$
+
+Em particular, se $\vec{Q}=\vec{\omega}$, temos
+
+$$
+\left(\frac{d\vec{\omega}}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{\omega}}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\vec{\omega}
+=
+\frac{d\vec{\omega}}{dt}
+$$
+
+A aceleração angular é a mesma nos dois referenciais. Já para a aceleração, temos
+
+$$
+\left(\frac{d\vec{v}}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{v}}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\vec{v}
+$$
+
+Voltando para a velocidade, sabemos que
+
+$$
+\vec{r}=\vec{R}+\vec{r}'
+$$
+
+e, no referencial inercial,
+
+$$
+\left(\frac{d\vec{r}}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{R}}{dt}\right)_{\text{fix}}
++
+\left(\frac{d\vec{r}'}{dt}\right)_{\text{fix}}
+$$
+
+Logo,
+
+$$
+\left(\frac{d\vec{r}}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{R}}{dt}\right)_{\text{fix}}
++
+\left(\frac{d\vec{r}'}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\vec{r}'
+$$
+
+$$
+\vec{v}_f=\vec{V}+\vec{v}'_R+\vec{\omega}\times\vec{r}'
+$$
+
+onde:
+
+- $\vec{v}_f$ = velocidade com relação aos eixos fixos
+
+- $\vec{V}$ = velocidade da origem de $S'$ com respeito aos eixos fixos
+
+- $\vec{v}'_R$ = velocidade com relação aos eixos girantes
+
+A segunda lei de Newton vale em um referencial inercial:
+
+$$
+\vec{F}=m\vec{a}_f=m\left(\frac{d\vec{v}_f}{dt}\right)_{\text{fix}}
+$$
+
+e
+
+$$
+\left(\frac{d\vec{v}_f}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{V}}{dt}\right)_{\text{fix}}
++
+\left(\frac{d\vec{v}'_R}{dt}\right)_{\text{fix}}
++
+\frac{d\vec{\omega}}{dt}\times\vec{r}'
++\vec{\omega}\times\left(\frac{d\vec{r}'}{dt}\right)_{\text{fix}}
+$$
+
+Definindo
+
+$$
+\frac{d^2\vec{R}_f}{dt^2}\equiv\left(\frac{d\vec{V}}{dt}\right)_{\text{fix}}
+$$
+
+temos
+
+$$
+\begin{aligned}
+\left(\frac{d\vec{v}'_R}{dt}\right)_{\text{fix}}
+&=
+\left(\frac{d\vec{v}'_R}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\vec{v}'_R
+=
+\vec{a}'_R+\vec{\omega}\times\vec{v}'_R\\[4pt]
+\vec{\omega}\times\left(\frac{d\vec{r}'}{dt}\right)_{\text{fix}}
+&=
+\vec{\omega}\times\left(\frac{d\vec{r}'}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\left(\vec{\omega}\times\vec{r}'\right)
+\end{aligned}
+$$
+
+Portanto,
+
+$$
+\left(\frac{d\vec{v}_f}{dt}\right)_{\text{fix}}
+=
+\frac{d^2\vec{R}_f}{dt^2}
++\vec{a}'_R
++2\vec{\omega}\times\vec{v}'_R
++\frac{d\vec{\omega}}{dt}\times\vec{r}'
++\vec{\omega}\times\left(\vec{\omega}\times\vec{r}'\right)
+$$
+
+e
+
+$$
+\vec{F}
+=
+m\frac{d^2\vec{R}_f}{dt^2}
++m\vec{a}'_R
++2m\vec{\omega}\times\vec{v}'_R
++m\frac{d\vec{\omega}}{dt}\times\vec{r}'
++m\vec{\omega}\times\left(\vec{\omega}\times\vec{r}'\right)
+$$
+
+Um observador no referencial girante irá observar uma aceleração $\vec{a}_R'$, e poderá usar a lei de Newton para inferir uma força “efetiva”:
+
+$$
+\vec{F}_{ef}=m\vec{a}'_R
+$$
+
+Essa força é uma combinação das forças que agem no referencial inercial e efeitos do movimento do referencial acelerado:
+
+$$
+\vec{F}_{ef}
+=
+\vec{F}
+-m\frac{d^2\vec{R}_f}{dt^2}
+-m\frac{d\vec{\omega}}{dt}\times\vec{r}'
+-m\vec{\omega}\times\left(\vec{\omega}\times\vec{r}'\right)
+-2m\vec{\omega}\times\vec{v}'_R
+$$
+
+Esses termos adicionais são as chamadas forças de inércia:
+
+- $-m\frac{d^2\vec{R}_f}{dt^2}$ é devido à aceleração linear do referencial
+
+- $-m\frac{d\vec{\omega}}{dt}\times\vec{r}'$ é devido à aceleração angular do referencial
+
+- $-m\vec{\omega}\times(\vec{\omega}\times\vec{r}')$ é a força centrífuga, devido à velocidade angular do referencial
+
+- $-2m\vec{\omega}\times\vec{v}'_R$ é a força de Coriolis, devido ao movimento da partícula ($\vec{v}'_R$) no referencial girante
+
+É importante ressaltar que nenhuma dessas quantidades são forças de fato, pois não estão associadas a nenhuma interação (campo) e dependem apenas da cinemática do referencial.
+
+## Movimento relativo à Terra
+
+Uma partícula na superfície da Terra, considerando a Terra esférica e homogênea, está sujeita a um campo gravitacional
+
+$$
+\vec{g}_0=-G\frac{M_T}{R^2}\hat{r}
+$$
+
+onde o vetor $\vec{R}=R\hat{r}$ é a posição com respeito ao centro da Terra.
+
+A força efetiva sobre a partícula é então
+
+$$
+\vec{F}_{ef}
+=
+\vec{F}_I
++m\vec{g}_0
+-m\frac{d^2\vec{R}_f}{dt^2}
+-m\frac{d\vec{\omega}}{dt}\times\vec{r}'
+-m\vec{\omega}\times(\vec{\omega}\times\vec{r}')
+-2m\vec{\omega}\times\vec{v}'_R
+$$
+
+Vamos considerar, em primeira aproximação, que a velocidade angular de rotação da Terra é constante, desprezando o movimento em torno do Sol. Nessa aproximação, $\frac{d\vec{\omega}}{dt}=\vec{0}$.
+
+Lembrando que, para qualquer vetor, vale
+
+$$
+\left(\frac{d\vec{Q}}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{Q}}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\vec{Q}
+$$
+
+Usando isso para $\vec{R}$:
+
+$$
+\frac{d\vec{R}_f}{dt}
+=
+\left(\frac{d\vec{R}}{dt}\right)_{\text{fix}}
+=
+\left(\frac{d\vec{R}}{dt}\right)_{\text{rot}}
++\vec{\omega}\times\vec{R}
+=
+\vec{\omega}\times\vec{R}
+$$
+
+$$
+\frac{d^2\vec{R}_f}{dt^2}
+=
+\vec{\omega}\times\left(\vec{\omega}\times\vec{R}\right)
+$$
+
+Então a força efetiva fica
+
+$$
+\vec{F}_{ef}
+=
+\vec{F}_I
++m\vec{g}_0
+-m\vec{\omega}\times\left[\vec{\omega}\times\left(\vec{R}+\vec{r}'\right)\right]
+-2m\vec{\omega}\times\vec{v}'_R
+$$
+
+A força centrífuga afeta nossa percepção de $\vec{g}_0$. O que significa que a aceleração da gravidade que sentimos é
+
+$$
+\vec{g}
+=
+\vec{g}_0
+-\vec{\omega}\times\left[\vec{\omega}\times\left(\vec{R}+\vec{r}'\right)\right]
+$$
+
+## Fluido em rotação
+
+Considere um recipiente em rotação em torno do eixo $z$ (direção do campo gravitacional), usando coordenadas cilíndricas no referencial de repouso do recipiente (girante).
+
+$$
+\vec{\omega}=\omega\hat{z},\qquad \omega=\text{constante}
+$$
+
+Considerando $\vec{g}_0$ uniforme,
+
+$$
+\vec{g}_0=-g_0\hat{z},\qquad g_0=\text{constante}
+$$
+
+Escolhendo um elemento de volume do fluido com coordenadas $(s,\phi,z)$, a força efetiva sobre o elemento é
+
+$$
+\begin{aligned}
+\vec{F}_{ef}
+&=
+-dm\,g_0\hat{z}
+-dm(\omega\hat{z})\times\big[(\omega\hat{z})\times\vec{r}\big]\\
+&=
+-dm\,g_0\hat{z}
+-dm\,\omega^2\hat{z}\times\big[\hat{z}\times(s\hat{s}+z\hat{z})\big]\\
+&=
+-dm\,g_0\hat{z}
+-dm\,\omega^2\hat{z}\times(s\hat{\phi})\\
+&=
+-dm\,g_0\hat{z}
++dm\,\omega^2 s\,\hat{s}
+\end{aligned}
+$$
+
+A massa do elemento é
+
+$$
+dm=\rho\,dV=\rho\,s\,ds\,d\phi\,dz
+$$
+
+Definindo
+
+$$
+\vec{f}_{ef}=\nabla p,\qquad
+\vec{f}_{ef}=\frac{\vec{F}_{ef}}{dV}
+$$
+
+temos
+
+$$
+\vec{f}_{ef}=-\rho g_0\hat{z}+\rho\omega^2 s\,\hat{s}
+$$
+
+e, como $\nabla p=\frac{\partial p}{\partial s}\hat{s}+\frac{1}{s}\frac{\partial p}{\partial\phi}\hat{\phi}+\frac{\partial p}{\partial z}\hat{z}$, obtemos
+
+$$
+\begin{aligned}
+\frac{\partial p}{\partial s}&=\rho\omega^2 s\Rightarrow p=\frac{\rho\omega^2 s^2}{2}+C_1\\
+\frac{\partial p}{\partial z}&=-\rho g_0\Rightarrow p=-\rho g_0 z+C_2\\
+\frac{\partial p}{\partial\phi}&=0\Rightarrow p=C_3
+\end{aligned}
+$$
+
+Escolhendo $p(s=0,z=0)=p_{atm}$, podemos escrever
+
+$$
+p(s,z)=p_{atm}+\frac{\rho}{2}\omega^2 s^2-\rho g_0 z
+$$
+
+A superfície do fluido em contato com o ar é dada por $p(s,z)=p_{atm}$, logo
+
+$$
+z=\frac{\omega^2 s^2}{2g_0}
+$$
+
+que é um paraboloide.
+
+## Fluido em repouso em um referencial com aceleração constante
+
+Considere agora um recipiente com um fluido incompressível em repouso em um referencial com aceleração constante $\vec{a}=a\hat{x}$, em uma região com campo gravitacional constante $\vec{g}=-g\hat{z}$.
+
+Nesse caso, a força efetiva sobre um elemento do fluido é
+
+$$
+\vec{F}_{ef}=dm\,\vec{g}-dm\,\vec{a}=\rho\,dV(\vec{g}-\vec{a})
+$$
+
+$$
+\vec{f}_{ef}=\rho(\vec{g}-\vec{a})=\rho(-g\hat{z}-a\hat{x})
+$$
+
+Como $\nabla p=\vec{f}_{ef}$, isso leva às equações
+
+$$
+\begin{aligned}
+\frac{\partial p}{\partial x}&=-\rho a\Rightarrow p=-\rho a x+C_1\\
+\frac{\partial p}{\partial y}&=0\Rightarrow p=C_2\\
+\frac{\partial p}{\partial z}&=-\rho g\Rightarrow p=-\rho g z+C_3
+\end{aligned}
+$$
+
+Escolhendo $p(x=0,z=0)=p_{atm}$, temos
+
+$$
+p(x,z)=-\rho a x-\rho g z+p_{atm}
+$$
+
+A superfície livre do fluido fica
+
+$$
+p(x,z)=p_{atm}\Rightarrow z=-\frac{a}{g}x
+$$
+
+## Esfera homogênea presa por um fio
+
+Considere agora uma esfera homogênea totalmente imersa no fluido e presa ao fundo do recipiente por um fio inextensível e sem massa. Qual é o ângulo que o fio faz com a direção $x$ no equilíbrio?
+
+O empuxo sobre a esfera tem módulo igual ao peso do fluido deslocado, direção ortogonal às superfícies de pressão constante e sentido em que a pressão diminui.
+
+As superfícies de $p$ constante têm perfil
+
+$$
+z=mx+b
+$$
+
+A reta perpendicular a essa é
+
+$$
+z=-\frac{x}{m}+b
+$$
+
+Então o empuxo será
+
+$$
+\vec{E}=E\,\hat{e}
+$$
+
+onde
+
+$$
+E=\rho_E V_E g
+$$
+
+e
+
+$$
+\hat{e}
+=
+\frac{\hat{x}+\frac{g}{a}\hat{z}}{\sqrt{1+\left(\frac{g}{a}\right)^2}}
+=
+\frac{a\hat{x}+g\hat{z}}{\sqrt{a^2+g^2}}
+$$
+

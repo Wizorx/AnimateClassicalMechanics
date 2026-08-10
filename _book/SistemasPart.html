@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Sistemas de Partículas – livro classica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Teoremas.html" rel="next">
+<link href="./GravitacaoEForcas.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-acff971833d9769290026d534105daaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<style>
+.cell-output {
+  max-height: 500px;
+  overflow-y: auto;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SistemasPart.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sistemas de Partículas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">livro classica</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sistemas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Mec1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Mecânica de uma Partícula</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./GravitacaoEForcas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./SistemasPart.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sistemas de Partículas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Teoremas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoremas de Conservação</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referenciais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referenciais Não Inerciais</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#trabalho-e-energia" id="toc-trabalho-e-energia" class="nav-link active" data-scroll-target="#trabalho-e-energia"><span class="header-section-number">6.1</span> Trabalho e energia</a></li>
+  <li><a href="#colisões-entre-duas-partículas" id="toc-colisões-entre-duas-partículas" class="nav-link" data-scroll-target="#colisões-entre-duas-partículas"><span class="header-section-number">6.2</span> Colisões entre duas partículas</a></li>
+  <li><a href="#impulso" id="toc-impulso" class="nav-link" data-scroll-target="#impulso"><span class="header-section-number">6.3</span> Impulso</a></li>
+  <li><a href="#seção-de-choque" id="toc-seção-de-choque" class="nav-link" data-scroll-target="#seção-de-choque"><span class="header-section-number">6.4</span> Seção de choque</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sistemas de Partículas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>Corresponde ao Capítulo 9 do livro-texto (</em>Dynamics of a System of Particles<em>): trabalho e energia, colisões, impulso, seção de choque.</em></p>
+<p>O primeiro cuidado que precisamos tomar é como tratar as forças internas, que as partículas do sistema exercem umas sobre as outras. Para isso, vamos considerar a terceira lei de Newton nas suas formas fraca e forte:</p>
+<ul>
+<li><p><strong>Na forma fraca</strong>, consideramos que as forças entre duas partículas têm magnitudes iguais e sentidos opostos.</p></li>
+<li><p><strong>Na forma forte</strong>, além de terem a mesma magnitude e sentidos opostos, elas agem na direção que liga as duas partículas, ou seja, são <strong>forças centrais</strong>.</p></li>
+</ul>
+<p>Vamos lembrar novamente do centro de massa do sistema:</p>
+<p><span class="math display">\[
+\vec{R}=\frac{1}{M}\sum_{i} m_{i}\vec{r}_{i}\quad;\quad M=\sum_{i} m_{i}
+\]</span></p>
+<p>Se tivermos uma distribuição contínua de massa, fica:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\vec{R}&amp;=\frac{1}{M}\int \vec{r}\, d m \\
+M&amp;=\int d m=\int \rho\, dV \\
+\vec{R}&amp;=\frac{1}{M}\int \rho\,\vec{r}\, dV
+\end{aligned}
+\]</span></p>
+<p>A força resultante sobre uma partícula do sistema é dada pela soma das forças externas e das internas (devidas às outras partículas):</p>
+<p><span class="math display">\[
+\vec{F}_{i}=\vec{F}_{E_i}+\sum_{j\neq i}\vec{F}_{ij}
+\]</span></p>
+<p>Lembrando que:</p>
+<p><span class="math display">\[
+\vec{F}_{ij}=-\vec{F}_{ji}
+\]</span></p>
+<p>A 2ª lei para essa partícula fica, então:</p>
+<p><span class="math display">\[
+\frac{d\vec{p}_i}{dt}=\vec{F}_{E_i}+\sum_{j\neq i}\vec{F}_{ij}
+\]</span></p>
+<p>Assumindo <span class="math inline">\(\frac{d m_i}{dt}=0\)</span> (massas constantes), podemos escrever:</p>
+<p><span class="math display">\[
+\frac{d^{2}}{dt^{2}}\left(m_i\vec{r}_i\right)=\vec{F}_{E_i}+\sum_{j\neq i}\vec{F}_{ij}
+\]</span></p>
+<p>Somando para todas as partículas:</p>
+<p><span class="math display">\[
+\sum_i \frac{d^{2}}{dt^{2}}\left(m_i\vec{r}_i\right)=\sum_i \vec{F}_{E_i}+\sum_i\sum_{j\neq i}\vec{F}_{ij}
+\]</span></p>
+<p>ou, equivalentemente,</p>
+<p><span class="math display">\[
+\frac{d^{2}}{dt^{2}}\left(\sum_i m_i\vec{r}_i\right)=\sum_i \vec{F}_{E_i}+\sum_i\sum_{j\neq i}\vec{F}_{ij}
+\]</span></p>
+<p>Como a soma das forças internas é zero, obtemos:</p>
+<p><span class="math display">\[
+M\frac{d^{2}\vec{R}}{dt^{2}}=\vec{F}_E
+\]</span></p>
+<p>O movimento do centro de massa depende apenas das forças externas. Podemos escrever também:</p>
+<p><span class="math display">\[
+\frac{d\vec{P}}{dt}=\vec{F}_E
+\]</span></p>
+<p>onde:</p>
+<p><span class="math display">\[
+\vec{P}=M\frac{d\vec{R}}{dt}=\frac{d}{dt}(M\vec{R})=\frac{d}{dt}\left(\sum_i m_i\vec{r}_i\right)
+\]</span></p>
+<p>Logo:</p>
+<p><span class="math display">\[
+\vec{P}=\sum_i m_i\frac{d\vec{r}_i}{dt}=\sum_i \vec{p}_i
+\]</span></p>
+<p>Podemos escrever as posições das partículas em relação ao CM:</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math display">\[
+\vec{r}_i=\vec{R}+\vec{r}_i'
+\]</span></p>
+<p>O momento angular com relação à origem é:</p>
+<p><span class="math display">\[
+\vec{L}_i=\vec{r}_i\times \vec{p}_i
+\]</span></p>
+<p>O momento angular total é dado por:</p>
+<p><span class="math display">\[
+\vec{L}=\sum_i \vec{L}_i=\sum_i \vec{r}_i\times \vec{p}_i=\sum_i \vec{r}_i\times\left(m_i\frac{d\vec{r}_i}{dt}\right)
+\]</span></p>
+<p>Substituindo <span class="math inline">\(\vec{r}_i=\vec{R}+\vec{r}_i'\)</span>:</p>
+<p><span class="math display">\[
+\vec{L}=\sum_i (\vec{R}+\vec{r}_i')\times m_i\left(\frac{d\vec{R}}{dt}+\frac{d\vec{r}_i'}{dt}\right)
+\]</span></p>
+<p>Expandindo:</p>
+<p><span class="math display">\[
+\vec{L}=\sum_i m_i\left[\vec{R}\times\frac{d\vec{R}}{dt}+\vec{R}\times\frac{d\vec{r}_i'}{dt}+\vec{r}_i'\times\frac{d\vec{R}}{dt}+\vec{r}_i'\times\frac{d\vec{r}_i'}{dt}\right]
+\]</span></p>
+<p>Observando o 2º e o 3º termos, temos:</p>
+<p><span class="math display">\[
+\vec{R}\times\frac{d}{dt}\left(\sum_i m_i\vec{r}_i'\right)+\left(\sum_i m_i\vec{r}_i'\right)\times\frac{d\vec{R}}{dt}=0
+\]</span></p>
+<p>porque:</p>
+<p><span class="math display">\[
+\sum_i m_i\vec{r}_i'=\sum_i m_i(\vec{r}_i-\vec{R})=\sum_i m_i\vec{r}_i-\sum_i m_i\vec{R}=M\vec{R}-M\vec{R}=0
+\]</span></p>
+<p>Logo, o momento angular total fica:</p>
+<p><span class="math display">\[
+\vec{L}=M\vec{R}\times\frac{d\vec{R}}{dt}+\sum_i \vec{r}_i'\times\frac{d\vec{r}_i'}{dt}
+\]</span></p>
+<p>onde <span class="math inline">\(\vec{p}_i'=m_i\frac{d\vec{r}_i'}{dt}\)</span>. Assim:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\vec{L}&amp;=\vec{R}\times\vec{P}+\sum_i \vec{r}_i'\times \vec{p}_i' \\
+\vec{L}&amp;=\vec{L}_{CM}+\sum_i \vec{L}_i'
+\end{aligned}
+\]</span></p>
+<p>Nós vimos que a derivada do momento angular é:</p>
+<p><span class="math display">\[
+\frac{d\vec{L}_i}{dt}=\vec{r}_i\times \frac{d\vec{p}_i}{dt}
+\]</span></p>
+<p>Logo:</p>
+<p><span class="math display">\[
+\frac{d\vec{L}_i}{dt}=\vec{r}_i\times\left(\vec{F}_{E_i}+\sum_{j\neq i}\vec{F}_{ij}\right)
+\]</span></p>
+<p>Somando para todas as partículas:</p>
+<p><span class="math display">\[
+\frac{d\vec{L}}{dt}=\sum_i (\vec{r}_i\times \vec{F}_{E_i})+\sum_i\sum_{j\neq i}(\vec{r}_i\times \vec{F}_{ij})
+\]</span></p>
+<p>O termo das forças internas pode ser escrito como:</p>
+<p><span class="math display">\[
+\sum_i\sum_{j\neq i}(\vec{r}_i\times \vec{F}_{ij})
+=\sum_{i&lt;j}\left[\vec{r}_i\times \vec{F}_{ij}+\vec{r}_j\times \vec{F}_{ji}\right]
+=\sum_{i&lt;j}(\vec{r}_i-\vec{r}_j)\times \vec{F}_{ij}
+\]</span></p>
+<p>Se as forças internas forem <strong>centrais</strong>, então <span class="math inline">\(\vec{F}_{ij}\parallel (\vec{r}_i-\vec{r}_j)\)</span> e, portanto:</p>
+<p><span class="math display">\[
+\sum_i\sum_{j\neq i}(\vec{r}_i\times \vec{F}_{ij})=\vec{0}
+\]</span></p>
+<p>Com isso:</p>
+<p><span class="math display">\[
+\frac{d\vec{L}}{dt}=\sum_i (\vec{r}_i\times \vec{F}_{E_i})
+=\sum_i \vec{\tau}_{E_i}
+\equiv \vec{\tau}_E
+\]</span></p>
+<p>Ou seja: <strong>o momento angular total do sistema depende apenas do torque das forças externas</strong>.</p>
+<section id="trabalho-e-energia" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="trabalho-e-energia"><span class="header-section-number">6.1</span> Trabalho e energia</h2>
+<p>O trabalho realizado para mudar o sistema de uma configuração 1 para outra configuração 2 é:</p>
+<p><span class="math display">\[
+W_{1\to 2}=\sum_i \int_{1}^{2}\vec{F}_i\cdot d\vec{r}_i
+\]</span></p>
+<p>Nós já mostramos que, para uma partícula:</p>
+<p><span class="math display">\[
+\int_{1}^{2}\vec{F}_i\cdot d\vec{r}_i=\int_{1}^{2} d\left(\frac{m_i}{2}v_i^2\right)=E_{c,i2}-E_{c,i1}
+\]</span></p>
+<p>Com isso:</p>
+<p><span class="math display">\[
+W_{1\to 2}=\sum_i (E_{c,i2}-E_{c,i1})=E_{c2}-E_{c1}
+\]</span></p>
+<p>onde:</p>
+<p><span class="math display">\[
+E_c=\sum_i E_{c,i}
+\]</span></p>
+<p>Em termos do centro de massa:</p>
+<p><span class="math display">\[
+\frac{d\vec{r}_i}{dt}=\frac{d\vec{r}_i'}{dt}+\frac{d\vec{R}}{dt}
+\]</span></p>
+<p>e:</p>
+<p><span class="math display">\[
+v_i^2=v_i'^2+2(\vec{v}_i'\cdot \vec{V})+V^2
+\]</span></p>
+<p>Logo:</p>
+<p><span class="math display">\[
+E_c=\frac{M}{2}V^2+\sum_i \frac{m_i}{2}v_i'^2
+\]</span></p>
+<p>Separando as forças externas e internas:</p>
+<p><span class="math display">\[
+W_{1\to 2}=\sum_i \int_{1}^{2}\vec{F}_{E_i}\cdot d\vec{r}_i+\sum_i\sum_{j\neq i}\int_{1}^{2}\vec{F}_{ij}\cdot d\vec{r}_i
+\]</span></p>
+<p>Se as forças forem conservativas, podemos escrever:</p>
+<p><span class="math display">\[
+\vec{F}_{E_i}=-\vec{\nabla}_i U_i
+\quad\text{e}\quad
+\vec{F}_{ij}=-\vec{\nabla}_i \bar{U}_{ij}
+\]</span></p>
+<p>Então:</p>
+<p><span class="math display">\[
+\sum_i \int_{1}^{2}\vec{F}_{E_i}\cdot d\vec{r}_i
+=-\left.\sum_i U_i\right|_1^2
+\]</span></p>
+<p>e também:</p>
+<p><span class="math display">\[
+\sum_i\sum_{j\neq i}\int_{1}^{2}\vec{F}_{ij}\cdot d\vec{r}_i
+=-\left.\sum_{i&lt;j}\bar{U}_{ij}\right|_1^2
+\]</span></p>
+<p>Como estamos supondo que todas as forças são conservativas, podemos definir a energia potencial total:</p>
+<p><span class="math display">\[
+U=\sum_i U_i+\sum_{i&lt;j}\bar{U}_{ij}
+\]</span></p>
+<p>e escrever o trabalho como:</p>
+<p><span class="math display">\[
+W_{1\to 2}=-(U_2-U_1)
+\]</span></p>
+<p>Logo:</p>
+<p><span class="math display">\[
+T_2-T_1=-(U_2-U_1)
+\quad\Rightarrow\quad
+T_2+U_2=T_1+U_1
+\]</span></p>
+<p>A energia mecânica total é conservada.</p>
+</section>
+<section id="colisões-entre-duas-partículas" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="colisões-entre-duas-partículas"><span class="header-section-number">6.2</span> Colisões entre duas partículas</h2>
+<p>Vamos considerar o fenômeno em dois referenciais: o chamado <strong>“do laboratório”</strong>, onde as partículas e o centro de massa podem se mover, e o chamado <strong>“do centro de massa”</strong>, onde o centro de massa está em repouso e é a origem do sistema de coordenadas.</p>
+<p>Vamos olhar a geometria do sistema:</p>
+<p><strong>Laboratório</strong></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><strong>Centro de massa</strong></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>Pela definição de CM, temos:</p>
+<p><span class="math display">\[
+m_1\vec{r}_1+m_2\vec{r}_2=M\vec{R}
+\]</span></p>
+<p>o que nos leva à relação entre as velocidades:</p>
+<p><span class="math display">\[
+m_1\vec{v}_1+m_2\vec{v}_2=M\vec{V}
+\]</span></p>
+<p>Supondo massas constantes e considerando, no laboratório, <span class="math inline">\(\vec{v}_{2i}=\vec{0}\)</span>, temos:</p>
+<p><span class="math display">\[
+m_1\vec{v}_{1i}=M\vec{V}\Rightarrow \vec{V}=\frac{m_1\vec{v}_{1i}}{M}
+\]</span></p>
+<p>No referencial do CM, a partícula 2 está se movendo com velocidade:</p>
+<p><span class="math display">\[
+\vec{v}_{2i}'=-\vec{V}=-\frac{m_1\vec{v}_{1i}}{M}
+\]</span></p>
+<p>e o momento linear total é zero:</p>
+<p><span class="math display">\[
+m_1\vec{v}_{1i}'+m_2\vec{v}_{2i}'=\vec{0}
+\]</span></p>
+<p>Vimos que, na ausência de forças externas, o momento linear é conservado.</p>
+<p>No caso de colisão elástica, a energia cinética é conservada também.</p>
+<p>Voltando ao desenho, após a colisão:</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math display">\[
+V&lt;v_{1f}'
+\]</span></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math display">\[
+V&gt;v_{1f}'
+\]</span></p>
+<p>Se <span class="math inline">\(V&gt;v_{1f}'\)</span>:</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>temos dois valores possíveis para o ângulo no CM.</p>
+<p>No caso <span class="math inline">\(V&lt;v_{1f}'\)</span>, temos as seguintes relações entre as projeções:</p>
+<p><span class="math display">\[
+\begin{aligned}
+v_{1F}'\operatorname{sen}\theta&amp;=v_{1F}\operatorname{sen}\psi \\
+v_{1F}'\cos\theta+V&amp;=v_{1F}\cos\psi
+\end{aligned}
+\]</span></p>
+<p>Dividindo a primeira pela segunda:</p>
+<p><span class="math display">\[
+\tan\psi=\frac{\operatorname{sen}\theta}{\cos\theta+(V/v_{1F}')}
+\]</span></p>
+<p>Mas:</p>
+<p><span class="math display">\[
+V=\frac{m_1 v_{1i}}{M}
+\quad\text{e}\quad
+v_{1f}'=\frac{m_2 v_{1i}}{M}
+\]</span></p>
+<p>Então:</p>
+<p><span class="math display">\[
+\frac{V}{v_{1f}'}=\frac{m_1}{m_2}
+\]</span></p>
+<p>Logo:</p>
+<p><span class="math display">\[
+\tan\psi=\frac{\operatorname{sen}\theta}{\cos\theta+m_1/m_2}
+\]</span></p>
+<p>Se <span class="math inline">\(m_1\ll m_2\)</span>, então <span class="math inline">\(\tan\psi\simeq \tan\theta\)</span> e <span class="math inline">\(\psi\simeq \theta\)</span>.</p>
+<p>Se <span class="math inline">\(m_1=m_2\)</span>, obtemos:</p>
+<p><span class="math display">\[
+\tan\psi=\frac{\sin\theta}{\cos\theta+1}
+=\tan\left(\frac{\theta}{2}\right)
+\Rightarrow \psi=\frac{\theta}{2}
+\]</span></p>
+<p>Voltando mais uma vez ao desenho:</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>No caso <span class="math inline">\(m_1=m_2\)</span>, temos <span class="math inline">\(\theta=2\psi\)</span>, e daí:</p>
+<p><span class="math display">\[
+2\alpha=\pi-2\psi \Rightarrow \alpha+\psi=\frac{\pi}{2}
+\]</span></p>
+<p>portanto as velocidades após a colisão, no referencial do laboratório, são perpendiculares.</p>
+<p>No caso de colisões inelásticas, a energia cinética não é conservada:</p>
+<p><span class="math display">\[
+\frac{m_1}{2}v_{1i}^2+\frac{m_2}{2}v_{2i}^2+Q=\frac{m_1}{2}v_{1f}^2+\frac{m_2}{2}v_{2f}^2
+\]</span></p>
+<p>Newton propôs uma maneira de classificar as colisões por meio do coeficiente de restituição:</p>
+<p><span class="math display">\[
+\varepsilon=\frac{|v_{2f}-v_{1f}|}{|v_{2i}-v_{1i}|}
+\]</span></p>
+</section>
+<section id="impulso" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="impulso"><span class="header-section-number">6.3</span> Impulso</h2>
+<p>As colisões, em geral, são rápidas e as forças envolvidas agem por um intervalo de tempo curto. Nesses casos, chamamos de <strong>forças impulsivas</strong>. A 2ª lei ainda vale durante esse intervalo:</p>
+<p><span class="math display">\[
+\vec{F}=\frac{d\vec{p}}{dt}
+\]</span></p>
+<p>Nessas situações, é útil usar o conceito de impulso:</p>
+<p><span class="math display">\[
+\vec{I}=\int_{t_1}^{t_2}\vec{F}\,dt
+\]</span></p>
+<p>Usando a 2ª lei:</p>
+<p><span class="math display">\[
+\vec{I}=\int_{t_1}^{t_2}\frac{d\vec{p}}{dt}\,dt=\vec{p}(t_2)-\vec{p}(t_1)
+\]</span></p>
+</section>
+<section id="seção-de-choque" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="seção-de-choque"><span class="header-section-number">6.4</span> Seção de choque</h2>
+<p>Vamos considerar várias colisões com parâmetros de impacto diferentes. Cada valor de <span class="math inline">\(b\)</span> resulta em um ângulo de espalhamento <span class="math inline">\(\theta\)</span>. Isso significa que temos um feixe de partículas com massa <span class="math inline">\(m_1\)</span> e energia <span class="math inline">\(T_i\)</span>, direcionado a uma região do espaço que contém partículas com massa <span class="math inline">\(m_2\)</span> em repouso (no referencial do laboratório).</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>A seção de choque diferencial, no referencial do CM, é o número de interações por partícula-alvo que resulta em um espalhamento em um ângulo sólido <span class="math inline">\(d\Omega'\)</span> ao redor do ângulo <span class="math inline">\(\theta\)</span>, dividido pelo número de partículas incidentes por unidade de área de seção reta do feixe:</p>
+<p><span class="math display">\[
+\sigma(\theta)=\frac{d\sigma}{d\Omega'}=\frac{dN}{I\,d\Omega'}
+\]</span></p>
+<p>Essa grandeza é medida em termos de área por ângulo sólido. Como:</p>
+<p><span class="math display">\[
+d\Omega'=\operatorname{sen}\theta\, d\theta\, d\phi
+\]</span></p>
+<p>e, se houver simetria axial em torno da direção de incidência (<span class="math inline">\(b=0\)</span>),</p>
+<p><span class="math display">\[
+d\Omega'=2\pi\operatorname{sen}\theta\, d\theta
+\]</span></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>Temos:</p>
+<p><span class="math display">\[
+I\,2\pi b\,db=-I\,\sigma(\theta)\,2\pi\operatorname{sen}\theta\,d\theta
+\]</span></p>
+<p>O sinal negativo representa a hipótese de que, quanto maior <span class="math inline">\(b\)</span>, menor a deflexão <span class="math inline">\(\theta\)</span> (isto é, <span class="math inline">\(db/d\theta&lt;0\)</span>). Com isso:</p>
+<p><span class="math display">\[
+\sigma(\theta)=\frac{b}{\sin\theta}\left|\frac{db}{d\theta}\right|&gt;0
+\]</span></p>
+<p>Usando a equação da trajetória de uma partícula sob ação de uma força central:</p>
+<p><span class="math display">\[
+\Delta(\Theta)=\int_{r_{\min}}^{\infty}\frac{(L/r^{2})\,dr}{\sqrt{2\mu\left[E-U-\left(L^{2}/2\mu r^{2}\right)\right]}}
+\]</span></p>
+<p>No nosso caso:</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>onde <span class="math inline">\(\alpha=\beta\)</span>, logo:</p>
+<p><span class="math display">\[
+\theta=\pi-2\Theta
+\]</span></p>
+<p>Escrevendo o momento angular em termos do parâmetro de impacto, <span class="math inline">\(L=b\sqrt{2\mu T_i}\)</span>, e considerando que em <span class="math inline">\(r=\infty\)</span> temos <span class="math inline">\(U=0\)</span> e <span class="math inline">\(E=T_i\)</span>, podemos escrever:</p>
+<p><span class="math display">\[
+\Theta=\int_{r_{\min}}^{\infty}\frac{(b/r^{2})\,dr}{\sqrt{1-(b^{2}/r^{2})-(U/T_i)}}
+\]</span></p>
+<p>Com essas relações, podemos obter <span class="math inline">\(\frac{db}{d\theta}\)</span> e, em seguida, a seção de choque.</p>
+<p>Se <span class="math inline">\(m_2\gg m_1\)</span>, a seção de choque no referencial do laboratório é aproximadamente igual à do CM. Do contrário, é preciso fazer a transformação de coordenadas:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma(\theta)d\Omega'&amp;=\sigma(\psi)d\Omega \\
+\sigma(\theta)\,2\pi\sin\theta\,d\theta&amp;=\sigma(\psi)\,2\pi\sin\psi\,d\psi \\
+\sigma(\psi)&amp;=\sigma(\theta)\frac{\sin\theta}{\sin\psi}\frac{d\theta}{d\psi}
+\end{aligned}
+\]</span></p>
+<p>Como vimos:</p>
+<p><span class="math display">\[
+\frac{\operatorname{sen}(\theta-\psi)}{m_1}=\frac{\operatorname{sen}\psi}{m_2}
+\Rightarrow
+\frac{m_1}{m_2}=\frac{\sin(\theta-\psi)}{\operatorname{sen}\psi}=x
+\]</span></p>
+<p>e então:</p>
+<p><span class="math display">\[
+\sigma(\psi)=\sigma(\theta)\frac{\operatorname{sen}^{2}\theta}{\sin^{2}\psi\,\cos(\theta-\psi)}
+\]</span></p>
+<p>É possível escrever a seção de choque em termos de <span class="math inline">\(\psi\)</span> apenas:</p>
+<p><span class="math display">\[
+\sigma(\psi)=\sigma(\theta)\frac{\left[x\cos\psi+\sqrt{1-x^{2}\operatorname{sen}^{2}\psi}\right]^{2}}{\sqrt{1-x^{2}\operatorname{sen}^{2}\psi}} \;,\quad |x|&lt;1
+\]</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./GravitacaoEForcas.html" class="pagination-link" aria-label="Forças Centrais e Gravitação">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Teoremas.html" class="pagination-link" aria-label="Teoremas de Conservação">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoremas de Conservação</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

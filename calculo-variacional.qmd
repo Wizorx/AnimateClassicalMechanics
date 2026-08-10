@@ -1,0 +1,730 @@
+---
+title: "Cálculo Variacional"
+subtitle: "Capítulo 6 — Some Methods in the Calculus of Variations (Thornton & Marion)"
+format: html
+---
+
+A ideia básica é encontrar a função $y(x)$ que extremiza a seguinte integral:
+
+$$
+J = \int_{x_1}^{x_2} f\{y(x), y'(x); x\}\,dx
+\qquad\qquad
+y'(x) = \frac{dy}{dx}
+$$
+
+Onde $f$ é um funcional, ou seja, uma "metafunção" que relaciona dois conjuntos de funções e $J$ é um funcional integral.
+
+Vamos considerar que os limites $x_1$ e $x_2$ são fixos e iguais entre as funções:
+
+![Família de curvas entre dois pontos fixos $(x_1, y=c_1)$ e $(x_2, y=c_2)$](figs/ch6_fig1_variational_family.png)
+
+Vamos considerar uma família de funções a um parâmetro $\alpha$, ou seja, uma cornucópia de funções a partir da qual escolhemos uma com um slider $\alpha$.
+
+$$
+y = y(\alpha, x) = y_\alpha(x)
+$$
+
+Podemos decompor essa família entre uma função de base $y = y(0, x)$ e um componente que varia em função de $\alpha$, além de poder postular que a função de base extremiza $J$.
+
+$$
+y(\alpha, x) = y(0, x) + \alpha \eta(x)
+$$
+
+Com isso, $J$ só varia quando variamos $\alpha$. Em outras palavras, dado um funcional $f$ e uma família $y(\alpha, x)$, $J$ depende do parâmetro $\alpha$. Para que $J$ seja um extremo, então o seguinte deve valer:
+
+$$
+\left.\frac{\partial J}{\partial \alpha}\right|_{\alpha = 0} = 0 \quad \forall\, \eta(x)
+$$
+
+Como nem a variável de integração nem os limites de integração dependem de $\alpha$, podemos usar a regra de Leibniz:
+
+$$
+y(\alpha, x_1) = c_1\ \forall \alpha
+$$
+$$
+y(\alpha, x_2) = c_2\ \forall \alpha
+$$
+
+$$
+\therefore \quad
+\frac{\partial J}{\partial \alpha} = \int_{x_1}^{x_2} \frac{\partial}{\partial \alpha} f\{y(\alpha,x), y'(\alpha,x); x\}\, dx
+$$
+
+$$
+= \int_{x_1}^{x_2} \left\{ \frac{\partial f}{\partial \alpha}\frac{\partial y}{\partial \alpha} + \frac{\partial f}{\partial y'}\frac{\partial y'}{\partial \alpha} \right\} dx
+$$
+
+onde
+
+$$
+\frac{\partial x}{\partial \alpha} = 0
+\qquad\qquad
+\frac{\partial y}{\partial x} = \eta(x)
+$$
+
+$$
+\frac{\partial y'}{\partial \alpha} = \frac{\partial}{\partial \alpha}\frac{\partial}{\partial x} y(\alpha, x) = \frac{\partial}{\partial \alpha}\left(y' + \alpha \eta'\right) = \frac{d\eta}{dx}
+$$
+
+$$
+\frac{\partial J}{\partial \alpha} = \int_{x_1}^{x_2} \left[ \left(\frac{\partial f}{\partial \alpha}\right)\eta + \left(\frac{\partial f}{\partial y'}\right)\frac{d\eta}{dx} \right] dx
+$$
+
+$$
+= \int_{x_1}^{x_2} \left(\frac{\partial f}{\partial \alpha}\right)\eta\, dx + \int_{x_1}^{x_2} \left(\frac{\partial f}{\partial y'}\right)\frac{d\eta}{dx}\, dx
+$$
+
+Se usarmos integração por partes na segunda integral, temos:
+
+$$
+\int u\, dv = uv - \int v\, du
+\qquad\text{onde}\qquad
+u = \frac{\partial f}{\partial y'} \quad\text{e}\quad dv = \frac{d\eta}{dx}\,dx
+$$
+
+$$
+\therefore \quad
+\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\frac{d\eta}{dx}\,dx
+= \left.\frac{\partial f}{\partial y'}\eta\right|_{x_1}^{x_2} - \int \eta\,\frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) dx
+$$
+
+Como os limites $x_1$ e $x_2$ são fixos, então os valores de $\eta$ nesses pontos são nulos. Daí, recolocando os valores na expressão anterior, temos:
+
+$$
+\eta(x_1) = \eta(x_2) = 0
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\left.\frac{\partial f}{\partial y'}\eta\right|_{x_1}^{x_2} - \int \eta\,\frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) dx
+= -\int_{x_1}^{x_2} \eta\,\frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) dx
+$$
+
+$$
+\therefore \quad
+\frac{\partial J}{\partial \alpha} = \int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta\, dx - \int_{x_1}^{x_2} \eta\,\frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) dx
+$$
+
+$$
+= \int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta\, dx - \eta\frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) dx
+$$
+
+$$
+= \int_{x_1}^{x_2} \left[ \frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) \right] \eta\, dx
+$$
+
+Para que $J$ seja extremo então, essa expressão deve ser nula:
+
+$$
+\frac{\partial J}{\partial x} = 0
+\;\;\longrightarrow\;\;
+\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0
+$$
+
+Essa é a equação de Euler-Lagrange. Com ela vamos considerar o problema da braquistócrona: qual a curva que descreve a trajetória de uma partícula que se move apenas sob a ação de um campo gravitacional constante (ou seja, uniforme e estacionário) tal que o tempo seja o menor?
+
+Considere que a partícula sai do repouso em $(x_1, y_1)$ e chega em $(x_2, y_2)$. Escolhemos um sistema de coordenadas com origem em $(x_1, y_1)$, tal que o campo seja dado por:
+
+$$
+\vec{g} = g\hat{x}, \qquad g = \text{cte.}, \qquad \vec{F}_g = mg\hat{x}, \qquad \vec{F}_g = -\vec{\nabla}U
+$$
+
+![Trajetória de $(x_1,y_1)$ até $(x_2,y_2)$ sob a força gravitacional $\vec{F}_g$](figs/ch6_fig2_brachistochrone.png)
+
+Na ausência de forças externas, a energia mecânica é conservada. Considerando a energia potencial gravitacional:
+
+$$
+U(x_1) = 0 \qquad E_C + U = 0
+$$
+
+$$
+\frac{mv^2}{2} - mgx = 0 \;\;\rightarrow\;\; v = \sqrt{2gx}
+$$
+
+O tempo de percurso é então:
+
+$$
+t = \int_{(x_1,y_1)}^{(x_2,y_2)} \frac{ds}{v} = \int_{(x_1,y_1)}^{(x_2,y_2)} \frac{(dx^2 + dy^2)^{1/2}}{\sqrt{2gx}}
+= \int_{(x_1,y_1)}^{(x_2,y_2)} \frac{\left[dx^2\left(1 + \dfrac{dy^2}{dx^2}\right)^{1/2}\right]}{\sqrt{2gx}}
+$$
+
+$$
+\rightarrow \quad t = \int_{(x_1,y_1)}^{(x_2,y_2)} \left(\frac{1+y'^2}{2gx}\right)^{1/2} dx
+$$
+
+Identificando o funcional e a grandeza a ser extremizada, podemos usar a equação de Euler-Lagrange para resolvermos o problema:
+
+$$
+J := t
+\qquad\qquad
+f\{y, y'; x\} := \left(\frac{1+y'^2}{2gx}\right)^{1/2}
+$$
+
+$$
+\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0
+$$
+
+$$
+\frac{\partial f}{\partial y} = 0
+$$
+
+$$
+\frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0 \;\;\rightarrow\;\; \frac{\partial f}{\partial y'} = \text{cst} = a
+$$
+
+$$
+\rightarrow \quad \frac{1}{2}\left(\frac{1+y'^2}{2gx}\right)^{-\frac{1}{2}} \frac{2y'}{2gx} = a
+$$
+
+$$
+\rightarrow \quad \left(\frac{1+y'^2}{2gx}\right)^{-1} \frac{y'^2}{4g^2x^2} = a^2
+$$
+
+$$
+\rightarrow \quad \frac{2gx}{1+y'^2}\frac{y'^2}{4g^2x^2} = a^2
+$$
+
+$$
+\rightarrow \quad \frac{x}{1+y'^2}\frac{y'^2}{2x^2} = a^2 g := b^2
+$$
+
+$$
+\rightarrow \quad \frac{y'^2}{2x(1+y'^2)} = b^2
+$$
+
+$$
+\rightarrow \quad y'^2 = 2xb^2(1+y'^2)
+$$
+
+$$
+\rightarrow \quad y'^2 = 2xb^2 + 2xb^2y'^2
+$$
+
+$$
+\rightarrow \quad y'^2 - 2xb^2y'^2 = 2xb^2
+$$
+
+$$
+\rightarrow \quad y'^2\left(1-2xb^2\right) = 2xb^2
+$$
+
+$$
+\rightarrow \quad y'^2 = \frac{2xb^2}{1-2xb^2}
+$$
+
+$$
+\rightarrow \quad y' = \left(\frac{2xb^2}{1-2xb^2}\right)^{1/2}
+$$
+
+$$
+\rightarrow \quad dy = \left(\frac{2xb^2}{1-2xb^2}\right)^{1/2} dx
+$$
+
+$$
+\rightarrow \quad y(x) = \int \left(\frac{2xb^2}{1-2xb^2}\right)^{1/2} dx
+= \int \left(\frac{x}{\dfrac{1-xb^2}{2b^2}}\right)^{1/2} dx
+= \int \left(\frac{x}{A-x}\right)^{1/2} dx
+$$
+
+$$
+A := \frac{1}{2b^2}
+$$
+
+Por integração trigonométrica, seja:
+
+$$
+x = A(1-\cos\theta)
+$$
+
+$$
+dx = A\,\text{sen}\,\theta\, d\theta
+$$
+
+$$
+y(x) = \int \frac{A^2(1-\cos\theta)\,\text{sen}\,\theta\, d\theta}{\left[2A^2(1-\cos\theta) - A^2(1-\cos\theta)^2\right]^{1/2}}
+$$
+
+$$
+\vdots
+$$
+
+$$
+\rightarrow \quad y = \int A(1-\cos\theta)\,d\theta
+$$
+
+$$
+\therefore \quad y(x) = A(\theta - \text{sen}\,\theta) + C
+$$
+
+$$
+\Rightarrow \quad \text{Cicloide!}
+$$
+
+## Segunda forma da equação de Euler-Lagrange
+
+$$
+f = f\{y, y'; x\} \;\;\rightarrow\;\; \frac{df}{dx} = \frac{\partial f}{\partial y}y' + \frac{\partial f}{\partial y'}y'' + \frac{\partial f}{\partial x}
+$$
+
+onde
+
+$$
+\frac{\partial f}{\partial y'}y'' = \frac{df}{dx} - \frac{\partial f}{\partial y}y' - \frac{\partial f}{\partial x}
+$$
+
+Por outro lado,
+
+$$
+\frac{d}{dx}\!\left(y'\frac{\partial f}{\partial y'}\right) = y''\frac{\partial f}{\partial y'} + y'\frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right)
+$$
+
+$$
+= \frac{df}{dx} - \frac{\partial f}{\partial y}y' - \frac{\partial f}{\partial x} + y'\frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right)
+$$
+
+$$
+= \frac{df}{dx} - \frac{\partial f}{\partial y} - y'\left[\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right)\right]
+$$
+
+E se $y(x)$ extremiza $J$, o último termo é nulo.
+
+$$
+\rightarrow \quad \frac{d}{dx}\!\left(y'\frac{\partial f}{\partial y'}\right) = \frac{df}{dx} - \frac{\partial f}{\partial x}
+$$
+
+$$
+\therefore
+$$
+
+$$
+\frac{\partial f}{\partial x} - \frac{d}{dx}\!\left[f - y'\frac{\partial f}{\partial y'}\right] = 0
+$$
+
+Essa é a segunda forma da equação de Euler-Lagrange e é útil quando $f$ não depende explicitamente de $x$. Nesse caso, $f - y'\dfrac{\partial f}{\partial y'}$ é constante.
+
+Exemplo: geodésicas na superfície de uma esfera. Uma geodésica é a curva que representa o caminho mais curto entre dois pontos. Em coordenadas esféricas, a superfície corresponde a $r = 0 \rightarrow dr = 0$.
+
+$$
+ds^2 = (r\,d\theta)^2 + (r\,\text{sen}\,\theta\, d\phi)^2
+$$
+
+$$
+ds = r\left(d\theta^2 + \text{sen}^2\theta\, d\phi\right)^{1/2}
+$$
+
+A distância entre dois pontos é então:
+
+$$
+s = \int_1^2 r\left(d\theta + \text{sen}^2\theta\, d\phi\right)^{1/2}
+$$
+
+$$
+= r\int_1^2 \left[\left(\frac{d\theta}{d\phi}\right)^2 + \text{sen}^2\theta\right]^{1/2} d\phi
+$$
+
+$$
+\rightarrow \quad J := s, \qquad x := \phi, \qquad y(x) = \theta(\phi)
+$$
+
+$$
+\rightarrow \quad f = \left(\theta'^2 + \text{sen}^2\phi\right)^{1/2} \qquad \text{onde} \qquad \theta' = \frac{d\theta}{d\phi}
+$$
+
+Como $\dfrac{\partial f}{\partial \phi} = 0$, podemos usar a segunda forma da equação de Euler-Lagrange. Logo:
+
+$$
+f - y'\frac{\partial f}{\partial y'} = \text{cte}
+$$
+
+$$
+\rightarrow \quad \left(\theta'^2+\text{sen}^2\theta\right)^{1/2} - \theta'\frac{\partial}{\partial\theta'}\left(\theta'^2+\text{sen}^2\theta\right)^{1/2} = a
+$$
+
+$$
+\left(\theta'^2+\text{sen}^2\theta\right)^{1/2} - \theta'\left[\frac{1}{2}\left(\theta'^2+\text{sen}^2\theta\right)^{-\frac{1}{2}}2\theta'\right] = a
+$$
+
+$$
+\left(\theta'^2+\text{sen}^2\theta\right)^{\frac{1}{2}} - \theta'^2\left(\theta'^2+\text{sen}^2\theta\right)^{-1/2} = a
+$$
+
+$$
+\theta'^2+\text{sen}^2\theta - \theta'^2 = a\left(\theta'^2+\text{sen}^2\theta\right)^{\frac{1}{2}}
+\qquad\left[\times\left(\theta'^2+\text{sen}^2\theta\right)^{1/2}\right]
+$$
+
+$$
+\rightarrow \quad \text{sen}^2\theta = a\left(\theta'^2+\text{sen}^2\theta\right)^{1/2}
+$$
+
+$$
+\text{sen}^4\theta = a^2\left(\theta'^2+\text{sen}^2\theta\right)
+$$
+
+$$
+\theta'^2 = \frac{\text{sen}^4\theta}{a^2} - \text{sen}^2\theta
+$$
+
+$$
+\therefore \quad \frac{d\theta}{d\phi} = \sqrt{\frac{\text{sen}^4\theta}{a^2} - \text{sen}^2\theta}
+$$
+
+Como não há $\phi$ na equação, pode ser mais fácil resolver a equação inversa:
+
+$$
+\frac{d\phi}{d\theta} = \left(\frac{d\theta}{d\phi}\right)^{-1} = \left(\frac{\text{sen}^4\theta}{a^2} - \text{sen}^2\theta\right)^{-\frac{1}{2}}
+$$
+
+$$
+= \left[\frac{\text{sen}^2\theta}{a^2}\left(\text{sen}^2\theta - a^2\right)\right]^{-\frac{1}{2}}
+$$
+
+$$
+= \frac{a}{\text{sen}\,\theta}\left(\text{sen}^2\theta - a^2\right)^{-\frac{1}{2}}
+$$
+
+$$
+= a\,\text{csc}\,\theta\left(\text{sen}^2\theta - a^2\right)^{-\frac{1}{2}}
+$$
+
+$$
+= a\,\text{csc}\,\theta\left(\frac{1}{\text{sen}^2\theta - a^2}\right)^{\frac{1}{2}}
+$$
+
+$$
+= a\,\text{csc}\,\theta\left[\frac{1}{\text{sen}\,\theta\left(1-\dfrac{a^2}{\text{sen}^2\theta}\right)^{\frac{1}{2}}}\right]
+$$
+
+$$
+= a\,\text{csc}\,\theta\left[\frac{\text{csc}\,\theta}{\left(1-a^2\text{csc}^2\theta\right)^{1/2}}\right]
+$$
+
+$$
+= \frac{a\,\text{csc}^2\theta}{\sqrt{1-a^2\text{csc}^2\theta}}
+$$
+
+$$
+\therefore
+$$
+
+$$
+\phi = \text{arcsen}\left[\frac{\cot\theta}{\beta}\right] + C
+\qquad\text{onde}\qquad
+\beta^2 = \frac{1-a^2}{a^2}
+$$
+
+$$
+\rightarrow \quad \cot\theta = \beta\,\text{sen}(\phi - C)
+\qquad\left[\times\, r\,\text{sen}\,\theta\right]
+$$
+
+$$
+r\,\text{sen}\,\theta\cot\theta = r\,\text{sen}\,\theta\,\beta\,\text{sen}(\phi-C)
+$$
+
+$$
+r\cos\theta = r\,\text{sen}\,\theta\,\beta\,\text{sen}(\phi-C)
+\qquad\qquad
+\rightarrow\quad \text{sen}(a-b) = \text{sen}\,a\cos b - \text{sen}\,b\cos a
+$$
+
+$$
+= r\beta\,\text{sen}\,\theta(\text{sen}\,\phi\cos C - \text{sen}\,C\cos\phi)
+$$
+
+$$
+= (\beta\cos C)\,r\,\text{sen}\,\theta\,\text{sen}\,\phi - (\beta\,\text{sen}\,C)\,r\,\text{sen}\,\theta\cos\phi
+$$
+
+Em coordenadas cartesianas:
+
+$$
+\begin{cases}
+x = r\,\text{sen}\,\theta\cos\phi \\
+y = r\,\text{sen}\,\theta\,\text{sen}\,\phi \\
+z = r\cos\theta
+\end{cases}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+r\cos\theta = (\beta\cos c)\,r\,\text{sen}\,\theta\,\text{sen}\,\phi - (\beta\,\text{sen}\,c)\,r\,\text{sen}\,\theta\cos\phi
+$$
+
+$$
+\therefore \quad z = Ay - Bx
+$$
+
+Ou seja, o caminho tem que estar contido tanto na superfície de uma esfera como num plano que passa pela origem, isso significa que ele deve ser um grande círculo!
+
+Esse formalismo pode ser generalizado para várias variáveis:
+
+$$
+f = f\{y_i(x), y_i'(x); x\},\quad i = 1,2,3,\dots,n
+$$
+
+$$
+y_i(\alpha,x) = y_i(x) + \alpha\eta_i(x)
+\qquad\text{onde}\qquad
+\eta_i = \frac{\partial y_i}{\partial x}
+$$
+
+$$
+\frac{\partial J}{\partial \alpha} = \int_{x_1}^{x_2} \sum_i \left[\frac{\partial f}{\partial y_i} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y_i'}\right)\right]\eta_i(x)\,dx
+$$
+
+Se $\eta_i(x)$ são independentes e arbitrárias, então:
+
+$$
+\frac{\partial f}{\partial y_i} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y_i'}\right) = 0
+$$
+
+Mas se não forem, temos um caso parecido com o da geodésica. Vamos considerar o caso com duas variáveis então:
+
+$$
+f = f\{y, y', z, z'; x\}
+$$
+
+Extremizando $J$:
+
+$$
+\frac{\partial J}{\partial x} = \int_{x_1}^{x_2} \left\{ \left[\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right)\right]\eta_1(x) + \left[\frac{\partial f}{\partial z} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial z'}\right)\right]\eta_2(x) \right\} dx = 0
+$$
+
+Diferentemente do caso da geodésica, impomos um vínculo *explícito* do mesmo jeito que um círculo é dado por $x^2+y^2-r^2=0$:
+
+$$
+g\{y, z; x\} = 0
+\qquad\qquad
+\eta_1 = \frac{\partial y}{\partial \alpha}
+\qquad\qquad
+\eta_2 = \frac{\partial z}{\partial \alpha}
+$$
+
+Diferenciando $g$:
+
+$$
+dg = \left(\frac{\partial g}{\partial y}\frac{\partial y}{\partial \alpha} + \frac{\partial g}{\partial z}\frac{\partial z}{\partial \alpha}\right)d\alpha = 0
+$$
+
+$$
+= \left(\frac{\partial g}{\partial y}\eta_1 + \frac{\partial g}{\partial z}\eta_2\right)d\alpha = 0
+$$
+
+Como $x$ e $\alpha$ são independentes, então:
+
+$$
+\frac{\partial g}{\partial y}\eta_1 + \frac{\partial g}{\partial z}\eta_2 = 0
+$$
+
+$$
+\therefore \quad \frac{\eta_2}{\eta_1} = -\frac{\dfrac{\partial g}{\partial y}}{\dfrac{\partial g}{\partial z}}
+$$
+
+$$
+\rightarrow \quad \frac{\partial J}{\partial \alpha} = \int_{x_1}^{x_2} \left\{\left[\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right)\right] + \left[\frac{\partial f}{\partial z} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial z'}\right)\right]\frac{\eta_1}{\eta_2}\right\}\times \eta_1\,dx = 0
+$$
+
+$$
+\rightarrow \int_{x_1}^{x_2} \left\{\left[\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right)\right] - \left[\frac{\partial f}{\partial z} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial z'}\right)\right]\frac{\dfrac{\partial g}{\partial y}}{\dfrac{\partial g}{\partial z}}\right\} x\,\eta_1\,dx = 0
+$$
+
+$$
+\rightarrow \quad x\,\eta_1\,dx = 0
+$$
+
+$$
+\rightarrow \quad \left[\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right)\right]\left(\frac{\partial g}{\partial y}\right)^{-1}
+= \left[\frac{\partial f}{\partial z} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial z'}\right)\right]\left(\frac{\partial g}{\partial z}\right)^{-1}
+$$
+
+Como tanto $f$ como $g$ dependem de $x$, então o resultado dessa equação será função de $x$. Então, para facilitar as coisas, podemos definir uma função $\lambda(x)$, que é o que chamamos de *multiplicador de Lagrange*:
+
+$$
+\left[\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right)\right]\left(\frac{\partial g}{\partial y}\right)^{-1}
+= \left[\frac{\partial f}{\partial z} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial z'}\right)\right]\left(\frac{\partial g}{\partial z}\right)^{-1}
+= -\lambda(x)
+$$
+
+Separando as equações, sabemos então que para resolver um problema com um vínculo *explícito*, temos um sistema de equações diferenciais acopladas:
+
+$$
+\begin{cases}
+\left[\dfrac{\partial f}{\partial y} - \dfrac{d}{dx}\!\left(\dfrac{\partial f}{\partial y'}\right)\right]\left(\dfrac{\partial g}{\partial y}\right)^{-1} = -\lambda(x) \\[2ex]
+\left[\dfrac{\partial f}{\partial z} - \dfrac{d}{dx}\!\left(\dfrac{\partial f}{\partial z'}\right)\right]\left(\dfrac{\partial g}{\partial z}\right)^{-1} = -\lambda(x)
+\end{cases}
+$$
+
+Com essas equações mais a equação de vínculo, podemos encontrar $y(x)$, $z(x)$ e $\lambda(x)$. Para $N$ funções, poderemos generalizar:
+
+$$
+\frac{\partial f}{\partial y_i} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y_i'}\right) + \sum_j \lambda_j\frac{\partial g_j}{\partial y_i} = 0,
+\qquad
+g_j\{y_i; x\}
+$$
+
+$$
+i = 1,2,3,\dots,N \qquad j = 1,2,3,\dots,M \qquad M < N
+$$
+
+Podemos escrever as equações de vínculo na forma diferencial para facilitar a resolução numérica:
+
+$$
+\sum_i \frac{\partial g}{\partial y_i}\,dy_i = 0
+$$
+
+Agora sim um exemplo de vínculo: um disco rolando sem deslizar sobre um plano inclinado; o ângulo de um ponto na superfície em relação à normal está vinculado ao centro de massa:
+
+![Disco de raio $R$ rolando sem deslizar sobre um plano inclinado de ângulo $\beta$; $y$ é a posição do centro do disco ao longo do plano e $\theta$ é o ângulo de rotação](figs/ch6_fig3_disk_inclined_plane.png)
+
+$$
+y = R\theta \;\;\rightarrow\;\; y - R\theta = 0 \;\;\rightarrow\;\; \frac{\partial g}{\partial y}dy + \frac{\partial g}{\partial \theta}d\theta = 0
+$$
+
+$$
+\underbrace{\phantom{aa}}_{1} \qquad \underbrace{\phantom{aa}}_{-R}
+$$
+
+$$
+\therefore \quad dy - R\,d\theta = 0
+$$
+
+E se podemos escrever as equações de vínculo na forma diferencial, também devem existir vínculos na forma integral.
+
+$$
+\text{Extremizar} \qquad J = \int_a^b f\{y,y';x\}\,dx
+$$
+
+$$
+\text{com a condição} \qquad k = \int_a^b g\{y,y_i',x\}\,dx = L
+$$
+
+Para resolver isso, vamos fazer a seguinte combinação para qualquer tamanho do barbante, multiplicando ele por um número $\lambda$ arbitrário:
+
+$$
+J + \lambda k = \int_a^b (f + \lambda g)\,dx
+$$
+
+A solução que extremiza $J$ também extremiza $J + \lambda k$. Para isso, temos que
+
+$$
+\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) + \lambda\left[\frac{\partial g}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial g}{\partial y'}\right)\right] = 0
+$$
+
+Sujeita a
+
+$$
+y(a) = A,\quad y(b) = B,\quad k = L
+$$
+
+Por exemplo, qual a maior área ($J$) que um barbante de comprimento fixo ($K=L$) fixado sempre nos mesmos dois pontos consegue subentender?
+
+![Diferentes curvas de mesmo comprimento entre $-a$ e $a$; a semicircunferência maximiza a área subentendida](figs/ch6_fig4_isoperimetric.png)
+
+$$
+f = y \;\;\rightarrow\;\; J = \int_{-a}^{a} y\,dx
+$$
+
+$$
+g = \left(1+y'^2\right)^{\frac{1}{2}} \;\;\rightarrow\;\; k = \int_{-a}^{a} dl = \int_{-a}^{a} \left(1+y'^2\right)^{\frac{1}{2}}dx
+$$
+
+$$
+\rightarrow\quad \frac{\partial f}{\partial y} = 1,\quad \frac{\partial f}{\partial y'} = 0,\quad \frac{\partial g}{\partial y} = 0,\quad \frac{\partial g}{\partial y'} = \frac{y'}{\left(1+y'^2\right)}
+$$
+
+$$
+\therefore \quad 1 - \lambda\frac{d}{dx}\left[\frac{y'}{(1+y'^2)^{\frac{1}{2}}}\right] = 0
+$$
+
+$$
+\rightarrow \quad \frac{d}{dx}\left[\frac{y'}{(1+y'^2)^{\frac{1}{2}}}\right] = \frac{1}{\lambda}
+$$
+
+$$
+\rightarrow \quad \int \frac{d}{dx}\left[\frac{y'}{(1+y'^2)^{1/2}}\right]dx = \int \frac{1}{\lambda}\,dx
+$$
+
+$$
+\rightarrow \quad \frac{y'}{(1+y'^2)^{1/2}} = \frac{x}{\lambda} - c_1
+\qquad\Big)\; c_1' = \lambda c_1
+$$
+
+$$
+\rightarrow \quad \frac{\lambda^2 y'^2}{1+y'^2} = (x-c_1')^2
+$$
+
+$$
+\rightarrow \quad \lambda y'^2 = (x-c_1')^2(1+y'^2)
+$$
+
+$$
+= (x-c_1') + y'^2(x-c_1')
+$$
+
+$$
+\rightarrow \quad y'^2\left[\lambda^2 - (x-c_1')^2\right] = (x-c_1')
+$$
+
+$$
+\rightarrow \quad y' = \frac{\pm(x-c_1')^2}{\left[\lambda^2-(x-c_1')^2\right]^{\frac{1}{2}}}
+$$
+
+$$
+\rightarrow \quad dy = \frac{\pm(x-c_1')^2}{\left[\lambda^2-(x-c_1')^2\right]^{\frac{1}{2}}}dx
+$$
+
+$$
+u := \lambda^2 - (x-c_1')^2, \qquad du := -2(x-c_1')\,dx
+$$
+
+$$
+\rightarrow \quad dy = \frac{\mp\, du}{2u^{\frac{1}{2}}}
+$$
+
+$$
+\rightarrow \quad \int dy = \int \frac{\mp\, du}{2u^{\frac{1}{2}}}
+$$
+
+$$
+\rightarrow \quad y = \mp\, u^{1/2} + c_2
+$$
+
+$$
+\rightarrow \quad y = \mp\left[\lambda^2-(x-c_1')^2\right]^{\frac{1}{2}} + c_2
+$$
+
+$$
+\rightarrow \quad y - c_2 = \mp\left[\lambda^2-(x-c_1')^2\right]^{\frac{1}{2}}
+$$
+
+$$
+\rightarrow \quad (y-c_2)^2 = \lambda^2 - (x-c_1')^2
+$$
+
+$$
+\hookrightarrow \quad (x-c_1')^2 + (y-c_2)^2 = \lambda^2
+$$
+
+Mas como $y(-a) = y(a) = 0$, então $c_1 = c_2 = 0$ e $\lambda = a$.
+
+$$
+\delta J := \frac{\partial J}{\partial \alpha}d\alpha = 0,
+\qquad k = \text{cte} \;\;\rightarrow\;\; \delta(J+\lambda k) = 0
+$$
+
+$$
+\underbrace{\phantom{\delta J:\;\text{variação em }J}}_{\text{variação em } J \text{ correspondente a mudança em } \alpha}
+$$
+
+$y(x)$ é uma semi-circunferência!
+
+$$
+\therefore \quad l = \pi a \;\;\longleftrightarrow\;\; a = \frac{l}{\pi}
+$$

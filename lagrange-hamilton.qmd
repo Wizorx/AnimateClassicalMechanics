@@ -1,0 +1,1202 @@
+---
+title: "Dinâmicas Lagrangiana e Hamiltoniana"
+subtitle: "Capítulo 7 (Thornton & Marion)"
+format: html
+---
+
+## Princípio de Hamilton e a Lagrangiana
+
+Princípio de Hamilton: o caminho seguido por um sistema é o que minimiza (extremiza) a integral no tempo da diferença entre a energia e a potencial. Essa grandeza é a *ação* do sistema, denotada por $S$, enquanto a diferença de energia é a Lagrangiana do sistema:
+
+$$
+S = \int_{t_1}^{t_2} (E_C - U)\,dt \qquad\longleftrightarrow\qquad \delta S = 0
+$$
+
+$$
+L := E_C - U
+$$
+
+$$
+\therefore \qquad S = \int_{t_1}^{t_2} L\, dt
+$$
+
+Onde a energia cinética é função da velocidade e a potencial é função da posição, considerando um sistema conservativo.
+
+$$
+E_C = E_C(\dot{x}_i) \qquad U = U(x_i)
+$$
+
+Então se quisermos usar o formalismo da equação de Euler-Lagrange, as grandezas utilizadas são as seguintes:
+
+$$
+x \;\rightsquigarrow\; t
+$$
+$$
+y_i(x) \;\rightsquigarrow\; x_i(t)
+$$
+$$
+y_i'(x) \;\rightsquigarrow\; x_i'(t)
+$$
+$$
+f\{y_i, y_i'; x\} \;\rightsquigarrow\; L(x_i, \dot{x}_i)
+$$
+$$
+J \;\rightsquigarrow\; S
+$$
+
+Logo, a Lagrangiana deve obedecer às equações de Euler-Lagrange. As equações de movimento do sistema então vão ser:
+
+$$
+\frac{\partial L}{\partial x_i} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}_i}\right) = 0
+$$
+
+No caso geral, $x_i$ não precisa ser coordenada. Para evitar confusão, a gente vai usar a ideia de coordenada generalizada. Coordenadas generalizadas são um conjunto de variáveis que descrevem o estado do sistema. Quando as coordenadas generalizadas são independentes, a gente diz que o conjunto é *próprio*. Quando isso não acontece, significa que existe um ou mais vínculos sobre o sistema.
+
+### Exemplo: oscilador harmônico simples unidimensional
+
+$$
+E_C = \frac{m\dot{x}^2}{2}, \qquad U = \frac{Kx^2}{2}
+$$
+
+$$
+\rightarrow \quad L = \frac{m\dot{x}^2}{2} - \frac{Kx^2}{2}
+$$
+
+Aplicando na equação de Euler-Lagrange:
+
+$$
+\frac{\partial L}{\partial x} = -Kx \qquad \frac{\partial L}{\partial \dot{x}} = m\dot{x} \qquad \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}}\right) = m\ddot{x}
+$$
+
+$$
+\therefore
+$$
+
+$$
+\frac{\partial L}{\partial x_i} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}_i}\right) = 0 \quad\longleftrightarrow\quad m\ddot{x} + Kx = 0
+$$
+
+### Exemplo: pêndulo plano
+
+$$
+E_C = \frac{mv^2}{2} = \frac{m}{2}(l\dot{\theta})^2
+$$
+
+$$
+U(\theta = 0) = 0 \;\rightarrow\; U = mgl(1-\cos\theta)
+$$
+
+$$
+\therefore \quad L = \frac{m}{2}l^2\dot{\theta}^2 - mgl(1-\cos\theta)
+$$
+
+Aplicando na equação de Euler-Lagrange:
+
+$$
+\frac{\partial L}{\partial \theta} = -mgl\,\text{sen}\,\theta \qquad \frac{\partial L}{\partial \dot{\theta}} = ml^2\dot{\theta} \qquad \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{\theta}}\right) = ml^2\ddot{\theta}
+$$
+
+$$
+\frac{\partial L}{\partial \theta} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{\theta}}\right) = 0 \;\;\longleftrightarrow\;\; ml^2\ddot{\theta} + mgl\,\text{sen}\,\theta = 0
+\quad\therefore\quad \ddot{\theta} + \frac{g}{l}\text{sen}\,\theta = 0
+$$
+
+### Exemplo: movimento de um projétil em 2D submetido a gravidade constante
+
+$$
+U = mgy \qquad E_C = \frac{m}{2}\dot{x}^2 + \frac{m}{2}\dot{y}^2
+$$
+
+$$
+\rightarrow \quad L = \frac{m\dot{x}^2}{2} + \frac{m\dot{y}^2}{2} - mgy
+$$
+
+Aplicando na equação de Euler-Lagrange em $x$ e $y$:
+
+$$
+\frac{\partial L}{\partial x} = 0 \qquad \frac{\partial L}{\partial \dot{x}} = m\dot{x} \qquad \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}}\right) = m\ddot{x}
+$$
+
+$$
+\therefore
+$$
+
+$$
+\frac{\partial L}{\partial x} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}}\right) = 0 \;\;\longleftrightarrow\;\; m\ddot{x} = 0
+$$
+
+$$
+\frac{\partial L}{\partial y} = -mg \qquad \frac{\partial L}{\partial \dot{y}} = m\dot{y} \qquad \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{y}}\right) = m\ddot{y}
+$$
+
+$$
+\therefore
+$$
+
+$$
+\frac{\partial L}{\partial \dot{y}} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \ddot{y}}\right) = 0 \;\;\longleftrightarrow\;\; m\ddot{y} + mg = 0
+$$
+
+$$
+\therefore \quad
+\begin{cases}
+m\ddot{x} = 0 \\
+m\ddot{y} + mg = 0
+\end{cases}
+$$
+
+### Exemplo: partícula de massa $m$ restrita à superfície de um cone sujeita a gravidade uniforme
+
+![Partícula restrita à superfície de um cone de semiângulo $\alpha$, em coordenadas cilíndricas $(s,\phi,z)$](figs/ch7_fig1_cone.png)
+
+![Corte transversal do cone mostrando a relação entre $s$, $z$ e $\alpha$](figs/ch7_fig1b_cone_cross_section.png)
+
+Em coordenadas cilíndricas:
+
+$$
+\tan\alpha = \frac{s}{z} \;\rightarrow\; \boxed{z = s\cot\alpha} \qquad \text{(Eq. de vínculo)}
+$$
+
+$$
+v^2 = \dot{s}^2 + s^2\dot{\phi}^2 + \dot{z}^2
+$$
+
+$$
+= \dot{s}^2 + s^2\dot{\phi}^2 + \dot{s}^2\cot^2\alpha
+\quad\therefore\quad
+E_C = \frac{mv^2}{2} = \frac{m}{2}\left(s^2\dot{\phi}^2+\dot{s}^2\csc^2\alpha\right)
+$$
+
+$$
+= s^2\dot{\phi}^2 + \dot{s}^2\csc^2\alpha
+$$
+
+$$
+U = mgz \;\longrightarrow\; L = E_C - U = \frac{m}{2}\left(s^2\dot{\phi}^2+\dot{s}^2\csc^2\alpha\right) - mgs\cot\alpha
+$$
+
+Como $g$ é uniforme, a derivada de $\phi$ não depende de $\phi$, daí a equação de Euler-Lagrange para a coordenada $\phi$ é:
+
+$$
+\frac{\partial L}{\partial \phi} = 0, \qquad \frac{\partial L}{\partial \dot\phi} = ms^2\dot\phi
+\quad\therefore\quad
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot\phi}\right) = 0
+$$
+
+Ou seja, $ms\dot\phi$ é constante! Que nada mais é que o momento angular da partícula em relação ao eixo $z$. Sempre que houver uma simetria no sistema, alguma grandeza é conservada (alô Noether). Na coordenada $s$ temos:
+
+$$
+\frac{\partial L}{\partial s} = ms\dot\phi^2 - mg\cot\alpha, \qquad
+\frac{\partial L}{\partial \dot s} = m\dot s\csc^2\alpha, \qquad
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot s}\right) = m\ddot s\csc^2\alpha
+$$
+
+$$
+\rightarrow \quad ms^2\dot\phi^2 - mg\cot\alpha - m\ddot s\csc^2\alpha = 0
+\qquad\Big)\div(-m\csc^2\alpha)
+$$
+
+$$
+\therefore \quad \ddot s - s\dot\phi^2\,\text{sen}^2\alpha + g\,\text{sen}\,\alpha\cos\alpha = 0
+$$
+
+### Exemplo: um pêndulo simples tem o seu ponto de suporte em um movimento circular uniforme coplanar
+
+![Pêndulo de comprimento $l$ cujo ponto de suporte gira com velocidade angular constante $\omega$ sobre um círculo de raio $a$](figs/ch7_fig2_pendulum_rotating_support.png)
+
+$$
+\omega = \text{cte.}
+$$
+
+$$
+x = a\cos(\omega t) + l\,\text{sen}\,\theta \qquad y = a\,\text{sen}(\omega t) - l\cos\theta
+$$
+
+As velocidades e acelerações ficam:
+
+$$
+\dot{x} = -a\omega\,\text{sen}(\omega t) + l\dot\theta\cos\theta \qquad
+\ddot{x} = -a\omega^2\cos(\omega t) - l\dot\theta^2\,\text{sen}\,\theta + l\ddot\theta\cos\theta
+$$
+
+$$
+\dot{y} = a\omega\cos(\omega t) + l\dot\theta\,\text{sen}\,\theta \qquad
+\ddot{y} = -a\omega^2\cos(\omega t) - l\dot\theta^2\cos\theta + l\ddot\theta\,\text{sen}\,\theta
+$$
+
+A energia cinética vai ser:
+
+$$
+E_C = \frac{m}{2}\left(\dot{x}^2+\dot{y}^2\right)
+$$
+
+$$
+= \frac{m}{2}\Big[a^2\omega^2\,\text{sen}^2(\omega t) + l^2\dot\theta^2\cos^2\theta - 2a\omega l\dot\theta\,\text{sen}(\omega t)\cos\theta
+$$
+
+$$
++ a^2\omega^2\cos^2(\omega t) + l^2\dot\theta^2\,\text{sen}^2\theta + 2a\omega l\dot\theta\cos(\omega t)\,\text{sen}\,\theta\Big]
+$$
+
+$$
+= \frac{m}{2}\Big[a^2\omega^2 + l^2\dot\theta^2 + 2a\omega l\dot\theta\,\text{sen}(\theta-\omega t)\Big]
+$$
+
+E a energia potencial vai ser:
+
+$$
+U = mgy = mg\left(a\,\text{sen}\,\omega t - l\cos\theta\right)
+$$
+
+Então a Lagrangiana é:
+
+$$
+L = E_C - U
+$$
+
+$$
+= m\left[\frac{a\omega^2}{2} + \frac{l^2\dot\theta^2}{2} + a\omega l\,\dot\theta\,\text{sen}(\theta-\omega t)\right] - mg\left(a\,\text{sen}(\omega t) - l\cos\theta\right)
+$$
+
+Só $\theta$ é uma coordenada generalizada, então a equação de Euler-Lagrange vai ser:
+
+$$
+\frac{\partial L}{\partial \theta} = mal\omega\dot\theta\cos(\theta-\omega t) - mgl\,\text{sen}\,\theta
+$$
+
+$$
+\frac{\partial L}{\partial \dot\theta} = m\left[l^2\dot\theta + a\omega l\,\text{sen}(\theta-\omega t)\right]
+$$
+
+$$
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot\theta}\right) = m\left[l^2\ddot\theta + al\omega\cos(\theta-\omega t)(\dot\theta-\omega)\right]
+$$
+
+$$
+\therefore
+$$
+
+$$
+\frac{\partial L}{\partial \theta} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot\theta}\right) = 0
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+mal\omega\dot\theta\cos(\theta-\omega t) - mgl\,\text{sen}\,\theta - m\left[l^2\ddot\theta + al\omega\cos(\theta-\omega t)(\dot\theta-\omega)\right] = 0
+$$
+
+$$
+\rightarrow \quad -mgl\,\text{sen}\,\theta - ml\ddot\theta + mal\omega^2\cos(\theta-\omega t) = 0
+\qquad\Big)\div ml^2
+$$
+
+$$
+\rightarrow \quad \ddot\theta - \frac{\omega^2 a}{l}\cos(\theta-\omega t) + \frac{g}{l}\text{sen}\,\theta = 0
+$$
+
+### Exemplo: miçanga restrita a um fio com formato parabólico
+
+Miçanga restrita a um fio com formato parabólico $z = cs^2$ (em coordenadas cilíndricas) girando em torno do eixo de simetria da parábola com velocidade angular $\omega$ constante tal que a miçanga fica a uma distância $R$ do eixo. Quanto vale $c$?
+
+![Miçanga sobre um fio parabólico girando com velocidade angular $\omega$ em torno do eixo $z$](figs/ch7_fig3_parabolic_wire.png)
+
+$$
+E_C = \frac{m}{2}\left[\dot{s}^2 + s^2\dot\phi^2 + \dot{z}^2\right]
+$$
+
+$$
+U = mgz
+$$
+
+$$
+\boxed{z = cs^2} \quad \text{Vínculo!}
+$$
+
+$$
+\hookrightarrow \quad \dot{z} = 2cs\dot{s}
+$$
+
+$$
+\therefore \quad L = E_C - U = \frac{m}{2}\left[\dot{s}^2 + s^2\dot\phi^2 + 4c^2s^2\dot{s}^2\right] - mgcs^2
+$$
+
+$$
+= \frac{m}{2}\left[\dot{s}^2\left(1+4c^2s^2\right) + s\dot\phi^2\right]
+$$
+
+$$
+\rightarrow \quad \frac{\partial L}{\partial s} = \frac{m}{s}\left[8c^2s\dot{s} + 2s\omega^2\right] - 2mgcs
+$$
+
+$$
+\rightarrow \quad \frac{\partial L}{\partial \dot{s}} = \frac{m}{2}\left[2\dot{s}\left(1+4c^2s^2\right)\right]
+$$
+
+$$
+\rightarrow \quad \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{s}}\right) = m\ddot{s}\left(1+4c^2s^2\right) + m\dot{s}\cdot 8c^2s\dot{s}
+$$
+
+$$
+\therefore \quad m\omega^2 s + 4mc^2 s\dot{s}^2 - 2mgcs - m\ddot{s}\left(1+4c^2s^2\right) - m\dot{s}^2 8c^2 s = 0
+$$
+
+Para que a miçanga fique parada, é necessário que:
+
+$$
+s = R = \text{cte.} \;\;\longrightarrow\;\; \dot{s} = \ddot{s} = 0 \quad\therefore\quad m\omega^2 s - 2mgcs = 0
+$$
+
+$$
+\rightarrow \quad mR\left(\omega^2-2gc\right) = 0 \;\;\rightarrow\;\; R\left(\omega^2-2gc\right) = 0
+$$
+
+$$
+\rightarrow \quad \omega^2 - 2gc = 0 \;\;\rightarrow\;\; \omega^2 = 2gc \quad\therefore\quad \boxed{c = \frac{\omega^2}{2g}}
+$$
+
+### Exemplo: polias
+
+![Sistema de polias ideais com fios inextensíveis suspendendo massas $m_1$, $m_2$ e $m_3$](figs/ch7_fig4_pulleys.png)
+
+Supondo polias ideais e fios inextensíveis e considerando as massas $m_1$, $m_2$ e $m_3$, e comprimentos dos fios $l_1$ e $l_2$.
+
+$$
+v_1 = \dot{x}
+$$
+$$
+v_2 = l_1 - \dot{x} + \dot{y}
+$$
+$$
+v_3 = -\dot{x} - \dot{y}
+$$
+
+$$
+\rightarrow \quad E_C = \frac{m_1}{2}v_1^2 + \frac{m_2}{2}v_2^2 + \frac{m_3}{2}v_3^2
+$$
+
+$$
+= \frac{m_1}{2}\dot{x}^2 + \frac{m_2}{2}(\dot{y}-\dot{x})^2 + \frac{m_3}{2}(-\dot{x}-\dot{y})^2
+$$
+
+$$
+U = U_1 + U_2 + U_3
+$$
+
+$$
+= -m_1 g x - m_2 g(l_1-x+y) - m_3 g(l_1-x+l_2-y)
+$$
+
+$$
+\therefore \quad L = E_C - U
+$$
+
+$$
+= \frac{m_1}{2}v_1^2 + \frac{m_2}{2}v_2^2 + \frac{m_3}{2}v_3^2 - \Big[-m_1 gx - m_2g(l_1-x+y) - m_3g(l_1-x+l_2-y)\Big]
+$$
+
+$$
+= m_1\left(\frac{\dot{x}^2}{2}+gx\right) + m_2\left[\frac{(\dot{y}-\dot{x})^2}{2} + g(l_1-x+y)\right] + m_3\left[\frac{(\dot{x}+\dot{y})^2}{2}+g(l_1-x+l_2-y)\right]
+$$
+
+Na coordenada $x$:
+
+$$
+\frac{\partial L}{\partial x} = m_1 g - m_2 g - m_3 g
+$$
+
+$$
+\frac{\partial L}{\partial \dot{x}} = m_1\dot{x} - m_2(\dot{y}-\dot{x}) + m_3(\dot{x}+\dot{y})
+$$
+
+$$
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}}\right) = m_1\ddot{x} - m_2(\ddot{y}-\ddot{x}) + m_3(\ddot{x}+\ddot{y})
+$$
+
+$$
+\therefore
+$$
+
+$$
+\frac{\partial L}{\partial x} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}}\right) = 0
+\;\;\longleftrightarrow\;\;
+m_1g - m_2g - m_3g - m_1\ddot{x} + m_2(\ddot{y}-\ddot{x}) - m_3(\ddot{x}+\ddot{y}) = 0
+$$
+
+$$
+\rightarrow \quad g(m_1-m_2-m_3) - m_1\ddot{x} + m_2(\ddot{y}-\ddot{x}) - m_3(\ddot{x}+\ddot{y}) = 0
+$$
+
+Na coordenada $y$:
+
+$$
+\frac{\partial L}{\partial y} = m_2 g - m_3 g, \qquad
+\frac{\partial L}{\partial \dot{y}} = m_2(\dot{y}-\dot{x}) + m_3(\dot{x}+\dot{y})
+$$
+
+$$
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{y}}\right) = m_2(\ddot{y}-\ddot{x}) + m_3(\ddot{x}+\ddot{y})
+$$
+
+$$
+\therefore \quad \frac{\partial L}{\partial y} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{y}}\right) = 0
+\;\;\longleftrightarrow\;\;
+g(m_2-m_3) - m_2(\ddot{y}-\ddot{x}) + m_3(\ddot{x}+\ddot{y}) = 0
+$$
+
+## Vínculos holônomos e semi-holônomos
+
+Vínculos (de novo): os vínculos que a gente viu até agora podem ser escritos na forma de uma relação entre as coordenadas (e, talvez, do tempo). Eles são chamados de vínculos **holônomos** e têm a seguinte forma:
+
+$$
+f(x_i, t) = 0
+$$
+
+Se o vínculo depender das velocidades, chamamos ele de **semi-holônomo**.
+
+$$
+f(x_i, \dot{x}_i, t) = 0
+$$
+
+Mas como a velocidade é uma derivada, a expressão desse vínculo é uma equação diferencial. Logo, se a gente puder resolver ela, essa solução é um vínculo holônomo. Por exemplo, considere o seguinte vínculo:
+
+$$
+\sum_{i=1}^{3} A_i x_i + B = 0
+$$
+
+Onde
+
+$$
+A_i = \frac{\partial f}{\partial x_i}, \qquad B = \frac{\partial f}{\partial t}
+\;\;\rightarrow\;\;
+\sum_{i=1}^{3} \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t} = 0
+$$
+
+$$
+\underbrace{\phantom{\sum \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t}}}_{\text{derivada total em relação ao tempo}}
+$$
+
+$$
+\rightarrow \quad \frac{df}{dt} = 0 \;\;\rightarrow\;\; f = \text{cte} := c \quad\therefore\quad f - c = 0
+$$
+
+A vantagem disso é que podemos incorporar nas equações de Euler-Lagrange através dos multiplicadores de Lagrange. Ou seja, se
+
+$$
+\sum_{i=1}^{3} \frac{\partial f_j}{\partial q_i}\,d q_i = 0
+$$
+
+Então as equações de Euler-Lagrange podem ser escritas como:
+
+$$
+\frac{\partial L}{\partial q_i} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{q}_i}\right) + \sum_j \lambda_j\frac{\partial f}{\partial q_i} = 0
+$$
+
+Onde o somatório denota forças de vínculo, que apesar do nome podem não ter unidades de força se a unidade das coordenadas não forem de comprimento, mas ele sempre representa uma ação sobre o sistema análoga a uma força.
+
+### Exemplo: uma partícula de massa $m$ sai do topo de um hemisfério de raio $a$
+
+O vínculo é $r=a \rightarrow f = r - a = 0$.
+
+![Partícula sobre a superfície de um hemisfério de raio $r$, com ângulo polar $\theta$ medido a partir do topo](figs/ch7_fig5_hemisphere.png)
+
+$$
+E_C = \frac{m}{2}\left(\dot{r}^2 + r^2\dot\theta^2\right)
+$$
+
+$$
+U = mgz = mgr\cos\theta
+$$
+
+$$
+\rightarrow \quad \frac{\partial L}{\partial r} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{r}}\right) + \lambda\frac{\partial f}{\partial r} = 0
+$$
+
+$$
+\rightarrow \quad \frac{\partial L}{\partial \theta} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot\theta}\right) + \lambda\frac{\partial f}{\partial \theta} = 0
+$$
+
+$$
+\rightarrow \quad \frac{\partial f}{\partial r} = 1, \quad \frac{\partial f}{\partial \theta} = 0, \quad
+\frac{\partial L}{\partial r} = mr\dot\theta^2 - mg\cos\theta, \quad
+\frac{\partial L}{\partial \dot{r}} = m\dot{r}, \quad
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{r}}\right) = m\ddot{r}
+$$
+
+$$
+\therefore \quad mr\dot\theta^2 - mg\cos\theta - m\ddot{r} + \lambda = 0 \tag{1}
+$$
+
+$$
+\rightarrow \quad \frac{\partial L}{\partial \theta} = mgr\,\text{sen}\,\theta, \quad
+\frac{\partial L}{\partial \dot\theta} = mr^2\dot\theta, \quad
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot\theta}\right) = m\left(2r\dot{r}\dot\theta + r^2\ddot\theta\right)
+$$
+
+$$
+\therefore \quad mgr\,\text{sen}\,\theta - m\left(2r\dot{r}\dot\theta + r^2\ddot\theta\right) = 0 \tag{2}
+$$
+
+Usando a equação de vínculo:
+
+$$
+r - a = 0 \;\;\longrightarrow\;\; \dot{r} = \ddot{r} = 0
+\quad\therefore\quad
+(1) \rightarrow ma\ddot\theta - mg\cos\theta + \lambda = 0 \tag{1.1}
+$$
+
+$$
+(2) \rightarrow mga\,\text{sen}\,\theta - ma^2\ddot\theta = 0 \tag{2.1}
+$$
+
+$$
+\rightarrow \quad \ddot\theta = \frac{d}{dt}(\dot\theta) = \frac{d\dot\theta}{d\theta}\frac{d\theta}{dt} = \frac{d\dot\theta}{d\theta}\dot\theta
+$$
+
+$$
+(2.1) \rightarrow \quad mga\,\text{sen}\,\theta - ma^2\dot\theta\frac{d\dot\theta}{d\theta} = 0
+$$
+
+$$
+\rightarrow \quad \dot\theta\frac{d\dot\theta}{d\theta} = \frac{g}{a}\text{sen}\,\theta \;\;\rightarrow\;\; \dot\theta\, d\dot\theta = \frac{g}{a}\text{sen}\,\theta\, d\theta
+$$
+
+$$
+\rightarrow \quad \int_0^{\dot\theta} \dot\theta\, d\dot\theta = \int_0^\theta \frac{g}{a}\text{sen}\,\theta\, d\theta
+$$
+
+$$
+\rightarrow \quad \frac{\dot\theta^2}{2} = -\frac{g}{a}\cos\theta + \frac{g}{a}
+$$
+
+$$
+\dot\theta^2 = -\frac{2g}{a}\cos\theta + \frac{2g}{a}
+$$
+
+$$
+\therefore \quad (1.1) \rightarrow \quad ma\left(-\frac{2g}{a}\cos\theta + \frac{2g}{a}\right) - mg\cos\theta + \lambda = 0
+$$
+
+$$
+\vdots
+$$
+
+$$
+\lambda = mg(3\cos\theta - 2)
+$$
+
+$$
+\lambda = 0 \;\;\longleftrightarrow\;\; \theta = \arccos\tfrac{2}{3}
+$$
+
+Então se $\lambda$ é a força de vínculo, quando $\theta = \arccos\frac{2}{3}$ a partícula pode perder contato com a superfície.
+
+## Equivalência entre as equações de Lagrange e Newton
+
+Em coordenadas cartesianas, sem nenhum vínculo:
+
+$$
+\frac{\partial L}{\partial x_i} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}_i}\right) = 0, \qquad i=1,2,3
+$$
+
+$$
+\rightarrow \quad \frac{\partial}{\partial x_i}(E_C-U) - \frac{d}{dt}\left[\frac{\partial}{\partial \dot{x}_i}(E_C-U)\right] = 0
+$$
+
+Se o sistema for conservativo, então $U$ só depende da posição e $E_C$ só depende das velocidades
+
+$$
+U = U(x_i), \qquad E_C = E_C(\dot{x}_i)
+$$
+
+$$
+\therefore \qquad \frac{\partial U}{\partial \dot{x}_i} = 0, \qquad \frac{\partial E_C}{\partial x_i} = 0
+$$
+
+$$
+\therefore
+$$
+
+$$
+\frac{\partial}{\partial x_i}(E_C-U) - \frac{d}{dt}\left[\frac{\partial}{\partial \dot{x}_i}(E_C-U)\right] = 0
+\;\;\longrightarrow\;\;
+-\frac{\partial U}{\partial x_i} - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{x}_i}\right) = 0
+$$
+
+Onde
+
+$$
+-\frac{\partial U}{\partial x_i} = F_i,
+$$
+
+$$
+\frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{x}_i}\right) = \frac{d}{dt}\left[\frac{\partial}{\partial \dot{x}_i}\left(\sum_{j=1}^{3}\frac{m}{2}\dot{x}_j^2\right)\right]
+$$
+
+$$
+= \frac{d}{dt}\left[\sum_{j=1}^{3} m\dot{x}_j\,\delta_{ij}\right] = \frac{d}{dt}\left[m\dot{x}_i\right] = \frac{d}{dt}p_i
+$$
+
+Ou seja:
+
+$$
+\frac{\partial}{\partial x_i}(E_C-U) - \frac{d}{dt}\left[\frac{\partial}{\partial \dot{x}_i}(E_C-U)\right] = 0
+$$
+
+$$
+\rightarrow \quad -\frac{\partial U}{\partial x_i} - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{x}_i}\right) = 0
+$$
+
+$$
+\rightarrow \quad F_i - \frac{d}{dt}p_i = 0
+$$
+
+$$
+\text{Segunda lei de Newton!}
+$$
+
+Se o formalismo de Newton e de Lagrange são equivalentes, deve ser possível partir do Newton e chegar no de Lagrange também! Pra isso, a gente precisa escrever as coordenadas espaciais em termos das coordenadas generalizadas independentes:
+
+$$
+x_i = x_i(q_i, t)
+$$
+
+$$
+\dot{x}_i = \sum_{j=1}^{3}\frac{\partial x_i}{\partial q_j}\dot{q}_j + \frac{\partial x_i}{\partial t}
+$$
+
+$$
+\rightarrow \quad \frac{\partial \dot{x}_i}{\partial \dot{q}_i} = \frac{\partial x_i}{\partial q_i}
+$$
+
+$$
+\rightarrow \quad dx_i = \sum_{j=1}^{3}\frac{\partial x_i}{\partial q_j}dq_j + \frac{\partial x_i}{\partial t}dt
+$$
+
+Assim como a gente fez com as coordenadas espaciais, a gente pode escrever um momento generalizado:
+
+$$
+p_i = \frac{\partial E_C}{\partial \dot{q}_i}
+$$
+
+Considerando um trabalho virtual, ou seja, um trabalho num deslocamento infinitesimal:
+
+$$
+\delta W = \sum_{i=1}^{3} F_i\,\delta x_i \;\;\rightarrow\;\; \delta W = \sum_{i,j} F_i \frac{\partial x_i}{\partial q_j}\delta q_j
+$$
+
+A gente pode então definir uma força generalizada:
+
+$$
+Q_j = \sum_{i=1}^{3} F_i \frac{\partial x_i}{\partial q_j} \;\;\rightarrow\;\; \delta W = \sum_{j=1}^{3} Q_j\,\delta q_j
+$$
+
+Se o sistema for conservativo e não perder massa:
+
+$$
+Q_j = -\frac{\partial U}{\partial q_j}
+$$
+
+$$
+\rightarrow \quad p_i = \frac{\partial E_C}{\partial \dot{q}_i} = \frac{\partial}{\partial \dot{q}_i}\left(\sum_j \frac{m}{2}\dot{x}_j^2\right)
+$$
+
+$$
+= m\sum_j \dot{x}_j \frac{\partial \dot{x}_j}{\partial \dot{q}_i}
+$$
+
+$$
+= m\sum_j \dot{x}_j \frac{\partial x_j}{\partial q_i}
+$$
+
+$$
+\rightarrow \quad \frac{d}{dt}p_i = \sum_j \left[m\ddot{x}_j\frac{\partial x_j}{\partial q_i} + m\dot{x}_j\frac{d}{dt}\left(\frac{\partial x_j}{\partial q_i}\right)\right]
+$$
+
+onde
+
+$$
+\frac{d}{dt}\left(\frac{\partial x_j}{\partial q_i}\right) = \sum_k \frac{\partial^2 x_{ij}}{\partial q_i \partial q_k} + \frac{\partial^2 x_j}{\partial q_i \partial t}
+$$
+
+$$
+\frac{d}{dt}p_i = \sum_j\left[m\ddot{x}_j\frac{\partial x_j}{\partial q_i} + m\dot{x}_j \underbrace{\left(\sum_k \frac{\partial^2 x_{ij}}{\partial q_i \partial q_k} + \frac{\partial^2 x_j}{\partial q_i \partial t}\right)}_{\displaystyle \frac{\partial E_C}{\partial q_i}}\right]
+$$
+
+$$
+\rightarrow \quad \frac{d}{dt}p_i = Q_i + \frac{\partial E_C}{\partial q_i}
+$$
+
+onde $E_C = \sum_j \dfrac{m}{2}\dot{x}_j^2$
+
+$$
+\rightarrow \quad \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{q}_i}\right) = Q_i + \frac{\partial E_C}{\partial q_i}
+$$
+
+$$
+\rightarrow \qquad Q_i + \frac{\partial E_C}{\partial q_i} - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{q}_i}\right) = 0
+$$
+
+Se o sistema for conservativo:
+
+$$
+\rightarrow \qquad -\frac{\partial U}{\partial q_i} + \frac{\partial E_C}{\partial q_i} - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{q}_i}\right) = 0
+$$
+
+$$
+\rightarrow \qquad \frac{\partial}{\partial q_i}(E_C-U) - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{q}_i}\right) = 0
+$$
+
+Mas como $\dfrac{\partial U}{\partial \dot{q}_i} = 0$, então:
+
+$$
+\frac{\partial}{\partial q_i}(E_C-U) - \frac{d}{dt}\left[\frac{\partial}{\partial \dot{q}_i}(E_C-U)\right] = 0
+$$
+
+$$
+\therefore
+$$
+
+$$
+\boxed{\dfrac{\partial L}{\partial q_i} - \dfrac{d}{dt}\!\left(\dfrac{\partial L}{\partial \dot{q}_i}\right) = 0}
+$$
+
+## Teoremas de Conservação
+
+Vamos considerar a energia cinética de um conjunto de $N$ partículas em coordenadas cartesianas:
+
+$$
+E_C = \sum_{\alpha=1}^{N}\frac{m_\alpha}{2}v_\alpha^2 = \sum_{\alpha=1}^{N}\sum_{i=1}^{3}\frac{m_\alpha}{2}\dot{x}_{\alpha i}^2
+$$
+
+$$
+x_{\alpha i} = x_{\alpha i}(q_j, t), \qquad j = 1,2,\dots,s \qquad (\text{nº de coordenadas generalizadas independentes})
+$$
+
+$$
+\rightarrow \quad \dot{x}_{\alpha i} = \sum_{j=1}^{3}\frac{\partial x_{\alpha i}}{\partial q_j}\dot{q}_j + \frac{\partial x_{\alpha i}}{\partial t}
+$$
+
+$$
+\rightarrow \quad \dot{x}_{\alpha i}^{\,2} = \sum_{j,k}\frac{\partial x_{\alpha i}}{\partial q_j}\frac{\partial x_{\alpha i}}{\partial q_k}\dot{q}_j\dot{q}_k
++ 2\sum_j \frac{\partial x_{\alpha i}}{\partial q_j}\dot{q}_j\frac{\partial x_{\alpha i}}{\partial t}
++ \left(\frac{\partial x_{\alpha i}}{\partial t}\right)^2
+$$
+
+$$
+\therefore \quad E_C = \sum_{\alpha=1}^{N}\sum_{i=1}^{3}\sum_{j,k}\frac{m_\alpha}{2}\frac{\partial x_{\alpha i}}{\partial q_j}\frac{\partial x_{\alpha i}}{\partial q_k}\dot{q}_j\dot{q}_k
++ \sum_{\alpha=1}^{N}\sum_{i=1}^{3}\frac{m_\alpha}{2}\left(\frac{\partial x_{\alpha i}}{\partial t}\right)^2
++ \sum_{\alpha=1}^{N}\sum_{i=1}^{3}\sum_{j=1}^{s}\frac{\partial x_{\alpha i}}{\partial q_j}\dot{q}_j\frac{\partial x_{\alpha i}}{\partial t}m_\alpha
+$$
+
+$$
+a_{jk} := \sum_{\alpha=1}^{N}\sum_{i=1}^{3}\frac{m_\alpha}{2}\frac{\partial x_{\alpha i}}{\partial q_j}\frac{\partial x_{\alpha i}}{\partial q_k},
+\qquad
+b_j := \sum_{\alpha=1}^{N}\sum_{i=1}^{3}m_\alpha \frac{\partial x_{\alpha i}}{\partial q_j}\frac{\partial x_{\alpha i}}{\partial t},
+\qquad
+c := \sum_{\alpha=1}^{N}\sum_{i=1}^{3}\frac{m_\alpha}{2}\left(\frac{\partial x_{\alpha i}}{\partial t}\right)^2
+$$
+
+$$
+\therefore \quad E_C = \sum_{j,k=1}^{s} a_{jk}\dot{q}_j\dot{q}_k + \sum_{j=1}^{s} b_j\dot{q}_j + c
+$$
+
+Se as coordenadas espaciais não dependerem *explicitamente* do tempo, então as derivadas temporais são nulas. Logo, os coeficientes $b_j$ e $c$ também são:
+
+$$
+x_{\alpha i} = x_{\alpha i}(q_j) \;\;\longrightarrow\;\; \frac{\partial x_{\alpha i}}{\partial t} = 0\ \forall i \;\;\longrightarrow\;\; b_j = 0\ \forall j,\quad c=0
+$$
+
+$$
+\therefore \quad E_C = \sum_{j,k=1}^{s} a_{jk}\,\dot{q}_j\dot{q}_k
+$$
+
+Dizemos então que o sistema é **esclerônomo**.
+
+Diferenciando $E_C$ em relação às velocidades generalizadas:
+
+$$
+\frac{\partial E_C}{\partial \dot{q}_\ell} = \sum_{j,k} a_{jk}\dot{q}_k\,\delta_{j\ell} + \sum_{j,k} a_{jk}\dot{q}_j\,\delta_{k\ell}
+$$
+
+$$
+= \sum_k a_{\ell k}\dot{q}_k + \sum_j a_{j\ell}\dot{q}_j
+$$
+
+$$
+\rightarrow \quad \dot{q}_\ell\frac{\partial E_C}{\partial \dot{q}_\ell} = \sum_k a_{\ell k}\dot{q}_k\dot{q}_\ell + \sum_j a_{j\ell}\dot{q}_j q_\ell
+$$
+
+$$
+\rightarrow \quad \sum_{\ell=1}^{s}\dot{q}_\ell\frac{\partial E_C}{\partial \dot{q}_\ell} = \sum_{k,\ell} a_{\ell k}\dot{q}_k\dot{q}_\ell + \sum_{j,\ell} a_{j\ell}\dot{q}_j q_\ell
+$$
+
+$$
+= 2\sum_{k,\ell} a_{\ell k}\dot{q}_k\dot{q}_\ell
+$$
+
+$$
+= 2E_C
+$$
+
+Esse é um caso particular do teorema de Euler:
+
+$$
+\sum_k y_k\frac{\partial f}{\partial y_k} = nf \qquad \text{onde } f(y_k) \text{ é uma função homogênea}
+$$
+
+### Conservação de energia
+
+Considerando um sistema fechado, ou seja, que não interage com nada de fora, a Lagrangiana não depende *explicitamente* do tempo.
+
+$$
+\frac{\partial L}{\partial t} = 0
+$$
+
+$$
+\rightarrow \quad \frac{dL}{dt} = \sum_{j=1}^{s}\frac{\partial L}{\partial q_j}\dot{q}_j + \sum_{j=1}^{s}\frac{\partial L}{\partial \dot{q}_j}\ddot{q}_j
+$$
+
+E pela equação de Euler-Lagrange:
+
+$$
+\frac{\partial L}{\partial q_j} = \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_j}\right)
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\frac{dL}{dt} = \sum_{j=1}^{s}\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_j}\right)\dot{q}_j + \sum_{j=1}^{s}\frac{\partial L}{\partial \dot{q}_j}\ddot{q}_j
+$$
+
+$$
+= \sum_{j=1}^{s}\frac{d}{dt}\left(\dot{q}_j\frac{\partial L}{\partial \dot{q}_j}\right)
+$$
+
+$$
+\rightarrow \quad \frac{dL}{dt} - \sum_{j=1}^{s}\frac{d}{dt}\left(\dot{q}_j\frac{\partial L}{\partial \dot{q}_j}\right) = 0
+$$
+
+$$
+\rightarrow \quad \frac{d}{dt}\left(L - \sum_{j=1}^{s}\dot{q}_j\frac{\partial L}{\partial \dot{q}_j}\right) = 0
+$$
+
+Então para que a energia seja conservada, o termo entre parênteses deve ser constante. Ele é a Hamiltoniana do sistema (na verdade o negativo dela):
+
+$$
+H := \sum_{j=1}^{s}\dot{q}_j\frac{\partial L}{\partial \dot{q}_j} - L
+$$
+
+Se usarmos o momento generalizado nisso aí, temos:
+
+$$
+p_j = \frac{\partial L}{\partial \dot{q}_j} \;\;\longrightarrow\;\; H(q_j,p_j) = \sum_{j=1}^{s}\dot{q}_j p_j - L
+$$
+
+Podemos passar da Lagrangiana à Hamiltoniana com uma transformada de Legendre, ou seja, a Hamiltoniana é a transformada de Legendre da Lagrangiana:
+
+$$
+L(q_j,\dot{q}_j) \longmapsto H(q_j,p_j)
+$$
+
+Se o sistema for conservativo:
+
+$$
+U = U(q_j) \;\rightarrow\; \frac{\partial U}{\partial \dot{q}_j} = 0, \qquad p_j = \frac{\partial L}{\partial \dot{q}_j} = \frac{\partial E_C}{\partial \dot{q}_j}
+$$
+
+$$
+\therefore
+$$
+
+$$
+H = \sum_{j=1}^{s}\dot{q}_j\frac{\partial E_C}{\partial \dot{q}_j} - (E_C-U)
+$$
+
+$$
+= 2E_C - (E_C-U)
+$$
+
+$$
+H = E_C + U
+$$
+
+Ou seja, *em um sistema conservativo*, a Hamiltoniana é a energia total do sistema. No caso geral ela é a primeira lei da termodinâmica.
+
+### Conservação de momento linear
+
+Vamos considerar uma translação infinitesimal.
+
+$$
+\vec{r} \;\rightarrow\; \vec{r} + \delta\vec{r}
+$$
+
+Em coordenadas cartesianas, a variação da Lagrangiana correspondente é:
+
+$$
+\delta\vec{r} = \sum_i \delta x_i\,\hat{x}_i \qquad\longrightarrow\qquad
+\delta L = \sum_i \frac{\partial L}{\partial x_i}\delta x_i + \sum_i \frac{\partial L}{\partial \dot{x}_i}\delta\dot{x}_i
+$$
+
+E se o espaço é homogêneo, a lagrangiana e as velocidades são invariantes em translações:
+
+$$
+\delta L = \sum_i \frac{\partial L}{\partial x_i}\delta x_i = 0 \;\;\longrightarrow\;\; \frac{\partial L}{\partial x_i} = 0\ \ \forall i
+$$
+
+$$
+\delta\dot{x}_i = \delta\frac{dx_i}{dt} = \frac{d}{dt}\delta x_i = 0
+$$
+
+Então, pelas equações de Euler-Lagrange, o momento linear é conservado:
+
+$$
+\frac{\partial L}{\partial x_i} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}_i}\right) = 0, \qquad
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}_i}\right) = 0\ \ \forall i
+$$
+
+$$
+\therefore \qquad \boxed{\dfrac{d}{dt}\dot{p}_i = 0}
+$$
+
+### Conservação do momento angular
+
+Em um referencial inercial, o espaço é isotrópico. As propriedades do sistema não dependem de direção. Como consequência, a lagrangiana deve ser invariante em rotações.
+
+$$
+\delta\vec{r} = \delta\vec\theta \times \vec{r}
+\qquad\qquad
+\delta\dot{\vec{r}} = \delta\vec\theta \times \dot{\vec{r}}
+$$
+
+A variação da Lagrangiana continua sendo:
+
+$$
+\delta L = \sum_i \frac{\partial L}{\partial x_i}\delta x_i + \sum_i \frac{\partial L}{\partial \dot{x}_i}\delta\dot{x}_i = 0,
+\qquad
+\frac{\partial L}{\partial x_i} - \frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{x}_i}\right) = 0
+$$
+
+$$
+p_i = \frac{\partial L}{\partial \dot{x}_i}, \qquad \dot{p}_i = \frac{\partial L}{\partial x_i}
+$$
+
+$$
+\rightarrow \quad \delta L = \sum_i \left(\dot{p}_i\,\delta x_i + p_i\,\delta \dot x_i\right) = 0
+$$
+
+$$
+= \dot{\vec p}\cdot\delta\vec r + \vec p\cdot\delta\dot{\vec r} = 0
+$$
+
+$$
+= \dot{\vec p}\cdot\left(\delta\vec\theta\times\vec r\right) + \vec p\cdot\left(d\vec\theta\times\dot{\vec r}\right) = 0
+\qquad\Big)\ \text{propriedade}
+$$
+
+$$
+= \delta\vec\theta\cdot\left(\vec r\times\dot{\vec p}\right) + \delta\vec\theta\cdot\left(\dot{\vec r}\times\vec p\right) = 0
+$$
+
+$$
+= \delta\vec\theta\left[(\vec r\times\dot{\vec p}) \times (\dot{\vec r}\times\vec p)\right] = 0
+$$
+
+$$
+= \delta\vec\theta\cdot\frac{d}{dt}\left(\vec r\times\vec p\right) = 0
+\qquad\therefore\qquad
+\boxed{\dfrac{d}{dt}\left(\vec r\times\vec p\right) = 0}
+$$
+
+**Teorema de Noether**: para toda simetria de um sistema, existe uma quantidade conservada.
+
+## Dinâmica Hamiltoniana
+
+$$
+H(q_i,p_i,t) = \sum_j p_j\dot{q}_j - L(q_i,\dot{q}_i,t)
+$$
+
+$$
+dH = \sum_i \left(\frac{\partial H}{\partial q_i}dq_i + \frac{\partial H}{\partial p_i}dp_i\right) + \frac{\partial H}{\partial t} \tag{1}
+$$
+
+Mas diferenciando a transformada de Legendre:
+
+$$
+dH = \sum_j \left(\dot{q}_j\,dp_j + p_j\,d\dot{q}_j\right) - \sum_i \left(\frac{\partial L}{\partial q_i}dq_i + \frac{\partial L}{\partial \dot{q}_i}d\dot{q}_i\right) - \frac{\partial L}{\partial t}dt
+$$
+
+$$
+\frac{\partial L}{\partial \dot{q}_i} = p_i, \qquad \frac{\partial L}{\partial q_i} = \dot{p}_i
+$$
+
+$$
+\rightarrow \quad dH = \sum_j \Big[\dot{q}_j\,dp_j + p_j\,d\dot{q}_j - \dot{p}_j\,dq_j - p_j\,d\dot{q}_j\Big] - \frac{\partial L}{\partial t}dt
+$$
+
+$$
+= \sum_j \Big[\dot{q}_j\,dp_j - \dot{p}_j\,dq_j\Big] - \frac{\partial L}{\partial t}dt \tag{2}
+$$
+
+Para que (1) e (2) sejam iguais, o seguinte deve valer:
+
+$$
+\dot{q}_i = \frac{\partial H}{\partial p_i}, \qquad \dot{p}_i = -\frac{\partial H}{\partial q_i}, \qquad \frac{\partial H}{\partial t} = -\frac{\partial L}{\partial t}
+$$
+
+Essas são as equações canônicas de Hamilton. Usando diferenciais e essas equações canônicas:
+
+$$
+\frac{dH}{dt} = \sum_i \left(\frac{\partial H}{\partial q_i}\dot{q}_i + \frac{\partial H}{\partial p_i}\dot{p}_i\right) + \frac{\partial H}{\partial t}
+$$
+
+$$
+= \sum_i \left(-\dot{p}_i\dot{q}_i + \dot{q}_i\dot{p}_i\right) + \frac{\partial H}{\partial t}
+$$
+
+$$
+\therefore \qquad \boxed{\dfrac{dH}{dt} = \dfrac{\partial H}{\partial t}}
+$$
+
+Ou seja, se a hamiltoniana não depende explicitamente do tempo, ela é uma constante!
+
+**Coordenadas generalizadas cíclicas**: coordenadas que não aparecem explicitamente em $L$ e $H$.
+
+$$
+\frac{\partial H}{\partial q_i} = 0 = \dot{p}_i
+$$
+
+$$
+\therefore \qquad p_i = \text{cst.} := \alpha_i
+$$
+
+$$
+\rightarrow \quad \dot{q}_i = \frac{\partial H}{\partial p_i} = \frac{\partial H}{\partial \alpha_i} = \omega_i \;\;\longrightarrow\;\; q_i = \int \omega_i\, dt
+$$
+
+E essa equação pode ser resolvida separadamente. É possível encontrar uma transformação de coordenadas que leva a um conjunto de coordenadas cíclicas (alô clássica 3)! É disso que trata a teoria de Hamilton-Jacobi. A gente viu que as equações de Lagrange resultam da extremização da ação:
+
+$$
+S = \int_{t_1}^{t_2} L(q_i,\dot{q}_i,t)\,dt
+$$
+
+Mas $L$ e $H$ estão relacionadas por uma transformada de Legendre:
+
+$$
+L(q_i,\dot{q}_i,t) = \sum_i p_i\dot{q}_i - H(q_i,p_i,t)
+$$
+
+$$
+\rightarrow \quad S = \int_{t_1}^{t_2} \left(\sum_i p_i\dot{q}_i - H\right) dt
+$$
+
+Nesse caso, consideramos variações independentes de $q_i$ e $p_i$.
+
+$$
+\delta S = \int_{t_1}^{t_2} \sum_i \left(p_i\,\delta\dot{q}_i + \delta p_i\,\dot{q}_i - \frac{\partial H}{\partial q_i}\delta q_i - \frac{\partial H}{\partial p_i}\delta p_i\right) dt
+$$
+
+Mas $\delta\dot{q}_i = \delta\left(\dfrac{dq_i}{dt}\right) = \dfrac{d}{dt}\delta q_i$, então:
+
+$$
+\int_{t_1}^{t_2} \sum_i p_i\,\delta\dot{q}_i = \int_{t_1}^{t_2} \sum_i p_i\frac{d}{dt}\left(\delta q_i\right) dt
+$$
+
+$$
+= \int_{t_1}^{t_2} \sum_i \frac{d}{dt}\left(p_i\,\delta q_i\right) dt - \int_{t_1}^{t_2} \sum_i \dot{p}_i\,\delta q_i\, dt
+$$
+
+$$
+= \left.p_i\,\delta q_i\right|_{t_1}^{t_2} - \int_{t_1}^{t_2} \sum_i \dot{p}_i\,\delta q_i\, dt
+$$
+
+$$
+\left.p_i\,\delta q_i\right|_{t_1}^{t_2} = 0 \qquad (\text{os extremos da curva são fixos})
+$$
+
+$$
+\rightarrow \quad \int_{t_1}^{t_2} \sum_i p_i\,\delta\dot{q}_i = -\int_{t_1}^{t_2} \sum_i \dot{p}_i\,\delta q_i\, dt
+$$
+
+$$
+\therefore \quad \delta S = \int_{t_1}^{t_2} \sum_i \left[-\left(\dot{p}_i+\frac{\partial H}{\partial q_i}\right)\delta q_i + \left(\dot{q}_i-\frac{\partial H}{\partial p_i}\right)\delta p_i\right] dt = 0
+$$
+
+$$
+\Updownarrow
+$$
+
+$$
+\begin{cases}
+\dot{p}_i = -\dfrac{\partial H}{\partial q_i} \\[1.5ex]
+\dot{q}_i = \dfrac{\partial H}{\partial p_i}
+\end{cases}
+$$
+
+### Exemplo: uma partícula se move sob a ação de uma força $F=-k\vec{r}$, $k=\text{cst.}>0$ restrita à superfície de um cilindro
+
+![Partícula restrita à superfície de um cilindro de raio $R$, sob a ação de $F=-k\vec r$](figs/ch8_fig1_cylinder.png)
+
+$$
+U = \frac{k}{2}r^2 = \frac{k}{2}\left(x^2+y^2+z^2\right)
+$$
+
+$$
+x^2+y^2 = R^2 \quad\therefore\quad \boxed{U = \frac{k}{2}\left(R^2+z^2\right)}
+$$
+
+$$
+E_C = \frac{m}{2}v^2 = \frac{m}{2}\left(\dot{s}^2+s^2\dot\phi^2+\dot{z}^2\right)
+$$
+
+Vínculo: $s=R,\ \dot{s}=0$
+
+$$
+\therefore \quad E_C = \frac{m}{2}\left(R^2\dot\phi^2+\dot{z}^2\right)
+\;\;\rightarrow\;\;
+L = \frac{m}{2}\left(R^2\dot\phi^2+\dot{z}^2\right) - \frac{k}{2}\left(R^2+z^2\right)
+$$
+
+As coordenadas são $\phi$ e $z$:
+
+$$
+p_\phi = \frac{\partial L}{\partial \phi} = mR^2\dot\phi, \qquad p_z = \frac{\partial L}{\partial \dot{z}} = m\dot{z}, \qquad H = \sum_i p_i\dot{q}_i - L
+$$
+
+$$
+\rightarrow \quad H = p_\phi\dot\phi + p_z\dot{z} - \frac{m}{2}\left(R^2\dot\phi^2+\dot{z}^2\right) + \frac{k}{2}\left(R^2+z^2\right)
+$$
+
+$$
+= \frac{p_\phi^2}{mR^2} + \frac{p_z^2}{m} - \frac{m}{2}\left[R^2\left(\frac{p_\phi}{mR^2}\right)^2 + \left(\frac{p_z}{m}\right)^2\right] + \frac{k}{2}\left(R^2+z^2\right)
+$$
+
+$$
+= \frac{p_\phi^2}{2mR^2} + \frac{p_z^2}{2m} + \frac{k}{2}\left(R^2+z^2\right)
+$$
+
+$$
+= E_C + U
+$$
+
+$$
+\therefore \qquad \dot\phi = \frac{\partial H}{\partial p_\phi} = \frac{p_\phi}{2mR^2}
+\qquad\qquad
+\dot{z} = \frac{\partial H}{\partial p_z} = \frac{p_z}{2m}
+$$
+
+$$
+\dot{p}_\phi = -\frac{\partial H}{\partial \phi} = 0
+\qquad\qquad
+\dot{p}_z = -\frac{\partial H}{\partial z} = -kz
+$$
+
+$\phi$ é cíclica, logo $p_\phi$ é conservado e corresponde ao momento angular em relação a $z$, que é o eixo de simetria do sistema.
+
+$$
+m\ddot{z} = -kz
+$$

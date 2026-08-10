@@ -1,0 +1,450 @@
+---
+title: "Sistemas Contínuos"
+subtitle: "Capítulo 13 — Continuous Systems: Waves (Thornton & Marion)"
+format: html
+---
+
+Vamos aproveitar o fio com massas para deduzir o comportamento de uma corda homogênea (densidade linear constante)
+
+$$
+\rho = \frac{m}{d} = \text{cst.}, \qquad (n+1)d = L = \text{cst.}
+$$
+
+Faremos o seguinte limite:
+
+$$
+n \to \infty, \qquad m \to 0, \qquad d \to 0, \qquad jd \to x
+$$
+
+$$
+q_j(t) = \sum_r \eta_r(t)\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right)
+$$
+
+$$
+\frac{jr\pi}{n+1} = r\pi\left[\frac{jd}{(n+1)d}\right] = \frac{r\pi x}{L}, \qquad r \in \mathbb{Z}^+
+$$
+
+$$
+\therefore \quad q(x,t) = \sum_{r=1}^{\infty} \eta_r(t)\,\text{sen}\!\left(\frac{r\pi x}{L}\right)
+$$
+
+condições iniciais:
+
+$$
+\begin{cases}
+q(x,0) = \displaystyle\sum_r \mu_r\,\text{sen}\!\left(\dfrac{r\pi x}{L}\right) \\[2ex]
+\dot{q}(x,0) = -\displaystyle\sum_r \omega_r\nu_r\,\text{sen}\!\left(\dfrac{r\pi x}{L}\right)
+\end{cases}
+$$
+
+$$
+\rightarrow \quad \int_0^L \text{sen}\!\left(\frac{r\pi x}{L}\right)\text{sen}\!\left(\frac{s\pi x}{L}\right) dx = \frac{L}{2}\delta_{rs}
+$$
+
+$$
+\therefore \quad
+\begin{cases}
+\mu_s = \dfrac{2}{L}\displaystyle\int_0^L q(x,0)\,\text{sen}\!\left(\dfrac{s\pi x}{L}\right) dx \\[2ex]
+\nu_s = \dfrac{2}{\omega_r L}\displaystyle\int_0^L \dot{q}(x,0)\,\text{sen}\!\left(\dfrac{s\pi x}{L}\right) dx
+\end{cases}
+$$
+
+$$
+\omega_r = 2\sqrt{\frac{T}{md}}\,\text{sen}\!\left[\frac{r\pi}{2(n+1)}\frac{d}{d}\right]
+$$
+
+$$
+\left.\begin{matrix}\ \\ \ \\ \ \end{matrix}\right\}
+\quad
+\frac{r\pi d}{2L} \to 0 \;\Rightarrow\; \text{sen}\!\left(\frac{r\pi d}{2L}\right) \approx \frac{r\pi d}{2L}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\omega_r = 2\sqrt{\frac{T}{md}}\left(\frac{r\pi d}{2L}\right)
+$$
+
+$$
+\approx 2\sqrt{\frac{T}{\rho d^2}}\left(\frac{r\pi d}{2L}\right)
+$$
+
+$$
+= \sqrt{\frac{T}{\rho}}\,\frac{r\pi}{L}
+$$
+
+A energia cinética de um elemento da corda é:
+
+$$
+dE_C = \frac{dm\,v^2}{2} = \frac{(\rho\,dx)v^2}{2}
+$$
+
+$$
+= \frac{\rho\,dx\,\dot{q}^2}{2}
+$$
+
+$$
+\rightarrow \quad E_C = \int_0^L \frac{\rho\dot{q}^2}{2}dx = \int_0^L \frac{\rho}{2}\left[\sum_r \dot\eta_r\,\text{sen}\!\left(\frac{r\pi x}{L}\right)\right]^2 dx
+$$
+
+$$
+= \int_0^L \frac{\rho}{2}\sum_r\sum_s \dot\eta_r\dot\eta_s\,\text{sen}\!\left(\frac{r\pi x}{L}\right)\text{sen}\!\left(\frac{s\pi x}{L}\right) dx
+$$
+
+$$
+= \frac{\rho}{2}\sum_r\sum_s \dot\eta_r\dot\eta_s\,\frac{L}{2}\delta_{rs} = \frac{\rho L}{4}\sum_r \dot\eta_r^2, \qquad \eta_r \in \mathbb{C}
+$$
+
+onde $\dot\eta_r = \dfrac{d}{dt}\left\{(\mu_r+i\nu_r)\left[\cos(\omega_r t)+i\,\text{sen}(\omega_r t)\right]\right\}$
+
+$$
+\rightarrow \quad \text{Re}(\dot\eta_r) = \omega_r\left[-\mu_r\,\text{sen}(\omega_r t) - \nu_r\cos(\omega_r t)\right]
+$$
+
+$$
+\therefore \quad E_C = \frac{\rho L}{4}\sum_r \omega_r^2\left[\mu_r\,\text{sen}(\omega_r t) + \nu_r\cos(\omega_r t)\right]^2
+$$
+
+Para a energia potencial, podemos usar a expressão para o fio com massas:
+
+$$
+U = \frac{T}{2d}\sum_j^n (q_{j-1}-q_j)^2 = \frac{T}{2}\sum_j^n \left(\frac{q_{j-1}-q_j}{d}\right)^2 d
+$$
+
+$$
+\Downarrow \quad d\to 0
+$$
+
+$$
+U = \frac{T}{2}\int_0^L \left(\frac{\partial q}{\partial x}\right)^2 dx
+$$
+
+$$
+\Downarrow \qquad \frac{\partial q}{\partial x} = \sum_r \left(\frac{r\pi}{L}\right)\eta_r\cos\!\left(\frac{r\pi x}{L}\right)
+$$
+
+$$
+U = \frac{T}{2}\int_0^L \sum_r\sum_s \left(\frac{r\pi}{L}\right)\left(\frac{s\pi}{L}\right)\eta_r\eta_s\cos\!\left(\frac{r\pi x}{L}\right)\cos\!\left(\frac{s\pi x}{L}\right) dx
+$$
+
+$$
+= \frac{T}{2}\sum_r\sum_s \left(\frac{r\pi}{L}\right)\left(\frac{s\pi}{L}\right)\eta_r\eta_s\,\frac{L}{2}\delta_{rs}
+$$
+
+$$
+= \frac{T}{2}\sum_r \left(\frac{r\pi}{L}\right)^2 \eta_r^2\,\frac{L}{2}
+$$
+
+$$
+\Downarrow \qquad \omega_r = \frac{r\pi}{L}\sqrt{\frac{T}{\rho}}
+$$
+
+$$
+U = \frac{\rho L}{4}\sum_r \omega_r^2\,\eta_r^2
+$$
+
+De novo, tomando a parte real de $\eta_r$:
+
+$$
+U = \frac{\rho L}{4}\sum_r \omega_r^2\left[\mu_r\cos(\omega_r t) - \nu_r\,\text{sen}(\omega_r t)\right]^2
+$$
+
+A energia total é:
+
+$$
+E_T = E_C + U = \frac{\rho L}{4}\sum_r \omega_r^2\left(\mu_r^2+\nu_r^2\right)
+$$
+
+$$
+= \frac{\rho L}{4}\sum_r \omega_r^2\left|\beta_{r*}\right|^2 \qquad \text{que é constante!}
+$$
+
+$E_C$ e $U$ variam com o tempo. Pode ser útil saber o valor médio delas em um período do modo fundamental $T_1 = 2\pi/\omega_1$. O valor médio de uma função é:
+
+$$
+\langle f\rangle = \frac{1}{\Delta t}\int_t^{t+\Delta t} f(t)\,dt
+$$
+
+$$
+\rightarrow \quad \langle E_C\rangle = \frac{\rho L}{8}\sum_r \omega_r^2\left(\mu_r^2+\nu_r^2\right)
+$$
+
+$$
+\rightarrow \quad \langle U\rangle = \frac{\rho L}{8}\sum_r \omega_r^2\left(\mu_r^2+\nu_r^2\right)
+\qquad\therefore\qquad
+\boxed{\langle E_C\rangle = \langle U\rangle}
+$$
+
+## Equação de onda
+
+Vamos voltar na equação de movimento para uma partícula no fio carregado.
+
+$$
+m\ddot{q}_j = \frac{T}{d}(q_{j-1}-q_j) - \frac{T}{d}(q_j - q_{j+1})
+$$
+
+$$
+\rightarrow \quad \frac{m\ddot{q}}{d} = \frac{T}{d}\left(\frac{q_{j-1}-q_j}{d}\right) - \frac{T}{d}\left(\frac{q_j-q_{j+1}}{d}\right)
+$$
+
+$$
+\left(\frac{q_j-q_{j+1}}{d} \xrightarrow{d\to 0} \frac{q(x-d)-q(x)}{d} \to -\left.\frac{\partial q}{\partial x}\right|_{x-d/2}\right)
+$$
+
+O lado direito então fica:
+
+$$
+T\left(\frac{\left.\dfrac{\partial q}{\partial x}\right|_{x-d/2} - \left.\dfrac{\partial q}{\partial x}\right|_{x-d/2}}{d}\right)
+\xrightarrow{d\to 0} T\,\frac{\partial^2 q}{\partial x^2}
+$$
+
+Com isso, temos:
+
+$$
+\rho\,\frac{\partial^2 q}{\partial t^2} = T\,\frac{\partial^2 q}{\partial x^2}
+$$
+
+A equação de onda geral em 1D:
+
+$$
+\frac{\partial^2 q}{\partial x^2} - \frac{1}{v^2}\frac{\partial^2 q}{\partial t^2} = 0
+$$
+
+onde $v$ é a velocidade de propagação e vale:
+
+$$
+v = \sqrt{\frac{T}{\rho}}
+$$
+
+Em 3D, a gente teria:
+
+$$
+\frac{\partial^2 q}{\partial x^2} + \frac{\partial^2 q}{\partial y^2} + \frac{\partial^2 q}{\partial z^2} - \frac{1}{v^2}\frac{\partial^2 q}{\partial t^2} = 0
+$$
+
+$$
+\rightarrow \quad \nabla^2 q - \frac{1}{v^2}\frac{\partial^2 q}{\partial t^2} = 0
+$$
+
+Vamos considerar uma força de amortecimento e uma força externa:
+
+$$
+\rho\left(\frac{\partial^2 q}{\partial t^2}\right) - T\frac{\partial^2 q}{\partial x^2} + D\frac{\partial q}{\partial t} = F(x,t)
+$$
+
+Propomos uma solução do tipo:
+
+$$
+q(x,t) = \sum_{r=1}^{\infty} \eta_r(t)\,\text{sen}\!\left(\frac{r\pi x}{L}\right)
+$$
+
+Substituindo na equação:
+
+$$
+\sum_{r=1}^{\infty}\left[\left(\rho\ddot\eta_r + D\dot\eta_r + \left(\frac{r^2\pi^2}{L^2}\right)T\right)\text{sen}\!\left(\frac{r\pi x}{L}\right)\right] = F(x,t)
+$$
+
+Isso é uma série de Fourier!
+
+$$
+\sum_r^{\infty} A_r\,\text{sen}\!\left(\frac{r\pi x}{L}\right) = F(x,t)
+$$
+
+$$
+\rightarrow \quad A_r = \frac{2}{L}\int_0^L F(x,t)\,\text{sen}\!\left(\frac{r\pi x}{L}\right) dx
+$$
+
+$$
+\therefore \quad \rho\ddot\eta_r + D\dot\eta_r + \frac{r^2\pi^2}{L^2}T = \underbrace{\frac{2}{L}\int_0^L F(x,t)\,\text{sen}\!\left(\frac{r\pi x}{L}\right) dx}_{A_r}
+$$
+
+Na presença de amortecimento e/ou forças externas adicionais, os modos normais são alterados.
+
+A solução geral da equação de onda é dada por:
+
+$$
+\Psi(x,t) = f(x+vt) + g(x-vt)
+$$
+
+onde $f$ e $g$ são funções *arbitrárias*. Como a equação de onda diz que a derivada de segunda em relação uma variável é proporcional a outra, podemos supor que a solução é a seguinte (separação de variáveis, métodos 2):
+
+$$
+\Psi(x,t) = F(x)\,G(t)
+$$
+
+Substituindo na equação de onda:
+
+$$
+G\frac{d^2F}{dx^2} - \frac{F}{v^2}\frac{d^2G}{dt^2} = 0
+$$
+
+$$
+\rightarrow \quad \frac{v^2}{F}\frac{d^2F}{dx^2} = \frac{1}{G}\frac{d^2G}{dt^2} = \text{cte} \;(:= -\omega^2)
+$$
+
+$$
+\rightarrow \quad \frac{d^2F}{dx^2} + \frac{\omega^2}{v^2}F = 0
+$$
+
+$$
+\therefore \quad
+\begin{cases}
+F(x) = Ae^{i\frac{\omega}{v}x} + Be^{-i\frac{\omega}{v}x} \\[1ex]
+G(t) = Ce^{i\omega t} + De^{-i\omega t}
+\end{cases}
+$$
+
+$$
+\rightarrow \quad \Psi(x,t) = ACe^{i\frac{\omega}{v}(x+vt)} + ADe^{i\frac{\omega}{v}(x-vt)} + BCe^{-i\frac{\omega}{v}(x-vt)} + BDe^{i\frac{\omega}{v}(x+vt)}
+$$
+
+A solução geral é uma combinação linear das soluções para todas as frequências possíveis. Onde:
+
+$$
+k = \frac{\omega}{v} = \frac{2\pi}{\lambda} = 2\pi\tilde{f}
+\qquad\Longleftrightarrow\qquad
+\omega = \frac{2\pi}{T} = 2\pi f
+$$
+
+$$
+T = \frac{2\pi}{\omega}, \qquad \lambda = \frac{v}{f}
+$$
+
+Considerando duas ondas com a mesma frequência e amplitude em sentidos opostos:
+
+$$
+\Psi(x,t) = Ae^{-i(kx+\omega t)} + Ae^{-i(kx-\omega t)}
+$$
+
+$$
+= Ae^{-ikx}\left(e^{i\omega t} + e^{-i\omega t}\right)
+$$
+
+$$
+= 2A\,e^{-ikx}\cos(\omega t)
+$$
+
+Isso é o que chamamos de **onda estacionária**!
+
+No caso da corda:
+
+$$
+v = \sqrt{\frac{T}{\rho}}
+$$
+
+Considere uma corda formada por 2 segmentos homogêneos com densidades diferentes $\rho_1$ ($x<0$) e $\rho_2$ ($x>0$) e uma onda progressiva se propagando de $x<0$ para $x>0$, onde $\rho_2 > \rho_1$:
+
+$$
+\Psi_{inc} = A\,e^{-i(k_1 x-\omega t)}
+$$
+
+$$
+\Psi_{ref} = B\,e^{+i(k_1 x+\omega t)} \qquad (\text{mudança de fase})
+$$
+
+$$
+\Psi_{trans} = C\,e^{-i(k_2 x-\omega t)}
+$$
+
+A solução deve ser:
+
+$$
+\Psi_1 = \Psi_{inc} + \Psi_{ref} = A\,e^{-i(k_1x-\omega t)} + B\,e^{+i(k_1x+\omega t)}
+$$
+
+$$
+\Psi_2 = \Psi_{trans} = C\,e^{-i(k_2x-\omega t)}
+$$
+
+Por continuidade (pra corda não arrebentar):
+
+$$
+\begin{cases}
+\Psi_1(0,t) = \Psi_2(0,t) \\[1ex]
+\dfrac{\partial \Psi_1}{\partial x}(0,t) = \dfrac{\partial \Psi_2}{\partial x}(0,t)
+\end{cases}
+$$
+
+$$
+\rightarrow \quad
+\begin{cases}
+Ae^{i\omega t} + Be^{i\omega t} = Ce^{i\omega t} \\[1ex]
+-ik_1 A e^{i\omega t} + ik_1 B e^{i\omega t} = -ik_2 C e^{i\omega t}
+\end{cases}
+$$
+
+$$
+\rightarrow \quad
+\begin{cases}
+A+B=C \;\rightarrow\; B=C-A \\[1ex]
+-k_1A + k_1B = -k_2C
+\end{cases}
+$$
+
+$$
+\rightarrow \quad -k_1A + k_1(C-A) = -k_2C
+$$
+
+$$
+\rightarrow \quad -k_1A + k_1C - k_1A = -k_2C
+$$
+
+$$
+\rightarrow \quad k_1C + k_2C = 2k_1A
+$$
+
+$$
+\therefore \quad C = \frac{2k_1A}{k_1+k_2}
+$$
+
+$$
+\rightarrow \quad B = \frac{2k_1A}{k_1+k_2} - A = \frac{k_1-k_2}{k_1+k_2}A
+$$
+
+$$
+R := \frac{|B|^2}{|A|^2} = \left(\frac{k_1-k_2}{k_2-k_1}\right)^2 \qquad \rightarrow\ \text{coeficiente de reflexão}
+$$
+
+$$
+T := 1-R = \frac{4k_1k_2}{(k_1+k_2)^2} = \frac{k_2}{k_1}\frac{|C|^2}{|A|^2} \qquad \rightarrow\ \text{coeficiente de transmissão}
+$$
+
+A fase é o argumento da função, $x\pm vt$!
+
+$$
+\hookrightarrow \quad \Psi = \text{cst} \ \text{corresponde a fase constante.}
+$$
+
+Um observador que se move com uma velocidade tal que, para ele, a onda é estacionária, se move com a velocidade de fase da onda. Para uma onda monocromática ($\omega$ único), a velocidade de fase coincide com a velocidade $v$ que aparece na equação de onda.
+
+$$
+\phi = kx-\omega t, \qquad \phi = \text{cst.} \;\rightarrow\; d\phi = k\,dx - \omega\,dt = 0
+$$
+
+$$
+\therefore \quad \frac{dx}{dt} = \frac{\omega}{k} = v
+$$
+
+## Notas finais (questões abertas)
+
+$$
+\text{p}?\qquad \Psi = F(x)G(t)\ ? \qquad \nearrow\ \text{regra do produto}
+$$
+
+Significado onda complexa na corda?
+
+$$
+\delta S = 0 \;\rightarrow\; \text{sem força?}
+$$
+
+$$
+\text{Sim}
+$$
+
+nenhuma, mas dispersão com $k \in \mathbb{C}$
+
+Analogia óptico-mecânica $\rightarrow$ frente de onda = mesma fase $\rightarrow$ frente de onda de ação?
+
+Observador que se move com a frente de onda vê uma onda estacionária. Então a luz não pode ser estacionária para nenhum observador ($\leftrightarrow$ tempo parado $\therefore$ viola causalidade!).

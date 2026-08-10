@@ -1,0 +1,551 @@
+---
+title: Sistemas de Partículas
+jupyter: python3
+---
+
+O primeiro cuidado que precisamos tomar é como tratar as forças internas, que as partículas do sistema exercem umas sobre as outras. Para isso, vamos considerar a terceira lei de Newton nas suas formas fraca e forte:
+
+- **Na forma fraca**, consideramos que as forças entre duas partículas têm magnitudes iguais e sentidos opostos.
+
+- **Na forma forte**, além de terem a mesma magnitude e sentidos opostos, elas agem na direção que liga as duas partículas, ou seja, são **forças centrais**.
+
+Vamos lembrar novamente do centro de massa do sistema:
+
+$$
+\vec{R}=\frac{1}{M}\sum_{i} m_{i}\vec{r}_{i}\quad;\quad M=\sum_{i} m_{i}
+$$
+
+Se tivermos uma distribuição contínua de massa, fica:
+
+$$
+\begin{aligned}
+\vec{R}&=\frac{1}{M}\int \vec{r}\, d m \\
+M&=\int d m=\int \rho\, dV \\
+\vec{R}&=\frac{1}{M}\int \rho\,\vec{r}\, dV
+\end{aligned}
+$$
+
+A força resultante sobre uma partícula do sistema é dada pela soma das forças externas e das internas (devidas às outras partículas):
+
+$$
+\vec{F}_{i}=\vec{F}_{E_i}+\sum_{j\neq i}\vec{F}_{ij}
+$$
+
+Lembrando que:
+
+$$
+\vec{F}_{ij}=-\vec{F}_{ji}
+$$
+
+A 2ª lei para essa partícula fica, então:
+
+$$
+\frac{d\vec{p}_i}{dt}=\vec{F}_{E_i}+\sum_{j\neq i}\vec{F}_{ij}
+$$
+
+Assumindo $\frac{d m_i}{dt}=0$ (massas constantes), podemos escrever:
+
+$$
+\frac{d^{2}}{dt^{2}}\left(m_i\vec{r}_i\right)=\vec{F}_{E_i}+\sum_{j\neq i}\vec{F}_{ij}
+$$
+
+Somando para todas as partículas:
+
+$$
+\sum_i \frac{d^{2}}{dt^{2}}\left(m_i\vec{r}_i\right)=\sum_i \vec{F}_{E_i}+\sum_i\sum_{j\neq i}\vec{F}_{ij}
+$$
+
+ou, equivalentemente,
+
+$$
+\frac{d^{2}}{dt^{2}}\left(\sum_i m_i\vec{r}_i\right)=\sum_i \vec{F}_{E_i}+\sum_i\sum_{j\neq i}\vec{F}_{ij}
+$$
+
+Como a soma das forças internas é zero, obtemos:
+
+$$
+M\frac{d^{2}\vec{R}}{dt^{2}}=\vec{F}_E
+$$
+
+O movimento do centro de massa depende apenas das forças externas. Podemos escrever também:
+
+$$
+\frac{d\vec{P}}{dt}=\vec{F}_E
+$$
+
+onde:
+
+$$
+\vec{P}=M\frac{d\vec{R}}{dt}=\frac{d}{dt}(M\vec{R})=\frac{d}{dt}\left(\sum_i m_i\vec{r}_i\right)
+$$
+
+Logo:
+
+$$
+\vec{P}=\sum_i m_i\frac{d\vec{r}_i}{dt}=\sum_i \vec{p}_i
+$$
+
+Podemos escrever as posições das partículas em relação ao CM:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\vec{r}_i=\vec{R}+\vec{r}_i'
+$$
+
+O momento angular com relação à origem é:
+
+$$
+\vec{L}_i=\vec{r}_i\times \vec{p}_i
+$$
+
+O momento angular total é dado por:
+
+$$
+\vec{L}=\sum_i \vec{L}_i=\sum_i \vec{r}_i\times \vec{p}_i=\sum_i \vec{r}_i\times\left(m_i\frac{d\vec{r}_i}{dt}\right)
+$$
+
+Substituindo $\vec{r}_i=\vec{R}+\vec{r}_i'$:
+
+$$
+\vec{L}=\sum_i (\vec{R}+\vec{r}_i')\times m_i\left(\frac{d\vec{R}}{dt}+\frac{d\vec{r}_i'}{dt}\right)
+$$
+
+Expandindo:
+
+$$
+\vec{L}=\sum_i m_i\left[\vec{R}\times\frac{d\vec{R}}{dt}+\vec{R}\times\frac{d\vec{r}_i'}{dt}+\vec{r}_i'\times\frac{d\vec{R}}{dt}+\vec{r}_i'\times\frac{d\vec{r}_i'}{dt}\right]
+$$
+
+Observando o 2º e o 3º termos, temos:
+
+$$
+\vec{R}\times\frac{d}{dt}\left(\sum_i m_i\vec{r}_i'\right)+\left(\sum_i m_i\vec{r}_i'\right)\times\frac{d\vec{R}}{dt}=0
+$$
+
+porque:
+
+$$
+\sum_i m_i\vec{r}_i'=\sum_i m_i(\vec{r}_i-\vec{R})=\sum_i m_i\vec{r}_i-\sum_i m_i\vec{R}=M\vec{R}-M\vec{R}=0
+$$
+
+Logo, o momento angular total fica:
+
+$$
+\vec{L}=M\vec{R}\times\frac{d\vec{R}}{dt}+\sum_i \vec{r}_i'\times\frac{d\vec{r}_i'}{dt}
+$$
+
+onde $\vec{p}_i'=m_i\frac{d\vec{r}_i'}{dt}$. Assim:
+
+$$
+\begin{aligned}
+\vec{L}&=\vec{R}\times\vec{P}+\sum_i \vec{r}_i'\times \vec{p}_i' \\
+\vec{L}&=\vec{L}_{CM}+\sum_i \vec{L}_i'
+\end{aligned}
+$$
+
+Nós vimos que a derivada do momento angular é:
+
+$$
+\frac{d\vec{L}_i}{dt}=\vec{r}_i\times \frac{d\vec{p}_i}{dt}
+$$
+
+Logo:
+
+$$
+\frac{d\vec{L}_i}{dt}=\vec{r}_i\times\left(\vec{F}_{E_i}+\sum_{j\neq i}\vec{F}_{ij}\right)
+$$
+
+Somando para todas as partículas:
+
+$$
+\frac{d\vec{L}}{dt}=\sum_i (\vec{r}_i\times \vec{F}_{E_i})+\sum_i\sum_{j\neq i}(\vec{r}_i\times \vec{F}_{ij})
+$$
+
+O termo das forças internas pode ser escrito como:
+
+$$
+\sum_i\sum_{j\neq i}(\vec{r}_i\times \vec{F}_{ij})
+=\sum_{i<j}\left[\vec{r}_i\times \vec{F}_{ij}+\vec{r}_j\times \vec{F}_{ji}\right]
+=\sum_{i<j}(\vec{r}_i-\vec{r}_j)\times \vec{F}_{ij}
+$$
+
+Se as forças internas forem **centrais**, então $\vec{F}_{ij}\parallel (\vec{r}_i-\vec{r}_j)$ e, portanto:
+
+$$
+\sum_i\sum_{j\neq i}(\vec{r}_i\times \vec{F}_{ij})=\vec{0}
+$$
+
+Com isso:
+
+$$
+\frac{d\vec{L}}{dt}=\sum_i (\vec{r}_i\times \vec{F}_{E_i})
+=\sum_i \vec{\tau}_{E_i}
+\equiv \vec{\tau}_E
+$$
+
+Ou seja: **o momento angular total do sistema depende apenas do torque das forças externas**.
+
+## Trabalho e energia
+
+O trabalho realizado para mudar o sistema de uma configuração 1 para outra configuração 2 é:
+
+$$
+W_{1\to 2}=\sum_i \int_{1}^{2}\vec{F}_i\cdot d\vec{r}_i
+$$
+
+Nós já mostramos que, para uma partícula:
+
+$$
+\int_{1}^{2}\vec{F}_i\cdot d\vec{r}_i=\int_{1}^{2} d\left(\frac{m_i}{2}v_i^2\right)=E_{c,i2}-E_{c,i1}
+$$
+
+Com isso:
+
+$$
+W_{1\to 2}=\sum_i (E_{c,i2}-E_{c,i1})=E_{c2}-E_{c1}
+$$
+
+onde:
+
+$$
+E_c=\sum_i E_{c,i}
+$$
+
+Em termos do centro de massa:
+
+$$
+\frac{d\vec{r}_i}{dt}=\frac{d\vec{r}_i'}{dt}+\frac{d\vec{R}}{dt}
+$$
+
+e:
+
+$$
+v_i^2=v_i'^2+2(\vec{v}_i'\cdot \vec{V})+V^2
+$$
+
+Logo:
+
+$$
+E_c=\frac{M}{2}V^2+\sum_i \frac{m_i}{2}v_i'^2
+$$
+
+Separando as forças externas e internas:
+
+$$
+W_{1\to 2}=\sum_i \int_{1}^{2}\vec{F}_{E_i}\cdot d\vec{r}_i+\sum_i\sum_{j\neq i}\int_{1}^{2}\vec{F}_{ij}\cdot d\vec{r}_i
+$$
+
+Se as forças forem conservativas, podemos escrever:
+
+$$
+\vec{F}_{E_i}=-\vec{\nabla}_i U_i
+\quad\text{e}\quad
+\vec{F}_{ij}=-\vec{\nabla}_i \bar{U}_{ij}
+$$
+
+Então:
+
+$$
+\sum_i \int_{1}^{2}\vec{F}_{E_i}\cdot d\vec{r}_i
+=-\left.\sum_i U_i\right|_1^2
+$$
+
+e também:
+
+$$
+\sum_i\sum_{j\neq i}\int_{1}^{2}\vec{F}_{ij}\cdot d\vec{r}_i
+=-\left.\sum_{i<j}\bar{U}_{ij}\right|_1^2
+$$
+
+Como estamos supondo que todas as forças são conservativas, podemos definir a energia potencial total:
+
+$$
+U=\sum_i U_i+\sum_{i<j}\bar{U}_{ij}
+$$
+
+e escrever o trabalho como:
+
+$$
+W_{1\to 2}=-(U_2-U_1)
+$$
+
+Logo:
+
+$$
+T_2-T_1=-(U_2-U_1)
+\quad\Rightarrow\quad
+T_2+U_2=T_1+U_1
+$$
+
+A energia mecânica total é conservada.
+
+## Colisões entre duas partículas
+
+Vamos considerar o fenômeno em dois referenciais: o chamado **“do laboratório”**, onde as partículas e o centro de massa podem se mover, e o chamado **“do centro de massa”**, onde o centro de massa está em repouso e é a origem do sistema de coordenadas.
+
+Vamos olhar a geometria do sistema:
+
+**Laboratório**
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+**Centro de massa**
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Pela definição de CM, temos:
+
+$$
+m_1\vec{r}_1+m_2\vec{r}_2=M\vec{R}
+$$
+
+o que nos leva à relação entre as velocidades:
+
+$$
+m_1\vec{v}_1+m_2\vec{v}_2=M\vec{V}
+$$
+
+Supondo massas constantes e considerando, no laboratório, $\vec{v}_{2i}=\vec{0}$, temos:
+
+$$
+m_1\vec{v}_{1i}=M\vec{V}\Rightarrow \vec{V}=\frac{m_1\vec{v}_{1i}}{M}
+$$
+
+No referencial do CM, a partícula 2 está se movendo com velocidade:
+
+$$
+\vec{v}_{2i}'=-\vec{V}=-\frac{m_1\vec{v}_{1i}}{M}
+$$
+
+e o momento linear total é zero:
+
+$$
+m_1\vec{v}_{1i}'+m_2\vec{v}_{2i}'=\vec{0}
+$$
+
+Vimos que, na ausência de forças externas, o momento linear é conservado.
+
+No caso de colisão elástica, a energia cinética é conservada também.
+
+Voltando ao desenho, após a colisão:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+V<v_{1f}'
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+V>v_{1f}'
+$$
+
+Se $V>v_{1f}'$:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+temos dois valores possíveis para o ângulo no CM.
+
+No caso $V<v_{1f}'$, temos as seguintes relações entre as projeções:
+
+$$
+\begin{aligned}
+v_{1F}'\operatorname{sen}\theta&=v_{1F}\operatorname{sen}\psi \\
+v_{1F}'\cos\theta+V&=v_{1F}\cos\psi
+\end{aligned}
+$$
+
+Dividindo a primeira pela segunda:
+
+$$
+\tan\psi=\frac{\operatorname{sen}\theta}{\cos\theta+(V/v_{1F}')}
+$$
+
+Mas:
+
+$$
+V=\frac{m_1 v_{1i}}{M}
+\quad\text{e}\quad
+v_{1f}'=\frac{m_2 v_{1i}}{M}
+$$
+
+Então:
+
+$$
+\frac{V}{v_{1f}'}=\frac{m_1}{m_2}
+$$
+
+Logo:
+
+$$
+\tan\psi=\frac{\operatorname{sen}\theta}{\cos\theta+m_1/m_2}
+$$
+
+Se $m_1\ll m_2$, então $\tan\psi\simeq \tan\theta$ e $\psi\simeq \theta$.
+
+Se $m_1=m_2$, obtemos:
+
+$$
+\tan\psi=\frac{\sin\theta}{\cos\theta+1}
+=\tan\left(\frac{\theta}{2}\right)
+\Rightarrow \psi=\frac{\theta}{2}
+$$
+
+Voltando mais uma vez ao desenho:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+No caso $m_1=m_2$, temos $\theta=2\psi$, e daí:
+
+$$
+2\alpha=\pi-2\psi \Rightarrow \alpha+\psi=\frac{\pi}{2}
+$$
+
+portanto as velocidades após a colisão, no referencial do laboratório, são perpendiculares.
+
+No caso de colisões inelásticas, a energia cinética não é conservada:
+
+$$
+\frac{m_1}{2}v_{1i}^2+\frac{m_2}{2}v_{2i}^2+Q=\frac{m_1}{2}v_{1f}^2+\frac{m_2}{2}v_{2f}^2
+$$
+
+Newton propôs uma maneira de classificar as colisões por meio do coeficiente de restituição:
+
+$$
+\varepsilon=\frac{|v_{2f}-v_{1f}|}{|v_{2i}-v_{1i}|}
+$$
+
+## Impulso
+
+As colisões, em geral, são rápidas e as forças envolvidas agem por um intervalo de tempo curto. Nesses casos, chamamos de **forças impulsivas**. A 2ª lei ainda vale durante esse intervalo:
+
+$$
+\vec{F}=\frac{d\vec{p}}{dt}
+$$
+
+Nessas situações, é útil usar o conceito de impulso:
+
+$$
+\vec{I}=\int_{t_1}^{t_2}\vec{F}\,dt
+$$
+
+Usando a 2ª lei:
+
+$$
+\vec{I}=\int_{t_1}^{t_2}\frac{d\vec{p}}{dt}\,dt=\vec{p}(t_2)-\vec{p}(t_1)
+$$
+
+## Seção de choque
+
+Vamos considerar várias colisões com parâmetros de impacto diferentes. Cada valor de $b$ resulta em um ângulo de espalhamento $\theta$. Isso significa que temos um feixe de partículas com massa $m_1$ e energia $T_i$, direcionado a uma região do espaço que contém partículas com massa $m_2$ em repouso (no referencial do laboratório).
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+A seção de choque diferencial, no referencial do CM, é o número de interações por partícula-alvo que resulta em um espalhamento em um ângulo sólido $d\Omega'$ ao redor do ângulo $\theta$, dividido pelo número de partículas incidentes por unidade de área de seção reta do feixe:
+
+$$
+\sigma(\theta)=\frac{d\sigma}{d\Omega'}=\frac{dN}{I\,d\Omega'}
+$$
+
+Essa grandeza é medida em termos de área por ângulo sólido. Como:
+
+$$
+d\Omega'=\operatorname{sen}\theta\, d\theta\, d\phi
+$$
+
+e, se houver simetria axial em torno da direção de incidência ($b=0$),
+
+$$
+d\Omega'=2\pi\operatorname{sen}\theta\, d\theta
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Temos:
+
+$$
+I\,2\pi b\,db=-I\,\sigma(\theta)\,2\pi\operatorname{sen}\theta\,d\theta
+$$
+
+O sinal negativo representa a hipótese de que, quanto maior $b$, menor a deflexão $\theta$ (isto é, $db/d\theta<0$). Com isso:
+
+$$
+\sigma(\theta)=\frac{b}{\sin\theta}\left|\frac{db}{d\theta}\right|>0
+$$
+
+Usando a equação da trajetória de uma partícula sob ação de uma força central:
+
+$$
+\Delta(\Theta)=\int_{r_{\min}}^{\infty}\frac{(L/r^{2})\,dr}{\sqrt{2\mu\left[E-U-\left(L^{2}/2\mu r^{2}\right)\right]}}
+$$
+
+No nosso caso:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+onde $\alpha=\beta$, logo:
+
+$$
+\theta=\pi-2\Theta
+$$
+
+Escrevendo o momento angular em termos do parâmetro de impacto, $L=b\sqrt{2\mu T_i}$, e considerando que em $r=\infty$ temos $U=0$ e $E=T_i$, podemos escrever:
+
+$$
+\Theta=\int_{r_{\min}}^{\infty}\frac{(b/r^{2})\,dr}{\sqrt{1-(b^{2}/r^{2})-(U/T_i)}}
+$$
+
+Com essas relações, podemos obter $\frac{db}{d\theta}$ e, em seguida, a seção de choque.
+
+Se $m_2\gg m_1$, a seção de choque no referencial do laboratório é aproximadamente igual à do CM. Do contrário, é preciso fazer a transformação de coordenadas:
+
+$$
+\begin{aligned}
+\sigma(\theta)d\Omega'&=\sigma(\psi)d\Omega \\
+\sigma(\theta)\,2\pi\sin\theta\,d\theta&=\sigma(\psi)\,2\pi\sin\psi\,d\psi \\
+\sigma(\psi)&=\sigma(\theta)\frac{\sin\theta}{\sin\psi}\frac{d\theta}{d\psi}
+\end{aligned}
+$$
+
+Como vimos:
+
+$$
+\frac{\operatorname{sen}(\theta-\psi)}{m_1}=\frac{\operatorname{sen}\psi}{m_2}
+\Rightarrow
+\frac{m_1}{m_2}=\frac{\sin(\theta-\psi)}{\operatorname{sen}\psi}=x
+$$
+
+e então:
+
+$$
+\sigma(\psi)=\sigma(\theta)\frac{\operatorname{sen}^{2}\theta}{\sin^{2}\psi\,\cos(\theta-\psi)}
+$$
+
+É possível escrever a seção de choque em termos de $\psi$ apenas:
+
+$$
+\sigma(\psi)=\sigma(\theta)\frac{\left[x\cos\psi+\sqrt{1-x^{2}\operatorname{sen}^{2}\psi}\right]^{2}}{\sqrt{1-x^{2}\operatorname{sen}^{2}\psi}} \;,\quad |x|<1
+$$
+

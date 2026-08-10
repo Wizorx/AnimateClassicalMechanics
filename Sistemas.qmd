@@ -1,0 +1,571 @@
+---
+title: Sistemas de Coordenadas
+jupyter: python3
+---
+
+Vamos relembrar como definir um sistema de coordenadas em 3 dimensões e apresentar os três sistemas que usamos tipicamente nas disciplinas básicas.
+
+Lembrando as condições para um conjunto ser considerado um espaço vetorial em Álgebra Linear, sabemos que o espaço de vetores em 3D constitui um espaço vetorial. Isso significa que podemos expressar qualquer vetor em termos de uma combinação linear de vetores linearmente independentes; ou seja, uma base desse espaço vetorial.
+
+O primeiro passo para definir um sistema de coordenadas é escolher um ponto de referência, em relação ao qual podemos definir o vetor posição. Esse ponto é a origem do sistema.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+O próximo passo é escolher a base do espaço de vetores posição, tal que:
+
+$$
+\vec{r}=a \hat{x}_{1}+b \hat{x}_{2}+c \hat{x}_{3}
+$$
+
+onde é conveniente definir os vetores de base com módulo unitário:
+
+$_{\text{obs: }}\left|\hat{x}_{1}\right|=\left|\hat{x}_{2}\right|=\left|\hat{x}_{3}\right|=1$
+
+Também é conveniente escolher os vetores de base como sendo ortogonais entre si:
+
+$$
+\hat{x}_{1} \cdot \hat{x}_{2}=\hat{x}_{1} \cdot \hat{x}_{3}=\hat{x}_{2} \cdot \hat{x}_{3}=0
+$$
+
+As coordenadas de um ponto neste sistema são então dadas pelos coeficientes da combinação linear na base escolhida.
+
+Os coeficientes são obtidos projetando o vetor posição na direção de cada vetor de base:
+
+$$
+a=\vec{r} \cdot \hat{x}_{1} ; b=\vec{r} \cdot \hat{x}_{2} ; c=\vec{r} \cdot \hat{x}_{3}
+$$
+
+Cada vetor de base indica a direção e o sentido de um deslocamento correspondente a um aumento na sua coordenada correspondente.
+
+O primeiro sistema que vimos foi o cartesiano, no qual a base ortonormal representa deslocamentos retilíneos, que definem os eixos cartesianos.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Com isso:
+
+$$
+\vec{r}=x \hat{x}+y \hat{y}+z \hat{z}
+$$
+
+onde as coordenadas são os números:
+
+$x=\vec{r} \cdot \hat{x} ; y=\vec{r} \cdot \hat{y} ; z=\vec{r} \cdot \hat{z}$
+
+Neste sistema, as três coordenadas têm dimensão de comprimento e, portanto, já representam distâncias (ou deslocamentos) nas três direções ortogonais. Nesse caso, podemos associar os vetores de base aos gradientes das coordenadas:
+
+$$
+\begin{aligned}
+& \vec{\nabla} f=\frac{\partial f}{\partial x} \hat{x}+\frac{\partial f}{\partial y} \hat{y}+\frac{\partial f}{\partial z} \hat{z} \\
+& \vec{\nabla} x=\hat{x} ; \vec{\nabla} y=\hat{y} ; \vec{\nabla} z=\hat{z}
+\end{aligned}
+$$
+
+Podemos definir outros sistemas em que os deslocamentos associados às coordenadas não são necessariamente retilíneos.
+
+## Sistema cilíndrico
+
+```{ojs}
+//| echo: false
+containerCylCoords = html`<div style="width:749px;height:400px"></div>`
+```
+
+```{ojs}
+//| echo: false
+{
+  const { Dot3D, YELLOW, makeDraggable, Text, ThreeDAxes, ThreeDScene, UP, DOWN, RIGHT, OUT, Line3D, Angle, MathTex, WHITE, DashedLine, PolarPlane, Cylinder} = await import("https://cdn.jsdelivr.net/npm/manim-web@0.3.24/dist/manim-web.browser.js");
+
+    function addVectors(a,b){
+        return a.map((e,i) => e + b[i]);
+    }
+
+    function scalarMult(a,b){
+        return a.map((e,i) => e * b);
+    }
+
+
+    const scene = new ThreeDScene(containerCylCoords, {
+      width: 749,
+      height: 400,
+      backgroundColor: '#222222',
+      phi: 75 * (Math.PI / 180),
+      theta: -45 * (Math.PI / 180),
+      distance: 20,
+      fov: 30,
+      enableOrbitControls: true,
+      orbitControlsUp: 'z'
+    });
+
+    const axes = new ThreeDAxes({
+      xRange: [-5, 5, 1],
+      yRange: [-5, 5, 1],
+      zRange: [-5, 5, 1],
+      xLength: 10,
+      yLength: 10,
+      zLength: 10,
+      showTicks: false,
+
+    });
+
+    const plane = new PolarPlane({radius: 5, size: 10, radialDivisions:5, includeAngleLabels: true, labelFontSize:42, gridStrokeWidth: 2});
+    //plane.rotation.x = Math.PI / 2;
+
+    const dot = new Dot3D({ radius: 0.1, color: YELLOW }).moveTo(axes.coordsToPoint(1,1,1)).addUpdater(() => {});
+    makeDraggable(dot, scene, {constrainX: [-5,5], constrainY: [-5,5], constrainZ: [-5,5]});
+
+    const radiusProj = new Line3D({start: [0,0,0], end: axes.coordsToPoint(0,0,1), lineWidth: 2}).addUpdater((mob) => {
+      mob.setEnd([dot.getCenter()[0], dot.getCenter()[1], 0]);
+    });
+
+    const radiusDown = new Line3D({start: [0,0,0], end: axes.coordsToPoint(0,0,1), lineWidth: 2}).addUpdater((mob) => {
+      mob.setStart(dot.getCenter());
+      mob.setEnd(radiusProj.getEnd());
+    });
+  
+    
+    const thetaArc = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), dot.getCenter()] }, { radius: 0.5 }).addUpdater((mob) => {
+      var a = radiusProj.getLength()/2;
+      
+      if (a > 0.5) {
+        a = .5;
+      }
+      const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()], lineWidth:4*a }, { radius: a });//radiusProj.getLength() });
+      mob.become(newAngle);
+    });
+        
+    
+    const theta = new Text({ text: 'θ', color: WHITE, fontSize: 42}).addUpdater((mob) => {
+      var a = radiusProj.getLength()/2;
+      
+      if (a > .5) {
+        a = .5;
+      }
+      const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: a*1.1});//radiusProj.getLength() });
+      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.45));
+      mob.setFontSize(42 * a*2);
+      //mob.rotation.x = -Math.PI / 2;
+    });
+
+    const z = new Text({ text: 'z', color: WHITE, fontSize: 42}).addUpdater((mob) => {
+      var a = radiusDown.getLength()/2;
+      
+      if (a > .5) {
+        a = .5;
+      }
+      const newAngle = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: 1 });//radius.getLength() });
+      mob.setFontSize(42 * a*2);
+      mob.moveTo(addVectors(radiusDown.getMidpoint(), scalarMult(scalarMult(radiusProj.getEnd(), 1/radiusProj.getLength()), .4)));
+    });
+
+    const r = new Text({ text: 'r', color: WHITE, fontSize: 42}).addUpdater((mob) => {
+      
+      var a = radiusProj.getLength()/2;
+      
+      if (a > .5) {
+        a = .5;
+      }
+      mob.setFontSize(42 * a*2);
+      mob.moveTo(addVectors(radiusProj.getMidpoint(), scalarMult(OUT, .4)));
+    });
+    
+    
+    const c1 = new Cylinder({radiusTop: 1, radiusBottom: 1, height: 10.01, color: WHITE, opacity: .05});
+    const c2 = new Cylinder({radiusTop: 2, radiusBottom: 2, height: 10.02, color: WHITE, opacity: .05});
+    const c3 = new Cylinder({radiusTop: 3, radiusBottom: 3, height: 10.03, color: WHITE, opacity: .05});
+    const c4 = new Cylinder({radiusTop: 4, radiusBottom: 4, height: 10.04, color: WHITE, opacity: .05});
+    const c5 = new Cylinder({radiusTop: 5, radiusBottom: 5, height: 10.05, color: WHITE, opacity: .05});
+    c1.rotation.x = -Math.PI/2;
+    c2.rotation.x = -Math.PI/2;
+    c3.rotation.x = -Math.PI/2;
+    c4.rotation.x = -Math.PI/2;
+    c5.rotation.x = -Math.PI/2;
+        
+    scene.add(plane, dot, radiusProj, radiusDown, thetaArc, theta, z, r, c1, c2, c3, c4, c5, );
+    scene.addFixedOrientationMobjects(z, r);
+    await scene.wait(Infinity);
+
+    return scene;
+}
+```
+
+$s=$ projeção de $\vec{r}$ no plano $XY=$ distância ao eixo $Z$
+
+$\phi=$ ângulo entre a projeção e o eixo $X$
+
+$z=$ coordenada cartesiana
+
+Esse deslocamento é um comprimento de arco.
+
+$\vec{\nabla}(s)=\hat{s} ; \vec{\nabla}(s\phi)=\frac{1}{s}\frac{\partial}{\partial \phi}(s\phi)\hat{\phi}=\hat{\phi} ; \vec{\nabla}(z)=\hat{z}$ (com $s$ constante)
+
+$$
+\vec{\nabla} f=\frac{\partial f}{\partial s} \hat{s}+\frac{1}{s} \frac{\partial f}{\partial \phi} \hat{\phi}+\frac{\partial f}{\partial z} \hat{z}
+$$
+
+## Sistema esférico
+
+
+```{ojs}
+//| echo: false
+containerSphCoords = html`<div style="width:749px;height:400px"></div>`
+```
+
+```{ojs}
+//| echo: false
+{
+  const { Dot3D, YELLOW, makeDraggable, Text, ThreeDAxes, Axes, ThreeDScene, UP, DOWN, OUT, Line3D, Angle, WHITE, DashedLine, PolarPlane, Sphere} = await import("https://cdn.jsdelivr.net/npm/manim-web@0.3.24/dist/manim-web.browser.js");
+
+    function addVectors(a,b){
+        return a.map((e,i) => e + b[i]);
+    }
+
+    function scalarMult(a,b){
+        return a.map((e,i) => e * b);
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function getPolarAngleArcRadius(point) {
+      const [x, y, z] = point;
+      const radius = Math.sqrt(x * x + y * y + z * z);
+
+      if (radius < 1e-6) {
+        return 0;
+      }
+
+      const polarAngle = Math.acos(clamp(z / radius, -1, 1));
+      const angleThreshold = 0.5;
+      const radiusThreshold = 1;
+
+      let scale = 1;
+      if (polarAngle < angleThreshold) {
+        scale = polarAngle / angleThreshold;
+      }
+      if (radius < radiusThreshold) {
+        scale = Math.min(scale, radius / radiusThreshold);
+      }
+
+      return 0.5 * scale;
+    }
+
+    function getAzimuthalAngleScale(point) {
+      const [x, y] = point;
+      const projectedRadius = Math.sqrt(x * x + y * y);
+
+      if (projectedRadius < 1e-6) {
+        return 0;
+      }
+
+      const azimuthAngle = Math.atan2(y, x);
+      const wrappedAngle = Math.abs(((azimuthAngle + 2 * Math.PI) % (2 * Math.PI)));
+      const angleThreshold = 0.5;
+      const radiusThreshold = 1;
+
+      let scale = 1;
+      if (wrappedAngle < angleThreshold) {
+        scale = wrappedAngle / angleThreshold;
+      }
+      if (projectedRadius < radiusThreshold) {
+        scale = Math.min(scale, projectedRadius / radiusThreshold);
+      }
+
+      return .5*scale;
+    }
+
+    const scene = new ThreeDScene(containerSphCoords, {
+      width: 749,
+      height: 400,
+      backgroundColor: '#222222',
+      phi: 75 * (Math.PI / 180),
+      theta: -45 * (Math.PI / 180),
+      distance: 20,
+      fov: 30,
+      enableOrbitControls: true,
+      orbitControlsUp: 'z'
+    });
+
+    const axes = new ThreeDAxes({
+      xRange: [-5, 5, 1],
+      yRange: [-5, 5, 1],
+      zRange: [-5, 5, 1],
+      xLength: 10,
+      yLength: 10,
+      zLength: 10,
+      showTicks: false,
+    });
+
+    const plane = new PolarPlane({radius: 5, size: 10, radialDivisions:5, includeAngleLabels: true, labelFontSize: 42, gridStrokeWidth: 2});
+    const plane2 = new PolarPlane({radius: 5, size: 10, radialDivisions:5, includeAngleLabels: true, labelFontSize: 42, gridStrokeWidth: 2});
+    //plane.rotation.x = Math.PI / 2;
+    //plane2.rotation.z = Math.PI / 2;
+  
+    const dot = new Dot3D({ radius: 0.1, color: YELLOW }).moveTo(axes.coordsToPoint(1.75,1.75,1.75)).addUpdater(() => {});
+    makeDraggable(dot, scene,);
+
+    const radius = new Line3D({start: [0,0,0], end: dot.getCenter(), lineWidth: 2}).addUpdater((mob) => {
+      mob.setEnd(dot.getCenter());
+    });
+
+    const radiusProj = new Line3D({start: [0,0,0], end: axes.coordsToPoint(0,0,1), lineWidth: 1, opacity: 0.5}).addUpdater((mob) => {
+      mob.setEnd([dot.getCenter()[0], dot.getCenter()[1], 0]);
+    });
+
+    const radiusDown = new Line3D({start: [0,0,0], end: axes.coordsToPoint(0,0,1), lineWidth: 1, opacity: 0.5}).addUpdater((mob) => {
+      mob.setStart(radius.getEnd());
+      mob.setEnd(radiusProj.getEnd());
+    });
+      
+    
+    const thetaArc = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), dot.getCenter()] }, { radius: 0.5 }).addUpdater((mob) => {
+      const a = getAzimuthalAngleScale(radiusProj.getEnd());
+      const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()], lineWidth:2}, { radius: a });//radiusProj.getLength() });
+      mob.become(newAngle);
+    });
+    
+    const theta = new Text({ text: 'θ', color: WHITE, fontSize: 42}).addUpdater((mob) => {
+      const scale = getAzimuthalAngleScale(radiusProj.getEnd());
+      const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: scale});//radiusProj.getLength() });
+      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.5));
+      mob.setFontSize(42 * 2*scale);
+      //mob.rotation.x = -Math.PI / 2;
+    });
+        
+    const phiArc = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), dot.getCenter()] }, { radius: 0.5 }).addUpdater((mob) => {
+      const a = getPolarAngleArcRadius(radius.getEnd());
+      const newAngle = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), radius.getEnd()] }, { radius: a });
+      mob.become(newAngle);
+    });
+
+    const phi = new Text({ text: '𝜙', color: WHITE, fontSize: 42}).addUpdater((mob) => {
+      const a = getPolarAngleArcRadius(radius.getEnd());
+      const newAngle = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), radius.getEnd()] }, { radius: a });
+      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.65));
+      mob.setFontSize(42 * (a / 0.5));
+    });
+
+    const r = new Text({ text: 'r', color: WHITE, fontSize: 42}).addUpdater((mob) => {
+      mob.moveTo(addVectors(radius.getMidpoint(), scalarMult(OUT, -.25)));
+      
+      if (radiusProj.getLength() < .5) {
+        mob.setFontSize(42 * (radiusProj.getLength()+.5));
+      }
+
+    });
+    
+    const s1 = new Sphere({radius: 1, color: WHITE, opacity: .05});
+    const s2 = new Sphere({radius: 2, color: WHITE, opacity: .05});
+    const s3 = new Sphere({radius: 3, color: WHITE, opacity: .05});
+    const s4 = new Sphere({radius: 4, color: WHITE, opacity: .05});
+    const s5 = new Sphere({radius: 5, color: WHITE, opacity: .05});
+        
+    scene.add(axes,  plane2, dot, radius,r ,radiusProj,radiusDown, thetaArc, theta, phiArc, phi, s1, s2, s3, s4, s5,);
+    scene.addFixedOrientationMobjects( phi, r);
+    await scene.wait(Infinity);
+} 
+```
+
+$$
+\begin{aligned}
+& r=|\vec{r}| \\
+& \theta=\text{ângulo entre } \vec{r} \text{ e o eixo } Z \\
+& \phi=\text{ângulo entre a projeção de } \vec{r} \text{ no plano } XY \text{ e o eixo } X
+\end{aligned}
+$$
+
+$\vec{\nabla} f=\frac{\partial f}{\partial r} \hat{r}+\frac{1}{r} \frac{\partial f}{\partial \theta} \hat{\theta}+\frac{1}{r \sin \theta} \frac{\partial f}{\partial \phi} \hat{\phi}$
+
+$\vec{\nabla}(r)=\widehat{r} ; \vec{\nabla}(r\theta)=\hat{\theta} ; \vec{\nabla}(r \sin\theta \, \phi)=\hat{\phi}$
+
+Será útil para nós definirmos objetos como escalares e vetores em termos de como eles se mudam quando aplicamos uma certa transformação de coordenadas.
+
+Para isso, vamos estudar uma transformação importante: a rotação.
+
+Considere um ponto com coordenadas $\left(x_{1}, x_{2}, x_{3}\right)$ em um sistema cartesiano. Para simplificar a discussão, vamos considerar uma rotação em torno do eixo $X_{3}$. Assim, a coordenada no novo sistema coincide com a antiga:
+
+$$
+x_{3}^{\prime}=x_{3}
+$$
+
+Podemos então nos limitar a representar o plano $x_{1}x_{2}$.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\begin{aligned}
+& x_{1}^{\prime}=x_{1} \cos \theta+x_{2} \operatorname{sen} \theta \\
+& x_{1}^{\prime}=x_{1} \cos \theta+x_{2} \cos \left(\frac{\pi}{2}-\theta\right) \\
+& x_{2}^{\prime}=-x_{1} \operatorname{sen} \theta+x_{2} \cos \theta \\
+& x_{2}^{\prime}=x_{1} \cos \left(\frac{\pi}{2}+\theta\right)+x_{2} \cos \theta
+\end{aligned}
+$$
+
+Podemos então relacionar as coordenadas por:
+
+$$
+\begin{aligned}
+& \binom{x_{1}^{\prime}}{x_{2}^{\prime}}=\Lambda\binom{x_{1}}{x_{2}} \\
+& \Lambda=\left(\begin{array}{ll}
+\lambda_{11} & \lambda_{12} \\
+\lambda_{21} & \lambda_{42}
+\end{array}\right) ; \lambda_{i j}=\cos \left(x_{i}^{\prime}, x_{j}\right)
+\end{aligned}
+$$
+
+onde $\left(x_{i}^{\prime}, x_{j}\right)$ é o ângulo entre os eixos.
+
+$$
+\begin{aligned}
+& x_{1}^{\prime}=x_{1} \cos \left(x_{1}^{\prime}, x_{1}\right)+x_{2} \cos \left(x_{1}^{\prime}, x_{2}\right) \\
+& x_{2}^{\prime}=x_{1} \cos \left(x_{2}^{\prime}, x_{1}\right)+x_{2} \cos \left(x_{2}^{\prime}, x_{2}\right)
+\end{aligned}
+$$
+
+Em 3D temos:
+
+$$
+\begin{aligned}
+& \left(\begin{array}{c}
+x_{1}^{\prime} \\
+x_{2}^{\prime} \\
+x_{3}^{\prime}
+\end{array}\right)=\Lambda\left(\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right) \\
+& \Lambda=\left(\begin{array}{lll}
+\lambda_{11} & \lambda_{12} & \lambda_{13} \\
+\lambda_{21} & \lambda_{42} & \lambda_{23} \\
+\lambda_{31} & \lambda_{42} & \lambda_{33}
+\end{array}\right) \\
+& x_{i}^{\prime}=\sum_{j=1}^{3} \lambda_{i j} x_{j}
+\end{aligned}
+$$
+
+A transformação inversa fica:
+
+$$
+x_{i}=\sum_{j=1}^{3} \lambda_{j i} x_{j}^{\prime}
+$$
+
+ou:
+
+$$
+\left(\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right)=\Lambda^{t}\left(\begin{array}{l}
+x_{1}^{\prime} \\
+x_{2}^{\prime} \\
+x_{3}^{\prime}
+\end{array}\right) ; \quad \lambda_{i j}^{t}=\lambda_{j i}
+$$
+
+$\Lambda^{t}$ é a matriz transposta.
+
+Se aplicarmos duas rotações em sequência:
+
+$$
+\begin{aligned}
+& x^{\prime}=\Lambda_{1} x \quad \text{e} \quad x^{\prime \prime}=\Lambda_{2} x^{\prime} \\
+& x^{\prime \prime}=\Lambda_{2} \Lambda_{1} x
+\end{aligned}
+$$
+
+Essas transformações não comutam:
+
+$$
+\Lambda_{1} \Lambda_{2} \neq \Lambda_{2} \Lambda_{1}
+$$
+
+Consideremos uma transformação de coordenadas:
+
+$$
+x_{i}^{\prime}=\sum_{j=1}^{3} \lambda_{i j} x_{j}
+$$
+
+que seja ortogonal; ou seja, os sistemas de coordenadas são ortogonais. Nesse caso, temos:
+
+$$
+\sum_{j} \lambda_{i j} \lambda_{k j}=\delta_{i k}
+$$
+
+O delta de Kronecker é definido como:
+
+$$
+\delta_{i k}=\left\{\begin{array}{lll}
+0, & \text { se } & i \neq k \\
+1, & \text { se } & i = k
+\end{array}\right.
+$$
+
+Uma matriz é dita ortogonal se:
+
+$$
+\Lambda^{t}=\Lambda^{-1}
+$$
+
+Uma grandeza escalar é invariante (não muda) sob uma transformação ortogonal.
+
+Um objeto $\vec{A}$, com componentes $(A_{1}, A_{2}, A_{3})$, é tal que suas componentes se transformam como:
+
+$$
+A_{i}^{\prime}=\sum_{j} \lambda_{i j} A_{j}
+$$
+
+Então esse objeto é um vetor.
+
+Vamos revisar algumas operações com escalares e vetores para fixar a notação.
+
+Produto escalar:
+
+$$
+\begin{aligned}
+\vec{A} \cdot \vec{B} & =\sum_{i} A_{i} B_{i}=A^{t} B \\
+& =\left(\begin{array}{lll}
+A_{1} & A_{2} & A_{3}
+\end{array}\right)\left(\begin{array}{l}
+B_{1} \\
+B_{2} \\
+B_{3}
+\end{array}\right) \\
+\vec{A} \cdot \vec{B} & =A B \cos (\vec{A}, \vec{B})
+\end{aligned}
+$$
+
+O produto escalar é, de fato, um escalar sob transformações de coordenadas:
+
+$$
+\begin{aligned}
+A_{i}^{\prime} & =\sum_{j} \lambda_{i j} A_{j} \quad \text{e} \quad B_{i}^{\prime}=\sum_{k} \lambda_{i k} B_{k} \\
+\vec{A}^{\prime} \cdot \vec{B}^{\prime} & =\sum_{i}\left(\sum_{j} \lambda_{i j} A_{j}\right)\left(\sum_{k} \lambda_{i k} B_{k}\right) \\
+& =\sum_{j k}\left(\sum_{i} \lambda_{i j} \lambda_{i k}\right) A_{j} B_{k} \\
+& =\sum_{j k} \delta_{j k} A_{j} B_{k} \\
+& =\sum_{j} A_{j} B_{j}=\vec{A} \cdot \vec{B}
+\end{aligned}
+$$
+
+O módulo é dado por:
+
+$$
+\begin{aligned}
+& C^{2}=\sum_{i} C_{i}^{2} \\
+& C^{2}=C_{1}^{2}+C_{2}^{2}+C_{3}^{2} \\
+& C^{2}=\left(A_{2} B_{3}-A_{3} B_{2}\right)^{2}+\left(A_{3} B_{1}-A_{1} B_{3}\right)^{2}+\left(A_{1} B_{2}-A_{2} B_{1}\right)^{2} \\
+& =\left(\sum_{i} A_{i}^{2}\right)\left(\sum_{j} B_{j}^{2}\right)-\left(\sum_{i} A_{i} B_{i}\right)^{2} \\
+& =A^{2} B^{2}-A^{2} B^{2} \cos ^{2}(\vec{A}, \vec{B}) \\
+& =A^{2} B^{2} \operatorname{sen}^{2}(\vec{A}, \vec{B})
+\end{aligned}
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*

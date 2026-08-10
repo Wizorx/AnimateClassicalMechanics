@@ -1,0 +1,12 @@
+[project]
+name = "livro-classica"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jsonschema>=4.26.0",
+    "jupyter>=1.1.1",
+    "manim>=0.20.1",
+    "manim-widget>=0.2.1",
+]

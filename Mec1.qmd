@@ -1,0 +1,366 @@
+---
+title: Mecânica de uma Partícula
+jupyter: python3
+---
+
+Leis de Newton
+
+1. Um corpo permanece em repouso ou em movimento retilíneo e uniforme, exceto sob ação de uma força.
+
+1. A taxa de variação temporal do momento linear de um corpo é igual à força resultante aplicada sobre ele.
+
+1. Se dois corpos exercem forças um sobre o outro, essas serão iguais em módulo, com mesma direção e sentidos opostos.
+
+1. → $\vec{F}=\overrightarrow{0}$
+
+1. → $\vec{F}=\frac{d \vec{p}}{d t}$; onde $\vec{p}=m \vec{v}$
+
+1. → $\vec{F}_{12}=-\vec{F}_{21}$
+
+$$
+\frac{d \vec{p}_{1}}{d t}=-\frac{d \vec{p}_{2}}{d t}
+$$
+
+Se as massas forem constantes,
+
+$$
+\begin{aligned}
+& m_{1} \frac{d \vec{v}_{1}}{d t}=-m_{2} \frac{d \vec{v}_{2}}{d t} \Rightarrow m_{1} \vec{a}_{1}=-m_{2} \vec{a}_{2} \\
+& \frac{m_{2}}{m_{1}}=-\frac{a_{1}}{a_{2}}
+\end{aligned}
+$$
+
+Assim, podemos definir $m_{1}$ como sendo uma unidade de massa. Assim, podemos medir a massa de um corpo através das acelerações quando ele interage com a massa de referência.  
+A massa que aparece na 2ª lei é chamada **massa inercial** porque ela é o parâmetro que determina a resposta do corpo a uma força, a sua inércia.  
+A resposta do corpo a um campo gravitacional é a força peso, que é dada por
+
+$$
+\vec{P}=m \vec{g}
+$$
+
+Essa massa é chamada **massa gravitacional** e, em princípio, não precisaria ser igual à massa inercial.  
+A ideia de que essas massas são iguais é conhecida como **princípio de equivalência**, e é a base da gravitação tanto de Newton quanto de Einstein.  
+A 3ª lei nos leva ao princípio da conservação do momento linear em um sistema isolado.
+
+$$
+\begin{aligned}
+& \quad \frac{d \vec{p}_{1}}{d t}=-\frac{d \vec{p}_{2}}{d t} \Rightarrow \frac{d}{d t}\left(\vec{p}_{1}+\vec{p}_{2}\right)=\overrightarrow{0} \\
+& \vec{p}_{1}+\vec{p}_{2}=\text { Constante! }
+\end{aligned}
+$$
+
+Os conceitos de posição e movimento são relativos, e é preciso escolher um sistema ao qual atrelamos todas as observações: esse sistema é chamado de **referencial**. Em mecânica Newtoniana, é comum associar um referencial a um sistema de coordenadas e um relógio.  
+Mas repare que podemos escolher diferentes sistemas de coordenadas para um mesmo sistema de referência. Um referencial no qual um corpo está em repouso ou em MRU é um **referencial inercial**.  
+Dado um referencial inercial, qualquer outro em movimento retilíneo e uniforme com respeito a ele também é inercial.  
+A equação diferencial cuja solução fornece a posição da partícula em função do tempo é chamada **equação de movimento** do sistema. Ela pode ser obtida a partir da 2ª lei de Newton.
+
+$$
+\vec{F}=\frac{d \vec{p}}{d t}=\frac{d}{d t}(m \vec{v})
+$$
+
+Se $m$ = cte,
+
+$$
+\vec{F}=m \frac{d \vec{v}}{d t}=m \frac{d^{2} \vec{r}}{d t^{2}}
+$$
+
+É uma equação diferencial ordinária de segunda ordem, que pode ser resolvida quando conhecida a função
+
+$$
+\vec{F}=\vec{F}(\vec{r}, \vec{v}, t)
+$$
+
+e dadas as condições iniciais:
+
+$$
+\vec{r}\left(t_{0}\right),\ \vec{v}\left(t_{0}\right)
+$$
+
+onde $t_{0}$ é um instante qualquer, conhecido.  
+Vamos relembrar um problema clássico: um bloco deslizando em plano inclinado.  
+Consideraremos primeiramente o caso sem atrito.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+A força resultante é dada por
+
+$$
+\vec{F}_{R}=\vec{F}_{g}+\vec{N}=m \frac{d^{2} \vec{r}}{d t^{2}}
+$$
+
+Decompondo a equação em termos do sistema de coordenadas indicado, temos:  
+Na direção $y$ :
+
+- $-F_{g} \cos \theta+N=0$
+
+Na direção $x$ :
+
+$$
+\begin{gathered}
+F_{g} \operatorname{sen} \theta=m \frac{d^{2} x}{d t^{2}} \\
+\frac{d^{2} x}{d t^{2}}=\frac{m g \operatorname{sen} \theta}{m}=g \sin \theta
+\end{gathered}
+$$
+
+Considerando que o campo gravitacional é uniforme, $g$ é constante. Logo, a aceleração do bloco é constante.  
+Podemos obter a velocidade do bloco, a partir do repouso:
+
+$$
+\begin{aligned}
+& \frac{d^{2} x}{d t^{2}}=g \operatorname{sen} \theta \quad \times 2\frac{d x}{d t} \\
+& 2 \frac{d x}{d t} \frac{d^{2} x}{d t^{2}}=2 \frac{d x}{d t} g \operatorname{sen} \theta \\
+& \frac{d}{d t}\left[\left(\frac{d x}{d t}\right)^{2}\right]=2 g \sin \theta \frac{d x}{d t} \\
+& \int_{0}^{v^{2}} d\left(v^{2}\right)=2 g \sin \theta \int_{0}^{x} d x^{\prime} \\
+& x(0)=v(0)=0 \\
+& v^{2}=2 g \sin \theta\, x \\
+& v=\sqrt{2 g \sin \theta\, x}
+\end{aligned}
+$$
+
+Se existe atrito, caracterizado por um coeficiente de atrito estático $\mu_{s}$:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+A força de atrito estático tem intensidade máxima
+
+$$
+f=\mu_{s} N
+$$
+
+Com isso, temos:  
+Na direção $y$ :
+
+- $-F_{g} \cos \theta+N=0$
+
+Na direção $x$ :
+
+- $-f+F_{g} \operatorname{sen} \theta=m \frac{d^{2} x}{d t^{2}}$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+O bloco permanecerá em repouso enquanto $f$ equilibrar a componente do peso, mas $f \leqslant \mu_{s} N$. Logo, o bloco entrará em movimento se
+
+$$
+F_{g} \sin \theta>\mu_{s} N=\mu_{s} F_{g} \cos \theta
+$$
+
+Na situação limite:
+
+$$
+\begin{gathered}
+-\mu_{s} F_{g} \cos \theta+F_{g} \sin \theta=0 \\
+\operatorname{sen} \theta-\mu_{s} \cos \theta=0 \\
+\tan \theta=\mu_{s}
+\end{gathered}
+$$
+
+Portanto, se  
+$\theta \geqslant \operatorname{Arctan}\left(\mu_{s}\right)$  
+o bloco entrará em movimento, com $f=\mu_{k} N$, onde $\mu_{k}$ é o coeficiente de atrito cinético.
+
+$$
+\begin{aligned}
+& -f+F_{g} \sin \theta=m \frac{d^{2} x}{d t^{2}} \\
+& -\mu_{k} m g \cos \theta+m g \sin \theta=m \frac{d^{2} x}{d t^{2}} \div m \\
+& \frac{d^{2} x}{d t^{2}}=g\left(\operatorname{sen} \theta-\mu_{k} \cos \theta\right)
+\end{aligned}
+$$
+
+Queda livre com resistência do ar. Nesse caso, a força resultante será
+
+$$
+\vec{F}_{R}=\vec{F}_{g}+\vec{F}_{r}
+$$
+
+No regime de baixas velocidades, é uma boa aproximação considerar
+
+$$
+\vec{F}_{r}=\vec{F}_{r}(\vec{v}),\ \text { onde } F_{r} \propto v^{n}
+$$
+
+Nessa aproximação,
+
+$$
+\vec{F}_{R}=m \vec{g}-m k v^{n} \hat{v}
+$$
+
+onde $\hat{v}=\frac{\vec{v}}{v}$ é o unitário na direção da velocidade, e $k$ é uma constante.  
+Para velocidades baixas (menores que a do som), $n$ pode ser considerado igual a 1. Para velocidades acima da do som, $n=2$ é uma aproximação melhor.  
+Um resultado bastante usado em balística é a equação de Prandtl, onde a resistência do ar (ou arrasto) é dada por
+
+$$
+F_{r}=\frac{1}{2} c_{w} \rho A v^{2}
+$$
+
+onde $C_{w}$ é o coeficiente de arrasto, $\rho$ a densidade do ar e $A$ a área da seção transversal à velocidade do corpo.  
+Vamos considerar o caso simples de um projétil em um movimento horizontal, com resistência proporcional à velocidade:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Integrando,
+
+$$
+\begin{aligned}
+& \frac{d x}{d t}=v_{0} e^{-k t} \Rightarrow \int_{0}^{x} d x^{\prime}=v_{0} \int_{0}^{t} e^{-k t} d t \\
+& x(t)=-\frac{v_{0}}{k} e^{-k t}+\frac{v_{0}}{k}=\frac{v_{0}}{k}\left(1-e^{-k t}\right)
+\end{aligned}
+$$
+
+A velocidade em função do deslocamento fica
+
+$$
+\begin{aligned}
+& \frac{d v}{d x}=\frac{d v}{d t} \frac{d t}{d x}=\frac{1}{v} \frac{d v}{d t} \Rightarrow v \frac{d v}{d x}=\frac{d v}{d t}=-k v \\
+& \frac{d v}{d x}=-k \Rightarrow v(x)=v_{0}-k x
+\end{aligned}
+$$
+
+Vamos considerar um movimento com resistência, na vertical:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\vec{F}_{R}=\vec{F}_{g}+\vec{F}_{r}
+$$
+
+na direção $y$ :
+
+$$
+\begin{aligned}
+& F_{R}=-m g-k m v \\
+& m \frac{d v}{d t}=-m g-k m v \Rightarrow \frac{d v}{d t}=-g-k v \\
+& \int_{v_{0}}^{v} \frac{d v}{g+k v}=-\int_{0}^{t} d t \\
+& u=g+k v,\ d u=k d v \\
+& \int_{v_{0}}^{v} \frac{d v}{g+k v}=\frac{1}{k} \int_{g+k v_{0}}^{g+k v} \frac{d u}{u}=\frac{1}{k} \ln \left(\frac{g+k v}{g+k v_{0}}\right)=-t \\
+& (g+k v)=\left(g+k v_{0}\right) e^{-k t} \\
+& k v=\left(g+k v_{0}\right) e^{-k t}-g \\
+& v=\frac{\left(g+k v_{0}\right)}{k} e^{-k t}-\frac{g}{k}
+\end{aligned}
+$$
+
+Integrando novamente,
+
+$$
+\begin{aligned}
+& \frac{d y}{d t}=\frac{\left(g+k v_{0}\right)}{k} e^{-k t}-\frac{g}{k} \\
+& \left(y-y_{0}\right)=\frac{\left(g+k v_{0}\right)}{k^{2}}\left(1-e^{-k t}\right)-\frac{g t}{k} \\
+& y=\frac{\left(g+k v_{0}\right)}{k^{2}}\left(1-e^{-k t}\right)-\frac{g t}{k}+y_{0}
+\end{aligned}
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$v_{t}=\frac{g}{k}$  
+É a velocidade terminal.  
+Vamos considerar um projétil em duas dimensões. Primeiro, sem resistência do ar.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\vec{F}_{R}=m \vec{g}
+$$
+
+Na direção $x$ :
+
+$$
+0=m \frac{d^{2} x}{d t^{2}}
+$$
+
+Na direção $y$ :
+
+- $m g=m \frac{d^{2} y}{d t^{2}}$
+
+Considerando $x(t=0)=y(t=0)=0$,
+
+$$
+\frac{d^{2} x}{d t^{2}}=0,\quad \frac{d x}{d t}=v_{0} \cos \theta,\quad x(t)=\left(v_{0} \cos \theta\right) t
+$$
+
+$$
+\frac{d^{2} y}{d t^{2}}=-g,\quad \frac{d y}{d t}=-g t+v_{0} \operatorname{sen} \theta,\quad y(t)=-\frac{g t^{2}}{2}+\left(v_{0} \operatorname{sen} \theta\right) t
+$$
+
+$v=\sqrt{\left(\frac{d x}{d t}\right)^{2}+\left(\frac{d y}{d t}\right)^{2}}=\left[v_{0}^{2} \cos ^{2} \theta+\left(v_{0} \sin \theta-g t\right)^{2}\right]^{1 / 2}$  
+$v=\left[v_{0}^{2} \cos ^{2} \theta+v_{0}^{2} \sin ^{2} \theta+g^{2} t^{2}-2 v_{0} g t \sin \theta\right]^{1 / 2}$  
+$v=\left[v_{0}^{2}+g^{2} t^{2}-2 v_{0} g t \operatorname{sen} \theta\right]^{1 / 2}$  
+$r=\left[x^{2}+y^{2}\right]=\left[v_{0}^{2} t^{2} \cos ^{2} \theta+\left(v_{0} t \sin \theta-\frac{g t^{2}}{2}\right)^{2}\right]^{1 / 2}$  
+$r=\left[v_{0}^{2} t^{2} \cos ^{2} \theta+v_{0}^{2} t^{2} \sin ^{2} \theta+\frac{g^{2} t^{4}}{4}-v_{0} g t^{3} \sin \theta\right]^{1 / 2}$
+
+$$
+r=\left[v_{0}^{2} t^{2}+\frac{g^{2} t^{4}}{4}-v_{0} g t^{3} \sin \theta\right]^{1 / 2}
+$$
+
+O alcance é dado quando $y=0$:
+
+$$
+\begin{aligned}
+& -\frac{g t^{2}}{2}+v_{0} \sin \theta\, t=0 \Rightarrow t\left(v_{0} \sin \theta-\frac{g t}{2}\right)=0 \\
+& t_{1}=0,\quad t_{2}=\frac{2 v_{0} \sin \theta}{g}
+\end{aligned}
+$$
+
+Em $t_{2}$ temos a posição horizontal:
+
+$$
+x_{2}=v_{0} t_{2} \cos \theta=\frac{2 v_{0}^{2}}{g} \operatorname{sen} \theta \cos \theta=\frac{v_{0}^{2}}{g} \operatorname{sen}(2 \theta)
+$$
+
+Vamos agora considerar resistência do ar, mas mantendo as mesmas condições iniciais:
+
+$$
+\begin{aligned}
+& x(t=0)=y(t=0)=0 \\
+& v_{x_{0}}=\frac{d x}{d t}(t=0)=v_{0} \cos \theta \\
+& v_{y_{0}}=\frac{d y}{d t}(t=0)=v_{0} \operatorname{sen} \theta
+\end{aligned}
+$$
+
+Nesse caso, as equações de movimento são
+
+$$
+m \frac{d^{2} x}{d t^{2}}=-k m \frac{d x}{d t}
+\quad \text {ou} \quad
+\frac{d v_{x}}{d t}=-k v_{x}
+$$
+
+e
+
+$$
+m \frac{d^{2} y}{d t^{2}}=-k m \frac{d y}{d t}-m g
+\quad \text {ou} \quad
+\frac{d v_{y}}{d t}=-k v_{y}-g
+$$
+
+Novamente, as soluções podem ser escritas como
+
+$$
+\begin{aligned}
+& x(t)=\frac{v_{x_{0}}}{k}\left(1-e^{-k t}\right) \\
+& y(t)=-\frac{g t}{k}+\frac{k v_{y_{0}}+g}{k^{2}}\left(1-e^{-k t}\right)
+\end{aligned}
+$$
+
+Essas equações fornecem a trajetória, de forma paramétrica. Com isso, podemos construir um gráfico:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+

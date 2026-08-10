@@ -1,0 +1,1326 @@
+---
+title: Forças Centrais e Gravitação
+jupyter: python3
+---
+
+A lei da gravitação universal de Newton pode ser escrita como
+
+$$
+\vec{F}_{g}=-G \frac{m M}{r^{2}} \hat{r}
+$$
+
+onde $\vec{r}$ é o vetor posição da partícula de massa $m$ em relação à partícula de massa $M$.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+O valor atual para a constante de gravitação é
+
+$$
+\begin{aligned}
+G= & (6,67430 \pm 0,00015) \times 10^{-11} \, \mathrm{N\,m}^{2} / \mathrm{kg}^{2} \\
+\end{aligned}
+$$
+
+Essa lei estabelece a força entre duas partículas!  
+Para determinar a força sobre uma partícula, devido a um corpo extenso, precisamos considerar um elemento suficientemente pequeno de volume e integrar:
+
+$$
+\begin{aligned}
+& \quad d \vec{F}_{g}=-\frac{G m d M}{r^{2}} \hat{r}=-G m \frac{\rho d V \hat{r}}{r^{2}} \\
+& \vec{F}_{g}=-G m \int_{V} \frac{\rho \hat{r} d V^{\prime}}{r^{2}} ; \quad \rho:=\frac{d m}{d V}
+\end{aligned}
+$$
+
+Se, ao invés de uma partícula, tivermos outro corpo extenso, temos:
+
+$$
+\overrightarrow{F_{g}}=-G \int_{V_{1}} \int_{V_{1}} \frac{\rho_{1} \rho_{2} \hat{r}}{r^{2}} d V_{1}^{\prime} d V_{2}^{\prime}
+$$
+
+O campo gravitacional é a força por unidade de massa sobre uma partícula:
+
+$$
+\vec{g}=\frac{\overrightarrow{F g}}{m}=-\frac{G M}{r^{2}} \hat{r}
+$$
+
+No caso de uma partícula. Ou, no caso de um corpo extenso,
+
+$$
+\vec{g}=-G \int_{V} \frac{\rho \hat{r} d V^{\prime}}{r^{2}}
+$$
+
+O campo gravitacional é conservativo, ou seja, o trabalho da força gravitacional é independente do caminho,
+
+$$
+W_{a \rightarrow b}=\int_{a}^{b} \vec{F} \cdot \overrightarrow{d l}=-\left(U_{b}-U_{a}\right)
+$$
+
+onde $U$ é a energia potencial gravitacional.  
+Podemos investigar o trabalho por unidade de massa:
+
+$$
+W_{a \rightarrow b}=\int_{a}^{b} \vec{g} \cdot \overrightarrow{d l}=-\left(\Phi_{b}-\Phi_{a}\right)
+$$
+
+onde $\Phi=\frac{U}{m}$ é o potencial gravitacional, definido como a energia potencial por unidade de massa.
+
+$$
+\delta \vec{g} \cdot \vec{d}=0 \Rightarrow \vec{\nabla} \times \vec{g}=\overrightarrow{0}
+$$
+
+Um campo irrotacional sempre pode ser escrito como um gradiente:
+
+$$
+\vec{g}=-\vec{\nabla} \Phi
+$$
+
+Para uma partícula, temos:
+
+$$
+\vec{\nabla} \Phi=\frac{G M}{r^{2}} \hat{r}
+$$
+
+Mas sabemos que o gradiente em coordenadas esféricas é:
+
+$$
+\vec{\nabla} \Phi=\frac{\partial \Phi}{\partial r} \hat{r}+\frac{1}{r}\frac{\partial \Phi}{\partial \theta} \hat{\theta}+\frac{1}{r \sin \theta}\frac{\partial \Phi}{\partial \phi} \hat{\phi}
+$$
+
+Logo,
+
+$$
+\frac{\partial \Phi}{\partial r}=\frac{G M}{r^{2}} \Rightarrow \Phi=-\frac{G M}{r}
+$$
+
+O valor absoluto de $\Phi$ não tem significado físico, apenas a sua variação! Podemos escolher onde $\Phi=0$. Se a distribuição de massa está em um volume finito, podemos escolher $\Phi(r \rightarrow \infty)=0$.  
+Novamente, para uma distribuição de massa,
+
+$$
+\Phi=-G \int_{V} \frac{\rho d V^{\prime}}{r^{\prime}}
+$$
+
+Podemos encontrar um análogo à lei de Gauss do eletromagnetismo, calculando o fluxo do campo gravitacional através de uma superfície fechada:
+
+$$
+\oint_{s} \vec{g} \cdot \hat{n} d A
+$$
+
+onde $\hat{n}$ é ortogonal à superfície, orientado para fora. Considerando que existe apenas uma partícula no interior,
+
+$$
+\vec{g}=-\frac{G M}{r^{2}} \hat{r}
+$$
+
+$$
+\vec{g} \cdot \hat{m}=-\frac{G M}{r^{2}} \hat{r} \cdot \hat{m}=-\frac{G M}{r^{2}} \cos \alpha
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\oint_{s} \vec{g} \cdot \hat{m} d A=-G M \oint_{s} \frac{\cos \alpha}{r^{2}} d A
+$$
+
+$\cos\alpha\, dA$ é a projeção do elemento de superfície sobre uma esfera. Mas o elemento de área de uma esfera é $\cos\alpha\, dA=r^{2}\sin\theta\, d\theta\, d\phi$, então  
+$\oint_{s} \vec{g} \cdot \hat{n}\, dA=-G M \oint_{s} \frac{r^{2} \sin \theta\, d\theta\, d\phi}{r^{2}}=-4\pi G M$.  
+Esse resultado não depende da posição da partícula no interior. Logo, para um conjunto de partículas,
+
+$$
+\begin{aligned}
+\vec{g}_{i} & =-\frac{G M}{r_{i}^{2}} \hat{r}_{i} ; \vec{g}=\sum_{i} \vec{g}_{i} \\
+\oint_{s} \vec{g} \cdot \hat{m} d A & =\sum_{i} \oint_{s} \vec{g}_{i} \cdot \hat{m} d A=-4 \pi G \sum_{i} M_{i}
+\end{aligned}
+$$
+
+Da mesma maneira, para uma distribuição de massa qualquer,
+
+$$
+\dot{d g}=-\frac{G d m \hat{r}_{i}}{r^{2}}=-G \frac{\rho d V}{r^{2}} \hat{r}
+$$
+
+$$
+\begin{aligned}
+& \vec{g}=\int \vec{d} \vec{g}=-G \int \frac{d m}{r^{2}} \hat{r} \\
+& \oint_{s} \vec{g} \cdot \hat{m} d A=\oint_{s} \int d \vec{g} \cdot \hat{m} d A=\int \oint_{s} d \vec{g} \cdot \hat{m} d A \\
+& \oint_{s} \vec{g} \cdot \hat{m} d A=-4 \pi G \int d m=-4 \pi G \int_{V} \rho d V \\
+& \oint_{s} \vec{g} \cdot \hat{m} d A=-4 \pi G M_{T}
+\end{aligned}
+$$
+
+onde $M_T$ é a massa total no interior da superfície. Usando o teorema de Gauss:
+
+$$
+\oint_{S=\delta V} \vec{g} \cdot \hat{m} d A=\int_{V} \vec{\nabla} \cdot \vec{g} d V
+$$
+
+Com isso, temos que
+
+$$
+\int_{V} \vec{\nabla} \cdot \vec{g} d V=-4 \pi G \int_{V} \rho d V
+$$
+
+para qualquer volume. Então,
+
+$$
+\vec{\nabla} \cdot \vec{g}=-4 \pi G \rho
+$$
+
+Escrevendo em termos do potencial,
+
+$$
+\vec{g}=-\vec{\nabla} \Phi
+$$
+
+Temos que
+
+$$
+\vec{\nabla} \cdot \vec{\nabla} \Phi=4 \pi G \rho
+$$
+
+onde temos o operador laplaciano $\nabla^{2}=\vec{\nabla}\cdot\vec{\nabla}$. Essa é a equação de Poisson.  
+No vácuo, $\rho=0$, e a equação se reduz à equação de Laplace:
+
+$$
+\nabla^{2} \Phi=0
+$$
+
+De maneira análoga ao eletromagnetismo, podemos ilustrar o campo e o potencial usando linhas de campo e superfícies equipotenciais.  
+Linhas de campo são linhas orientadas tangentes ao campo $\vec{g}$ em cada ponto e com o sentido de $\vec{g}$. Superfícies equipotenciais são superfícies em que o potencial $\Phi$ é constante.  
+As linhas de campo são ortogonais às superfícies equipotenciais em cada ponto.  
+O trabalho associado à força gravitacional em qualquer caminho sobre uma equipotencial é zero!  
+Para duas partículas com massas iguais, temos:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Vamos calcular o potencial devido a uma casca esférica homogênea.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Sabemos que o potencial é dado por
+
+$$
+\Phi=-G \int_{V} \frac{\rho\left(\vec{r}^{\prime}\right)}{r} d V^{\prime}
+$$
+
+$d V^{\prime}=r^{\prime 2}\sin\theta\, d\theta\, d\phi\, d r^{\prime}$ é um elemento da casca, em coordenadas esféricas.  
+Se a distribuição de massa é homogênea, $\rho=\text{cte}$, então
+
+$$
+\begin{aligned}
+& \Phi=-G \rho \int_{b}^{a} \int_{0}^{2 \pi} \int_{0}^{\pi} \frac{r^{2} \operatorname{sen} \theta d \theta d \phi d r^{\prime}}{r} \\
+& \Phi=-2 \pi G \rho \int_{b}^{a} \int_{0}^{\pi} \frac{r^{2} \operatorname{sen} \theta d \theta d r^{\prime}}{r} \\
+& r^{2}=r^{\prime 2}+R^{2}-2 r^{\prime} R \cos \theta
+\end{aligned}
+$$
+
+Diferenciando esta expressão para um $\vec{r}^{\prime}$ dado,  
+$2r\,dr=2r^{\prime}R\sin\theta\,d\theta$  
+$\frac{\sin\theta}{r}\,d\theta=\frac{dr}{r^{\prime}R}$  
+$\Phi=-2\pi G\rho\int_{b}^{a}\int_{r_{\text{min}}}^{r_{\text{max}}} r^{\prime 2}\,dr^{\prime}\,\frac{dr}{r^{\prime}R}$
+
+Se o ponto $P$ estiver fora, como na figura,
+
+$$
+\begin{aligned}
+& r_{\text {min}}=R-r^{\prime} \ \text{e}\ r_{\text {max}}=R+r^{\prime} \\
+& \Phi=-\frac{2 \pi G}{R} \rho \int_{b}^{a} r^{\prime} d r^{\prime} \int_{R-r^{\prime}}^{R+r^{\prime}} d r \quad(R>a) \\
+& \Phi=-\frac{2 \pi}{R} G_{\rho} \int_{b}^{a} r^{\prime}\left[\left(R+r^{\prime}\right)-\left(R-r^{\prime}\right)\right] d r^{\prime} \\
+& \Phi=-\frac{2 \pi G}{R} \rho \int_{b}^{a} 2 r^{\prime^{2}} d r^{\prime} \\
+& \Phi=-\left.\frac{4 \pi G}{R} \rho \frac{r^{\prime^{3}}}{3}\right|_{b} ^{a}=-\frac{4 \pi G}{3 R} \rho\left(a^{3}-b^{3}\right)
+\end{aligned}
+$$
+
+Mas, como a densidade é constante,
+
+$$
+M=\rho V=\frac{4 \pi}{3} \rho\left(a^{3}-b^{3}\right)
+$$
+
+Logo,  
+$\Phi=-\frac{G M}{R}$, que é idêntico ao potencial de uma partícula de massa $M$ colocada no centro.  
+Se o ponto $P$ estiver dentro, $R<b$,
+
+$$
+r_{\text {min}}=r^{\prime}-R \ \text{e}\ r_{\text {max}}=r^{\prime}+R
+$$
+
+$$
+\begin{aligned}
+& \Phi=-\frac{2 \pi G}{R} \rho \int_{b}^{a} r^{\prime} d r^{\prime} \int_{r^{\prime}-R}^{r^{\prime}+R} d r \quad(R<b) \\
+& \Phi=-\frac{2 \pi G}{R} \rho \int_{b}^{a} r^{\prime}\left[\left(r^{\prime}+R\right)-\left(r^{\prime}-R\right)\right] d r^{\prime}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+& \Phi=-\frac{4 \pi G \rho}{R} \int_{b}^{a} r^{\prime} R d r^{\prime}=-\left.4 \pi C_{\rho} \frac{r^{\prime 2}}{2}\right|_{b} ^{a} \\
+& \Phi=-2 \pi G \rho\left(a^{2}-b^{2}\right), \text { consiarte! }
+\end{aligned}
+$$
+
+Se o ponto $P$ pertence à casca,
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Podemos considerar que $P$ está fora da casca de raio $b$ a $R$ e dentro da casca de $R$ a $a$.
+
+$$
+\begin{aligned}
+& \Phi=\Phi_{\text {FORS }}+\Phi_{\text {DFNMO }} \\
+& \bar{\Phi}=-\frac{4 \pi G}{3 R} \rho\left(R^{3}-b^{3}\right)-2 \pi G \rho\left(a^{2}-R^{2}\right) \\
+& \Phi=-4 \pi G \rho\left(\frac{a^{2}}{2}-\frac{b^{3}}{3 R}-\frac{R^{2}}{6}\right)
+\end{aligned}
+$$
+
+Podemos obter o campo gravitacional usando
+
+$$
+\begin{aligned}
+& \vec{g}=-\frac{d \Phi}{d R} \hat{R} \\
+& \vec{g}=\vec{0}, \quad R<b \\
+& \quad \frac{4 \pi G \rho}{3}\left(\frac{b^{3}}{R^{2}}-R\right) \hat{R}, \quad b<R<a \\
+& -\frac{G M}{R^{2}} \hat{R}, \quad R>a
+\end{aligned}
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Do lado de fora, tudo se passa como se houvesse uma única partícula no centro!  
+Como a distribuição de massa tem simetria, podemos obter o campo via lei de Gauss e então obter o potencial $\Phi_{a}-\Phi_{b}=\int_{a}^{b} \vec{g} \cdot \overrightarrow{d l}$.  
+Simetria esférica: $\rho(\vec{r})=\rho(r)$, não depende dos ângulos $\theta$ e $\phi$. Nesse caso, é razoável esperar que o campo exiba a mesma simetria:
+
+$$
+\vec{g}(\vec{r})=g(r) \hat{r}
+$$
+
+Aproveitando a simetria, podemos escolher uma superfície esférica ($r=\text{cte}$) concêntrica à casca.
+
+$$
+\oint \vec{g} \cdot \hat{m} d A=\int g(r) \hat{r} \cdot \hat{r} d A=g(r) 4 \pi r^{2}
+$$
+
+Se $r<b$, a massa no interior é zero.
+
+$$
+g(r) 4 \pi r^{2}=0 \Rightarrow \vec{g}=\overrightarrow{0}
+$$
+
+Se $b<r<a$, a massa é
+
+$$
+\begin{aligned}
+& M_{T}=\int \rho d V=\rho V=\frac{4 \pi}{3} \rho\left(r^{3}-b^{3}\right) \\
+& \oint \vec{g} \cdot \hat{m} d A=-4 \pi G M_{T} \\
+& g(r) 4 \pi r^{2}=-4 \pi G \frac{4 \pi}{3} \rho\left(r^{3}-b^{3}\right) \\
+& g(r)=-\frac{4 \pi G \rho}{3}\left(r-\frac{b^{3}}{r^{2}}\right)
+\end{aligned}
+$$
+
+Se $r>a$, a massa é a massa da casca.
+
+$$
+\begin{aligned}
+& M_{T}=\frac{4 \pi}{3} \rho\left(a^{3}-b^{3}\right)=M \\
+& g(r) 4 \pi r^{2}=-4 \pi G M \\
+& g(r)=-\frac{G M}{r^{2}}
+\end{aligned}
+$$
+
+Para calcular o potencial, começando por fora ($r>a$),
+
+$\Phi(r)-\Phi(\infty)=\int_{r}^{\infty} \vec{g} \cdot \overrightarrow{d l}=\int_{r}^{\infty}\left(-\frac{G M}{r^{2}} \hat{r}\right) \cdot(d r \hat{r})$.
+
+Escolhendo $\Phi(\infty)=0$:
+
+$$
+\Phi(r)=-G M \int_{r}^{\infty} \frac{d r}{r^{2}}=-\frac{G M}{r}
+$$
+
+Para $b<r<a$,
+
+$$
+\begin{aligned}
+& \Phi(r)-\Phi(a)=\int_{r}^{a}-\frac{4 \pi G}{3} \rho\left(r-\frac{b^{3}}{r^{2}}\right) \hat{r} \cdot(d r \hat{r}) \\
+& \Phi(r)+\frac{G M}{a}=-\frac{4 \pi G \rho}{3} \int_{r}^{a}\left(r-\frac{b^{3}}{r^{2}}\right) d r \\
+& \Phi(r)=-\frac{4 \pi G \rho}{3}\left[\frac{r^{2}}{2}+\frac{b^{3}}{r}\right]_{r}^{a}-\frac{G M}{a} \\
+& \left.\Phi(r)=-\frac{4 \pi G \rho\left[\frac{a^{2}}{3}+\frac{b^{3}}{a}\right.}{a}-\frac{r^{2}}{2}-\frac{b^{3}}{r}\right] \\
+& -\frac{G}{a} \frac{4 \pi}{3} \rho\left(a^{3}-b^{3}\right) \\
+& \Phi(r)=-\frac{4 \pi G \rho}{3}\left(\frac{a^{2}}{2}+\frac{b^{3}}{a}-\frac{r^{2}}{2}-\frac{b^{3}}{r}+a^{2}-\frac{b^{3}}{a}\right) \\
+& \Phi(r)=-\frac{4 \pi G \rho}{3}\left(\frac{3 a^{2}}{2}-\frac{b^{3}}{r}-\frac{r^{2}}{2}\right) \\
+& \Phi(r)=-4 \pi G \rho\left(\frac{a^{2}}{2}-\frac{b^{3}}{3 r}-\frac{r^{2}}{6}\right)
+\end{aligned}
+$$
+
+Para $r<b$,
+
+## Marés
+
+As marés ocorrem devido à deformação de um corpo extenso sujeito a um campo gravitacional que varia apreciavelmente ao longo do seu volume.
+
+Vamos considerar, inicialmente, a Terra como sendo uma esfera com a superfície inteiramente coberta com água, e desprezar sua rotação.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$\vec{r}=$ posição da partícula em relação ao centro da Terra
+
+$\vec{r}_{m}^{\prime}=$ posição da partícula em relação à origem
+
+$\vec{R}=$ posição da partícula em relação ao centro da Lua
+
+$\vec{r}_{T}^{\prime}=$ posição do centro de massa da Terra em relação à origem
+
+$\vec{D}=$ posição do centro de massa da Terra em relação ao centro da Lua
+
+A força sobre a partícula, no referencial $S^{\prime}$, é
+
+$\vec{F}_{m}=-\frac{G M_{T} m}{r^{2}} \hat{r}-\frac{G M_{L} m}{R^{2}} \hat{R}=m \frac{d^{2}}{d t^{2}} \vec{r}_{m}^{\prime}$.
+
+A força sobre o centro de massa da Terra, devido à Lua, é
+
+$\vec{F}_{T}=-\frac{G M_{T} M_{L}}{D^{2}} \hat{D}=M_{T} \frac{d^{2}}{d t^{2}} \vec{r}_{T}^{\prime}$.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\begin{aligned}
+\vec{r} & =\vec{r}_{m}^{\prime}-\vec{r}_{T}^{\prime} \\
+\frac{d^{2}}{d t^{2}} \vec{r} & =\frac{d^{2} \vec{r}_{m}^{\prime}}{d t^{2}}-\frac{d^{2}}{d t^{2}} \vec{r}_{T}^{\prime}=-\frac{G M_{T}}{r^{2}} \hat{r}-\frac{G M_{L}}{R^{2}} \hat{R}+\frac{G M_{L}}{D^{2}} \widehat{D} \\
+\frac{d^{2}}{d t^{2}} \vec{r} & =-\frac{G M_{T}}{r^{2}} \hat{r}-\underbrace{G M_{L}\left(\frac{\widehat{R}}{R^{2}}-\frac{\widehat{D}}{D^{2}}\right)}_{\text {ACELCRAGDS DEVIDSA MARE- }}
+\end{aligned}
+$$
+
+A força de maré, então, é
+
+$$
+\vec{F}_{M}=-G M_{L} m\left(\frac{\hat{R}}{R^{2}}-\frac{\hat{D}}{D^{2}}\right)
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+As componentes $x$ e $y$ da força podem ser calculadas em termos de $\theta$:
+
+$$
+\begin{aligned}
+& \vec{r}=\vec{R}-\vec{D} \\
+& \hat{R}=\cos \alpha \hat{x}+\sin \alpha \hat{y} \\
+& r^{2}=R^{2}+D^{2}-2 R D \cos \alpha \Rightarrow \cos \alpha=\frac{R^{2}+D^{2}-r^{2}}{2 R D} \\
+& \frac{r}{\operatorname{sen} \alpha}=\frac{R}{\operatorname{ctn}(\pi-\theta)} \Rightarrow \operatorname{sen} \alpha=\frac{r}{D} \sin (\pi-\theta)=\frac{r}{D} \operatorname{sen} \theta
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+& \left.\left\lvert\, \begin{array}{l}
+\cos \alpha=\frac{R}{2 D}+\frac{D}{2 R}-\frac{r^{2}}{2 R D} \\
+\operatorname{sen} \alpha=\frac{r}{D} \sin \theta \\
+\hat{R}=\left(\frac{R}{2 D}+\frac{D}{2 R}-\frac{r^{2}}{2 D R}\right) \hat{x}+\frac{r}{D} \sin \theta \hat{y} \\
+\hat{D} \equiv \hat{x} \\
+F_{M x}=-G M_{L} m\left[\frac{1}{R^{2}}\left(\frac{R}{2 D}+\frac{D}{2 R}-\frac{r^{2}}{2 D R}\right)-\frac{1}{D^{2}}\right] \\
+F_{M x}=-\frac{G M_{L} m}{D^{2}}\left[\frac{D}{2 R}+\frac{D^{3}}{2 R^{3}}-\frac{r^{2} D}{2 R^{3}}-1\right] \\
+R^{2}=r^{2}+D^{2}-2 r D \cos (\pi-\theta)=r^{2}+D^{2}+2 r D \cos \theta \\
+\cos \theta=\frac{R^{2}}{2 r D}-\frac{r^{2}}{2 r D}-\frac{D^{2}}{2 r D}=\frac{R^{2}}{2 r D}-\frac{r}{2 D}-\frac{D}{2 r} \\
+\cos \theta=\frac{R}{r}\left(\frac{R}{2 D}-\frac{r^{2}}{2 R D}-\frac{D}{2 R}\right) \\
+\cos \theta=\frac{R}{r}\left(\frac{R}{2 D}-\frac{r^{2}}{2 R D}-\frac{D}{2 R}+\frac{D}{2 R}-\frac{D}{2 R}\right) \\
+\cos \theta=\frac{R}{r}\left(\frac{R}{2 D}+\frac{D}{2 R}-\frac{r^{2}}{2 R D}-\frac{D}{R}\right) \\
+\cos \theta=\frac{R}{r}\left(\cos \alpha-\frac{D}{R}\right) \\
+\cos \alpha=\frac{r}{R} \cos \theta+\frac{D}{R}
+\end{array}\right.\right\}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+& \hat{R}=\cos \alpha \hat{x}+\sin \alpha \hat{y} \\
+& \hat{R}=\left(\frac{r}{R} \cos \theta+\frac{D}{R}\right) \hat{x}+\frac{r}{D} \sin \theta \hat{y} \\
+& F_{M x}=-G M_{L} m\left[\frac{1}{R^{2}}\left(\frac{r}{R} \cos \theta+\frac{D}{R}\right)-\frac{1}{D^{2}}\right] \\
+& F_{M x}=-G M_{L m}\left[\frac{r}{R^{3}} \cos \theta+\frac{D}{R^{3}}-\frac{1}{D^{2}}\right] \\
+& R^{2}=r^{2}+D^{2}+2 r D \cos \theta \\
+& R^{2}=D^{2}\left[1+\left(\frac{r}{D}\right)^{2}+2 \frac{r}{D} \cos \theta\right] \approx D^{2}\left[1+\frac{2 r}{D} \cos \theta\right] \\
+& \frac{1}{R^{2}} \cong \frac{1}{D^{2}}\left(\frac{1}{1+x}\right) \cdot \frac{1}{D^{3}} \\
+& \frac{1}{R^{3}}=\left(\frac{1}{R^{2}}\right)^{3 / 2} \cong\left[\frac{1}{D^{2}}\left(\frac{1}{1+x}\right)\right]^{3 / 2}=\frac{1}{D^{3}}(1+x)^{-3 / 2} \\
+& \frac{1}{R^{3}} \cong \frac{1}{D^{3}}\left(1-\frac{3}{2} x\right)=\frac{1}{D^{3}}\left(1-\frac{3 r}{D} \cos \theta\right) \\
+& F_{M x}=-\frac{G M_{L} m}{D^{3}}\left\{\frac { r } { D ^ { 3 } } \left(1-\frac{3 r \cos \theta}{D} \cos \theta+\frac{D}{D^{3}}\left(1-\frac{3 r \cos \theta}{D}\right)\right.\right. \\
+& \left.F_{M x}=-\frac{1}{D^{2}}\right\} \\
+& F_{M x}=-\frac{G M_{L m}}{D_{L m}}\left\{\frac{r}{D^{3}} \cos \theta-\frac{3 r^{2}}{D^{4}} \cos ^{2} \theta+\frac{1}{D^{2}}-\frac{3 r}{D^{3}} \cos \theta-\frac{1}{D^{2}}\right\}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+& F_{M x} \cong-\frac{G M_{L} m r}{D^{3}}(12 \cos \theta)=\frac{2 G M_{L} m r}{D^{3}} \cos \theta \\
+& F_{m y}=-G M_{L m}\left[\frac{1}{R^{2}}\left(\frac{r}{D} \operatorname{sen} \theta\right)\right]=-\frac{G M_{L} m r}{R^{2} D} \operatorname{sen} \theta \\
+& \frac{1}{R^{2}} \approx \frac{1}{D^{2}}\left(1+\frac{2 r}{D} \cos \theta\right) \\
+& F_{r y} \cong-\frac{G M_{L} m r}{D^{3}} \operatorname{sen} \theta
+\end{aligned}
+$$
+
+A distrubulas fon simethis cospernecs.  
+(b) Logo $\vec{g}=g(r) \hat{r}$ en coordendoy estíticas Com orgin no CENTIN DA casca.  
+ESCOLMOND UMAG SUPERRITIU ESFERICS CONCÊNTRIES, timos: $\hat{m} \equiv \hat{r}$$\oint \vec{g} \cdot \hat{m} d A=g(r) A$
+
+$$
+\oint \vec{\delta} \cdot \hat{m} d A=g(r 2) \frac{d}{3}\left(a^{3} z k^{3}\right)=g(r) A=\delta(r) 4 \pi r^{2}
+$$
+
+SE $r<b$  
+A hassa intinior é zeno
+
+$$
+g(r) 4 \pi r^{2}=0 \Rightarrow g(r)=0
+$$
+
+SE $b<r<a$
+
+$$
+M_{T}=\rho \frac{4 \pi}{3}\left(r^{3}-b^{3}\right)
+$$
+
+o~de $\rho=\frac{M}{V_{c}}=\frac{M}{\frac{4 \pi}{3}\left(a^{3}-b^{3}\right)}$
+
+$$
+M_{T}=M \frac{\left(r^{3}-b^{3}\right)}{\left(a^{3}-b^{3}\right)}
+$$
+
+$g(r) A \pi r^{2}=-4 \pi G M \frac{\left(r^{3}-b^{3}\right)}{\left(a^{3}-b^{3}\right)}$
+
+$$
+g(r)=\frac{-G M}{\left(a^{3}-b^{3}\right)}\left(r-\frac{b^{3}}{r^{2}}\right)
+$$
+
+Be
+
+$r>a$
+
+$4 \pi r^{2} g(r)=-4 \pi G M \Rightarrow g(r)=-\frac{G M}{r^{2}}$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+No equiliticio
+
+$$
+\begin{aligned}
+K x & =m g \\
+x & =\frac{m g}{K}
+\end{aligned}
+$$
+
+A Distôncis Do teto $E^{-} X+L=\frac{m g}{k}+L$  
+A eq. De revimente e-  
+$m \frac{d^{2} x}{d t^{2}}=-k x+m g \Rightarrow \frac{d^{2} x}{d t^{2}}+\omega_{0}^{2} x=m g, \omega_{0}^{2}=\frac{k}{m}$  
+EG. DIFF. DE $2 \cong$ ORDSM MOS blorogining.  
+A Sohlas thomogêret e-Das por  
+$x_{H}(t)=A \cos \left(\omega_{0} t+\phi\right)$
+
+- Soluces porticular E-  
+$x_{p}=C$  
+SUBSTITINDO ND EG-  
+$\omega_{0}^{2} C=m g \Rightarrow C=\frac{m g}{\omega_{0}^{2}}$  
+A solucest girme fico  
+$x(t)=A \cos \left(\omega_{0} t+\phi\right)+\frac{m g}{\omega_{0}^{2}}$
+
+## Forças centrais
+
+Vamos estudar com detalhe casos de interação em que a força entre dois corpos tem a direção da linha reta que une seus centros de massa.  
+Para estudar um sistema de duas partículas, precisaríamos monitorar 6 variáveis (as componentes dos vetores posição $\vec{r}_1$ e $\vec{r}_2$). Alternativamente, podemos monitorar a posição do centro de massa e as posições relativas das partículas!
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$\vec{r}=\vec{r}_{1}-\vec{r}_{2}$
+
+ESCOLHENDS A ORIGEN NO CENTRO DE HASSA, TEMOS QUE
+
+$$
+\vec{R}=\frac{m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}}{m_{1}+m_{2}}=\overrightarrow{0} \Rightarrow m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}=\overrightarrow{0}
+$$
+
+△ LEN DISSO, A POSICAS RECATUCC- $\vec{r}_{1}-\vec{r}_{2}=\vec{r}$  
+MULTIPLICANDO (2) POR M2 G SORANDO con (1)  
+$m_{1} \vec{r}_{1}+m_{2} \vec{r}_{1}=m_{2} \vec{r} \Rightarrow \vec{r}_{1}=\left(\frac{m_{1}}{m_{1}+m_{2}}\right) \vec{r}$  
+MULTIRICANDO 2 POR M, E SUBTRAIND DE (1)  
+$m_{2} \overrightarrow{r_{2}}+m_{1} \overrightarrow{r_{2}}=-m_{1} \vec{r} \Rightarrow \overrightarrow{r_{2}}=-\left(\frac{m_{1}}{m_{1}+m_{2}}\right) \vec{r}$  
+E JULL DEFINIR A MOSIA REDRIDA DO SISTINA  
+$\mu=\frac{m_{1} m_{2}}{m_{1}+m_{2}}$
+
+$$
+\begin{aligned}
+& \vec{r}_{1}=m_{1} \mu \vec{r} \\
+& \vec{r}_{2}=-m_{2} \mu \vec{r}
+\end{aligned}
+$$
+
+Qual é a vantagem? As equações de movimento seriam
+
+$$
+\begin{aligned}
+& m_{1} \frac{d^{2}}{d t^{2}} \vec{r}_{1}=\vec{F}_{12}+\vec{F}_{E 1} \\
+& m_{2} \frac{d^{2} \vec{r}_{2}}{d t^{2}}=\vec{F}_{21}+\vec{F}_{E 2}
+\end{aligned}
+$$
+
+ONDE $\vec{F}_{i j}$ É FORGA SOBRE A PARTICULA i Divido A PAITÍCA j. essas forgas formsh um par agaj-reagaj. e $\vec{F}_{E i} e^{-}$ A RISULTANTE DAS FOR EAS EXTERNAS SOBRE A PORTICULA i. Somondo as duas Cquagtóts, TEmos  
+$m_{1} \frac{d^{2} \vec{r}_{1}}{d t^{2}}+m_{2} \frac{d^{2} \vec{r}_{2}}{d t^{2}}=\vec{F}_{12}+\vec{F}_{21}+\vec{F}_{E_{1}}+\vec{F}_{E_{2}}$  
+MAS, $\vec{F}_{12}=-\vec{F}_{21}$$\vec{R}=\frac{m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}}{m_{1}+m_{2}}=\frac{m_{1} \overrightarrow{r_{1}}+m_{2} \overrightarrow{r_{2}}}{M} ; M=m_{1}+m_{2}$$m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}=M \vec{R}$  
+SE AS hassas forcen Gonstantes  
+$\frac{d^{2}}{d t^{2}}\left(m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}\right)=\frac{d^{2}}{d t^{2}}(M \vec{R})$$m_{1} \frac{d^{2} \vec{r}_{1}}{d t^{2}}+m_{2} \frac{d^{2} \vec{r}_{2}}{d t^{2}}=M \frac{d^{2} \vec{R}}{d t^{2}}$
+
+Portanto, temos a equação de movimento para o centro de massa (CM):
+
+$$
+M \frac{d^{2} \vec{R}}{d t^{2}}=\sum_{i} \vec{F}_{E_{i}}
+$$
+
+de maning analoga, subtrainds a sigunda off. da PRIMEINS  
+$m_{1} \frac{d^{2} \vec{F}_{1}}{d t^{2}}-m_{2} \frac{d^{2} \vec{F}_{2}}{d t^{2}}=\vec{F}_{12}+\vec{F}_{E_{1}}-\vec{F}_{21}-\vec{F}_{E_{2}}$  
+usando a posigas relatius
+
+$$
+\frac{d^{2} \vec{r}_{1}}{d t^{2}}=\frac{m_{2}}{M} \frac{d^{2} \vec{r}}{d t^{2}} \in \frac{d^{2} \overrightarrow{r_{2}}}{d t^{2}}=-\frac{m_{1}}{M} \frac{d^{2} \vec{r}}{d t^{2}}
+$$
+
+$\frac{m_{1} m_{2}}{M} \frac{d^{2} \vec{r}}{d t^{2}}+\frac{m_{1} m_{2}}{M} \frac{d^{2} \vec{r}}{d t^{2}}=2 \overrightarrow{F_{12}}+\overrightarrow{F_{E_{1}}}-\overrightarrow{F_{E_{2}}}$$2 \mu \frac{d^{2} \vec{r}}{d t^{2}}=2 \vec{F}_{12}+\vec{F}_{E_{1}}-\vec{F}_{E_{2}}$  
+Je o sistem estiver isolado $\vec{F}_{i}=\overrightarrow{0}, \forall i$$\left\{M \frac{d^{2} \vec{R}}{d t^{2}}=\overrightarrow{0} \Rightarrow \frac{d}{d t} \vec{P}=\overrightarrow{0}\right.$, nomento Linean dotsl $\mu \frac{d^{2} \vec{r}}{d t^{2}}=\vec{F}_{12}$  
+NESSAS CONDICOÓ), O MOVIMENTO DO CM É TRIVIAL. BASTA RESOL ven o problema de und partícula be massa $\mu$ sob agas Do Kones di interdgas $\overrightarrow{F_{12}}$.
+
+Podimos ESTUDSA O MOMENTO ANGUAR DO SISTEMA GOR RELAGOS So CM, Falinds
+
+$$
+\vec{r} \times\left(\mu \frac{d^{2} \vec{r}}{d t^{2}}\right)=\vec{r} \times \vec{F}_{12}
+$$
+
+Se $\vec{F}_{12} E^{-}$uns PORSA CENTRSL, ELA TOM D DIRIGAS DC $\vec{r}$
+
+$$
+\vec{r} \times\left(\mu \frac{d^{2} \vec{r}}{d t^{2}}\right)=\overrightarrow{0} \Rightarrow \vec{r} \times\left(\frac{d \vec{p}}{d t}\right)=\overrightarrow{0}
+$$
+
+O~DE $\quad \vec{p}=\mu \frac{d \vec{r}}{d t}$
+
+$$
+\frac{d}{d t} \vec{L}=\overrightarrow{0}
+$$
+
+O momento angular é conservado!  
+A conclusão é que o movimento é restrito ao plano ortogonal a $\vec{L}$.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\begin{aligned}
+& \frac{d \vec{r}}{d t}=\frac{d}{d t}(r \hat{r}+r \theta \hat{\theta})=\frac{d r}{d t} \hat{r}+\left(\theta \frac{d r}{d t}+r \frac{d \theta}{d t}\right) \hat{\theta} \\
+\vec{p}= & \mu \frac{d r}{d t} \hat{r}+\mu\left(\theta \frac{d r}{d t}+r \frac{d \theta}{d t}\right) \hat{\theta} \\
+\vec{L}= & (r \hat{F}+r \theta \hat{\theta}) \times \mu\left(\frac{d r}{d t} \hat{r}+\theta \frac{d r}{d t}+r \frac{d \theta}{d t} \hat{\theta}\right) \\
+= & \mu\left(r \theta \frac{d r}{d t}+r^{2} \frac{d \theta}{d t}\right) \hat{z}-\mu r \theta \frac{d r}{d t} \hat{z}=\mu r^{2} \frac{d \theta}{d t} \hat{z}
+\end{aligned}
+$$
+
+logo. Conscruagás do momento angumer mos líd a
+
+$$
+\mu r^{2} \frac{d \theta}{d t}=c t \theta
+$$
+
+vamos ven o SIGNIFICADO DISSO, CONSIDRANDS UM DISLOCATIENTO INFINITESIRAL
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+A Área VARRIDA PELO VETOR POSICÃJ (RA10 VETOR) ÉA DO SITOR CIRCULAR.
+
+$$
+d A=\frac{r^{2}}{2} d \theta
+$$
+
+A TAXA COM GUE A FI REA E- VARRIDA É
+
+$$
+\frac{d A}{d t}=\frac{r^{2}}{2} \frac{d \theta}{d t}=\frac{L}{2 \mu}=c t^{c}
+$$
+
+ESSE RESULTODS FOI OBTIDO POR KEPLIC PARA O MOVIMENTO POS puntitas o é conhecida cono a sigunda lei de Kepler. REPARE QUE 1550 E MAIS GERAL, PORQU MAJ PRICISATIOS SUPOR NENHUMA DEPINDÊnCIA PORTIWIAR DA FORSA COM A DISTANCIA, APENDS QUE ELA É CENTRAL.
+
+Gomo nas Gongi deramos nenhums forms de dissipagas, A currgia mecanica do sistira também e- construdea.
+
+$$
+\begin{gathered}
+E_{M}=E_{c}+U=\frac{A t}{2} \\
+E_{M}=\frac{\mu}{2} v^{2}+U(r)=\frac{\mu}{2}\left[\left(\frac{d r}{d t}\right)^{2}+r^{2}\left(\frac{d \theta}{d t}\right)^{2}\right]+U(r) \\
+E_{M}=\frac{\mu}{2}\left(\frac{d r}{d t}\right)^{2}+\frac{L}{2 \mu r^{2}}+U(r)=c t^{2}
+\end{gathered}
+$$
+
+A Constrvagos da Eningla t do morint angulan ws FORNéce ENTAST UMA EQUAGAS DF MOVIVENTO DO SISTELS
+
+$$
+\frac{d r}{d t}= \pm\left[\frac{2}{\mu}\left(E_{n}-U\right)-\frac{L^{2}}{\mu^{2} r^{2}}\right]^{1 / 2}
+$$
+
+onde Eme L sas constantes  
+PODIMOS DEDUZIR A TRAJIONIA $r=r(\theta)$ FA ZENDS UMA Mudanas de varióvers
+
+$$
+d \theta=\frac{d \theta}{d t} \frac{d t}{d r} d r=\frac{d \theta / d t}{d r / d t} d r
+$$
+
+ONDE $\frac{d \Theta}{d t}=\frac{L}{2 \mu r^{2}}$$d \theta= \pm \frac{L}{2 \mu r^{2}}\left[\frac{2}{\mu}\left(E_{M}-U\right)-\frac{L^{2}}{\mu^{2} r^{2}}\right]^{-1 / 2} d r$  
+Cono $\mu>0 E r \geqslant 0, E$ E CONSTANTE, A VELOCIDADE Angular nas pode mudar de sinal. Ela cresei ou DECRISCE MONOTONICAMENTE COM O TEMPO.
+
+PARD IR ALÉM DISSO, PRECISDICOS CONSIDENSR A DCPINDếncis DS FORGA (OU do POTTUCISL) CON 1 DISTINCIS. A Equagas di TOVITENTO NOS DIZ GUE A VEOCIDADE RADIAL E EENO SIMPRE A SEGUINTE QUANTIDADE SI ANULA
+
+$$
+E_{M}-U-\frac{L^{2}}{2 \mu r^{2}}=0
+$$
+
+isso signials Que 0 SISTIMS ATAZOU UM PONDO DE RETORNO.
+
+Temos algumas possibilidades.
+
+1. Existem un ralo minimo $r_{\text {min }} \in$ um máximo $r_{\text {max }}$. Nesse coso, O MOVIMÉNTO É RISTRITO IS RESIAS DIFINIOS POR CSSE’S VALORES.
+
+1. Só Existe uns solugs. NESSE COSO A TRAJENOTM DA PORTICVS I’UAS ÓRBITS CINCULAR
+
+1. SE O POTENCIAL ÉPINIÓDICO, CXISTE UMS ERRBITS FECHADS (PERIONDICS)
+
+1. Ainda é possívit Que a cunvs sija abenta.  
+ variagas un $r$ di rmin a rmax,  
+$\Delta \theta=\int_{r_{m 1 N}}^{r_{\text {max }}} \frac{L}{2 \mu r^{2}}\left[\frac{2}{\mu}\left(E_{n}-U\right)-\frac{L^{2}}{\mu^{2} r^{2}}\right]^{-1 / 2} d r$  
+PORD $\triangle$ ONBITS SER FCCHODS $\Delta \theta=2 \pi\left(\frac{a}{b}\right)$ CON $a$ Eb inteinos. A CADS b PERIOOOS, o RAIO VETOR FAE a WULAL COMPLETAS.
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\frac{L^{2}}{2 \mu r^{2}}=\frac{\left(\mu r^{2} \frac{d \theta}{d t}\right)^{2}}{2 \mu r^{2}}=\frac{\mu r^{2}}{2}\left(\frac{d \theta}{d t}\right)^{2}
+$$
+
+1950 TEN DITENSAS DE ENERGIA. SE TRATARESCSID QUDNTIDSDE CAMO SE FOSSE UMA ENERGIA “POTENCISL”, PODEMOS DETENTI Nar GUAL SEREA △ FORGD ASSOCIADA A ELD
+
+$$
+\begin{aligned}
+& U_{c}=\frac{\mu r^{2}}{2}\left(\frac{d \theta}{d t}\right)^{2} \\
+& F_{c}=-\frac{\partial U_{c}}{\partial r}=\mu r^{3}\left(\frac{d \theta}{d t}\right)^{2}
+\end{aligned}
+$$
+
+ISSO E’ O QUE SE COSTUMA CHAMAR DE FORSA CENTRIFUIGA.
+
+PODimos Difinin un potencial RFETTUO
+
+$$
+V(r)=U(r)+\frac{L^{2}}{2 \mu r^{2}}
+$$
+
+A KORGD TIPS INVINSD DO QUADRSDS, Temos
+
+$$
+f(r)=-\frac{k}{r^{2}} \Rightarrow U(r)=-\frac{k}{r} \Rightarrow V(r)=-\frac{k}{r}+\frac{L^{2}}{2 \mu r^{2}}
+$$
+
+podemos fazer uma análisi semélmante ao Que fizémos Hs algunss sulas
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+E-V(r) É A ENERSIA CINÉTIA $\frac{\mu}{2}\left(\frac{d r}{d t}\right)^{2}$  
+SE $V\left(r_{3}\right)<E<0,0$ MOUIMENTO ÉLIMITDOD, $r_{2} \leqslant r \leqslant r_{4}$  
+SE $E=V\left(r_{3}\right)$, tómos uma órbira circular, $r=r_{3}$.  
+VAMOS RESOLVER A TRAJCTORID PARA O CASO $\frac{1}{r^{2}}$.
+
+$$
+\theta(r)=\int_{r_{m / \pi}}^{r_{m A}} \frac{L d r}{r^{2} \sqrt{2 \mu\left(\varepsilon+\frac{k}{r}-\frac{L^{2}}{2 \mu r^{2}}\right)}}+C
+$$
+
+A Solugas Fila, ESCOLMENDO $\theta\left(r_{\text {MIN }}\right)=0$
+
+$$
+\cos \theta=\frac{\frac{L^{2}}{\mu k r}-1}{\sqrt{1+\frac{2 E L^{2}}{\mu k^{2}}}}
+$$
+
+Definindal as constantes
+
+$$
+\alpha=\frac{L^{2}}{\mu K} \quad E \quad \varepsilon=\sqrt{1+\frac{2 E L^{2}}{\mu K^{2}}}
+$$
+
+Teros
+
+$$
+\frac{\alpha}{r}=1+\varepsilon \cos \theta
+$$
+
+ESTA É A EqUAGOS DE UND SEGESO CÔnICA.  
+E É A EXCINTLUCIDSDE E,
+
+$\alpha$
+
+Éblates RECTUM UMA SECES CONICA É A inten SIGAO CNTIE UMPLIND t UM CONE.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+QUANDO
+
+$r_{\text {MIN }}, \Delta$
+
+PARTICULS ESTÓ NO PERICENTRD. PDRA ORBITOS FECHADAS TEMOS
+
+$r_{\text {MAX, QUI CHARAMOS APOCENTIOD. }}$
+
+NO CASO DE ÓRBITAS ELÍPTICAS, É CONVEREIENTE DEFINIR OS SEMI-EIXSS MAIOR
+
+$a$
+
+E MENOR
+
+$b$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\begin{aligned}
+& a=\frac{\alpha}{1-\varepsilon^{2}}=\frac{k}{2\left|E_{n}\right|} \\
+& b=\frac{\alpha}{\sqrt{1-\varepsilon^{2}}}=\frac{L}{\sqrt{2 \mu\left|E_{n}\right|}} \\
+& r_{\text {MIN }}=a(1-\varepsilon)=\frac{\alpha}{1+\varepsilon} \\
+& r_{\text {MAX }}=a(1+\varepsilon)=\frac{\alpha}{1-\varepsilon}
+\end{aligned}
+$$
+
+nos vimos que a área varmas pelo raio vetor obeotele a
+
+$$
+\begin{aligned}
+& \frac{d A}{d t}=\frac{r^{2}}{2} \frac{d \theta}{d t}=\frac{L}{2 \mu}=\frac{c t_{0}}{L} \\
+& d t=\frac{2 \mu}{L} d A
+\end{aligned}
+$$
+
+Poderos calcular o periodo coho sendo o intenuslo de tendo pors usznir dánea total da Elipse.
+
+$$
+\begin{aligned}
+& T=\int_{0}^{A} \frac{2 \mu}{L} d A=\frac{2 \mu}{L} A=\frac{2 \mu \pi a b}{L} \\
+& T=\frac{2 \mu}{L} \pi\left(\frac{k}{2\left|E_{m}\right|}\right)\left(\frac{L}{\sqrt{2 \mu\left|E_{m}\right|}}\right) \\
+& T=\pi k \sqrt{\frac{\mu}{2}}\left|E_{m}\right|^{-3 / 2}
+\end{aligned}
+$$
+
+pon outno Lago
+
+$$
+\begin{aligned}
+& b=\sqrt{\alpha a} \\
+& T=\frac{2 \mu \pi a \sqrt{\alpha a}}{L}=2 \frac{\mu}{L} \pi \sqrt{\alpha} a^{3 / 2}
+\end{aligned}
+$$
+
+ou
+
+$$
+T^{2}=\frac{2 \mu \pi \sqrt{\alpha}}{L} a^{3}=\frac{4 \pi^{2} \mu}{K} a^{3}
+$$
+
+Que é a tercirra le, de kepler. Comuns importante Difiringa. A massa dqui é a massa repuzida, que depende das masias dos dols corpos e, portanto, nas é a mieshes pana cons plantia
+
+Como gonsidiramos a rorga como sindo
+
+$$
+F(r)=-\frac{k}{r^{2}}
+$$
+
+No caso gravitacional, temos
+
+$$
+K=G m_{1} m_{2}
+$$
+
+Com asso, a rêcagas entrue periodo e sini-eten fica
+
+$$
+T^{2}=\frac{4 \pi^{2} \mu}{G m_{1} m_{2}} a^{3}=\frac{4 \pi^{2}}{G m_{1} m_{2}} \frac{m_{1} m_{2}}{\left(m_{1}+m_{2}\right)} a^{3}
+$$
+
+$$
+T^{2}=\frac{4 \pi^{2} a^{3}}{G\left(m_{1}+m_{2}\right)} \approx \frac{4 \pi^{2} a^{3}}{G m_{2}}, \text { DCSPRECAnDO △ mSSS po }
+$$
+
+Plantta, Quanbs Compsrasa a do SOL $m_{1} \ll m_{2}$  
+E IMPORTANTE SALINTOR IUE O TISBALHO DE KIPLER É ANTERIOR DO DU NEW ton.
+
+Com isso, Consiguinos obter as trîs Lëls de képlen:
+
+1. os pusnetas se movien en ón bitas elípteas con o soc in un foco.
+
+1. O RA10 VETOR DEUM PLANÉTA ( POSIGAS RicATIA ΔO SOC) varre áreas iguals ún timpos iguals.
+
+1. O QUADRADO DO PENITODO DO PESNETA É PMORORCIONDE DO CUBD DO SCMICIXD MAIOR DO SUA ÓRBIDD.
+
+VAMOS ESTUROR UE CASO SIMPLES DE APLICAGAS DESSES GNCETO En DINSTICS ORBITAL. O COSD DE TAANSFRÊNCIA DE GLA DERIAD pars optna. Vamos Considirsh um obteto (ESPOCORAVE OU SATELITE) SAIND DE UMA ÓNBIA CH TOMND DS TERNA PARA UNS ÓRBITS EN TORND DE MORTE. O CAMINTO QUI HINI MIVS I CNERIVA TOTAL GASTD E CHAMDDO TRSNSFIRTIACIA de Hohmann. A transfinercla Envolve o Aclonamentd De fogutis an dois moriatos.
+
+1. OS FORUTTIS SAS DCIONDOOS PDRD THANSFIRIK D NAVE De UMA ÓRBITA CIRGUAR PORD UMA CLIPTICA QUE INTER CEPTA A ÓRBIAD DE MARTE,
+
+1. OS FORUTT’S SAS DCIONDDOS PORA TRANSFIOIN $\triangle$ NAUE DS ÓRBITA CLÍPTILA PORD UM CIRGLAR (DE MARTE)
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+NOS SABCTOS A ENCHISIA MECANICO EN TERMOR DO SEMA-EINO MAION DO CLIPE:
+
+$$
+E_{M}=-\frac{k}{2 a} \text {, onde } k=G M_{\Theta m}
+$$
+
+PDRS UMA TEBITA GRWUAR DO REDOR DO SOL TEMOS
+
+$$
+E_{M}=-\frac{k}{2 r_{1}}
+$$
+
+Con ISSO, PORIMOS OBTEN A VELOCIDADE
+
+$$
+\begin{aligned}
+& E_{M}=\frac{m}{2} v_{1}^{2}-\frac{K}{r_{1}}=-\frac{K}{2 r_{1}} \\
+& \frac{m}{2} v_{1}^{2}=\frac{K}{r_{1}}-\frac{K}{2 r_{1}} \Rightarrow \frac{m}{2} v_{1}^{2}=\frac{K}{2 r_{1}} \\
+& v_{1}=\sqrt{\frac{K}{m r_{1}}}
+\end{aligned}
+$$
+
+PARS A órbita ELÍPTICA, O SEMI-EINO MAIOR FICS
+
+$$
+2 a_{t}=r_{1}+r_{2}
+$$
+
+CALCulando a EnERIGIA NO PERIÉLIO DA ELIPSE DE TRINSFERÊnas
+
+$$
+\begin{aligned}
+& E_{t}=\frac{-k}{r_{1}+r_{2}}=\frac{m}{2} v_{t_{1}}^{2}-\frac{k}{r_{1}} \\
+& \frac{m}{2} v_{t 1}^{2}=\frac{k}{r_{1}}-\frac{k}{r_{1}+r_{2}}=\frac{k\left(r_{1}+r_{2}-r_{1}\right)}{r_{1}\left(r_{1}+r_{2}\right)}=\frac{k r_{2}}{r_{1}\left(r_{1}+r_{2}\right)} \\
+& v_{t 1}=\sqrt{\frac{2 k}{m r_{1}}\left(\frac{r_{2}}{r_{1}+r_{2}}\right)}
+\end{aligned}
+$$
+
+ENTAT, PORD MUDDR DA ORBITA CIRGUCAN PARS A ELIPSE É PRECISO QUE $\triangle$ VELOCIDADA MUDS DE V PARS V $V_{t_{1}}$. o ganto de velocidade E-
+
+$$
+\Delta v_{1}=v_{t_{1}}-v_{1}
+$$
+
+Da MISMA MSNEIN, A NAVE PLECISA DESACKLERSR NA CHEGORD
+
+$$
+\Delta v_{2}=v_{2}-v_{t_{2}}
+$$
+
+PARA TORMOS ESTABIL OADE, X POLLISA OSCIAN EH TORMODE E pons isso, $\omega_{0}^{2}>0$
+
+$$
+\frac{3 g\left(r_{c}\right)}{r_{c}}+\left.\frac{d g}{d r}\right|_{r_{c}}>0
+$$
+
+Coro $g\left(r_{c}\right)=\frac{L^{2}}{\mu^{2} r_{c}^{3}}>0$, pooinos dividie D Expersias
+
+$$
+\frac{3}{r_{c}}+\frac{d g /\left.d r\right|_{r_{c}}}{g\left(r_{c}\right)}>0
+$$
+
+Limbrand ant $F(r)=-\mu g(r)$
+
+$$
+\left.\frac{1}{g\left(r_{c}\right)} \frac{d g}{d r}\right|_{r_{c}}=\left.\frac{1}{F\left(r_{c}\right)} \frac{d F}{d r}\right|_{r_{c}}
+$$
+
+Com isso, tenos
+
+$$
+\left.\frac{1}{F\left(r_{c}\right)} \frac{d F}{d r}\right|_{r_{c}}+\frac{3}{r_{c}}>0
+$$
+
+SE VOLTAMOS DO CASO DE LEI DE POTENCIA
+
+$$
+\begin{aligned}
+& F(r)=-\frac{k}{r^{m}} \\
+& \frac{1}{F\left(r_{c}\right)}=-\left.\frac{r_{c}^{m}}{k} \in \frac{d F}{d r}\right|_{r_{c}}=\frac{+m k}{r_{c}^{m+1}} \\
+& \left.\frac{1}{F\left(r_{c}\right)} \frac{d F}{d r}\right|_{r_{c}}=\frac{-m k r_{c}^{m}}{k r_{c}^{m+1}}=-\frac{m}{r_{c}} \\
+& -\frac{m}{r_{c}}+\frac{3}{r_{c}}>0 \Rightarrow \frac{1}{r_{c}}(3-m)>0 \Rightarrow m<3
+\end{aligned}
+$$
+
+## Precessão de órbitas
+
+Nós vimos que, para uma força $\frac{1}{r^{2}}$, as órbitas fechadas são elipses. Para outros casos, as órbitas podem não ser fechadas.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Para olhar esse caso geral, vamos expressar a equação da trajetória de outra maneira. Voltando à equação do movimento:
+
+$$
+\mu \frac{d^{2}}{d t^{2}} \vec{r}=\vec{F}(\vec{r})
+$$
+
+A componente radial do movimento é
+
+$$
+\mu[\frac{d^{2} r}{d t^{2}}-r \underbrace{\left(\frac{d \theta}{d t}\right)^{2}}]=F(r)
+$$
+
+Aceleração centrípeta
+
+Fazendo uma mudança de variável,
+
+$$
+\begin{aligned}
+& \mu=\frac{1}{r} \\
+& \frac{d \mu}{d \theta}=-\frac{1}{r^{2}} \frac{d r}{d \theta}=-\frac{1}{r^{2}} \frac{d r}{d t} \frac{d t}{d \theta}=-\frac{1}{r^{2}\left(\frac{d \theta}{d t}\right)} \frac{d r}{d t} \\
+& M \Delta S \quad L=\mu r^{2} \frac{d \theta}{d t} \\
+& \frac{d \mu}{d \theta}=-\frac{1}{r^{2} \frac{L}{\mu r^{2}}} \frac{d r}{d t}=-\frac{\mu}{L} \frac{d r}{d t}
+\end{aligned}
+$$
+
+Derivando mais uma vez:
+
+$$
+\frac{d^{2} \mu}{d \theta^{2}}=\frac{d}{d \theta}\left(-\frac{\mu}{L} \frac{d r}{d t}\right)=\frac{d t}{d \theta} \frac{d}{d t}\left(-\frac{\mu}{L} \frac{d r}{d t}\right)
+$$
+
+$$
+\frac{d^{2} \mu}{d \theta^{2}}=-\frac{\mu}{L} \frac{d t}{d \theta} \frac{d^{2} r}{d t^{2}}=-\frac{\mu}{L}\left(\frac{\mu r^{2}}{L}\right) \frac{d^{2} r}{d t^{2}}=-\frac{\mu^{2} r^{2}}{L^{2}} \frac{d^{2} r}{d t^{2}}
+$$
+
+Então, temos:  
+$\frac{d^{2} r}{d t^{2}}=-\frac{L^{2}}{\mu^{2} r^{2}} \frac{d^{2} \mu}{d \theta^{2}}=-\frac{L^{2} \mu^{2}}{\mu^{2}} \frac{d^{2} \mu}{d \theta^{2}}$$\triangle L$ Én DISSO
+
+$$
+r\left(\frac{d \theta}{d t}\right)^{2}=r\left(\frac{L}{\mu r^{2}}\right)^{2}=\frac{r L^{2}}{\mu^{2} r^{4}}=\frac{L^{2}}{\mu^{2}} \mu^{3}
+$$
+
+Substituindo na equação de movimento,  
+$\mu\left[-\frac{L^{2}}{\mu^{2}} \mu^{2} \frac{d^{2} \mu}{d \theta^{2}}-\frac{L^{2}}{\mu^{2}} \mu^{3}\right]=F\left(\frac{1}{\mu}\right)$
+
+$$
+\begin{aligned}
+& \mu^{2} \frac{d^{2} u}{d \theta^{2}}+\mu^{3}=-\frac{\mu}{L^{2}} F\left(\frac{1}{u}\right) \\
+& \frac{d^{2} u}{d \theta^{2}}+\mu=-\frac{\mu}{L^{2} u^{2}} F\left(\frac{1}{u}\right)
+\end{aligned}
+$$
+
+OU, NA VARIDVEL ORIginal,
+
+$$
+\frac{d^{2}}{d \theta^{2}}\left(\frac{1}{r}\right)+\frac{1}{r}=-\frac{\mu}{L^{2}} r^{2} F(r)
+$$
+
+A força gravitacional de Newton é
+
+$$
+F\left(\frac{1}{u}\right)=-\frac{G M m}{(1 / u)^{2}}=-G M m u^{2}
+$$
+
+Com isso, a equação fica  
+$\frac{d^{2} u}{d \theta^{2}}+u=\frac{G M m^{2}}{L^{2}}$, onde fizemos $\mu \cong m$.  
+Supondo que a força não é exatamente essa, mas tem uma pequena correção de ordem $\frac{1}{r^{4}}$ (como ocorre na relatividade geral), a equação fica:
+
+$$
+\frac{d^{2} u}{d \theta^{2}}+u=\frac{G M m^{2}}{L^{2}}+\frac{3 G M}{c^{2}} u^{2}
+$$
+
+onde $c$ é a velocidade de propagação da interação gravitacional (ondas gravitacionais!) que, em RG, é a mesma da luz, definindo duas constantes:
+
+$$
+\frac{1}{\alpha}:=\frac{G M m^{2}}{L^{2}} \quad \text{e} \quad \delta:=\frac{3 G M}{c^{2}}
+$$
+
+Temos
+
+$$
+\frac{d^{2} u}{d \theta^{2}}+u=\frac{1}{\alpha}+\delta u^{2}
+$$
+
+VAMOS THATAR RESDLUIR POR DPROX, MOSOÉY SUCESSIUDS A Primeirs solugas nòs conheceros, quando $\delta \mu^{2} \epsilon^{-}$ DESPRELSDO
+
+$$
+\frac{\alpha}{r}=1+\varepsilon \cos \theta \Rightarrow \mu_{1}=\frac{1}{\alpha}(1+\varepsilon \cos \theta)
+$$
+
+Colocando ESSA SOLUGS NO UDO DIREITO DA EGUALAT
+
+$$
+\begin{aligned}
+& \frac{d^{2} u}{d \theta^{2}}+u=\frac{1}{\alpha}+\frac{\delta}{\alpha^{2}}(1+\varepsilon \cos \theta)^{2} \\
+& \frac{d^{2} u}{d \theta^{2}}+u=\frac{1}{\alpha}+\frac{\delta}{\alpha^{2}}\left(1+2 \varepsilon \cos \theta+\varepsilon^{2} \cos ^{2} \theta\right) \\
+& \frac{d^{2} u}{d \theta^{2}}+u=\frac{1}{\alpha}+\frac{\delta}{\alpha^{2}}\left\{1+2 \varepsilon \cos \theta+\frac{\varepsilon^{2}}{2}[1+\cos (2 \theta)]\right\}
+\end{aligned}
+$$
+
+poderos propor umd segunds solugas como
+
+$$
+\mu_{2}=\mu_{1}+\mu_{p}
+$$
+
+ONDE $\Delta$ SOLUGS PARTICULAR É
+
+$$
+\mu_{p}=\frac{\delta}{\alpha^{2}}\left[\left(1+\frac{\varepsilon^{2}}{2}\right)+\varepsilon \theta \operatorname{sen} \theta-\frac{\varepsilon^{2}}{6} \cos (2 \theta)\right]
+$$
+
+E OBEDICE I Equagas
+
+$$
+\frac{d^{2}}{d \theta^{2}} \mu_{p}+\mu_{p}=\delta \mu_{p}^{2}
+$$
+
+$u_{2}=\frac{1}{\alpha}(1+\varepsilon \cos \theta)+\frac{\delta}{\alpha^{2}}\left(1+\frac{\varepsilon^{2}}{2}\right)+\frac{\delta \epsilon \theta}{\alpha^{2}} \sin \theta-\frac{\delta \varepsilon^{2}}{6 \alpha^{2}} \cos (2 \theta)$  
+REAgrupanos os tentos
+
+$$
+\mu_{2}=\left[\frac{1}{\alpha}(1+\varepsilon \cos \theta)+\frac{\delta \varepsilon \theta}{\alpha^{2}} \operatorname{sen} \theta\right]+\left[\frac{\delta}{\alpha^{2}}\left(1+\frac{\varepsilon^{2}}{2}\right)-\frac{\delta \varepsilon^{2}}{6 \alpha^{2}} \cos (2 \theta)\right]
+$$
+
+エ  
+o terro II nas deve afetah signifieativaminte OS EXTREMOS DD ÓRBITA ( $r_{\text {M }}$ E $r_{\text {MAX }}$ ), POR OU UN É CONDIAN TE G O OUNO ÉUIS PEQUND PCRTURBSSAD DA FORMA DA sowas Kepliniors.  
+NO TERNO I THOS UM TEMARO DO TIDO O SINO. UDMOS Explorsr mas. Condidere o seguinte terro  
+$1+\varepsilon \cos \left(\theta-\frac{\delta}{\alpha} \theta\right)=1+\varepsilon\left[\cos \theta \cos \left(\frac{\delta}{\alpha} \theta\right)+\operatorname{sen} \theta \operatorname{sen}\left(\frac{\delta \theta}{\alpha}\right)\right]$  
+Considinondo $\frac{\delta}{\alpha}$ pequeno  
+$\cos \left(\frac{\delta}{\alpha} \theta\right) \approx 1$ c $\operatorname{sen}\left(\frac{\delta \theta}{\alpha}\right) \approx \frac{\delta \theta}{\alpha}$$1+\varepsilon \cos \left(\theta-\frac{\delta}{\alpha} \theta\right) \approx 1+\varepsilon \cos \theta+\frac{\delta \theta}{\alpha} \sin \theta$ b90, o tinms I pont sin escrito como
+
+$$
+\mu_{I} \cong \frac{1}{\alpha}\left[1+\varepsilon \cos \left(\theta-\frac{\delta \theta}{\alpha}\right)\right]
+$$
+
+ER TODAS EISA CONTAS ESCOLHEROS QUE  
+$\theta=0$ EN $t=0$ NO PERIELIO  
+QUONDO O CORPO KSTOT ~D PENVELIO
+
+$$
+\begin{aligned}
+& r=r_{M I N} \Rightarrow \mu=\mu_{M A X} \Rightarrow \cos \left(\theta-\frac{\delta \theta}{\alpha}\right)=1 \\
+& \theta-\frac{\delta \theta}{\alpha}=2 \pi m
+\end{aligned}
+$$
+
+Inveztends tenos Que
+
+$$
+\theta=\frac{2 \pi}{1-\frac{\delta}{\alpha}} \cong 2 \pi\left(1+\frac{\delta}{\alpha}\right)
+$$
+
+A CADD NOLTA, A POSIGAS DO PERIELIO É DELOCSOA por
+
+$$
+\Delta \cong 2 \pi \frac{\delta}{\alpha}
+$$
+
+udand as difinigões de $\alpha \in \delta$ temoj
+
+$$
+\Delta \cong 6 \pi\left(\frac{G m M}{c L}\right)^{2}
+$$
+
+has, dos difinigots dr a $\in \varepsilon$$L^{2}=\mu k a\left(1-\varepsilon^{2}\right)$, o~br $\mu \cong m, \epsilon K=G M m$
+
+$$
+\Delta \cong \frac{6 \pi G M}{a c^{2}\left(1-\varepsilon^{2}\right)}
+$$
+
+## Estabilidade de órbitas circulares
+
+Nós vimos que órbitas circulares ocorrem quando a partícula tem energia mecânica igual ao mínimo do potencial efetivo, no caso de força $\sim \frac{1}{r^{2}}$.
+
+Vamos ver como fica no caso geral.  
+Para existir uma órbita circular, é preciso que:
+
+$$
+\left.\frac{d r}{d t}\right|_{r_{c}}=0, \forall t
+$$
+
+onde $r_{c}$ é o raio da órbita. Para isso, a força precisa ser nula na direção radial.
+
+$$
+\left.\frac{\partial V}{\partial r}\right|_{r_{c}}=0
+$$
+
+Vamos considerar que a força é uma lei de potência:
+
+$$
+F(r)=-\frac{k}{r^{n}}
+$$
+
+O potencial associado é:
+
+$$
+U(r)=\frac{-k}{(n-1)} \frac{1}{r^{(n-1)}}
+$$
+
+Consequentemente, o potencial efetivo é:
+
+$$
+V(r)=-\frac{K}{(n-1)} \frac{1}{r^{(n-1)}}+\frac{L^{2}}{2 \mu r^{2}}
+$$
+
+As condições para uma órbita circular estável são:
+
+$$
+\left.\frac{\partial V}{\partial r}\right|_{r_{c}}=\left.0 \quad \epsilon \quad \frac{\partial^{2} V}{\partial r^{2}}\right|_{r_{c}}>0
+$$
+
+Da primeira condição,
+
+$$
+\begin{aligned}
+& \left.\frac{\partial V}{\partial r}\right|_{r_{c}}=\frac{k}{r_{c}^{m}}-\frac{L^{2}}{\mu r_{c}^{3}}=0 \\
+& \frac{k \mu r_{c}^{3}-L^{2} r_{c}^{m}}{\mu r_{c}^{(m+3)}}=0 \Rightarrow \mu k r_{c}^{3}=L^{2} r_{c}^{m} \\
+& r_{c}^{(m-3)}=\frac{\mu k}{L^{2}}
+\end{aligned}
+$$
+
+Da segunda condição,
+
+$$
+\begin{aligned}
+& \left.\frac{\partial^{2} V}{\partial r^{2}}\right|_{r_{c}}=-\frac{m k}{r_{c}^{(m+1)}}+\frac{3 L^{2}}{\mu r_{c}^{4}}>0 \times r_{c}^{4} \\
+& -\frac{m k}{r_{c}^{(m-3)}}+\frac{3 L^{2}}{\mu}>0
+\end{aligned}
+$$
+
+Substituindo o valor de $r_c$ da primeira condição,
+
+$$
+\begin{aligned}
+& \frac{-m K}{\frac{\mu K}{L^{2}}}+\frac{3 L^{2}}{\mu}>0 \Rightarrow-\frac{m L^{2}}{\mu}+\frac{3 L^{2}}{\mu}>0 \\
+& \frac{L^{2}}{\mu}(3-m)>0
+\end{aligned}
+$$
+
+Logo, a órbita é estável se $m<3$.  
+No caso ainda mais geral,
+
+$$
+F(r)=-\mu g(r)=-\frac{\partial U}{\partial r}
+$$
+
+podemos usar isso na equação do movimento radial:
+
+$$
+\begin{aligned}
+& \mu\left[\frac{d^{2} r}{d t^{2}}-r\left(\frac{d \theta}{d t}\right)^{2}\right]=F(r) \\
+& \mu\left[\frac{d^{2} r}{d t^{2}}-r\left(\frac{d \theta}{d t}\right)^{2}\right]=-\mu g(r)
+\end{aligned}
+$$
+
+$\frac{d^{2} r}{d t^{2}}-r\left(\frac{d \theta}{d t}\right)^{2}=-g(r)$
+
+Limärando Que
+
+$$
+\begin{aligned}
+& L=\mu r^{2} \frac{d \theta}{d t} \Rightarrow \frac{d \theta}{d t}=\frac{L}{\mu r^{2}} \\
+& \frac{d^{2} r}{d t^{2}}-r \frac{L^{2}}{\mu^{2} r^{4}}=-g(r) \Rightarrow \frac{d^{2} r}{d t^{2}}-\frac{L^{2}}{\mu^{2} r^{3}}=-\delta(r)
+\end{aligned}
+$$
+
+Vamos considerar uma órbita circular $r=r_c$ e considerar uma pequena perturbação no raio.
+
+$$
+\begin{aligned}
+r & =r_{c}+x, \text { ONDC } x \ll r_{c} \\
+\frac{d^{2} r}{d t^{2}} & =\frac{d^{2}}{d t^{2}}\left(r_{c}+x\right)=\frac{d^{2} x}{d t^{2}}, \quad r_{c}=c t_{c}
+\end{aligned}
+$$
+
+Com isso, a equação do movimento fica  
+$\frac{d^{2} x}{d t^{2}}-\frac{L^{2}}{\mu^{2}}\left(\frac{1}{r_{c}+x}\right)^{3}=-g\left(r_{c}+x\right)$$\frac{d^{2} x}{d t^{2}}-\frac{L^{2}}{\mu^{2} r_{c}^{3}}\left(1+\frac{x}{r_{c}}\right)^{-3}=-g\left(r_{c}+x\right)$  
+PODEMOS EXPANDIR IS FUNGÓOS  
+$\left(1+\frac{x}{r_{c}}\right)^{-3}=1-3 \frac{x}{r_{c}}+\ldots$$g\left(r_{c}+x\right)=g\left(r_{c}\right)+\left.x \frac{d g}{d r}\right|_{r_{c}}$  
+Considerando apenas até o termo linear em $x$,  
+$\frac{d^{2} x}{d t^{2}}-\frac{L^{2}}{\mu^{2} r_{c}^{3}}\left(1-3 \frac{x}{r_{c}}\right)=-g\left(r_{c}\right)-\left.x \frac{d g}{d r}\right|_{r_{c}}$
+
+Se $r=r_c$, temos as condições da órbita circular  
+$\left.\frac{d r}{d t}\right|_{r_{c}}=\left.0 \quad \in \quad \frac{d^{2} r}{d t^{2}}\right|_{r_{c}}=0$  
+da equages di movimento  
+$\frac{d^{2} r_{c}{ }^{0}}{d t^{2}}-\frac{L^{2}}{\mu^{2} r_{c}^{3}}=-g\left(r_{c}\right) \Rightarrow g\left(r_{c}\right)=\frac{L^{2}}{\mu^{2} r_{c}^{3}}$  
+Substituindo na equação da perturbação,  
+$\frac{d^{2} x}{d t^{2}}-\frac{L^{2}}{\mu^{2} r_{c}^{3}}\left(1-3 \frac{x}{r_{c}}\right)=-\frac{L^{2}}{\mu^{2} r_{c}^{3}}-\left.x \frac{d g}{d r}\right|_{r_{c}}$$\operatorname{con} 1350$$\frac{d^{2} x}{d t^{2}}+\left(\frac{L^{2}}{\mu^{2} r_{c}^{3}}\right) \frac{3 x}{r_{c}}+\left.x \frac{d g}{d r}\right|_{r_{c}}=0$$\frac{d^{2} x}{d t^{2}}+\left[\frac{3 g\left(r_{c}\right)}{r_{c}}+\left.\frac{d g}{d r}\right|_{r_{c}}\right] x=0$  
+Esta é a equação de um oscilador harmônico com frequência $\omega_{0}^{2}=\frac{3 g\left(r_{c}\right)}{r_{c}}+\left.\frac{d g}{d r}\right|_{r_{c}}$.  
+E sabemos que a solução pode ser escrita como $x(t)=A e^{+i \omega_{0} t}+B e^{-i \omega_{0} t}$.
+
+Se $\omega_0^2<0$, a frequência seria imaginária e as soluções seriam exponenciais reais. Ou seja, a partícula se afasta de $r_c$ e a órbita é instável.
+
+Para termos estabilidade, $x$ precisa oscilar em torno de $r_c$; portanto, $\omega_0^2>0$:
+
+$$
+\frac{3 g\left(r_{c}\right)}{r_{c}}+\left.\frac{d g}{d r}\right|_{r_{c}}>0
+$$
+
+Como $g\left(r_{c}\right)=\frac{L^{2}}{\mu^{2} r_{c}^{3}}>0$, podemos dividir a expressão por $g(r_c)$:
+
+$$
+\frac{3}{r_{c}}+\left.\frac{1}{g\left(r_{c}\right)}\frac{d g}{d r}\right|_{r_{c}}>0
+$$
+
+Lembrando que $F(r)=-\mu g(r)$,
+
+$$
+\left.\frac{1}{g\left(r_{c}\right)}\frac{d g}{d r}\right|_{r_{c}}=\left.\frac{1}{F\left(r_{c}\right)}\frac{d F}{d r}\right|_{r_{c}}
+$$
+
+Então,
+
+$$
+\left.\frac{1}{F\left(r_{c}\right)}\frac{d F}{d r}\right|_{r_{c}}+\frac{3}{r_{c}}>0
+$$
+
+Voltando ao caso de uma lei de potência $F(r)=-\frac{k}{r^{m}}$,
+
+$$
+\begin{aligned}
+& \left.\frac{1}{F\left(r_{c}\right)}\frac{d F}{d r}\right|_{r_{c}}=-\frac{m}{r_{c}} \\
+& -\frac{m}{r_{c}}+\frac{3}{r_{c}}>0 \Rightarrow m<3
+\end{aligned}
+$$

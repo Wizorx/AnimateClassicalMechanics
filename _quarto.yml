@@ -1,0 +1,54 @@
+project:
+  type: book
+
+book:
+  title: "Mecânica Clássica Animada"
+  author:
+    - "Ribamar R. R. dos Reis"
+    - "Luan M. Moraes"
+  date: "21/07/2026"
+  chapters:
+    - index.qmd
+    - part: "Mecânica Clássica 1"
+      chapters:
+        - Sistemas.qmd
+        - Mec1.qmd
+        - Oscilacoes.qmd
+        - GravitacaoEForcas.qmd
+        - SistemasPart.qmd
+        - Teoremas.qmd
+        - Referenciais.qmd
+    - part: "Mecânica Clássica 2"
+      chapters:
+        - calculo-variacional.qmd
+        - lagrange-hamilton.qmd
+        - oscilacoes-acopladas.qmd
+        - sistemas-continuos.qmd
+
+
+bibliography: references.bib
+
+format:
+  html:
+    crossrefs-hover: true
+    respect-user-color-scheme: true
+    lang: pt-BR
+    number-sections: true
+    number-depth: 3
+    number-offset: 1
+    theme: 
+      light: cosmo
+      dark: darkly
+    include-in-header: 
+      - text: |
+          <style>
+          .cell-output {
+            max-height: 500px;
+            overflow-y: auto;
+          }
+          </style>
+  pdf:
+    documentclass: scrreprt
+
+
+

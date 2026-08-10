@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>11&nbsp; Sistemas Contínuos – Mecânica Clássica Animada</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./oscilacoes-acopladas.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-acff971833d9769290026d534105daaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<style>
+.cell-output {
+  max-height: 500px;
+  overflow-y: auto;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./sistemas-continuos.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mecânica Clássica Animada</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mecânica Clássica 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sistemas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Mec1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mecânica de uma Partícula</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./GravitacaoEForcas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./SistemasPart.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de Partículas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Teoremas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Teoremas de Conservação</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referenciais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Referenciais Não Inerciais</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mecânica Clássica 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calculo-variacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Cálculo Variacional</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lagrange-hamilton.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#equação-de-onda" id="toc-equação-de-onda" class="nav-link active" data-scroll-target="#equação-de-onda"><span class="header-section-number">11.1</span> Equação de onda</a></li>
+  <li><a href="#notas-finais-questões-abertas" id="toc-notas-finais-questões-abertas" class="nav-link" data-scroll-target="#notas-finais-questões-abertas"><span class="header-section-number">11.2</span> Notas finais (questões abertas)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./sistemas-continuos.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></h1>
+<p class="subtitle lead">Capítulo 13 — Continuous Systems: Waves (Thornton &amp; Marion)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Vamos aproveitar o fio com massas para deduzir o comportamento de uma corda homogênea (densidade linear constante)</p>
+<p><span class="math display">\[
+\rho = \frac{m}{d} = \text{cst.}, \qquad (n+1)d = L = \text{cst.}
+\]</span></p>
+<p>Faremos o seguinte limite:</p>
+<p><span class="math display">\[
+n \to \infty, \qquad m \to 0, \qquad d \to 0, \qquad jd \to x
+\]</span></p>
+<p><span class="math display">\[
+q_j(t) = \sum_r \eta_r(t)\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right)
+\]</span></p>
+<p><span class="math display">\[
+\frac{jr\pi}{n+1} = r\pi\left[\frac{jd}{(n+1)d}\right] = \frac{r\pi x}{L}, \qquad r \in \mathbb{Z}^+
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad q(x,t) = \sum_{r=1}^{\infty} \eta_r(t)\,\text{sen}\!\left(\frac{r\pi x}{L}\right)
+\]</span></p>
+<p>condições iniciais:</p>
+<p><span class="math display">\[
+\begin{cases}
+q(x,0) = \displaystyle\sum_r \mu_r\,\text{sen}\!\left(\dfrac{r\pi x}{L}\right) \\[2ex]
+\dot{q}(x,0) = -\displaystyle\sum_r \omega_r\nu_r\,\text{sen}\!\left(\dfrac{r\pi x}{L}\right)
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \int_0^L \text{sen}\!\left(\frac{r\pi x}{L}\right)\text{sen}\!\left(\frac{s\pi x}{L}\right) dx = \frac{L}{2}\delta_{rs}
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad
+\begin{cases}
+\mu_s = \dfrac{2}{L}\displaystyle\int_0^L q(x,0)\,\text{sen}\!\left(\dfrac{s\pi x}{L}\right) dx \\[2ex]
+\nu_s = \dfrac{2}{\omega_r L}\displaystyle\int_0^L \dot{q}(x,0)\,\text{sen}\!\left(\dfrac{s\pi x}{L}\right) dx
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\omega_r = 2\sqrt{\frac{T}{md}}\,\text{sen}\!\left[\frac{r\pi}{2(n+1)}\frac{d}{d}\right]
+\]</span></p>
+<p><span class="math display">\[
+\left.\begin{matrix}\ \\ \ \\ \ \end{matrix}\right\}
+\quad
+\frac{r\pi d}{2L} \to 0 \;\Rightarrow\; \text{sen}\!\left(\frac{r\pi d}{2L}\right) \approx \frac{r\pi d}{2L}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\omega_r = 2\sqrt{\frac{T}{md}}\left(\frac{r\pi d}{2L}\right)
+\]</span></p>
+<p><span class="math display">\[
+\approx 2\sqrt{\frac{T}{\rho d^2}}\left(\frac{r\pi d}{2L}\right)
+\]</span></p>
+<p><span class="math display">\[
+= \sqrt{\frac{T}{\rho}}\,\frac{r\pi}{L}
+\]</span></p>
+<p>A energia cinética de um elemento da corda é:</p>
+<p><span class="math display">\[
+dE_C = \frac{dm\,v^2}{2} = \frac{(\rho\,dx)v^2}{2}
+\]</span></p>
+<p><span class="math display">\[
+= \frac{\rho\,dx\,\dot{q}^2}{2}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad E_C = \int_0^L \frac{\rho\dot{q}^2}{2}dx = \int_0^L \frac{\rho}{2}\left[\sum_r \dot\eta_r\,\text{sen}\!\left(\frac{r\pi x}{L}\right)\right]^2 dx
+\]</span></p>
+<p><span class="math display">\[
+= \int_0^L \frac{\rho}{2}\sum_r\sum_s \dot\eta_r\dot\eta_s\,\text{sen}\!\left(\frac{r\pi x}{L}\right)\text{sen}\!\left(\frac{s\pi x}{L}\right) dx
+\]</span></p>
+<p><span class="math display">\[
+= \frac{\rho}{2}\sum_r\sum_s \dot\eta_r\dot\eta_s\,\frac{L}{2}\delta_{rs} = \frac{\rho L}{4}\sum_r \dot\eta_r^2, \qquad \eta_r \in \mathbb{C}
+\]</span></p>
+<p>onde <span class="math inline">\(\dot\eta_r = \dfrac{d}{dt}\left\{(\mu_r+i\nu_r)\left[\cos(\omega_r t)+i\,\text{sen}(\omega_r t)\right]\right\}\)</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \text{Re}(\dot\eta_r) = \omega_r\left[-\mu_r\,\text{sen}(\omega_r t) - \nu_r\cos(\omega_r t)\right]
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad E_C = \frac{\rho L}{4}\sum_r \omega_r^2\left[\mu_r\,\text{sen}(\omega_r t) + \nu_r\cos(\omega_r t)\right]^2
+\]</span></p>
+<p>Para a energia potencial, podemos usar a expressão para o fio com massas:</p>
+<p><span class="math display">\[
+U = \frac{T}{2d}\sum_j^n (q_{j-1}-q_j)^2 = \frac{T}{2}\sum_j^n \left(\frac{q_{j-1}-q_j}{d}\right)^2 d
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow \quad d\to 0
+\]</span></p>
+<p><span class="math display">\[
+U = \frac{T}{2}\int_0^L \left(\frac{\partial q}{\partial x}\right)^2 dx
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow \qquad \frac{\partial q}{\partial x} = \sum_r \left(\frac{r\pi}{L}\right)\eta_r\cos\!\left(\frac{r\pi x}{L}\right)
+\]</span></p>
+<p><span class="math display">\[
+U = \frac{T}{2}\int_0^L \sum_r\sum_s \left(\frac{r\pi}{L}\right)\left(\frac{s\pi}{L}\right)\eta_r\eta_s\cos\!\left(\frac{r\pi x}{L}\right)\cos\!\left(\frac{s\pi x}{L}\right) dx
+\]</span></p>
+<p><span class="math display">\[
+= \frac{T}{2}\sum_r\sum_s \left(\frac{r\pi}{L}\right)\left(\frac{s\pi}{L}\right)\eta_r\eta_s\,\frac{L}{2}\delta_{rs}
+\]</span></p>
+<p><span class="math display">\[
+= \frac{T}{2}\sum_r \left(\frac{r\pi}{L}\right)^2 \eta_r^2\,\frac{L}{2}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow \qquad \omega_r = \frac{r\pi}{L}\sqrt{\frac{T}{\rho}}
+\]</span></p>
+<p><span class="math display">\[
+U = \frac{\rho L}{4}\sum_r \omega_r^2\,\eta_r^2
+\]</span></p>
+<p>De novo, tomando a parte real de <span class="math inline">\(\eta_r\)</span>:</p>
+<p><span class="math display">\[
+U = \frac{\rho L}{4}\sum_r \omega_r^2\left[\mu_r\cos(\omega_r t) - \nu_r\,\text{sen}(\omega_r t)\right]^2
+\]</span></p>
+<p>A energia total é:</p>
+<p><span class="math display">\[
+E_T = E_C + U = \frac{\rho L}{4}\sum_r \omega_r^2\left(\mu_r^2+\nu_r^2\right)
+\]</span></p>
+<p><span class="math display">\[
+= \frac{\rho L}{4}\sum_r \omega_r^2\left|\beta_{r*}\right|^2 \qquad \text{que é constante!}
+\]</span></p>
+<p><span class="math inline">\(E_C\)</span> e <span class="math inline">\(U\)</span> variam com o tempo. Pode ser útil saber o valor médio delas em um período do modo fundamental <span class="math inline">\(T_1 = 2\pi/\omega_1\)</span>. O valor médio de uma função é:</p>
+<p><span class="math display">\[
+\langle f\rangle = \frac{1}{\Delta t}\int_t^{t+\Delta t} f(t)\,dt
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \langle E_C\rangle = \frac{\rho L}{8}\sum_r \omega_r^2\left(\mu_r^2+\nu_r^2\right)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \langle U\rangle = \frac{\rho L}{8}\sum_r \omega_r^2\left(\mu_r^2+\nu_r^2\right)
+\qquad\therefore\qquad
+\boxed{\langle E_C\rangle = \langle U\rangle}
+\]</span></p>
+<section id="equação-de-onda" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="equação-de-onda"><span class="header-section-number">11.1</span> Equação de onda</h2>
+<p>Vamos voltar na equação de movimento para uma partícula no fio carregado.</p>
+<p><span class="math display">\[
+m\ddot{q}_j = \frac{T}{d}(q_{j-1}-q_j) - \frac{T}{d}(q_j - q_{j+1})
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \frac{m\ddot{q}}{d} = \frac{T}{d}\left(\frac{q_{j-1}-q_j}{d}\right) - \frac{T}{d}\left(\frac{q_j-q_{j+1}}{d}\right)
+\]</span></p>
+<p><span class="math display">\[
+\left(\frac{q_j-q_{j+1}}{d} \xrightarrow{d\to 0} \frac{q(x-d)-q(x)}{d} \to -\left.\frac{\partial q}{\partial x}\right|_{x-d/2}\right)
+\]</span></p>
+<p>O lado direito então fica:</p>
+<p><span class="math display">\[
+T\left(\frac{\left.\dfrac{\partial q}{\partial x}\right|_{x-d/2} - \left.\dfrac{\partial q}{\partial x}\right|_{x-d/2}}{d}\right)
+\xrightarrow{d\to 0} T\,\frac{\partial^2 q}{\partial x^2}
+\]</span></p>
+<p>Com isso, temos:</p>
+<p><span class="math display">\[
+\rho\,\frac{\partial^2 q}{\partial t^2} = T\,\frac{\partial^2 q}{\partial x^2}
+\]</span></p>
+<p>A equação de onda geral em 1D:</p>
+<p><span class="math display">\[
+\frac{\partial^2 q}{\partial x^2} - \frac{1}{v^2}\frac{\partial^2 q}{\partial t^2} = 0
+\]</span></p>
+<p>onde <span class="math inline">\(v\)</span> é a velocidade de propagação e vale:</p>
+<p><span class="math display">\[
+v = \sqrt{\frac{T}{\rho}}
+\]</span></p>
+<p>Em 3D, a gente teria:</p>
+<p><span class="math display">\[
+\frac{\partial^2 q}{\partial x^2} + \frac{\partial^2 q}{\partial y^2} + \frac{\partial^2 q}{\partial z^2} - \frac{1}{v^2}\frac{\partial^2 q}{\partial t^2} = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \nabla^2 q - \frac{1}{v^2}\frac{\partial^2 q}{\partial t^2} = 0
+\]</span></p>
+<p>Vamos considerar uma força de amortecimento e uma força externa:</p>
+<p><span class="math display">\[
+\rho\left(\frac{\partial^2 q}{\partial t^2}\right) - T\frac{\partial^2 q}{\partial x^2} + D\frac{\partial q}{\partial t} = F(x,t)
+\]</span></p>
+<p>Propomos uma solução do tipo:</p>
+<p><span class="math display">\[
+q(x,t) = \sum_{r=1}^{\infty} \eta_r(t)\,\text{sen}\!\left(\frac{r\pi x}{L}\right)
+\]</span></p>
+<p>Substituindo na equação:</p>
+<p><span class="math display">\[
+\sum_{r=1}^{\infty}\left[\left(\rho\ddot\eta_r + D\dot\eta_r + \left(\frac{r^2\pi^2}{L^2}\right)T\right)\text{sen}\!\left(\frac{r\pi x}{L}\right)\right] = F(x,t)
+\]</span></p>
+<p>Isso é uma série de Fourier!</p>
+<p><span class="math display">\[
+\sum_r^{\infty} A_r\,\text{sen}\!\left(\frac{r\pi x}{L}\right) = F(x,t)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad A_r = \frac{2}{L}\int_0^L F(x,t)\,\text{sen}\!\left(\frac{r\pi x}{L}\right) dx
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad \rho\ddot\eta_r + D\dot\eta_r + \frac{r^2\pi^2}{L^2}T = \underbrace{\frac{2}{L}\int_0^L F(x,t)\,\text{sen}\!\left(\frac{r\pi x}{L}\right) dx}_{A_r}
+\]</span></p>
+<p>Na presença de amortecimento e/ou forças externas adicionais, os modos normais são alterados.</p>
+<p>A solução geral da equação de onda é dada por:</p>
+<p><span class="math display">\[
+\Psi(x,t) = f(x+vt) + g(x-vt)
+\]</span></p>
+<p>onde <span class="math inline">\(f\)</span> e <span class="math inline">\(g\)</span> são funções <em>arbitrárias</em>. Como a equação de onda diz que a derivada de segunda em relação uma variável é proporcional a outra, podemos supor que a solução é a seguinte (separação de variáveis, métodos 2):</p>
+<p><span class="math display">\[
+\Psi(x,t) = F(x)\,G(t)
+\]</span></p>
+<p>Substituindo na equação de onda:</p>
+<p><span class="math display">\[
+G\frac{d^2F}{dx^2} - \frac{F}{v^2}\frac{d^2G}{dt^2} = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \frac{v^2}{F}\frac{d^2F}{dx^2} = \frac{1}{G}\frac{d^2G}{dt^2} = \text{cte} \;(:= -\omega^2)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \frac{d^2F}{dx^2} + \frac{\omega^2}{v^2}F = 0
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad
+\begin{cases}
+F(x) = Ae^{i\frac{\omega}{v}x} + Be^{-i\frac{\omega}{v}x} \\[1ex]
+G(t) = Ce^{i\omega t} + De^{-i\omega t}
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \Psi(x,t) = ACe^{i\frac{\omega}{v}(x+vt)} + ADe^{i\frac{\omega}{v}(x-vt)} + BCe^{-i\frac{\omega}{v}(x-vt)} + BDe^{i\frac{\omega}{v}(x+vt)}
+\]</span></p>
+<p>A solução geral é uma combinação linear das soluções para todas as frequências possíveis. Onde:</p>
+<p><span class="math display">\[
+k = \frac{\omega}{v} = \frac{2\pi}{\lambda} = 2\pi\tilde{f}
+\qquad\Longleftrightarrow\qquad
+\omega = \frac{2\pi}{T} = 2\pi f
+\]</span></p>
+<p><span class="math display">\[
+T = \frac{2\pi}{\omega}, \qquad \lambda = \frac{v}{f}
+\]</span></p>
+<p>Considerando duas ondas com a mesma frequência e amplitude em sentidos opostos:</p>
+<p><span class="math display">\[
+\Psi(x,t) = Ae^{-i(kx+\omega t)} + Ae^{-i(kx-\omega t)}
+\]</span></p>
+<p><span class="math display">\[
+= Ae^{-ikx}\left(e^{i\omega t} + e^{-i\omega t}\right)
+\]</span></p>
+<p><span class="math display">\[
+= 2A\,e^{-ikx}\cos(\omega t)
+\]</span></p>
+<p>Isso é o que chamamos de <strong>onda estacionária</strong>!</p>
+<p>No caso da corda:</p>
+<p><span class="math display">\[
+v = \sqrt{\frac{T}{\rho}}
+\]</span></p>
+<p>Considere uma corda formada por 2 segmentos homogêneos com densidades diferentes <span class="math inline">\(\rho_1\)</span> (<span class="math inline">\(x&lt;0\)</span>) e <span class="math inline">\(\rho_2\)</span> (<span class="math inline">\(x&gt;0\)</span>) e uma onda progressiva se propagando de <span class="math inline">\(x&lt;0\)</span> para <span class="math inline">\(x&gt;0\)</span>, onde <span class="math inline">\(\rho_2 &gt; \rho_1\)</span>:</p>
+<p><span class="math display">\[
+\Psi_{inc} = A\,e^{-i(k_1 x-\omega t)}
+\]</span></p>
+<p><span class="math display">\[
+\Psi_{ref} = B\,e^{+i(k_1 x+\omega t)} \qquad (\text{mudança de fase})
+\]</span></p>
+<p><span class="math display">\[
+\Psi_{trans} = C\,e^{-i(k_2 x-\omega t)}
+\]</span></p>
+<p>A solução deve ser:</p>
+<p><span class="math display">\[
+\Psi_1 = \Psi_{inc} + \Psi_{ref} = A\,e^{-i(k_1x-\omega t)} + B\,e^{+i(k_1x+\omega t)}
+\]</span></p>
+<p><span class="math display">\[
+\Psi_2 = \Psi_{trans} = C\,e^{-i(k_2x-\omega t)}
+\]</span></p>
+<p>Por continuidade (pra corda não arrebentar):</p>
+<p><span class="math display">\[
+\begin{cases}
+\Psi_1(0,t) = \Psi_2(0,t) \\[1ex]
+\dfrac{\partial \Psi_1}{\partial x}(0,t) = \dfrac{\partial \Psi_2}{\partial x}(0,t)
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad
+\begin{cases}
+Ae^{i\omega t} + Be^{i\omega t} = Ce^{i\omega t} \\[1ex]
+-ik_1 A e^{i\omega t} + ik_1 B e^{i\omega t} = -ik_2 C e^{i\omega t}
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad
+\begin{cases}
+A+B=C \;\rightarrow\; B=C-A \\[1ex]
+-k_1A + k_1B = -k_2C
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad -k_1A + k_1(C-A) = -k_2C
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad -k_1A + k_1C - k_1A = -k_2C
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad k_1C + k_2C = 2k_1A
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad C = \frac{2k_1A}{k_1+k_2}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad B = \frac{2k_1A}{k_1+k_2} - A = \frac{k_1-k_2}{k_1+k_2}A
+\]</span></p>
+<p><span class="math display">\[
+R := \frac{|B|^2}{|A|^2} = \left(\frac{k_1-k_2}{k_2-k_1}\right)^2 \qquad \rightarrow\ \text{coeficiente de reflexão}
+\]</span></p>
+<p><span class="math display">\[
+T := 1-R = \frac{4k_1k_2}{(k_1+k_2)^2} = \frac{k_2}{k_1}\frac{|C|^2}{|A|^2} \qquad \rightarrow\ \text{coeficiente de transmissão}
+\]</span></p>
+<p>A fase é o argumento da função, <span class="math inline">\(x\pm vt\)</span>!</p>
+<p><span class="math display">\[
+\hookrightarrow \quad \Psi = \text{cst} \ \text{corresponde a fase constante.}
+\]</span></p>
+<p>Um observador que se move com uma velocidade tal que, para ele, a onda é estacionária, se move com a velocidade de fase da onda. Para uma onda monocromática (<span class="math inline">\(\omega\)</span> único), a velocidade de fase coincide com a velocidade <span class="math inline">\(v\)</span> que aparece na equação de onda.</p>
+<p><span class="math display">\[
+\phi = kx-\omega t, \qquad \phi = \text{cst.} \;\rightarrow\; d\phi = k\,dx - \omega\,dt = 0
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad \frac{dx}{dt} = \frac{\omega}{k} = v
+\]</span></p>
+</section>
+<section id="notas-finais-questões-abertas" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="notas-finais-questões-abertas"><span class="header-section-number">11.2</span> Notas finais (questões abertas)</h2>
+<p><span class="math display">\[
+\text{p}?\qquad \Psi = F(x)G(t)\ ? \qquad \nearrow\ \text{regra do produto}
+\]</span></p>
+<p>Significado onda complexa na corda?</p>
+<p><span class="math display">\[
+\delta S = 0 \;\rightarrow\; \text{sem força?}
+\]</span></p>
+<p><span class="math display">\[
+\text{Sim}
+\]</span></p>
+<p>nenhuma, mas dispersão com <span class="math inline">\(k \in \mathbb{C}\)</span></p>
+<p>Analogia óptico-mecânica <span class="math inline">\(\rightarrow\)</span> frente de onda = mesma fase <span class="math inline">\(\rightarrow\)</span> frente de onda de ação?</p>
+<p>Observador que se move com a frente de onda vê uma onda estacionária. Então a luz não pode ser estacionária para nenhum observador (<span class="math inline">\(\leftrightarrow\)</span> tempo parado <span class="math inline">\(\therefore\)</span> viola causalidade!).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./oscilacoes-acopladas.html" class="pagination-link" aria-label="Oscilações Acopladas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

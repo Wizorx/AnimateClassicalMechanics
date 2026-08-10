@@ -1,0 +1,335 @@
+---
+title: Teoremas de Conservação
+jupyter: python3
+---
+
+
+*Material transversal relacionado às seções 2.5 (*Conservation Theorems*) e 9.3–9.5 do livro-texto: conservação de momento linear, angular e energia, energia potencial e estabilidade.*
+
+
+Da segunda lei de Newton, temos:
+
+$$
+\frac{d\vec{p}}{dt}=\vec{F}_R
+$$
+
+Na ausência de forças externas sobre o sistema, o **momento linear total** é conservado:
+
+$$
+\frac{d\vec{p}}{dt}=\vec{0}
+$$
+
+Mesmo que haja força resultante sobre o sistema, se a componente dessa força em uma direção for zero, então a componente do momento linear nessa direção é constante.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Podemos projetar a equação de movimento na direção de $\hat{s}$ (com $\hat{s}$ constante):
+
+$$
+\hat{s}\cdot\frac{d\vec{p}}{dt}=\vec{F}_R\cdot\hat{s}=0
+$$
+
+Logo:
+
+$$
+\frac{d}{dt}(\hat{s}\cdot\vec{p})=0
+$$
+
+e, portanto, a componente $\hat{s}\cdot\vec{p}$ é conservada.
+
+Assim como podemos multiplicar a equação por um vetor com produto escalar, podemos usar o produto vetorial:
+
+$$
+\vec{r}\times\frac{d\vec{p}}{dt}=\vec{r}\times\vec{F}_R
+$$
+
+onde $\vec{r}$ é o vetor posição.
+
+Considerando que a derivada de um produto vetorial é:
+
+$$
+\frac{d}{dt}(\vec{r}\times\vec{p})=\frac{d\vec{r}}{dt}\times\vec{p}+\vec{r}\times\frac{d\vec{p}}{dt}
+$$
+
+e que $\vec{p}=m\vec{v}=m\frac{d\vec{r}}{dt}$, temos:
+
+$$
+\frac{d\vec{r}}{dt}\times\vec{p}=\frac{d\vec{r}}{dt}\times\left(m\frac{d\vec{r}}{dt}\right)=\vec{0}
+$$
+
+Portanto:
+
+$$
+\frac{d}{dt}(\vec{r}\times\vec{p})=\vec{r}\times\frac{d\vec{p}}{dt}
+$$
+
+Mas $\vec{L}=\vec{r}\times\vec{p}$ é o momento angular e $\vec{\tau}_R=\vec{r}\times\vec{F}_R$ é o torque. Assim:
+
+$$
+\frac{d\vec{L}}{dt}=\vec{\tau}_R
+$$
+
+Daí decorre que, na ausência de torque externo, o **momento angular** é conservado.
+
+## Teorema trabalho–energia
+
+O trabalho da força resultante em uma trajetória de um estado 1 para um estado 2 é:
+
+$$
+W_{1\to 2}=\int_{1}^{2}\vec{F}_R\cdot d\vec{r}
+$$
+
+Como $\vec{F}_R=\frac{d\vec{p}}{dt}=m\frac{d\vec{v}}{dt}$, temos:
+
+$$
+\vec{F}_R\cdot d\vec{r}=m\frac{d\vec{v}}{dt}\cdot\vec{v}\,dt
+$$
+
+Considerando:
+
+$$
+\frac{d}{dt}(\vec{v}\cdot\vec{v})=2\vec{v}\cdot\frac{d\vec{v}}{dt}
+$$
+
+obtemos:
+
+$$
+\vec{F}_R\cdot d\vec{r}=d\left(\frac{m}{2}v^2\right)
+$$
+
+Logo:
+
+$$
+W_{1\to 2}=\frac{m v_2^2}{2}-\frac{m v_1^2}{2}
+$$
+
+onde $T=\frac{m v^2}{2}$ é a energia cinética. Portanto, na ausência de trabalho externo, a energia cinética é conservada.
+
+## Força conservativa e energia potencial
+
+O trabalho é uma integral de linha e, em geral, depende da curva escolhida para conectar os pontos 1 e 2. No caso particular em que o trabalho não depende do caminho, dizemos que a força é conservativa, e o trabalho pode ser escrito como a variação da energia potencial associada a essa força:
+
+$$
+W_{1\to 2}=\int_{1}^{2}\vec{F}_c\cdot d\vec{r}=U_1-U_2=-\Delta U
+$$
+
+Para um deslocamento infinitesimal:
+
+$$
+\delta W=\vec{F}_c\cdot d\vec{r}=-dU
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Em um sistema de coordenadas:
+
+$$
+\vec{F}_c\cdot d\vec{r}=F_{cx}\,dx+F_{cy}\,dy+F_{cz}\,dz
+$$
+
+$$
+dU=\frac{\partial U}{\partial x}dx+\frac{\partial U}{\partial y}dy+\frac{\partial U}{\partial z}dz
+$$
+
+Logo, podemos identificar uma força conservativa com o gradiente da energia potencial:
+
+$$
+\vec{F}=-\vec{\nabla}U
+$$
+
+Somente a variação da energia potencial tem significado físico; sempre podemos somar uma constante arbitrária e redefinir $U$.
+
+## Energia total e conservação
+
+Podemos definir a energia total:
+
+$$
+E=T+U
+$$
+
+A variação temporal de $E$ é:
+
+$$
+\frac{dE}{dt}=\frac{dT}{dt}+\frac{dU}{dt}
+$$
+
+Como:
+
+$$
+\vec{F}\cdot d\vec{r}=d\left(\frac{m}{2}v^2\right)=dT
+$$
+
+temos:
+
+$$
+\frac{dT}{dt}=\vec{F}\cdot\frac{d\vec{r}}{dt}
+$$
+
+Além disso, considerando $U=U(\vec{r},t)$:
+
+$$
+\frac{dU}{dt}=\vec{\nabla}U\cdot\frac{d\vec{r}}{dt}+\frac{\partial U}{\partial t}
+$$
+
+Logo:
+
+$$
+\frac{dE}{dt}=(\vec{F}+\vec{\nabla}U)\cdot\frac{d\vec{r}}{dt}+\frac{\partial U}{\partial t}
+$$
+
+Mas, se a força é conservativa, $\vec{F}=-\vec{\nabla}U$, então:
+
+$$
+\frac{dE}{dt}=\frac{\partial U}{\partial t}
+$$
+
+Se a energia potencial não depende explicitamente do tempo, a energia do sistema é conservada.
+
+## Movimento unidimensional em potencial conservativo
+
+Considere uma partícula que pode se mover em apenas uma dimensão, sob ação de uma força conservativa. A energia é dada por:
+
+$$
+E=\frac{m}{2}v^2+U(x)
+$$
+
+A velocidade pode ser escrita em termos da energia:
+
+$$
+\frac{m v^2}{2}=E-U(x)\Rightarrow v=\pm\sqrt{\frac{2}{m}[E-U(x)]}
+$$
+
+Como $E$ é constante, podemos integrar:
+
+$$
+\frac{dx}{dt}=\pm\sqrt{\frac{2}{m}[E-U(x)]}
+\Rightarrow
+ t-t_0=\pm\int_{x_0}^{x}\frac{dx}{\sqrt{\frac{2}{m}[E-U(x)]}}
+$$
+
+Dada a função $U(x)$, o movimento será determinado pelo valor da energia total.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Se a partícula tiver energia $E_0$, ela permanecerá em repouso na posição $x_0$, que é uma posição de equilíbrio, porque é um extremo de $U(x)$:
+
+$$
+\left.\frac{dU}{dx}\right|_{x_0}=0
+$$
+
+O mesmo vale para as posições $x_{E1}$, $x_{E2}$, $x_E$ e $x_{E3}$.
+
+As posições $x_0$ e $x_E$ são posições de equilíbrio estável porque, para um deslocamento, a força tende a trazê-la de volta:
+
+$$
+F_x=-\frac{dU}{dx}
+$$
+
+Para a energia $E_1$, o movimento é limitado ao intervalo $[x_{1a},x_{1b}]$, porque em $x_{1a}$ e $x_{1b}$ temos $E_1=U$ e, portanto, a velocidade é zero (pontos de retorno).
+
+## Expansão de Taylor e estabilidade
+
+Podemos expressar $U(x)$, na vizinhança de um ponto de equilíbrio, como uma expansão em série de Taylor:
+
+$$
+\begin{aligned}
+U(x)=&\,U(x_0)+(x-x_0)\left(\frac{dU}{dx}\right)_{x_0}+\frac{(x-x_0)^2}{2!}\left(\frac{d^2U}{dx^2}\right)_{x_0}\\
+&+\frac{(x-x_0)^3}{3!}\left(\frac{d^3U}{dx^3}\right)_{x_0}+\cdots
+\end{aligned}
+$$
+
+No ponto de equilíbrio:
+
+$$
+\left(\frac{dU}{dx}\right)_{x_0}=0\quad (\text{força nula})
+$$
+
+E sempre podemos escolher $U(x_0)=0$. Assim, mantendo apenas o primeiro termo não nulo:
+
+$$
+U(x)\cong \frac{(x-x_0)^2}{2!}\left(\frac{d^2U}{dx^2}\right)_{x_0}
+$$
+
+Para um ponto de equilíbrio estável:
+
+$$
+U(x)>U(x_0)
+$$
+
+enquanto que, para o equilíbrio instável:
+
+$$
+U(x)<U(x_0)
+$$
+
+Com isso, a condição de estabilidade fica:
+
+- Equilíbrio estável: $\left(\frac{d^2U}{dx^2}\right)_{x_0}>0$
+
+- Equilíbrio instável: $\left(\frac{d^2U}{dx^2}\right)_{x_0}<0$
+
+## Sistema de polias
+
+Considere o sistema de polias abaixo:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+U(x)=-m_1 g x_1-m_2 g(x_2+c)
+$$
+
+Desprezando o raio das polias:
+
+$$
+\begin{aligned}
+& x_2=\sqrt{\frac{(b-x_1)^2}{4}-d^2}\\
+& U=-m_1 g x_1-m_2 g\sqrt{\frac{(b-x_1)^2}{4}-d^2}-m_2 g c
+\end{aligned}
+$$
+
+Derivando:
+
+$$
+\frac{dU}{dx_1}=-m_1 g+\frac{m_2 g}{4}\frac{(b-x_1)}{\sqrt{(b-x_1)^2/4-d^2}}=0
+$$
+
+o que leva a:
+
+$$
+(b-x_{10})^2\left(m_2^2-4m_1^2\right)=-16m_1^2 d^2
+$$
+
+e, portanto:
+
+$$
+(b-x_{10})^2=\frac{16m_1^2 d^2}{4m_1^2-m_2^2}
+\Rightarrow
+x_0=b-\frac{4m_1 d}{\sqrt{4m_1^2-m_2^2}}
+$$
+
+Só existe solução real para $4m_1^2>m_2^2$.
+
+Além disso:
+
+$$
+\frac{d^2U}{dx_1^2}=\frac{-m_2 g}{4\left\{\frac{(b-x_1)^2}{4}-d^2\right\}^{1/2}}+
+\frac{m_2 g (b-x_1)^2}{16\left\{\frac{(b-x_1)^2}{4}-d^2\right\}^{3/2}}
+$$
+
+e, no ponto de equilíbrio:
+
+$$
+\left(\frac{d^2U}{dx_1^2}\right)_{x_{10}}=
+\frac{g(4m_1^2-m_2^2)^{3/2}}{4m_2^2 d}
+$$
+
+Se $4m_1^2>m_2^2$, então $\left(\frac{d^2U}{dx_1^2}\right)_{x_{10}}>0$.
+

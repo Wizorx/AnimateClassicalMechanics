@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/OneDrive/Desktop/Livros Didaticos/Livro Classica/media/videos/livro classica/1080p60/partial_movie_files/SquareToCircle/3544663784_513577100_223132457.mp4'
+file 'file:D:/OneDrive/Desktop/Livros Didaticos/Livro Classica/media/videos/livro classica/1080p60/partial_movie_files/SquareToCircle/260329756_2253275789_557880437.mp4'
+file 'file:D:/OneDrive/Desktop/Livros Didaticos/Livro Classica/media/videos/livro classica/1080p60/partial_movie_files/SquareToCircle/260329756_1754310298_2600911402.mp4'

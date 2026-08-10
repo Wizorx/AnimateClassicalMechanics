@@ -1,0 +1,312 @@
+---
+title: "Oscilações Acopladas"
+subtitle: "Capítulo 12 — Coupled Oscillations (Thornton & Marion)"
+format: html
+---
+
+Para encontrar $\omega$, impomos o seguinte:
+
+$$
+\left|A_{jk} - \omega^2 m_{jk}\right| = 0
+$$
+
+A solução geral será uma combinação linear das soluções para cada autofrequência:
+
+$$
+q_j(t) = \sum_{r=1}^{n} a_{jr}\, e^{i(\omega_r t - \delta_r)}
+$$
+
+Tomando a parte real:
+
+$$
+q_j(t) = \sum_{r=1}^{n} a_{jr}\cos(\omega_r t - \delta_r)
+$$
+
+onde $r$ indica a autofrequência.
+
+## Exemplo: dois osciladores harmônicos simples idênticos acoplados
+
+$$
+n = 2
+$$
+
+$$
+U = \frac{K}{2}x_1^2 + \frac{K}{2}x_2^2 + \frac{K_{12}}{2}(x_2-x_1)^2
+$$
+
+$$
+= (K+K_{12})\frac{x_1^2}{2} + (K+K_{12})\frac{x_2^2}{2} - K_{12}x_1x_2
+$$
+
+$$
+A_{11} = \left.\frac{\partial^2 U}{\partial x_1^2}\right|_0 = (K+K_{12})
+$$
+
+$$
+A_{12} = \left.\frac{\partial^2 U}{\partial x_1 \partial x_2}\right|_0 = -K_{12} = A_{21}
+$$
+
+$$
+A_{22} = \left.\frac{\partial^2 U}{\partial x_2^2}\right|_0 = K + K_{12}
+$$
+
+$$
+E_C = \frac{M}{2}\dot{x}_1^2 + \frac{M}{2}\dot{x}_2^2 = \frac{1}{2}\sum_{j=1}^{n}\sum_{k=1}^{n} m_{jk}\dot{x}_j\dot{x}_k
+\;\;\longrightarrow\;\; m_{11} = m_{22} = M
+$$
+
+$$
+\hookrightarrow \quad m_{12} = m_{21} = 0
+$$
+
+$$
+\therefore \quad
+\left[\begin{matrix}
+K+K_{12}-\omega^2 M & -K_{12} \\
+-K_{12} & K+K_{12}-M\omega^2
+\end{matrix}\right] = 0
+$$
+
+$$
+\rightarrow \quad \omega = \sqrt{\frac{k+k_{12}\pm k_{12}}{M}}
+\;\;\rightarrow\;\;
+\omega_1 = \sqrt{\frac{k+2k}{M}},\qquad \omega_2 = \sqrt{\frac{k}{M}}
+$$
+
+Um resultado importante é que os autovetores são ortogonais entre si:
+
+$$
+\sum_{j=1}^{n}\sum_{k=1}^{n} m_{kj}\,a_{jr}\,a_{ks} = \delta_{rs}
+$$
+
+Com isso, podemos reescrever a seguinte solução geral:
+
+$$
+q_j(t) = \sum_r \alpha_r\, a_{jr}\, e^{i(\omega_r t - \delta_r)}
+$$
+
+Onde $\alpha_r$ são constantes de normalização. Definindo então o seguinte:
+
+$$
+\beta_r := \alpha_r\, e^{-i\delta_r}
+\;\;\longrightarrow\;\;
+q_j(t) = \sum_r \beta_r\, a_{jr}\, e^{i\omega_r t}
+$$
+
+Definindo as seguintes funções:
+
+$$
+\eta_r(t) := \beta_r\, e^{i\omega_r t}
+\;\;\longrightarrow\;\;
+q_j(t) = \sum_r a_{jr}\,\eta(t)
+$$
+
+Por definição, $\eta_r$ representam osciladores harmônicos desacoplados com frequência $\omega_r$:
+
+$$
+\ddot\eta_r + \omega_r^2\,\eta_r = 0
+$$
+
+Essas são as **coordenadas normais** do sistema.
+
+## Fio com massas
+
+Considere $n$ partículas idênticas presas a um fio elástico em intervalos regulares no equilíbrio. O comprimento do fio, no equilíbrio, é $L$ e a distância entre as partículas é $d$. Então:
+
+$$
+L = (n+1)d
+$$
+
+![Fio elástico com $n$ partículas idênticas separadas por uma distância $d$ no equilíbrio](figs/ch12_fig2_string_equilibrium.png)
+
+Vamos considerar deslocamentos transversais à direção de equilíbrio.
+
+![Deslocamentos transversais $q_{j-1}$, $q_j$, $q_{j+1}$ das partículas vizinhas, separadas por uma distância $d$, com ângulo $\theta$ em relação à horizontal](figs/ch12_fig3_string_transverse.png)
+
+Supomos que a tensão $T$ no fio é a mesma ao longo do fio (ou seja, ele é homogêneo), a componente transversal da tensão é do tipo $T\,\text{sen}\,\theta$.
+
+Se os deslocamentos $q_j$ forem suficientemente pequenos, os ângulos $\theta$ também vão ser:
+
+$$
+\text{sen}\,\theta \approx \tan\theta
+$$
+
+Com isso, a força resultante na direção transversal sobre uma partícula $j$ é:
+
+$$
+F_j = -\frac{T}{d}(q_j-q_{j-1}) - \frac{T}{d}(q_j-q_{j+1})
+$$
+
+A equação de movimento para os deslocamentos fica então:
+
+$$
+m\ddot{q}_j - \frac{T}{d}\left(q_{j-1} - 2q_j + q_{j+1}\right) = 0
+$$
+
+De novo, vamos propor uma solução do tipo:
+
+$$
+q_j(t) = a_j\, e^{i\omega t}
+$$
+
+Substituindo na equação de movimento e dividindo pela exponencial (para valer para qualquer tempo):
+
+$$
+\left(\frac{2T}{d} - m\omega^2\right)a_j - \frac{T}{d}a_{j-1} - \frac{T}{d}a_{j+1} = 0
+$$
+
+$$
+\lambda := \frac{2T}{d} - m\omega^2
+$$
+
+A matriz de coeficientes fica:
+
+$$
+\left[\begin{matrix}
+\lambda & -\dfrac{T}{d} & 0 & 0 & \cdots \\[1ex]
+-\dfrac{T}{d} & \lambda & -\dfrac{T}{d} & 0 & \cdots \\[1ex]
+0 & -\dfrac{T}{d} & \lambda & -\dfrac{T}{d} & \cdots \\[1ex]
+0 & 0 & -\dfrac{T}{d} & \lambda & \cdots \\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{matrix}\right]
+\qquad \text{(primeiros vizinhos!)}
+$$
+
+De novo, temos um problema de autovalores. Para resolver o caso geral, para obter os autovetores, propomos:
+
+$$
+a_j = a\, e^{i(j\gamma - \delta)} \qquad (\gamma,\delta\ \text{são não arbitrários})
+$$
+
+$$
+\rightarrow \quad \left(\frac{2T}{d}-m\omega^2\right)a\, e^{i[j\gamma-\delta]} - \frac{T}{d}a\, e^{i[(j-1)\gamma-\delta]} - \frac{T}{d}a\, e^{i[(j+1)\gamma-\delta]} = 0
+$$
+
+$$
+\rightarrow \quad \left[\left(\frac{2T}{d}-m\omega^2\right) - \frac{T}{d}e^{-i\gamma} - \frac{T}{d}e^{i\gamma}\right] a\, e^{i(j\gamma-\delta)} = 0
+$$
+
+$$
+\vdots
+$$
+
+$$
+\omega^2 = \frac{2T}{md} - \frac{T}{md}\left(e^{i\gamma}+e^{i\gamma}\right)
+$$
+
+$$
+= \frac{2T}{md} - \frac{2T}{md}\cos\gamma
+$$
+
+$$
+= \frac{2T}{md}(1-\cos\gamma)
+$$
+
+$$
+= \frac{4T}{md}\,\text{sen}^2\!\left(\frac{\gamma}{2}\right)
+$$
+
+Tomando a parte real dos coeficientes:
+
+$$
+a_j = \cos(j\gamma - \delta)
+$$
+
+Condições de contorno: $a_0 = 0,\ a_{n+1}=0$
+
+$$
+\rightarrow \quad a_0 = a\cos(-\delta) = 0 \;\;\rightarrow\;\; \delta = \frac{\pi}{2}
+$$
+
+$$
+\rightarrow \quad a_{n+1} = a\cos\!\left[(n+1)\gamma - \frac{\pi}{2}\right] = 0
+$$
+
+$$
+= a\,\text{sen}\!\left[(n+1)\gamma\right] = 0
+$$
+
+$$
+\rightarrow \quad (n+1)\gamma = r\pi
+$$
+
+$$
+\rightarrow \quad \gamma_r = \frac{r\pi}{n+1} \qquad \forall\, r \in \{1,2,3,\dots,n\}
+$$
+
+$$
+\therefore \quad \omega_r = 2\sqrt{\frac{T}{md}}\,\text{sen}\!\left[\frac{r\pi}{2(n+1)}\right]
+$$
+
+$$
+a_{jr} = a\, r\,\text{sen}\!\left[\frac{jr\pi}{n+1}\right] \in \mathbb{R}
+$$
+
+A solução geral então fica:
+
+$$
+q_j(t) = \sum_r \beta_r\, a_{jr}\, e^{i\omega_r t}
+$$
+
+$$
+= \sum_r \beta_r\, a_r\,\text{sen}\!\left[\frac{jr\pi}{n+1}\right] e^{i\omega_r t}
+$$
+
+Vamos definir as coordenadas normais da seguinte forma, já que a gente já viu que elas só dependem de uma frequência:
+
+$$
+\eta_r(t) := \beta_{r*}\, e^{i\omega_r t}
+\quad\therefore\quad
+q_j(t) = \sum_r \eta_r\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right)
+$$
+
+onde $\beta_{r*} := \text{sen}\!\left[\dfrac{jr\pi}{n+1}\right] e^{i\omega_r t} = \mu_r + i\nu_r \in \mathbb{C}$
+
+A parte real da solução fica:
+
+$$
+q_j = \sum_r \text{sen}\!\left(\frac{jr\pi}{n+1}\right)\left[\mu_r\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right) - \nu_r\,\text{sen}(\omega_r t)\right]
+$$
+
+Condições iniciais:
+
+$$
+\begin{cases}
+q_j(0) = \displaystyle\sum_r \mu_r\,\text{sen}\!\left(\dfrac{jr\pi}{n+1}\right) \\[2ex]
+\dot{q}_j(0) = -\displaystyle\sum_r \omega_r\nu_r\,\text{sen}\!\left(\dfrac{jr\pi}{n+1}\right)
+\end{cases}
+$$
+
+Série de Fourier para achar os coeficientes:
+
+$$
+\sum_j q_j(0)\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right) = \sum_r\sum_j \mu_r\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right)\text{sen}\!\left(\frac{js\pi}{n+1}\right)
+$$
+
+$$
+\sum_j \mu_r\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right)\text{sen}\!\left(\frac{js\pi}{n+1}\right) = \frac{n+1}{2}\delta_{rs}
+$$
+
+$$
+\rightarrow \quad \sum_j q_j(0)\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right) = \sum_r \mu_r\,\frac{n+1}{2}\delta_r
+$$
+
+$$
+\rightarrow \quad \sum_j q_j(0)\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right) = \mu_r\,\frac{n+1}{2}
+$$
+
+$$
+\therefore \quad \mu_s = \frac{2}{n+1}\sum_j q_j(0)\,\text{sen}\!\left(\frac{js\pi}{n+1}\right)
+$$
+
+Analogamente:
+
+$$
+\nu_s = -\frac{2}{\omega_r(n+1)}\sum_j \dot{q}_j(0)\,\text{sen}\!\left(\frac{js\pi}{n+1}\right)
+$$
+
+Para $n=3$:
+
+![Modos normais para $n=3$: os três primeiros modos ($r=1,2,3$) e o modo nulo ($r=4$)](figs/ch12_fig1_normal_modes.png)
+
+$n+1$ é o modo nulo!
