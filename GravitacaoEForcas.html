@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Forças Centrais e Gravitação – Mecânica Clássica Animada</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./SistemasPart.html" rel="next">
+<link href="./Oscilacoes.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-acff971833d9769290026d534105daaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<style>
+.cell-output {
+  max-height: 500px;
+  overflow-y: auto;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Sistemas.html">Mecânica Clássica 1</a></li><li class="breadcrumb-item"><a href="./GravitacaoEForcas.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mecânica Clássica Animada</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mecânica Clássica 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sistemas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Mec1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mecânica de uma Partícula</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./GravitacaoEForcas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./SistemasPart.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de Partículas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Teoremas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Teoremas de Conservação</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referenciais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Referenciais Não Inerciais</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mecânica Clássica 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calculo-variacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Cálculo Variacional</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lagrange-hamilton.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#marés" id="toc-marés" class="nav-link active" data-scroll-target="#marés"><span class="header-section-number">4.1</span> Marés</a></li>
+  <li><a href="#forças-centrais" id="toc-forças-centrais" class="nav-link" data-scroll-target="#forças-centrais"><span class="header-section-number">4.2</span> Forças centrais</a></li>
+  <li><a href="#precessão-de-órbitas" id="toc-precessão-de-órbitas" class="nav-link" data-scroll-target="#precessão-de-órbitas"><span class="header-section-number">4.3</span> Precessão de órbitas</a></li>
+  <li><a href="#estabilidade-de-órbitas-circulares" id="toc-estabilidade-de-órbitas-circulares" class="nav-link" data-scroll-target="#estabilidade-de-órbitas-circulares"><span class="header-section-number">4.4</span> Estabilidade de órbitas circulares</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Sistemas.html">Mecânica Clássica 1</a></li><li class="breadcrumb-item"><a href="./GravitacaoEForcas.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A lei da gravitação universal de Newton pode ser escrita como</p>
+<p><span class="math display">\[
+\vec{F}_{g}=-G \frac{m M}{r^{2}} \hat{r}
+\]</span></p>
+<p>onde <span class="math inline">\(\vec{r}\)</span> é o vetor posição da partícula de massa <span class="math inline">\(m\)</span> em relação à partícula de massa <span class="math inline">\(M\)</span>.</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>O valor atual para a constante de gravitação é</p>
+<p><span class="math display">\[
+\begin{aligned}
+G= &amp; (6,67430 \pm 0,00015) \times 10^{-11} \, \mathrm{N\,m}^{2} / \mathrm{kg}^{2} \\
+\end{aligned}
+\]</span></p>
+<p>Essa lei estabelece a força entre duas partículas!<br>
+Para determinar a força sobre uma partícula, devido a um corpo extenso, precisamos considerar um elemento suficientemente pequeno de volume e integrar:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \quad d \vec{F}_{g}=-\frac{G m d M}{r^{2}} \hat{r}=-G m \frac{\rho d V \hat{r}}{r^{2}} \\
+&amp; \vec{F}_{g}=-G m \int_{V} \frac{\rho \hat{r} d V^{\prime}}{r^{2}} ; \quad \rho:=\frac{d m}{d V}
+\end{aligned}
+\]</span></p>
+<p>Se, ao invés de uma partícula, tivermos outro corpo extenso, temos:</p>
+<p><span class="math display">\[
+\overrightarrow{F_{g}}=-G \int_{V_{1}} \int_{V_{1}} \frac{\rho_{1} \rho_{2} \hat{r}}{r^{2}} d V_{1}^{\prime} d V_{2}^{\prime}
+\]</span></p>
+<p>O campo gravitacional é a força por unidade de massa sobre uma partícula:</p>
+<p><span class="math display">\[
+\vec{g}=\frac{\overrightarrow{F g}}{m}=-\frac{G M}{r^{2}} \hat{r}
+\]</span></p>
+<p>No caso de uma partícula. Ou, no caso de um corpo extenso,</p>
+<p><span class="math display">\[
+\vec{g}=-G \int_{V} \frac{\rho \hat{r} d V^{\prime}}{r^{2}}
+\]</span></p>
+<p>O campo gravitacional é conservativo, ou seja, o trabalho da força gravitacional é independente do caminho,</p>
+<p><span class="math display">\[
+W_{a \rightarrow b}=\int_{a}^{b} \vec{F} \cdot \overrightarrow{d l}=-\left(U_{b}-U_{a}\right)
+\]</span></p>
+<p>onde <span class="math inline">\(U\)</span> é a energia potencial gravitacional.<br>
+Podemos investigar o trabalho por unidade de massa:</p>
+<p><span class="math display">\[
+W_{a \rightarrow b}=\int_{a}^{b} \vec{g} \cdot \overrightarrow{d l}=-\left(\Phi_{b}-\Phi_{a}\right)
+\]</span></p>
+<p>onde <span class="math inline">\(\Phi=\frac{U}{m}\)</span> é o potencial gravitacional, definido como a energia potencial por unidade de massa.</p>
+<p><span class="math display">\[
+\delta \vec{g} \cdot \vec{d}=0 \Rightarrow \vec{\nabla} \times \vec{g}=\overrightarrow{0}
+\]</span></p>
+<p>Um campo irrotacional sempre pode ser escrito como um gradiente:</p>
+<p><span class="math display">\[
+\vec{g}=-\vec{\nabla} \Phi
+\]</span></p>
+<p>Para uma partícula, temos:</p>
+<p><span class="math display">\[
+\vec{\nabla} \Phi=\frac{G M}{r^{2}} \hat{r}
+\]</span></p>
+<p>Mas sabemos que o gradiente em coordenadas esféricas é:</p>
+<p><span class="math display">\[
+\vec{\nabla} \Phi=\frac{\partial \Phi}{\partial r} \hat{r}+\frac{1}{r}\frac{\partial \Phi}{\partial \theta} \hat{\theta}+\frac{1}{r \sin \theta}\frac{\partial \Phi}{\partial \phi} \hat{\phi}
+\]</span></p>
+<p>Logo,</p>
+<p><span class="math display">\[
+\frac{\partial \Phi}{\partial r}=\frac{G M}{r^{2}} \Rightarrow \Phi=-\frac{G M}{r}
+\]</span></p>
+<p>O valor absoluto de <span class="math inline">\(\Phi\)</span> não tem significado físico, apenas a sua variação! Podemos escolher onde <span class="math inline">\(\Phi=0\)</span>. Se a distribuição de massa está em um volume finito, podemos escolher <span class="math inline">\(\Phi(r \rightarrow \infty)=0\)</span>.<br>
+Novamente, para uma distribuição de massa,</p>
+<p><span class="math display">\[
+\Phi=-G \int_{V} \frac{\rho d V^{\prime}}{r^{\prime}}
+\]</span></p>
+<p>Podemos encontrar um análogo à lei de Gauss do eletromagnetismo, calculando o fluxo do campo gravitacional através de uma superfície fechada:</p>
+<p><span class="math display">\[
+\oint_{s} \vec{g} \cdot \hat{n} d A
+\]</span></p>
+<p>onde <span class="math inline">\(\hat{n}\)</span> é ortogonal à superfície, orientado para fora. Considerando que existe apenas uma partícula no interior,</p>
+<p><span class="math display">\[
+\vec{g}=-\frac{G M}{r^{2}} \hat{r}
+\]</span></p>
+<p><span class="math display">\[
+\vec{g} \cdot \hat{m}=-\frac{G M}{r^{2}} \hat{r} \cdot \hat{m}=-\frac{G M}{r^{2}} \cos \alpha
+\]</span></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math display">\[
+\oint_{s} \vec{g} \cdot \hat{m} d A=-G M \oint_{s} \frac{\cos \alpha}{r^{2}} d A
+\]</span></p>
+<p><span class="math inline">\(\cos\alpha\, dA\)</span> é a projeção do elemento de superfície sobre uma esfera. Mas o elemento de área de uma esfera é <span class="math inline">\(\cos\alpha\, dA=r^{2}\sin\theta\, d\theta\, d\phi\)</span>, então<br>
+<span class="math inline">\(\oint_{s} \vec{g} \cdot \hat{n}\, dA=-G M \oint_{s} \frac{r^{2} \sin \theta\, d\theta\, d\phi}{r^{2}}=-4\pi G M\)</span>.<br>
+Esse resultado não depende da posição da partícula no interior. Logo, para um conjunto de partículas,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\vec{g}_{i} &amp; =-\frac{G M}{r_{i}^{2}} \hat{r}_{i} ; \vec{g}=\sum_{i} \vec{g}_{i} \\
+\oint_{s} \vec{g} \cdot \hat{m} d A &amp; =\sum_{i} \oint_{s} \vec{g}_{i} \cdot \hat{m} d A=-4 \pi G \sum_{i} M_{i}
+\end{aligned}
+\]</span></p>
+<p>Da mesma maneira, para uma distribuição de massa qualquer,</p>
+<p><span class="math display">\[
+\dot{d g}=-\frac{G d m \hat{r}_{i}}{r^{2}}=-G \frac{\rho d V}{r^{2}} \hat{r}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \vec{g}=\int \vec{d} \vec{g}=-G \int \frac{d m}{r^{2}} \hat{r} \\
+&amp; \oint_{s} \vec{g} \cdot \hat{m} d A=\oint_{s} \int d \vec{g} \cdot \hat{m} d A=\int \oint_{s} d \vec{g} \cdot \hat{m} d A \\
+&amp; \oint_{s} \vec{g} \cdot \hat{m} d A=-4 \pi G \int d m=-4 \pi G \int_{V} \rho d V \\
+&amp; \oint_{s} \vec{g} \cdot \hat{m} d A=-4 \pi G M_{T}
+\end{aligned}
+\]</span></p>
+<p>onde <span class="math inline">\(M_T\)</span> é a massa total no interior da superfície. Usando o teorema de Gauss:</p>
+<p><span class="math display">\[
+\oint_{S=\delta V} \vec{g} \cdot \hat{m} d A=\int_{V} \vec{\nabla} \cdot \vec{g} d V
+\]</span></p>
+<p>Com isso, temos que</p>
+<p><span class="math display">\[
+\int_{V} \vec{\nabla} \cdot \vec{g} d V=-4 \pi G \int_{V} \rho d V
+\]</span></p>
+<p>para qualquer volume. Então,</p>
+<p><span class="math display">\[
+\vec{\nabla} \cdot \vec{g}=-4 \pi G \rho
+\]</span></p>
+<p>Escrevendo em termos do potencial,</p>
+<p><span class="math display">\[
+\vec{g}=-\vec{\nabla} \Phi
+\]</span></p>
+<p>Temos que</p>
+<p><span class="math display">\[
+\vec{\nabla} \cdot \vec{\nabla} \Phi=4 \pi G \rho
+\]</span></p>
+<p>onde temos o operador laplaciano <span class="math inline">\(\nabla^{2}=\vec{\nabla}\cdot\vec{\nabla}\)</span>. Essa é a equação de Poisson.<br>
+No vácuo, <span class="math inline">\(\rho=0\)</span>, e a equação se reduz à equação de Laplace:</p>
+<p><span class="math display">\[
+\nabla^{2} \Phi=0
+\]</span></p>
+<p>De maneira análoga ao eletromagnetismo, podemos ilustrar o campo e o potencial usando linhas de campo e superfícies equipotenciais.<br>
+Linhas de campo são linhas orientadas tangentes ao campo <span class="math inline">\(\vec{g}\)</span> em cada ponto e com o sentido de <span class="math inline">\(\vec{g}\)</span>. Superfícies equipotenciais são superfícies em que o potencial <span class="math inline">\(\Phi\)</span> é constante.<br>
+As linhas de campo são ortogonais às superfícies equipotenciais em cada ponto.<br>
+O trabalho associado à força gravitacional em qualquer caminho sobre uma equipotencial é zero!<br>
+Para duas partículas com massas iguais, temos:</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>Vamos calcular o potencial devido a uma casca esférica homogênea.</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>Sabemos que o potencial é dado por</p>
+<p><span class="math display">\[
+\Phi=-G \int_{V} \frac{\rho\left(\vec{r}^{\prime}\right)}{r} d V^{\prime}
+\]</span></p>
+<p><span class="math inline">\(d V^{\prime}=r^{\prime 2}\sin\theta\, d\theta\, d\phi\, d r^{\prime}\)</span> é um elemento da casca, em coordenadas esféricas.<br>
+Se a distribuição de massa é homogênea, <span class="math inline">\(\rho=\text{cte}\)</span>, então</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \Phi=-G \rho \int_{b}^{a} \int_{0}^{2 \pi} \int_{0}^{\pi} \frac{r^{2} \operatorname{sen} \theta d \theta d \phi d r^{\prime}}{r} \\
+&amp; \Phi=-2 \pi G \rho \int_{b}^{a} \int_{0}^{\pi} \frac{r^{2} \operatorname{sen} \theta d \theta d r^{\prime}}{r} \\
+&amp; r^{2}=r^{\prime 2}+R^{2}-2 r^{\prime} R \cos \theta
+\end{aligned}
+\]</span></p>
+<p>Diferenciando esta expressão para um <span class="math inline">\(\vec{r}^{\prime}\)</span> dado,<br>
+<span class="math inline">\(2r\,dr=2r^{\prime}R\sin\theta\,d\theta\)</span><br>
+<span class="math inline">\(\frac{\sin\theta}{r}\,d\theta=\frac{dr}{r^{\prime}R}\)</span><br>
+<span class="math inline">\(\Phi=-2\pi G\rho\int_{b}^{a}\int_{r_{\text{min}}}^{r_{\text{max}}} r^{\prime 2}\,dr^{\prime}\,\frac{dr}{r^{\prime}R}\)</span></p>
+<p>Se o ponto <span class="math inline">\(P\)</span> estiver fora, como na figura,</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; r_{\text {min}}=R-r^{\prime} \ \text{e}\ r_{\text {max}}=R+r^{\prime} \\
+&amp; \Phi=-\frac{2 \pi G}{R} \rho \int_{b}^{a} r^{\prime} d r^{\prime} \int_{R-r^{\prime}}^{R+r^{\prime}} d r \quad(R&gt;a) \\
+&amp; \Phi=-\frac{2 \pi}{R} G_{\rho} \int_{b}^{a} r^{\prime}\left[\left(R+r^{\prime}\right)-\left(R-r^{\prime}\right)\right] d r^{\prime} \\
+&amp; \Phi=-\frac{2 \pi G}{R} \rho \int_{b}^{a} 2 r^{\prime^{2}} d r^{\prime} \\
+&amp; \Phi=-\left.\frac{4 \pi G}{R} \rho \frac{r^{\prime^{3}}}{3}\right|_{b} ^{a}=-\frac{4 \pi G}{3 R} \rho\left(a^{3}-b^{3}\right)
+\end{aligned}
+\]</span></p>
+<p>Mas, como a densidade é constante,</p>
+<p><span class="math display">\[
+M=\rho V=\frac{4 \pi}{3} \rho\left(a^{3}-b^{3}\right)
+\]</span></p>
+<p>Logo,<br>
+<span class="math inline">\(\Phi=-\frac{G M}{R}\)</span>, que é idêntico ao potencial de uma partícula de massa <span class="math inline">\(M\)</span> colocada no centro.<br>
+Se o ponto <span class="math inline">\(P\)</span> estiver dentro, <span class="math inline">\(R&lt;b\)</span>,</p>
+<p><span class="math display">\[
+r_{\text {min}}=r^{\prime}-R \ \text{e}\ r_{\text {max}}=r^{\prime}+R
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \Phi=-\frac{2 \pi G}{R} \rho \int_{b}^{a} r^{\prime} d r^{\prime} \int_{r^{\prime}-R}^{r^{\prime}+R} d r \quad(R&lt;b) \\
+&amp; \Phi=-\frac{2 \pi G}{R} \rho \int_{b}^{a} r^{\prime}\left[\left(r^{\prime}+R\right)-\left(r^{\prime}-R\right)\right] d r^{\prime}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \Phi=-\frac{4 \pi G \rho}{R} \int_{b}^{a} r^{\prime} R d r^{\prime}=-\left.4 \pi C_{\rho} \frac{r^{\prime 2}}{2}\right|_{b} ^{a} \\
+&amp; \Phi=-2 \pi G \rho\left(a^{2}-b^{2}\right), \text { consiarte! }
+\end{aligned}
+\]</span></p>
+<p>Se o ponto <span class="math inline">\(P\)</span> pertence à casca,</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>Podemos considerar que <span class="math inline">\(P\)</span> está fora da casca de raio <span class="math inline">\(b\)</span> a <span class="math inline">\(R\)</span> e dentro da casca de <span class="math inline">\(R\)</span> a <span class="math inline">\(a\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \Phi=\Phi_{\text {FORS }}+\Phi_{\text {DFNMO }} \\
+&amp; \bar{\Phi}=-\frac{4 \pi G}{3 R} \rho\left(R^{3}-b^{3}\right)-2 \pi G \rho\left(a^{2}-R^{2}\right) \\
+&amp; \Phi=-4 \pi G \rho\left(\frac{a^{2}}{2}-\frac{b^{3}}{3 R}-\frac{R^{2}}{6}\right)
+\end{aligned}
+\]</span></p>
+<p>Podemos obter o campo gravitacional usando</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \vec{g}=-\frac{d \Phi}{d R} \hat{R} \\
+&amp; \vec{g}=\vec{0}, \quad R&lt;b \\
+&amp; \quad \frac{4 \pi G \rho}{3}\left(\frac{b^{3}}{R^{2}}-R\right) \hat{R}, \quad b&lt;R&lt;a \\
+&amp; -\frac{G M}{R^{2}} \hat{R}, \quad R&gt;a
+\end{aligned}
+\]</span></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>Do lado de fora, tudo se passa como se houvesse uma única partícula no centro!<br>
+Como a distribuição de massa tem simetria, podemos obter o campo via lei de Gauss e então obter o potencial <span class="math inline">\(\Phi_{a}-\Phi_{b}=\int_{a}^{b} \vec{g} \cdot \overrightarrow{d l}\)</span>.<br>
+Simetria esférica: <span class="math inline">\(\rho(\vec{r})=\rho(r)\)</span>, não depende dos ângulos <span class="math inline">\(\theta\)</span> e <span class="math inline">\(\phi\)</span>. Nesse caso, é razoável esperar que o campo exiba a mesma simetria:</p>
+<p><span class="math display">\[
+\vec{g}(\vec{r})=g(r) \hat{r}
+\]</span></p>
+<p>Aproveitando a simetria, podemos escolher uma superfície esférica (<span class="math inline">\(r=\text{cte}\)</span>) concêntrica à casca.</p>
+<p><span class="math display">\[
+\oint \vec{g} \cdot \hat{m} d A=\int g(r) \hat{r} \cdot \hat{r} d A=g(r) 4 \pi r^{2}
+\]</span></p>
+<p>Se <span class="math inline">\(r&lt;b\)</span>, a massa no interior é zero.</p>
+<p><span class="math display">\[
+g(r) 4 \pi r^{2}=0 \Rightarrow \vec{g}=\overrightarrow{0}
+\]</span></p>
+<p>Se <span class="math inline">\(b&lt;r&lt;a\)</span>, a massa é</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; M_{T}=\int \rho d V=\rho V=\frac{4 \pi}{3} \rho\left(r^{3}-b^{3}\right) \\
+&amp; \oint \vec{g} \cdot \hat{m} d A=-4 \pi G M_{T} \\
+&amp; g(r) 4 \pi r^{2}=-4 \pi G \frac{4 \pi}{3} \rho\left(r^{3}-b^{3}\right) \\
+&amp; g(r)=-\frac{4 \pi G \rho}{3}\left(r-\frac{b^{3}}{r^{2}}\right)
+\end{aligned}
+\]</span></p>
+<p>Se <span class="math inline">\(r&gt;a\)</span>, a massa é a massa da casca.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; M_{T}=\frac{4 \pi}{3} \rho\left(a^{3}-b^{3}\right)=M \\
+&amp; g(r) 4 \pi r^{2}=-4 \pi G M \\
+&amp; g(r)=-\frac{G M}{r^{2}}
+\end{aligned}
+\]</span></p>
+<p>Para calcular o potencial, começando por fora (<span class="math inline">\(r&gt;a\)</span>),</p>
+<p><span class="math inline">\(\Phi(r)-\Phi(\infty)=\int_{r}^{\infty} \vec{g} \cdot \overrightarrow{d l}=\int_{r}^{\infty}\left(-\frac{G M}{r^{2}} \hat{r}\right) \cdot(d r \hat{r})\)</span>.</p>
+<p>Escolhendo <span class="math inline">\(\Phi(\infty)=0\)</span>:</p>
+<p><span class="math display">\[
+\Phi(r)=-G M \int_{r}^{\infty} \frac{d r}{r^{2}}=-\frac{G M}{r}
+\]</span></p>
+<p>Para <span class="math inline">\(b&lt;r&lt;a\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \Phi(r)-\Phi(a)=\int_{r}^{a}-\frac{4 \pi G}{3} \rho\left(r-\frac{b^{3}}{r^{2}}\right) \hat{r} \cdot(d r \hat{r}) \\
+&amp; \Phi(r)+\frac{G M}{a}=-\frac{4 \pi G \rho}{3} \int_{r}^{a}\left(r-\frac{b^{3}}{r^{2}}\right) d r \\
+&amp; \Phi(r)=-\frac{4 \pi G \rho}{3}\left[\frac{r^{2}}{2}+\frac{b^{3}}{r}\right]_{r}^{a}-\frac{G M}{a} \\
+&amp; \left.\Phi(r)=-\frac{4 \pi G \rho\left[\frac{a^{2}}{3}+\frac{b^{3}}{a}\right.}{a}-\frac{r^{2}}{2}-\frac{b^{3}}{r}\right] \\
+&amp; -\frac{G}{a} \frac{4 \pi}{3} \rho\left(a^{3}-b^{3}\right) \\
+&amp; \Phi(r)=-\frac{4 \pi G \rho}{3}\left(\frac{a^{2}}{2}+\frac{b^{3}}{a}-\frac{r^{2}}{2}-\frac{b^{3}}{r}+a^{2}-\frac{b^{3}}{a}\right) \\
+&amp; \Phi(r)=-\frac{4 \pi G \rho}{3}\left(\frac{3 a^{2}}{2}-\frac{b^{3}}{r}-\frac{r^{2}}{2}\right) \\
+&amp; \Phi(r)=-4 \pi G \rho\left(\frac{a^{2}}{2}-\frac{b^{3}}{3 r}-\frac{r^{2}}{6}\right)
+\end{aligned}
+\]</span></p>
+<p>Para <span class="math inline">\(r&lt;b\)</span>,</p>
+<section id="marés" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="marés"><span class="header-section-number">4.1</span> Marés</h2>
+<p>As marés ocorrem devido à deformação de um corpo extenso sujeito a um campo gravitacional que varia apreciavelmente ao longo do seu volume.</p>
+<p>Vamos considerar, inicialmente, a Terra como sendo uma esfera com a superfície inteiramente coberta com água, e desprezar sua rotação.</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math inline">\(\vec{r}=\)</span> posição da partícula em relação ao centro da Terra</p>
+<p><span class="math inline">\(\vec{r}_{m}^{\prime}=\)</span> posição da partícula em relação à origem</p>
+<p><span class="math inline">\(\vec{R}=\)</span> posição da partícula em relação ao centro da Lua</p>
+<p><span class="math inline">\(\vec{r}_{T}^{\prime}=\)</span> posição do centro de massa da Terra em relação à origem</p>
+<p><span class="math inline">\(\vec{D}=\)</span> posição do centro de massa da Terra em relação ao centro da Lua</p>
+<p>A força sobre a partícula, no referencial <span class="math inline">\(S^{\prime}\)</span>, é</p>
+<p><span class="math inline">\(\vec{F}_{m}=-\frac{G M_{T} m}{r^{2}} \hat{r}-\frac{G M_{L} m}{R^{2}} \hat{R}=m \frac{d^{2}}{d t^{2}} \vec{r}_{m}^{\prime}\)</span>.</p>
+<p>A força sobre o centro de massa da Terra, devido à Lua, é</p>
+<p><span class="math inline">\(\vec{F}_{T}=-\frac{G M_{T} M_{L}}{D^{2}} \hat{D}=M_{T} \frac{d^{2}}{d t^{2}} \vec{r}_{T}^{\prime}\)</span>.</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math display">\[
+\begin{aligned}
+\vec{r} &amp; =\vec{r}_{m}^{\prime}-\vec{r}_{T}^{\prime} \\
+\frac{d^{2}}{d t^{2}} \vec{r} &amp; =\frac{d^{2} \vec{r}_{m}^{\prime}}{d t^{2}}-\frac{d^{2}}{d t^{2}} \vec{r}_{T}^{\prime}=-\frac{G M_{T}}{r^{2}} \hat{r}-\frac{G M_{L}}{R^{2}} \hat{R}+\frac{G M_{L}}{D^{2}} \widehat{D} \\
+\frac{d^{2}}{d t^{2}} \vec{r} &amp; =-\frac{G M_{T}}{r^{2}} \hat{r}-\underbrace{G M_{L}\left(\frac{\widehat{R}}{R^{2}}-\frac{\widehat{D}}{D^{2}}\right)}_{\text {ACELCRAGDS DEVIDSA MARE- }}
+\end{aligned}
+\]</span></p>
+<p>A força de maré, então, é</p>
+<p><span class="math display">\[
+\vec{F}_{M}=-G M_{L} m\left(\frac{\hat{R}}{R^{2}}-\frac{\hat{D}}{D^{2}}\right)
+\]</span></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>As componentes <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> da força podem ser calculadas em termos de <span class="math inline">\(\theta\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \vec{r}=\vec{R}-\vec{D} \\
+&amp; \hat{R}=\cos \alpha \hat{x}+\sin \alpha \hat{y} \\
+&amp; r^{2}=R^{2}+D^{2}-2 R D \cos \alpha \Rightarrow \cos \alpha=\frac{R^{2}+D^{2}-r^{2}}{2 R D} \\
+&amp; \frac{r}{\operatorname{sen} \alpha}=\frac{R}{\operatorname{ctn}(\pi-\theta)} \Rightarrow \operatorname{sen} \alpha=\frac{r}{D} \sin (\pi-\theta)=\frac{r}{D} \operatorname{sen} \theta
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \left.\left\lvert\, \begin{array}{l}
+\cos \alpha=\frac{R}{2 D}+\frac{D}{2 R}-\frac{r^{2}}{2 R D} \\
+\operatorname{sen} \alpha=\frac{r}{D} \sin \theta \\
+\hat{R}=\left(\frac{R}{2 D}+\frac{D}{2 R}-\frac{r^{2}}{2 D R}\right) \hat{x}+\frac{r}{D} \sin \theta \hat{y} \\
+\hat{D} \equiv \hat{x} \\
+F_{M x}=-G M_{L} m\left[\frac{1}{R^{2}}\left(\frac{R}{2 D}+\frac{D}{2 R}-\frac{r^{2}}{2 D R}\right)-\frac{1}{D^{2}}\right] \\
+F_{M x}=-\frac{G M_{L} m}{D^{2}}\left[\frac{D}{2 R}+\frac{D^{3}}{2 R^{3}}-\frac{r^{2} D}{2 R^{3}}-1\right] \\
+R^{2}=r^{2}+D^{2}-2 r D \cos (\pi-\theta)=r^{2}+D^{2}+2 r D \cos \theta \\
+\cos \theta=\frac{R^{2}}{2 r D}-\frac{r^{2}}{2 r D}-\frac{D^{2}}{2 r D}=\frac{R^{2}}{2 r D}-\frac{r}{2 D}-\frac{D}{2 r} \\
+\cos \theta=\frac{R}{r}\left(\frac{R}{2 D}-\frac{r^{2}}{2 R D}-\frac{D}{2 R}\right) \\
+\cos \theta=\frac{R}{r}\left(\frac{R}{2 D}-\frac{r^{2}}{2 R D}-\frac{D}{2 R}+\frac{D}{2 R}-\frac{D}{2 R}\right) \\
+\cos \theta=\frac{R}{r}\left(\frac{R}{2 D}+\frac{D}{2 R}-\frac{r^{2}}{2 R D}-\frac{D}{R}\right) \\
+\cos \theta=\frac{R}{r}\left(\cos \alpha-\frac{D}{R}\right) \\
+\cos \alpha=\frac{r}{R} \cos \theta+\frac{D}{R}
+\end{array}\right.\right\}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \hat{R}=\cos \alpha \hat{x}+\sin \alpha \hat{y} \\
+&amp; \hat{R}=\left(\frac{r}{R} \cos \theta+\frac{D}{R}\right) \hat{x}+\frac{r}{D} \sin \theta \hat{y} \\
+&amp; F_{M x}=-G M_{L} m\left[\frac{1}{R^{2}}\left(\frac{r}{R} \cos \theta+\frac{D}{R}\right)-\frac{1}{D^{2}}\right] \\
+&amp; F_{M x}=-G M_{L m}\left[\frac{r}{R^{3}} \cos \theta+\frac{D}{R^{3}}-\frac{1}{D^{2}}\right] \\
+&amp; R^{2}=r^{2}+D^{2}+2 r D \cos \theta \\
+&amp; R^{2}=D^{2}\left[1+\left(\frac{r}{D}\right)^{2}+2 \frac{r}{D} \cos \theta\right] \approx D^{2}\left[1+\frac{2 r}{D} \cos \theta\right] \\
+&amp; \frac{1}{R^{2}} \cong \frac{1}{D^{2}}\left(\frac{1}{1+x}\right) \cdot \frac{1}{D^{3}} \\
+&amp; \frac{1}{R^{3}}=\left(\frac{1}{R^{2}}\right)^{3 / 2} \cong\left[\frac{1}{D^{2}}\left(\frac{1}{1+x}\right)\right]^{3 / 2}=\frac{1}{D^{3}}(1+x)^{-3 / 2} \\
+&amp; \frac{1}{R^{3}} \cong \frac{1}{D^{3}}\left(1-\frac{3}{2} x\right)=\frac{1}{D^{3}}\left(1-\frac{3 r}{D} \cos \theta\right) \\
+&amp; F_{M x}=-\frac{G M_{L} m}{D^{3}}\left\{\frac { r } { D ^ { 3 } } \left(1-\frac{3 r \cos \theta}{D} \cos \theta+\frac{D}{D^{3}}\left(1-\frac{3 r \cos \theta}{D}\right)\right.\right. \\
+&amp; \left.F_{M x}=-\frac{1}{D^{2}}\right\} \\
+&amp; F_{M x}=-\frac{G M_{L m}}{D_{L m}}\left\{\frac{r}{D^{3}} \cos \theta-\frac{3 r^{2}}{D^{4}} \cos ^{2} \theta+\frac{1}{D^{2}}-\frac{3 r}{D^{3}} \cos \theta-\frac{1}{D^{2}}\right\}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; F_{M x} \cong-\frac{G M_{L} m r}{D^{3}}(12 \cos \theta)=\frac{2 G M_{L} m r}{D^{3}} \cos \theta \\
+&amp; F_{m y}=-G M_{L m}\left[\frac{1}{R^{2}}\left(\frac{r}{D} \operatorname{sen} \theta\right)\right]=-\frac{G M_{L} m r}{R^{2} D} \operatorname{sen} \theta \\
+&amp; \frac{1}{R^{2}} \approx \frac{1}{D^{2}}\left(1+\frac{2 r}{D} \cos \theta\right) \\
+&amp; F_{r y} \cong-\frac{G M_{L} m r}{D^{3}} \operatorname{sen} \theta
+\end{aligned}
+\]</span></p>
+<p>A distrubulas fon simethis cospernecs.<br>
+(b) Logo <span class="math inline">\(\vec{g}=g(r) \hat{r}\)</span> en coordendoy estíticas Com orgin no CENTIN DA casca.<br>
+ESCOLMOND UMAG SUPERRITIU ESFERICS CONCÊNTRIES, timos: <span class="math inline">\(\hat{m} \equiv \hat{r}\)</span><span class="math inline">\(\oint \vec{g} \cdot \hat{m} d A=g(r) A\)</span></p>
+<p><span class="math display">\[
+\oint \vec{\delta} \cdot \hat{m} d A=g(r 2) \frac{d}{3}\left(a^{3} z k^{3}\right)=g(r) A=\delta(r) 4 \pi r^{2}
+\]</span></p>
+<p>SE <span class="math inline">\(r&lt;b\)</span><br>
+A hassa intinior é zeno</p>
+<p><span class="math display">\[
+g(r) 4 \pi r^{2}=0 \Rightarrow g(r)=0
+\]</span></p>
+<p>SE <span class="math inline">\(b&lt;r&lt;a\)</span></p>
+<p><span class="math display">\[
+M_{T}=\rho \frac{4 \pi}{3}\left(r^{3}-b^{3}\right)
+\]</span></p>
+<p>o~de <span class="math inline">\(\rho=\frac{M}{V_{c}}=\frac{M}{\frac{4 \pi}{3}\left(a^{3}-b^{3}\right)}\)</span></p>
+<p><span class="math display">\[
+M_{T}=M \frac{\left(r^{3}-b^{3}\right)}{\left(a^{3}-b^{3}\right)}
+\]</span></p>
+<p><span class="math inline">\(g(r) A \pi r^{2}=-4 \pi G M \frac{\left(r^{3}-b^{3}\right)}{\left(a^{3}-b^{3}\right)}\)</span></p>
+<p><span class="math display">\[
+g(r)=\frac{-G M}{\left(a^{3}-b^{3}\right)}\left(r-\frac{b^{3}}{r^{2}}\right)
+\]</span></p>
+<p>Be</p>
+<p><span class="math inline">\(r&gt;a\)</span></p>
+<p><span class="math inline">\(4 \pi r^{2} g(r)=-4 \pi G M \Rightarrow g(r)=-\frac{G M}{r^{2}}\)</span></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>No equiliticio</p>
+<p><span class="math display">\[
+\begin{aligned}
+K x &amp; =m g \\
+x &amp; =\frac{m g}{K}
+\end{aligned}
+\]</span></p>
+<p>A Distôncis Do teto <span class="math inline">\(E^{-} X+L=\frac{m g}{k}+L\)</span><br>
+A eq. De revimente e-<br>
+<span class="math inline">\(m \frac{d^{2} x}{d t^{2}}=-k x+m g \Rightarrow \frac{d^{2} x}{d t^{2}}+\omega_{0}^{2} x=m g, \omega_{0}^{2}=\frac{k}{m}\)</span><br>
+EG. DIFF. DE <span class="math inline">\(2 \cong\)</span> ORDSM MOS blorogining.<br>
+A Sohlas thomogêret e-Das por<br>
+<span class="math inline">\(x_{H}(t)=A \cos \left(\omega_{0} t+\phi\right)\)</span></p>
+<ul>
+<li>Soluces porticular E-<br>
+<span class="math inline">\(x_{p}=C\)</span><br>
+SUBSTITINDO ND EG-<br>
+<span class="math inline">\(\omega_{0}^{2} C=m g \Rightarrow C=\frac{m g}{\omega_{0}^{2}}\)</span><br>
+A solucest girme fico<br>
+<span class="math inline">\(x(t)=A \cos \left(\omega_{0} t+\phi\right)+\frac{m g}{\omega_{0}^{2}}\)</span></li>
+</ul>
+</section>
+<section id="forças-centrais" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="forças-centrais"><span class="header-section-number">4.2</span> Forças centrais</h2>
+<p>Vamos estudar com detalhe casos de interação em que a força entre dois corpos tem a direção da linha reta que une seus centros de massa.<br>
+Para estudar um sistema de duas partículas, precisaríamos monitorar 6 variáveis (as componentes dos vetores posição <span class="math inline">\(\vec{r}_1\)</span> e <span class="math inline">\(\vec{r}_2\)</span>). Alternativamente, podemos monitorar a posição do centro de massa e as posições relativas das partículas!</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math inline">\(\vec{r}=\vec{r}_{1}-\vec{r}_{2}\)</span></p>
+<p>ESCOLHENDS A ORIGEN NO CENTRO DE HASSA, TEMOS QUE</p>
+<p><span class="math display">\[
+\vec{R}=\frac{m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}}{m_{1}+m_{2}}=\overrightarrow{0} \Rightarrow m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}=\overrightarrow{0}
+\]</span></p>
+<p>△ LEN DISSO, A POSICAS RECATUCC- <span class="math inline">\(\vec{r}_{1}-\vec{r}_{2}=\vec{r}\)</span><br>
+MULTIPLICANDO (2) POR M2 G SORANDO con (1)<br>
+<span class="math inline">\(m_{1} \vec{r}_{1}+m_{2} \vec{r}_{1}=m_{2} \vec{r} \Rightarrow \vec{r}_{1}=\left(\frac{m_{1}}{m_{1}+m_{2}}\right) \vec{r}\)</span><br>
+MULTIRICANDO 2 POR M, E SUBTRAIND DE (1)<br>
+<span class="math inline">\(m_{2} \overrightarrow{r_{2}}+m_{1} \overrightarrow{r_{2}}=-m_{1} \vec{r} \Rightarrow \overrightarrow{r_{2}}=-\left(\frac{m_{1}}{m_{1}+m_{2}}\right) \vec{r}\)</span><br>
+E JULL DEFINIR A MOSIA REDRIDA DO SISTINA<br>
+<span class="math inline">\(\mu=\frac{m_{1} m_{2}}{m_{1}+m_{2}}\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \vec{r}_{1}=m_{1} \mu \vec{r} \\
+&amp; \vec{r}_{2}=-m_{2} \mu \vec{r}
+\end{aligned}
+\]</span></p>
+<p>Qual é a vantagem? As equações de movimento seriam</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; m_{1} \frac{d^{2}}{d t^{2}} \vec{r}_{1}=\vec{F}_{12}+\vec{F}_{E 1} \\
+&amp; m_{2} \frac{d^{2} \vec{r}_{2}}{d t^{2}}=\vec{F}_{21}+\vec{F}_{E 2}
+\end{aligned}
+\]</span></p>
+<p>ONDE <span class="math inline">\(\vec{F}_{i j}\)</span> É FORGA SOBRE A PARTICULA i Divido A PAITÍCA j. essas forgas formsh um par agaj-reagaj. e <span class="math inline">\(\vec{F}_{E i} e^{-}\)</span> A RISULTANTE DAS FOR EAS EXTERNAS SOBRE A PORTICULA i. Somondo as duas Cquagtóts, TEmos<br>
+<span class="math inline">\(m_{1} \frac{d^{2} \vec{r}_{1}}{d t^{2}}+m_{2} \frac{d^{2} \vec{r}_{2}}{d t^{2}}=\vec{F}_{12}+\vec{F}_{21}+\vec{F}_{E_{1}}+\vec{F}_{E_{2}}\)</span><br>
+MAS, <span class="math inline">\(\vec{F}_{12}=-\vec{F}_{21}\)</span><span class="math inline">\(\vec{R}=\frac{m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}}{m_{1}+m_{2}}=\frac{m_{1} \overrightarrow{r_{1}}+m_{2} \overrightarrow{r_{2}}}{M} ; M=m_{1}+m_{2}\)</span><span class="math inline">\(m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}=M \vec{R}\)</span><br>
+SE AS hassas forcen Gonstantes<br>
+<span class="math inline">\(\frac{d^{2}}{d t^{2}}\left(m_{1} \vec{r}_{1}+m_{2} \vec{r}_{2}\right)=\frac{d^{2}}{d t^{2}}(M \vec{R})\)</span><span class="math inline">\(m_{1} \frac{d^{2} \vec{r}_{1}}{d t^{2}}+m_{2} \frac{d^{2} \vec{r}_{2}}{d t^{2}}=M \frac{d^{2} \vec{R}}{d t^{2}}\)</span></p>
+<p>Portanto, temos a equação de movimento para o centro de massa (CM):</p>
+<p><span class="math display">\[
+M \frac{d^{2} \vec{R}}{d t^{2}}=\sum_{i} \vec{F}_{E_{i}}
+\]</span></p>
+<p>de maning analoga, subtrainds a sigunda off. da PRIMEINS<br>
+<span class="math inline">\(m_{1} \frac{d^{2} \vec{F}_{1}}{d t^{2}}-m_{2} \frac{d^{2} \vec{F}_{2}}{d t^{2}}=\vec{F}_{12}+\vec{F}_{E_{1}}-\vec{F}_{21}-\vec{F}_{E_{2}}\)</span><br>
+usando a posigas relatius</p>
+<p><span class="math display">\[
+\frac{d^{2} \vec{r}_{1}}{d t^{2}}=\frac{m_{2}}{M} \frac{d^{2} \vec{r}}{d t^{2}} \in \frac{d^{2} \overrightarrow{r_{2}}}{d t^{2}}=-\frac{m_{1}}{M} \frac{d^{2} \vec{r}}{d t^{2}}
+\]</span></p>
+<p><span class="math inline">\(\frac{m_{1} m_{2}}{M} \frac{d^{2} \vec{r}}{d t^{2}}+\frac{m_{1} m_{2}}{M} \frac{d^{2} \vec{r}}{d t^{2}}=2 \overrightarrow{F_{12}}+\overrightarrow{F_{E_{1}}}-\overrightarrow{F_{E_{2}}}\)</span><span class="math inline">\(2 \mu \frac{d^{2} \vec{r}}{d t^{2}}=2 \vec{F}_{12}+\vec{F}_{E_{1}}-\vec{F}_{E_{2}}\)</span><br>
+Je o sistem estiver isolado <span class="math inline">\(\vec{F}_{i}=\overrightarrow{0}, \forall i\)</span><span class="math inline">\(\left\{M \frac{d^{2} \vec{R}}{d t^{2}}=\overrightarrow{0} \Rightarrow \frac{d}{d t} \vec{P}=\overrightarrow{0}\right.\)</span>, nomento Linean dotsl <span class="math inline">\(\mu \frac{d^{2} \vec{r}}{d t^{2}}=\vec{F}_{12}\)</span><br>
+NESSAS CONDICOÓ), O MOVIMENTO DO CM É TRIVIAL. BASTA RESOL ven o problema de und partícula be massa <span class="math inline">\(\mu\)</span> sob agas Do Kones di interdgas <span class="math inline">\(\overrightarrow{F_{12}}\)</span>.</p>
+<p>Podimos ESTUDSA O MOMENTO ANGUAR DO SISTEMA GOR RELAGOS So CM, Falinds</p>
+<p><span class="math display">\[
+\vec{r} \times\left(\mu \frac{d^{2} \vec{r}}{d t^{2}}\right)=\vec{r} \times \vec{F}_{12}
+\]</span></p>
+<p>Se <span class="math inline">\(\vec{F}_{12} E^{-}\)</span>uns PORSA CENTRSL, ELA TOM D DIRIGAS DC <span class="math inline">\(\vec{r}\)</span></p>
+<p><span class="math display">\[
+\vec{r} \times\left(\mu \frac{d^{2} \vec{r}}{d t^{2}}\right)=\overrightarrow{0} \Rightarrow \vec{r} \times\left(\frac{d \vec{p}}{d t}\right)=\overrightarrow{0}
+\]</span></p>
+<p>O~DE <span class="math inline">\(\quad \vec{p}=\mu \frac{d \vec{r}}{d t}\)</span></p>
+<p><span class="math display">\[
+\frac{d}{d t} \vec{L}=\overrightarrow{0}
+\]</span></p>
+<p>O momento angular é conservado!<br>
+A conclusão é que o movimento é restrito ao plano ortogonal a <span class="math inline">\(\vec{L}\)</span>.</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \frac{d \vec{r}}{d t}=\frac{d}{d t}(r \hat{r}+r \theta \hat{\theta})=\frac{d r}{d t} \hat{r}+\left(\theta \frac{d r}{d t}+r \frac{d \theta}{d t}\right) \hat{\theta} \\
+\vec{p}= &amp; \mu \frac{d r}{d t} \hat{r}+\mu\left(\theta \frac{d r}{d t}+r \frac{d \theta}{d t}\right) \hat{\theta} \\
+\vec{L}= &amp; (r \hat{F}+r \theta \hat{\theta}) \times \mu\left(\frac{d r}{d t} \hat{r}+\theta \frac{d r}{d t}+r \frac{d \theta}{d t} \hat{\theta}\right) \\
+= &amp; \mu\left(r \theta \frac{d r}{d t}+r^{2} \frac{d \theta}{d t}\right) \hat{z}-\mu r \theta \frac{d r}{d t} \hat{z}=\mu r^{2} \frac{d \theta}{d t} \hat{z}
+\end{aligned}
+\]</span></p>
+<p>logo. Conscruagás do momento angumer mos líd a</p>
+<p><span class="math display">\[
+\mu r^{2} \frac{d \theta}{d t}=c t \theta
+\]</span></p>
+<p>vamos ven o SIGNIFICADO DISSO, CONSIDRANDS UM DISLOCATIENTO INFINITESIRAL</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>A Área VARRIDA PELO VETOR POSICÃJ (RA10 VETOR) ÉA DO SITOR CIRCULAR.</p>
+<p><span class="math display">\[
+d A=\frac{r^{2}}{2} d \theta
+\]</span></p>
+<p>A TAXA COM GUE A FI REA E- VARRIDA É</p>
+<p><span class="math display">\[
+\frac{d A}{d t}=\frac{r^{2}}{2} \frac{d \theta}{d t}=\frac{L}{2 \mu}=c t^{c}
+\]</span></p>
+<p>ESSE RESULTODS FOI OBTIDO POR KEPLIC PARA O MOVIMENTO POS puntitas o é conhecida cono a sigunda lei de Kepler. REPARE QUE 1550 E MAIS GERAL, PORQU MAJ PRICISATIOS SUPOR NENHUMA DEPINDÊnCIA PORTIWIAR DA FORSA COM A DISTANCIA, APENDS QUE ELA É CENTRAL.</p>
+<p>Gomo nas Gongi deramos nenhums forms de dissipagas, A currgia mecanica do sistira também e- construdea.</p>
+<p><span class="math display">\[
+\begin{gathered}
+E_{M}=E_{c}+U=\frac{A t}{2} \\
+E_{M}=\frac{\mu}{2} v^{2}+U(r)=\frac{\mu}{2}\left[\left(\frac{d r}{d t}\right)^{2}+r^{2}\left(\frac{d \theta}{d t}\right)^{2}\right]+U(r) \\
+E_{M}=\frac{\mu}{2}\left(\frac{d r}{d t}\right)^{2}+\frac{L}{2 \mu r^{2}}+U(r)=c t^{2}
+\end{gathered}
+\]</span></p>
+<p>A Constrvagos da Eningla t do morint angulan ws FORNéce ENTAST UMA EQUAGAS DF MOVIVENTO DO SISTELS</p>
+<p><span class="math display">\[
+\frac{d r}{d t}= \pm\left[\frac{2}{\mu}\left(E_{n}-U\right)-\frac{L^{2}}{\mu^{2} r^{2}}\right]^{1 / 2}
+\]</span></p>
+<p>onde Eme L sas constantes<br>
+PODIMOS DEDUZIR A TRAJIONIA <span class="math inline">\(r=r(\theta)\)</span> FA ZENDS UMA Mudanas de varióvers</p>
+<p><span class="math display">\[
+d \theta=\frac{d \theta}{d t} \frac{d t}{d r} d r=\frac{d \theta / d t}{d r / d t} d r
+\]</span></p>
+<p>ONDE <span class="math inline">\(\frac{d \Theta}{d t}=\frac{L}{2 \mu r^{2}}\)</span><span class="math inline">\(d \theta= \pm \frac{L}{2 \mu r^{2}}\left[\frac{2}{\mu}\left(E_{M}-U\right)-\frac{L^{2}}{\mu^{2} r^{2}}\right]^{-1 / 2} d r\)</span><br>
+Cono <span class="math inline">\(\mu&gt;0 E r \geqslant 0, E\)</span> E CONSTANTE, A VELOCIDADE Angular nas pode mudar de sinal. Ela cresei ou DECRISCE MONOTONICAMENTE COM O TEMPO.</p>
+<p>PARD IR ALÉM DISSO, PRECISDICOS CONSIDENSR A DCPINDếncis DS FORGA (OU do POTTUCISL) CON 1 DISTINCIS. A Equagas di TOVITENTO NOS DIZ GUE A VEOCIDADE RADIAL E EENO SIMPRE A SEGUINTE QUANTIDADE SI ANULA</p>
+<p><span class="math display">\[
+E_{M}-U-\frac{L^{2}}{2 \mu r^{2}}=0
+\]</span></p>
+<p>isso signials Que 0 SISTIMS ATAZOU UM PONDO DE RETORNO.</p>
+<p>Temos algumas possibilidades.</p>
+<ol type="1">
+<li><p>Existem un ralo minimo <span class="math inline">\(r_{\text {min }} \in\)</span> um máximo <span class="math inline">\(r_{\text {max }}\)</span>. Nesse coso, O MOVIMÉNTO É RISTRITO IS RESIAS DIFINIOS POR CSSE’S VALORES.</p></li>
+<li><p>Só Existe uns solugs. NESSE COSO A TRAJENOTM DA PORTICVS I’UAS ÓRBITS CINCULAR</p></li>
+<li><p>SE O POTENCIAL ÉPINIÓDICO, CXISTE UMS ERRBITS FECHADS (PERIONDICS)</p></li>
+<li><p>Ainda é possívit Que a cunvs sija abenta.<br>
+variagas un <span class="math inline">\(r\)</span> di rmin a rmax,<br>
+<span class="math inline">\(\Delta \theta=\int_{r_{m 1 N}}^{r_{\text {max }}} \frac{L}{2 \mu r^{2}}\left[\frac{2}{\mu}\left(E_{n}-U\right)-\frac{L^{2}}{\mu^{2} r^{2}}\right]^{-1 / 2} d r\)</span><br>
+PORD <span class="math inline">\(\triangle\)</span> ONBITS SER FCCHODS <span class="math inline">\(\Delta \theta=2 \pi\left(\frac{a}{b}\right)\)</span> CON <span class="math inline">\(a\)</span> Eb inteinos. A CADS b PERIOOOS, o RAIO VETOR FAE a WULAL COMPLETAS.</p></li>
+</ol>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math display">\[
+\frac{L^{2}}{2 \mu r^{2}}=\frac{\left(\mu r^{2} \frac{d \theta}{d t}\right)^{2}}{2 \mu r^{2}}=\frac{\mu r^{2}}{2}\left(\frac{d \theta}{d t}\right)^{2}
+\]</span></p>
+<p>1950 TEN DITENSAS DE ENERGIA. SE TRATARESCSID QUDNTIDSDE CAMO SE FOSSE UMA ENERGIA “POTENCISL”, PODEMOS DETENTI Nar GUAL SEREA △ FORGD ASSOCIADA A ELD</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; U_{c}=\frac{\mu r^{2}}{2}\left(\frac{d \theta}{d t}\right)^{2} \\
+&amp; F_{c}=-\frac{\partial U_{c}}{\partial r}=\mu r^{3}\left(\frac{d \theta}{d t}\right)^{2}
+\end{aligned}
+\]</span></p>
+<p>ISSO E’ O QUE SE COSTUMA CHAMAR DE FORSA CENTRIFUIGA.</p>
+<p>PODimos Difinin un potencial RFETTUO</p>
+<p><span class="math display">\[
+V(r)=U(r)+\frac{L^{2}}{2 \mu r^{2}}
+\]</span></p>
+<p>A KORGD TIPS INVINSD DO QUADRSDS, Temos</p>
+<p><span class="math display">\[
+f(r)=-\frac{k}{r^{2}} \Rightarrow U(r)=-\frac{k}{r} \Rightarrow V(r)=-\frac{k}{r}+\frac{L^{2}}{2 \mu r^{2}}
+\]</span></p>
+<p>podemos fazer uma análisi semélmante ao Que fizémos Hs algunss sulas</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>E-V(r) É A ENERSIA CINÉTIA <span class="math inline">\(\frac{\mu}{2}\left(\frac{d r}{d t}\right)^{2}\)</span><br>
+SE <span class="math inline">\(V\left(r_{3}\right)&lt;E&lt;0,0\)</span> MOUIMENTO ÉLIMITDOD, <span class="math inline">\(r_{2} \leqslant r \leqslant r_{4}\)</span><br>
+SE <span class="math inline">\(E=V\left(r_{3}\right)\)</span>, tómos uma órbira circular, <span class="math inline">\(r=r_{3}\)</span>.<br>
+VAMOS RESOLVER A TRAJCTORID PARA O CASO <span class="math inline">\(\frac{1}{r^{2}}\)</span>.</p>
+<p><span class="math display">\[
+\theta(r)=\int_{r_{m / \pi}}^{r_{m A}} \frac{L d r}{r^{2} \sqrt{2 \mu\left(\varepsilon+\frac{k}{r}-\frac{L^{2}}{2 \mu r^{2}}\right)}}+C
+\]</span></p>
+<p>A Solugas Fila, ESCOLMENDO <span class="math inline">\(\theta\left(r_{\text {MIN }}\right)=0\)</span></p>
+<p><span class="math display">\[
+\cos \theta=\frac{\frac{L^{2}}{\mu k r}-1}{\sqrt{1+\frac{2 E L^{2}}{\mu k^{2}}}}
+\]</span></p>
+<p>Definindal as constantes</p>
+<p><span class="math display">\[
+\alpha=\frac{L^{2}}{\mu K} \quad E \quad \varepsilon=\sqrt{1+\frac{2 E L^{2}}{\mu K^{2}}}
+\]</span></p>
+<p>Teros</p>
+<p><span class="math display">\[
+\frac{\alpha}{r}=1+\varepsilon \cos \theta
+\]</span></p>
+<p>ESTA É A EqUAGOS DE UND SEGESO CÔnICA.<br>
+E É A EXCINTLUCIDSDE E,</p>
+<p><span class="math inline">\(\alpha\)</span></p>
+<p>Éblates RECTUM UMA SECES CONICA É A inten SIGAO CNTIE UMPLIND t UM CONE.</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>QUANDO</p>
+<p><span class="math inline">\(r_{\text {MIN }}, \Delta\)</span></p>
+<p>PARTICULS ESTÓ NO PERICENTRD. PDRA ORBITOS FECHADAS TEMOS</p>
+<p><span class="math inline">\(r_{\text {MAX, QUI CHARAMOS APOCENTIOD. }}\)</span></p>
+<p>NO CASO DE ÓRBITAS ELÍPTICAS, É CONVEREIENTE DEFINIR OS SEMI-EIXSS MAIOR</p>
+<p><span class="math inline">\(a\)</span></p>
+<p>E MENOR</p>
+<p><span class="math inline">\(b\)</span></p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; a=\frac{\alpha}{1-\varepsilon^{2}}=\frac{k}{2\left|E_{n}\right|} \\
+&amp; b=\frac{\alpha}{\sqrt{1-\varepsilon^{2}}}=\frac{L}{\sqrt{2 \mu\left|E_{n}\right|}} \\
+&amp; r_{\text {MIN }}=a(1-\varepsilon)=\frac{\alpha}{1+\varepsilon} \\
+&amp; r_{\text {MAX }}=a(1+\varepsilon)=\frac{\alpha}{1-\varepsilon}
+\end{aligned}
+\]</span></p>
+<p>nos vimos que a área varmas pelo raio vetor obeotele a</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \frac{d A}{d t}=\frac{r^{2}}{2} \frac{d \theta}{d t}=\frac{L}{2 \mu}=\frac{c t_{0}}{L} \\
+&amp; d t=\frac{2 \mu}{L} d A
+\end{aligned}
+\]</span></p>
+<p>Poderos calcular o periodo coho sendo o intenuslo de tendo pors usznir dánea total da Elipse.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; T=\int_{0}^{A} \frac{2 \mu}{L} d A=\frac{2 \mu}{L} A=\frac{2 \mu \pi a b}{L} \\
+&amp; T=\frac{2 \mu}{L} \pi\left(\frac{k}{2\left|E_{m}\right|}\right)\left(\frac{L}{\sqrt{2 \mu\left|E_{m}\right|}}\right) \\
+&amp; T=\pi k \sqrt{\frac{\mu}{2}}\left|E_{m}\right|^{-3 / 2}
+\end{aligned}
+\]</span></p>
+<p>pon outno Lago</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; b=\sqrt{\alpha a} \\
+&amp; T=\frac{2 \mu \pi a \sqrt{\alpha a}}{L}=2 \frac{\mu}{L} \pi \sqrt{\alpha} a^{3 / 2}
+\end{aligned}
+\]</span></p>
+<p>ou</p>
+<p><span class="math display">\[
+T^{2}=\frac{2 \mu \pi \sqrt{\alpha}}{L} a^{3}=\frac{4 \pi^{2} \mu}{K} a^{3}
+\]</span></p>
+<p>Que é a tercirra le, de kepler. Comuns importante Difiringa. A massa dqui é a massa repuzida, que depende das masias dos dols corpos e, portanto, nas é a mieshes pana cons plantia</p>
+<p>Como gonsidiramos a rorga como sindo</p>
+<p><span class="math display">\[
+F(r)=-\frac{k}{r^{2}}
+\]</span></p>
+<p>No caso gravitacional, temos</p>
+<p><span class="math display">\[
+K=G m_{1} m_{2}
+\]</span></p>
+<p>Com asso, a rêcagas entrue periodo e sini-eten fica</p>
+<p><span class="math display">\[
+T^{2}=\frac{4 \pi^{2} \mu}{G m_{1} m_{2}} a^{3}=\frac{4 \pi^{2}}{G m_{1} m_{2}} \frac{m_{1} m_{2}}{\left(m_{1}+m_{2}\right)} a^{3}
+\]</span></p>
+<p><span class="math display">\[
+T^{2}=\frac{4 \pi^{2} a^{3}}{G\left(m_{1}+m_{2}\right)} \approx \frac{4 \pi^{2} a^{3}}{G m_{2}}, \text { DCSPRECAnDO △ mSSS po }
+\]</span></p>
+<p>Plantta, Quanbs Compsrasa a do SOL <span class="math inline">\(m_{1} \ll m_{2}\)</span><br>
+E IMPORTANTE SALINTOR IUE O TISBALHO DE KIPLER É ANTERIOR DO DU NEW ton.</p>
+<p>Com isso, Consiguinos obter as trîs Lëls de képlen:</p>
+<ol type="1">
+<li><p>os pusnetas se movien en ón bitas elípteas con o soc in un foco.</p></li>
+<li><p>O RA10 VETOR DEUM PLANÉTA ( POSIGAS RicATIA ΔO SOC) varre áreas iguals ún timpos iguals.</p></li>
+<li><p>O QUADRADO DO PENITODO DO PESNETA É PMORORCIONDE DO CUBD DO SCMICIXD MAIOR DO SUA ÓRBIDD.</p></li>
+</ol>
+<p>VAMOS ESTUROR UE CASO SIMPLES DE APLICAGAS DESSES GNCETO En DINSTICS ORBITAL. O COSD DE TAANSFRÊNCIA DE GLA DERIAD pars optna. Vamos Considirsh um obteto (ESPOCORAVE OU SATELITE) SAIND DE UMA ÓNBIA CH TOMND DS TERNA PARA UNS ÓRBITS EN TORND DE MORTE. O CAMINTO QUI HINI MIVS I CNERIVA TOTAL GASTD E CHAMDDO TRSNSFIRTIACIA de Hohmann. A transfinercla Envolve o Aclonamentd De fogutis an dois moriatos.</p>
+<ol type="1">
+<li><p>OS FORUTTIS SAS DCIONDOOS PDRD THANSFIRIK D NAVE De UMA ÓRBITA CIRGUAR PORD UMA CLIPTICA QUE INTER CEPTA A ÓRBIAD DE MARTE,</p></li>
+<li><p>OS FORUTT’S SAS DCIONDDOS PORA TRANSFIOIN <span class="math inline">\(\triangle\)</span> NAUE DS ÓRBITA CLÍPTILA PORD UM CIRGLAR (DE MARTE)</p></li>
+</ol>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>NOS SABCTOS A ENCHISIA MECANICO EN TERMOR DO SEMA-EINO MAION DO CLIPE:</p>
+<p><span class="math display">\[
+E_{M}=-\frac{k}{2 a} \text {, onde } k=G M_{\Theta m}
+\]</span></p>
+<p>PDRS UMA TEBITA GRWUAR DO REDOR DO SOL TEMOS</p>
+<p><span class="math display">\[
+E_{M}=-\frac{k}{2 r_{1}}
+\]</span></p>
+<p>Con ISSO, PORIMOS OBTEN A VELOCIDADE</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; E_{M}=\frac{m}{2} v_{1}^{2}-\frac{K}{r_{1}}=-\frac{K}{2 r_{1}} \\
+&amp; \frac{m}{2} v_{1}^{2}=\frac{K}{r_{1}}-\frac{K}{2 r_{1}} \Rightarrow \frac{m}{2} v_{1}^{2}=\frac{K}{2 r_{1}} \\
+&amp; v_{1}=\sqrt{\frac{K}{m r_{1}}}
+\end{aligned}
+\]</span></p>
+<p>PARS A órbita ELÍPTICA, O SEMI-EINO MAIOR FICS</p>
+<p><span class="math display">\[
+2 a_{t}=r_{1}+r_{2}
+\]</span></p>
+<p>CALCulando a EnERIGIA NO PERIÉLIO DA ELIPSE DE TRINSFERÊnas</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; E_{t}=\frac{-k}{r_{1}+r_{2}}=\frac{m}{2} v_{t_{1}}^{2}-\frac{k}{r_{1}} \\
+&amp; \frac{m}{2} v_{t 1}^{2}=\frac{k}{r_{1}}-\frac{k}{r_{1}+r_{2}}=\frac{k\left(r_{1}+r_{2}-r_{1}\right)}{r_{1}\left(r_{1}+r_{2}\right)}=\frac{k r_{2}}{r_{1}\left(r_{1}+r_{2}\right)} \\
+&amp; v_{t 1}=\sqrt{\frac{2 k}{m r_{1}}\left(\frac{r_{2}}{r_{1}+r_{2}}\right)}
+\end{aligned}
+\]</span></p>
+<p>ENTAT, PORD MUDDR DA ORBITA CIRGUCAN PARS A ELIPSE É PRECISO QUE <span class="math inline">\(\triangle\)</span> VELOCIDADA MUDS DE V PARS V <span class="math inline">\(V_{t_{1}}\)</span>. o ganto de velocidade E-</p>
+<p><span class="math display">\[
+\Delta v_{1}=v_{t_{1}}-v_{1}
+\]</span></p>
+<p>Da MISMA MSNEIN, A NAVE PLECISA DESACKLERSR NA CHEGORD</p>
+<p><span class="math display">\[
+\Delta v_{2}=v_{2}-v_{t_{2}}
+\]</span></p>
+<p>PARA TORMOS ESTABIL OADE, X POLLISA OSCIAN EH TORMODE E pons isso, <span class="math inline">\(\omega_{0}^{2}&gt;0\)</span></p>
+<p><span class="math display">\[
+\frac{3 g\left(r_{c}\right)}{r_{c}}+\left.\frac{d g}{d r}\right|_{r_{c}}&gt;0
+\]</span></p>
+<p>Coro <span class="math inline">\(g\left(r_{c}\right)=\frac{L^{2}}{\mu^{2} r_{c}^{3}}&gt;0\)</span>, pooinos dividie D Expersias</p>
+<p><span class="math display">\[
+\frac{3}{r_{c}}+\frac{d g /\left.d r\right|_{r_{c}}}{g\left(r_{c}\right)}&gt;0
+\]</span></p>
+<p>Limbrand ant <span class="math inline">\(F(r)=-\mu g(r)\)</span></p>
+<p><span class="math display">\[
+\left.\frac{1}{g\left(r_{c}\right)} \frac{d g}{d r}\right|_{r_{c}}=\left.\frac{1}{F\left(r_{c}\right)} \frac{d F}{d r}\right|_{r_{c}}
+\]</span></p>
+<p>Com isso, tenos</p>
+<p><span class="math display">\[
+\left.\frac{1}{F\left(r_{c}\right)} \frac{d F}{d r}\right|_{r_{c}}+\frac{3}{r_{c}}&gt;0
+\]</span></p>
+<p>SE VOLTAMOS DO CASO DE LEI DE POTENCIA</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; F(r)=-\frac{k}{r^{m}} \\
+&amp; \frac{1}{F\left(r_{c}\right)}=-\left.\frac{r_{c}^{m}}{k} \in \frac{d F}{d r}\right|_{r_{c}}=\frac{+m k}{r_{c}^{m+1}} \\
+&amp; \left.\frac{1}{F\left(r_{c}\right)} \frac{d F}{d r}\right|_{r_{c}}=\frac{-m k r_{c}^{m}}{k r_{c}^{m+1}}=-\frac{m}{r_{c}} \\
+&amp; -\frac{m}{r_{c}}+\frac{3}{r_{c}}&gt;0 \Rightarrow \frac{1}{r_{c}}(3-m)&gt;0 \Rightarrow m&lt;3
+\end{aligned}
+\]</span></p>
+</section>
+<section id="precessão-de-órbitas" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="precessão-de-órbitas"><span class="header-section-number">4.3</span> Precessão de órbitas</h2>
+<p>Nós vimos que, para uma força <span class="math inline">\(\frac{1}{r^{2}}\)</span>, as órbitas fechadas são elipses. Para outros casos, as órbitas podem não ser fechadas.</p>
+<p><em>[imagem: imagem — link externo (Notion S3), pode ter expirado]</em></p>
+<p>Para olhar esse caso geral, vamos expressar a equação da trajetória de outra maneira. Voltando à equação do movimento:</p>
+<p><span class="math display">\[
+\mu \frac{d^{2}}{d t^{2}} \vec{r}=\vec{F}(\vec{r})
+\]</span></p>
+<p>A componente radial do movimento é</p>
+<p><span class="math display">\[
+\mu[\frac{d^{2} r}{d t^{2}}-r \underbrace{\left(\frac{d \theta}{d t}\right)^{2}}]=F(r)
+\]</span></p>
+<p>Aceleração centrípeta</p>
+<p>Fazendo uma mudança de variável,</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \mu=\frac{1}{r} \\
+&amp; \frac{d \mu}{d \theta}=-\frac{1}{r^{2}} \frac{d r}{d \theta}=-\frac{1}{r^{2}} \frac{d r}{d t} \frac{d t}{d \theta}=-\frac{1}{r^{2}\left(\frac{d \theta}{d t}\right)} \frac{d r}{d t} \\
+&amp; M \Delta S \quad L=\mu r^{2} \frac{d \theta}{d t} \\
+&amp; \frac{d \mu}{d \theta}=-\frac{1}{r^{2} \frac{L}{\mu r^{2}}} \frac{d r}{d t}=-\frac{\mu}{L} \frac{d r}{d t}
+\end{aligned}
+\]</span></p>
+<p>Derivando mais uma vez:</p>
+<p><span class="math display">\[
+\frac{d^{2} \mu}{d \theta^{2}}=\frac{d}{d \theta}\left(-\frac{\mu}{L} \frac{d r}{d t}\right)=\frac{d t}{d \theta} \frac{d}{d t}\left(-\frac{\mu}{L} \frac{d r}{d t}\right)
+\]</span></p>
+<p><span class="math display">\[
+\frac{d^{2} \mu}{d \theta^{2}}=-\frac{\mu}{L} \frac{d t}{d \theta} \frac{d^{2} r}{d t^{2}}=-\frac{\mu}{L}\left(\frac{\mu r^{2}}{L}\right) \frac{d^{2} r}{d t^{2}}=-\frac{\mu^{2} r^{2}}{L^{2}} \frac{d^{2} r}{d t^{2}}
+\]</span></p>
+<p>Então, temos:<br>
+<span class="math inline">\(\frac{d^{2} r}{d t^{2}}=-\frac{L^{2}}{\mu^{2} r^{2}} \frac{d^{2} \mu}{d \theta^{2}}=-\frac{L^{2} \mu^{2}}{\mu^{2}} \frac{d^{2} \mu}{d \theta^{2}}\)</span><span class="math inline">\(\triangle L\)</span> Én DISSO</p>
+<p><span class="math display">\[
+r\left(\frac{d \theta}{d t}\right)^{2}=r\left(\frac{L}{\mu r^{2}}\right)^{2}=\frac{r L^{2}}{\mu^{2} r^{4}}=\frac{L^{2}}{\mu^{2}} \mu^{3}
+\]</span></p>
+<p>Substituindo na equação de movimento,<br>
+<span class="math inline">\(\mu\left[-\frac{L^{2}}{\mu^{2}} \mu^{2} \frac{d^{2} \mu}{d \theta^{2}}-\frac{L^{2}}{\mu^{2}} \mu^{3}\right]=F\left(\frac{1}{\mu}\right)\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \mu^{2} \frac{d^{2} u}{d \theta^{2}}+\mu^{3}=-\frac{\mu}{L^{2}} F\left(\frac{1}{u}\right) \\
+&amp; \frac{d^{2} u}{d \theta^{2}}+\mu=-\frac{\mu}{L^{2} u^{2}} F\left(\frac{1}{u}\right)
+\end{aligned}
+\]</span></p>
+<p>OU, NA VARIDVEL ORIginal,</p>
+<p><span class="math display">\[
+\frac{d^{2}}{d \theta^{2}}\left(\frac{1}{r}\right)+\frac{1}{r}=-\frac{\mu}{L^{2}} r^{2} F(r)
+\]</span></p>
+<p>A força gravitacional de Newton é</p>
+<p><span class="math display">\[
+F\left(\frac{1}{u}\right)=-\frac{G M m}{(1 / u)^{2}}=-G M m u^{2}
+\]</span></p>
+<p>Com isso, a equação fica<br>
+<span class="math inline">\(\frac{d^{2} u}{d \theta^{2}}+u=\frac{G M m^{2}}{L^{2}}\)</span>, onde fizemos <span class="math inline">\(\mu \cong m\)</span>.<br>
+Supondo que a força não é exatamente essa, mas tem uma pequena correção de ordem <span class="math inline">\(\frac{1}{r^{4}}\)</span> (como ocorre na relatividade geral), a equação fica:</p>
+<p><span class="math display">\[
+\frac{d^{2} u}{d \theta^{2}}+u=\frac{G M m^{2}}{L^{2}}+\frac{3 G M}{c^{2}} u^{2}
+\]</span></p>
+<p>onde <span class="math inline">\(c\)</span> é a velocidade de propagação da interação gravitacional (ondas gravitacionais!) que, em RG, é a mesma da luz, definindo duas constantes:</p>
+<p><span class="math display">\[
+\frac{1}{\alpha}:=\frac{G M m^{2}}{L^{2}} \quad \text{e} \quad \delta:=\frac{3 G M}{c^{2}}
+\]</span></p>
+<p>Temos</p>
+<p><span class="math display">\[
+\frac{d^{2} u}{d \theta^{2}}+u=\frac{1}{\alpha}+\delta u^{2}
+\]</span></p>
+<p>VAMOS THATAR RESDLUIR POR DPROX, MOSOÉY SUCESSIUDS A Primeirs solugas nòs conheceros, quando <span class="math inline">\(\delta \mu^{2} \epsilon^{-}\)</span> DESPRELSDO</p>
+<p><span class="math display">\[
+\frac{\alpha}{r}=1+\varepsilon \cos \theta \Rightarrow \mu_{1}=\frac{1}{\alpha}(1+\varepsilon \cos \theta)
+\]</span></p>
+<p>Colocando ESSA SOLUGS NO UDO DIREITO DA EGUALAT</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \frac{d^{2} u}{d \theta^{2}}+u=\frac{1}{\alpha}+\frac{\delta}{\alpha^{2}}(1+\varepsilon \cos \theta)^{2} \\
+&amp; \frac{d^{2} u}{d \theta^{2}}+u=\frac{1}{\alpha}+\frac{\delta}{\alpha^{2}}\left(1+2 \varepsilon \cos \theta+\varepsilon^{2} \cos ^{2} \theta\right) \\
+&amp; \frac{d^{2} u}{d \theta^{2}}+u=\frac{1}{\alpha}+\frac{\delta}{\alpha^{2}}\left\{1+2 \varepsilon \cos \theta+\frac{\varepsilon^{2}}{2}[1+\cos (2 \theta)]\right\}
+\end{aligned}
+\]</span></p>
+<p>poderos propor umd segunds solugas como</p>
+<p><span class="math display">\[
+\mu_{2}=\mu_{1}+\mu_{p}
+\]</span></p>
+<p>ONDE <span class="math inline">\(\Delta\)</span> SOLUGS PARTICULAR É</p>
+<p><span class="math display">\[
+\mu_{p}=\frac{\delta}{\alpha^{2}}\left[\left(1+\frac{\varepsilon^{2}}{2}\right)+\varepsilon \theta \operatorname{sen} \theta-\frac{\varepsilon^{2}}{6} \cos (2 \theta)\right]
+\]</span></p>
+<p>E OBEDICE I Equagas</p>
+<p><span class="math display">\[
+\frac{d^{2}}{d \theta^{2}} \mu_{p}+\mu_{p}=\delta \mu_{p}^{2}
+\]</span></p>
+<p><span class="math inline">\(u_{2}=\frac{1}{\alpha}(1+\varepsilon \cos \theta)+\frac{\delta}{\alpha^{2}}\left(1+\frac{\varepsilon^{2}}{2}\right)+\frac{\delta \epsilon \theta}{\alpha^{2}} \sin \theta-\frac{\delta \varepsilon^{2}}{6 \alpha^{2}} \cos (2 \theta)\)</span><br>
+REAgrupanos os tentos</p>
+<p><span class="math display">\[
+\mu_{2}=\left[\frac{1}{\alpha}(1+\varepsilon \cos \theta)+\frac{\delta \varepsilon \theta}{\alpha^{2}} \operatorname{sen} \theta\right]+\left[\frac{\delta}{\alpha^{2}}\left(1+\frac{\varepsilon^{2}}{2}\right)-\frac{\delta \varepsilon^{2}}{6 \alpha^{2}} \cos (2 \theta)\right]
+\]</span></p>
+<p>エ<br>
+o terro II nas deve afetah signifieativaminte OS EXTREMOS DD ÓRBITA ( <span class="math inline">\(r_{\text {M }}\)</span> E <span class="math inline">\(r_{\text {MAX }}\)</span> ), POR OU UN É CONDIAN TE G O OUNO ÉUIS PEQUND PCRTURBSSAD DA FORMA DA sowas Kepliniors.<br>
+NO TERNO I THOS UM TEMARO DO TIDO O SINO. UDMOS Explorsr mas. Condidere o seguinte terro<br>
+<span class="math inline">\(1+\varepsilon \cos \left(\theta-\frac{\delta}{\alpha} \theta\right)=1+\varepsilon\left[\cos \theta \cos \left(\frac{\delta}{\alpha} \theta\right)+\operatorname{sen} \theta \operatorname{sen}\left(\frac{\delta \theta}{\alpha}\right)\right]\)</span><br>
+Considinondo <span class="math inline">\(\frac{\delta}{\alpha}\)</span> pequeno<br>
+<span class="math inline">\(\cos \left(\frac{\delta}{\alpha} \theta\right) \approx 1\)</span> c <span class="math inline">\(\operatorname{sen}\left(\frac{\delta \theta}{\alpha}\right) \approx \frac{\delta \theta}{\alpha}\)</span><span class="math inline">\(1+\varepsilon \cos \left(\theta-\frac{\delta}{\alpha} \theta\right) \approx 1+\varepsilon \cos \theta+\frac{\delta \theta}{\alpha} \sin \theta\)</span> b90, o tinms I pont sin escrito como</p>
+<p><span class="math display">\[
+\mu_{I} \cong \frac{1}{\alpha}\left[1+\varepsilon \cos \left(\theta-\frac{\delta \theta}{\alpha}\right)\right]
+\]</span></p>
+<p>ER TODAS EISA CONTAS ESCOLHEROS QUE<br>
+<span class="math inline">\(\theta=0\)</span> EN <span class="math inline">\(t=0\)</span> NO PERIELIO<br>
+QUONDO O CORPO KSTOT ~D PENVELIO</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; r=r_{M I N} \Rightarrow \mu=\mu_{M A X} \Rightarrow \cos \left(\theta-\frac{\delta \theta}{\alpha}\right)=1 \\
+&amp; \theta-\frac{\delta \theta}{\alpha}=2 \pi m
+\end{aligned}
+\]</span></p>
+<p>Inveztends tenos Que</p>
+<p><span class="math display">\[
+\theta=\frac{2 \pi}{1-\frac{\delta}{\alpha}} \cong 2 \pi\left(1+\frac{\delta}{\alpha}\right)
+\]</span></p>
+<p>A CADD NOLTA, A POSIGAS DO PERIELIO É DELOCSOA por</p>
+<p><span class="math display">\[
+\Delta \cong 2 \pi \frac{\delta}{\alpha}
+\]</span></p>
+<p>udand as difinigões de <span class="math inline">\(\alpha \in \delta\)</span> temoj</p>
+<p><span class="math display">\[
+\Delta \cong 6 \pi\left(\frac{G m M}{c L}\right)^{2}
+\]</span></p>
+<p>has, dos difinigots dr a <span class="math inline">\(\in \varepsilon\)</span><span class="math inline">\(L^{2}=\mu k a\left(1-\varepsilon^{2}\right)\)</span>, o~br <span class="math inline">\(\mu \cong m, \epsilon K=G M m\)</span></p>
+<p><span class="math display">\[
+\Delta \cong \frac{6 \pi G M}{a c^{2}\left(1-\varepsilon^{2}\right)}
+\]</span></p>
+</section>
+<section id="estabilidade-de-órbitas-circulares" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="estabilidade-de-órbitas-circulares"><span class="header-section-number">4.4</span> Estabilidade de órbitas circulares</h2>
+<p>Nós vimos que órbitas circulares ocorrem quando a partícula tem energia mecânica igual ao mínimo do potencial efetivo, no caso de força <span class="math inline">\(\sim \frac{1}{r^{2}}\)</span>.</p>
+<p>Vamos ver como fica no caso geral.<br>
+Para existir uma órbita circular, é preciso que:</p>
+<p><span class="math display">\[
+\left.\frac{d r}{d t}\right|_{r_{c}}=0, \forall t
+\]</span></p>
+<p>onde <span class="math inline">\(r_{c}\)</span> é o raio da órbita. Para isso, a força precisa ser nula na direção radial.</p>
+<p><span class="math display">\[
+\left.\frac{\partial V}{\partial r}\right|_{r_{c}}=0
+\]</span></p>
+<p>Vamos considerar que a força é uma lei de potência:</p>
+<p><span class="math display">\[
+F(r)=-\frac{k}{r^{n}}
+\]</span></p>
+<p>O potencial associado é:</p>
+<p><span class="math display">\[
+U(r)=\frac{-k}{(n-1)} \frac{1}{r^{(n-1)}}
+\]</span></p>
+<p>Consequentemente, o potencial efetivo é:</p>
+<p><span class="math display">\[
+V(r)=-\frac{K}{(n-1)} \frac{1}{r^{(n-1)}}+\frac{L^{2}}{2 \mu r^{2}}
+\]</span></p>
+<p>As condições para uma órbita circular estável são:</p>
+<p><span class="math display">\[
+\left.\frac{\partial V}{\partial r}\right|_{r_{c}}=\left.0 \quad \epsilon \quad \frac{\partial^{2} V}{\partial r^{2}}\right|_{r_{c}}&gt;0
+\]</span></p>
+<p>Da primeira condição,</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \left.\frac{\partial V}{\partial r}\right|_{r_{c}}=\frac{k}{r_{c}^{m}}-\frac{L^{2}}{\mu r_{c}^{3}}=0 \\
+&amp; \frac{k \mu r_{c}^{3}-L^{2} r_{c}^{m}}{\mu r_{c}^{(m+3)}}=0 \Rightarrow \mu k r_{c}^{3}=L^{2} r_{c}^{m} \\
+&amp; r_{c}^{(m-3)}=\frac{\mu k}{L^{2}}
+\end{aligned}
+\]</span></p>
+<p>Da segunda condição,</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \left.\frac{\partial^{2} V}{\partial r^{2}}\right|_{r_{c}}=-\frac{m k}{r_{c}^{(m+1)}}+\frac{3 L^{2}}{\mu r_{c}^{4}}&gt;0 \times r_{c}^{4} \\
+&amp; -\frac{m k}{r_{c}^{(m-3)}}+\frac{3 L^{2}}{\mu}&gt;0
+\end{aligned}
+\]</span></p>
+<p>Substituindo o valor de <span class="math inline">\(r_c\)</span> da primeira condição,</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \frac{-m K}{\frac{\mu K}{L^{2}}}+\frac{3 L^{2}}{\mu}&gt;0 \Rightarrow-\frac{m L^{2}}{\mu}+\frac{3 L^{2}}{\mu}&gt;0 \\
+&amp; \frac{L^{2}}{\mu}(3-m)&gt;0
+\end{aligned}
+\]</span></p>
+<p>Logo, a órbita é estável se <span class="math inline">\(m&lt;3\)</span>.<br>
+No caso ainda mais geral,</p>
+<p><span class="math display">\[
+F(r)=-\mu g(r)=-\frac{\partial U}{\partial r}
+\]</span></p>
+<p>podemos usar isso na equação do movimento radial:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \mu\left[\frac{d^{2} r}{d t^{2}}-r\left(\frac{d \theta}{d t}\right)^{2}\right]=F(r) \\
+&amp; \mu\left[\frac{d^{2} r}{d t^{2}}-r\left(\frac{d \theta}{d t}\right)^{2}\right]=-\mu g(r)
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(\frac{d^{2} r}{d t^{2}}-r\left(\frac{d \theta}{d t}\right)^{2}=-g(r)\)</span></p>
+<p>Limärando Que</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; L=\mu r^{2} \frac{d \theta}{d t} \Rightarrow \frac{d \theta}{d t}=\frac{L}{\mu r^{2}} \\
+&amp; \frac{d^{2} r}{d t^{2}}-r \frac{L^{2}}{\mu^{2} r^{4}}=-g(r) \Rightarrow \frac{d^{2} r}{d t^{2}}-\frac{L^{2}}{\mu^{2} r^{3}}=-\delta(r)
+\end{aligned}
+\]</span></p>
+<p>Vamos considerar uma órbita circular <span class="math inline">\(r=r_c\)</span> e considerar uma pequena perturbação no raio.</p>
+<p><span class="math display">\[
+\begin{aligned}
+r &amp; =r_{c}+x, \text { ONDC } x \ll r_{c} \\
+\frac{d^{2} r}{d t^{2}} &amp; =\frac{d^{2}}{d t^{2}}\left(r_{c}+x\right)=\frac{d^{2} x}{d t^{2}}, \quad r_{c}=c t_{c}
+\end{aligned}
+\]</span></p>
+<p>Com isso, a equação do movimento fica<br>
+<span class="math inline">\(\frac{d^{2} x}{d t^{2}}-\frac{L^{2}}{\mu^{2}}\left(\frac{1}{r_{c}+x}\right)^{3}=-g\left(r_{c}+x\right)\)</span><span class="math inline">\(\frac{d^{2} x}{d t^{2}}-\frac{L^{2}}{\mu^{2} r_{c}^{3}}\left(1+\frac{x}{r_{c}}\right)^{-3}=-g\left(r_{c}+x\right)\)</span><br>
+PODEMOS EXPANDIR IS FUNGÓOS<br>
+<span class="math inline">\(\left(1+\frac{x}{r_{c}}\right)^{-3}=1-3 \frac{x}{r_{c}}+\ldots\)</span><span class="math inline">\(g\left(r_{c}+x\right)=g\left(r_{c}\right)+\left.x \frac{d g}{d r}\right|_{r_{c}}\)</span><br>
+Considerando apenas até o termo linear em <span class="math inline">\(x\)</span>,<br>
+<span class="math inline">\(\frac{d^{2} x}{d t^{2}}-\frac{L^{2}}{\mu^{2} r_{c}^{3}}\left(1-3 \frac{x}{r_{c}}\right)=-g\left(r_{c}\right)-\left.x \frac{d g}{d r}\right|_{r_{c}}\)</span></p>
+<p>Se <span class="math inline">\(r=r_c\)</span>, temos as condições da órbita circular<br>
+<span class="math inline">\(\left.\frac{d r}{d t}\right|_{r_{c}}=\left.0 \quad \in \quad \frac{d^{2} r}{d t^{2}}\right|_{r_{c}}=0\)</span><br>
+da equages di movimento<br>
+<span class="math inline">\(\frac{d^{2} r_{c}{ }^{0}}{d t^{2}}-\frac{L^{2}}{\mu^{2} r_{c}^{3}}=-g\left(r_{c}\right) \Rightarrow g\left(r_{c}\right)=\frac{L^{2}}{\mu^{2} r_{c}^{3}}\)</span><br>
+Substituindo na equação da perturbação,<br>
+<span class="math inline">\(\frac{d^{2} x}{d t^{2}}-\frac{L^{2}}{\mu^{2} r_{c}^{3}}\left(1-3 \frac{x}{r_{c}}\right)=-\frac{L^{2}}{\mu^{2} r_{c}^{3}}-\left.x \frac{d g}{d r}\right|_{r_{c}}\)</span><span class="math inline">\(\operatorname{con} 1350\)</span><span class="math inline">\(\frac{d^{2} x}{d t^{2}}+\left(\frac{L^{2}}{\mu^{2} r_{c}^{3}}\right) \frac{3 x}{r_{c}}+\left.x \frac{d g}{d r}\right|_{r_{c}}=0\)</span><span class="math inline">\(\frac{d^{2} x}{d t^{2}}+\left[\frac{3 g\left(r_{c}\right)}{r_{c}}+\left.\frac{d g}{d r}\right|_{r_{c}}\right] x=0\)</span><br>
+Esta é a equação de um oscilador harmônico com frequência <span class="math inline">\(\omega_{0}^{2}=\frac{3 g\left(r_{c}\right)}{r_{c}}+\left.\frac{d g}{d r}\right|_{r_{c}}\)</span>.<br>
+E sabemos que a solução pode ser escrita como <span class="math inline">\(x(t)=A e^{+i \omega_{0} t}+B e^{-i \omega_{0} t}\)</span>.</p>
+<p>Se <span class="math inline">\(\omega_0^2&lt;0\)</span>, a frequência seria imaginária e as soluções seriam exponenciais reais. Ou seja, a partícula se afasta de <span class="math inline">\(r_c\)</span> e a órbita é instável.</p>
+<p>Para termos estabilidade, <span class="math inline">\(x\)</span> precisa oscilar em torno de <span class="math inline">\(r_c\)</span>; portanto, <span class="math inline">\(\omega_0^2&gt;0\)</span>:</p>
+<p><span class="math display">\[
+\frac{3 g\left(r_{c}\right)}{r_{c}}+\left.\frac{d g}{d r}\right|_{r_{c}}&gt;0
+\]</span></p>
+<p>Como <span class="math inline">\(g\left(r_{c}\right)=\frac{L^{2}}{\mu^{2} r_{c}^{3}}&gt;0\)</span>, podemos dividir a expressão por <span class="math inline">\(g(r_c)\)</span>:</p>
+<p><span class="math display">\[
+\frac{3}{r_{c}}+\left.\frac{1}{g\left(r_{c}\right)}\frac{d g}{d r}\right|_{r_{c}}&gt;0
+\]</span></p>
+<p>Lembrando que <span class="math inline">\(F(r)=-\mu g(r)\)</span>,</p>
+<p><span class="math display">\[
+\left.\frac{1}{g\left(r_{c}\right)}\frac{d g}{d r}\right|_{r_{c}}=\left.\frac{1}{F\left(r_{c}\right)}\frac{d F}{d r}\right|_{r_{c}}
+\]</span></p>
+<p>Então,</p>
+<p><span class="math display">\[
+\left.\frac{1}{F\left(r_{c}\right)}\frac{d F}{d r}\right|_{r_{c}}+\frac{3}{r_{c}}&gt;0
+\]</span></p>
+<p>Voltando ao caso de uma lei de potência <span class="math inline">\(F(r)=-\frac{k}{r^{m}}\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \left.\frac{1}{F\left(r_{c}\right)}\frac{d F}{d r}\right|_{r_{c}}=-\frac{m}{r_{c}} \\
+&amp; -\frac{m}{r_{c}}+\frac{3}{r_{c}}&gt;0 \Rightarrow m&lt;3
+\end{aligned}
+\]</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Oscilacoes.html" class="pagination-link" aria-label="Oscilações">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./SistemasPart.html" class="pagination-link" aria-label="Sistemas de Partículas">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de Partículas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
