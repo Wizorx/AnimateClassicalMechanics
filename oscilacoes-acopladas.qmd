@@ -117,11 +117,11 @@ $$
 L = (n+1)d
 $$
 
-![Fio elástico com $n$ partículas idênticas separadas por uma distância $d$ no equilíbrio](figs/ch12_fig2_string_equilibrium.png)
+<!-- ![Fio elástico com $n$ partículas idênticas separadas por uma distância $d$ no equilíbrio](figs/ch12_fig2_string_equilibrium.png) -->
 
 Vamos considerar deslocamentos transversais à direção de equilíbrio.
 
-![Deslocamentos transversais $q_{j-1}$, $q_j$, $q_{j+1}$ das partículas vizinhas, separadas por uma distância $d$, com ângulo $\theta$ em relação à horizontal](figs/ch12_fig3_string_transverse.png)
+<!-- ![Deslocamentos transversais $q_{j-1}$, $q_j$, $q_{j+1}$ das partículas vizinhas, separadas por uma distância $d$, com ângulo $\theta$ em relação à horizontal](figs/ch12_fig3_string_transverse.png) -->
 
 Supomos que a tensão $T$ no fio é a mesma ao longo do fio (ou seja, ele é homogêneo), a componente transversal da tensão é do tipo $T\,\text{sen}\,\theta$.
 
@@ -307,6 +307,6 @@ $$
 
 Para $n=3$:
 
-![Modos normais para $n=3$: os três primeiros modos ($r=1,2,3$) e o modo nulo ($r=4$)](figs/ch12_fig1_normal_modes.png)
+<!-- ![Modos normais para $n=3$: os três primeiros modos ($r=1,2,3$) e o modo nulo ($r=4$)](figs/ch12_fig1_normal_modes.png) -->
 
 $n+1$ é o modo nulo!

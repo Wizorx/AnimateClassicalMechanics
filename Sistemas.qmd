@@ -70,7 +70,7 @@ Podemos definir outros sistemas em que os deslocamentos associados às coordenad
 
 ```{ojs}
 //| echo: false
-containerCylCoords = html`<div style="width:749px;height:400px"></div>`
+containerCylCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:749/400;margin:0 auto;"></div>`
 ```
 
 ```{ojs}
@@ -87,13 +87,41 @@ containerCylCoords = html`<div style="width:749px;height:400px"></div>`
     }
 
 
+    function getAzimuthalAngleScale(point) {
+      const [x, y] = point;
+      const projectedRadius = Math.sqrt(x * x + y * y);
+
+      if (projectedRadius < 1e-6) {
+        return 0;
+      }
+
+      const azimuthAngle = Math.atan2(y, x);
+      const wrappedAngle = Math.abs(((azimuthAngle + 2 * Math.PI) % (2 * Math.PI)));
+      const angleThreshold = 0.5;
+      const radiusThreshold = 1;
+
+      let scale = 1;
+      if (wrappedAngle < angleThreshold) {
+        scale = wrappedAngle / angleThreshold;
+      }
+      if (projectedRadius < radiusThreshold) {
+        scale = Math.min(scale, projectedRadius / radiusThreshold);
+      }
+
+      return .5*scale;
+    }
+
+    // NEW: measure the actual rendered size of the container instead of hardcoding it
+    const initialWidth = containerCylCoords.clientWidth;
+    const initialHeight = containerCylCoords.clientHeight;
+
     const scene = new ThreeDScene(containerCylCoords, {
-      width: 749,
-      height: 400,
+      width: initialWidth,
+      height: initialHeight,
       backgroundColor: '#222222',
       phi: 75 * (Math.PI / 180),
       theta: -45 * (Math.PI / 180),
-      distance: 20,
+      distance: 28,
       fov: 30,
       enableOrbitControls: true,
       orbitControlsUp: 'z'
@@ -113,7 +141,7 @@ containerCylCoords = html`<div style="width:749px;height:400px"></div>`
     const plane = new PolarPlane({radius: 5, size: 10, radialDivisions:5, includeAngleLabels: true, labelFontSize:42, gridStrokeWidth: 2});
     //plane.rotation.x = Math.PI / 2;
 
-    const dot = new Dot3D({ radius: 0.1, color: YELLOW }).moveTo(axes.coordsToPoint(1,1,1)).addUpdater(() => {});
+    const dot = new Dot3D({ radius: 0.25, color: YELLOW }).moveTo(axes.coordsToPoint(1,1,1)).addUpdater(() => {});
     makeDraggable(dot, scene, {constrainX: [-5,5], constrainY: [-5,5], constrainZ: [-5,5]});
 
     const radiusProj = new Line3D({start: [0,0,0], end: axes.coordsToPoint(0,0,1), lineWidth: 2}).addUpdater((mob) => {
@@ -125,28 +153,17 @@ containerCylCoords = html`<div style="width:749px;height:400px"></div>`
       mob.setEnd(radiusProj.getEnd());
     });
   
-    
     const thetaArc = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), dot.getCenter()] }, { radius: 0.5 }).addUpdater((mob) => {
-      var a = radiusProj.getLength()/2;
-      
-      if (a > 0.5) {
-        a = .5;
-      }
-      const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()], lineWidth:4*a }, { radius: a });//radiusProj.getLength() });
+      const a = getAzimuthalAngleScale(radiusProj.getEnd());
+      const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()], lineWidth:2}, { radius: a });
       mob.become(newAngle);
     });
-        
     
     const theta = new Text({ text: 'θ', color: WHITE, fontSize: 42}).addUpdater((mob) => {
-      var a = radiusProj.getLength()/2;
-      
-      if (a > .5) {
-        a = .5;
-      }
-      const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: a*1.1});//radiusProj.getLength() });
-      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.45));
-      mob.setFontSize(42 * a*2);
-      //mob.rotation.x = -Math.PI / 2;
+      const scale = getAzimuthalAngleScale(radiusProj.getEnd());
+      const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: scale});
+      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.5));
+      mob.setFontSize(48 * 2*scale);
     });
 
     const z = new Text({ text: 'z', color: WHITE, fontSize: 42}).addUpdater((mob) => {
@@ -155,19 +172,19 @@ containerCylCoords = html`<div style="width:749px;height:400px"></div>`
       if (a > .5) {
         a = .5;
       }
-      const newAngle = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: 1 });//radius.getLength() });
-      mob.setFontSize(42 * a*2);
+      const newAngle = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: 0.25 });
+      mob.setFontSize(48 * a*2);
       mob.moveTo(addVectors(radiusDown.getMidpoint(), scalarMult(scalarMult(radiusProj.getEnd(), 1/radiusProj.getLength()), .4)));
     });
 
-    const r = new Text({ text: 'r', color: WHITE, fontSize: 42}).addUpdater((mob) => {
+    const s = new Text({ text: 's', color: WHITE, fontSize: 42}).addUpdater((mob) => {
       
       var a = radiusProj.getLength()/2;
       
       if (a > .5) {
         a = .5;
       }
-      mob.setFontSize(42 * a*2);
+      mob.setFontSize(48 * a*2);
       mob.moveTo(addVectors(radiusProj.getMidpoint(), scalarMult(OUT, .4)));
     });
     
@@ -183,8 +200,25 @@ containerCylCoords = html`<div style="width:749px;height:400px"></div>`
     c4.rotation.x = -Math.PI/2;
     c5.rotation.x = -Math.PI/2;
         
-    scene.add(plane, dot, radiusProj, radiusDown, thetaArc, theta, z, r, c1, c2, c3, c4, c5, );
-    scene.addFixedOrientationMobjects(z, r);
+    scene.add(plane, dot, radiusProj, radiusDown, thetaArc, theta, z, s, c1, c2, c3, c4, c5, );
+    scene.addFixedOrientationMobjects(z, s);
+
+    // NEW: keep the scene's internal resolution in sync with the container's
+    // actual rendered size. ResizeObserver fires on window resize, orientation
+    // change, and sidebar collapse/expand — more reliable on mobile than
+    // window.addEventListener('resize', ...) alone.
+    let resizeTimeout;
+    const resizeObserver = new ResizeObserver((entries) => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const { width, height } = entries[0].contentRect;
+        if (width > 0 && height > 0) {
+          scene.resize(width, height); // correct method name, confirmed from the docs
+        }
+      }, 100);
+    });
+    resizeObserver.observe(containerCylCoords);
+
     await scene.wait(Infinity);
 
     return scene;
@@ -210,7 +244,7 @@ $$
 
 ```{ojs}
 //| echo: false
-containerSphCoords = html`<div style="width:749px;height:400px"></div>`
+containerSphCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:749/400;margin:0 auto;"></div>`
 ```
 
 ```{ojs}
@@ -277,13 +311,16 @@ containerSphCoords = html`<div style="width:749px;height:400px"></div>`
       return .5*scale;
     }
 
+    const initialWidth = containerSphCoords.clientWidth;
+    const initialHeight = containerSphCoords.clientHeight;
+
     const scene = new ThreeDScene(containerSphCoords, {
-      width: 749,
-      height: 400,
+      width: initialWidth,
+      height: initialHeight,
       backgroundColor: '#222222',
       phi: 75 * (Math.PI / 180),
       theta: -45 * (Math.PI / 180),
-      distance: 20,
+      distance: 28,
       fov: 30,
       enableOrbitControls: true,
       orbitControlsUp: 'z'
@@ -304,7 +341,7 @@ containerSphCoords = html`<div style="width:749px;height:400px"></div>`
     //plane.rotation.x = Math.PI / 2;
     //plane2.rotation.z = Math.PI / 2;
   
-    const dot = new Dot3D({ radius: 0.1, color: YELLOW }).moveTo(axes.coordsToPoint(1.75,1.75,1.75)).addUpdater(() => {});
+    const dot = new Dot3D({ radius: 0.25, color: YELLOW }).moveTo(axes.coordsToPoint(1.75,1.75,1.75)).addUpdater(() => {});
     makeDraggable(dot, scene,);
 
     const radius = new Line3D({start: [0,0,0], end: dot.getCenter(), lineWidth: 2}).addUpdater((mob) => {
@@ -331,7 +368,7 @@ containerSphCoords = html`<div style="width:749px;height:400px"></div>`
       const scale = getAzimuthalAngleScale(radiusProj.getEnd());
       const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: scale});//radiusProj.getLength() });
       mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.5));
-      mob.setFontSize(42 * 2*scale);
+      mob.setFontSize(48 * 2*scale);
       //mob.rotation.x = -Math.PI / 2;
     });
         
@@ -345,19 +382,19 @@ containerSphCoords = html`<div style="width:749px;height:400px"></div>`
       const a = getPolarAngleArcRadius(radius.getEnd());
       const newAngle = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), radius.getEnd()] }, { radius: a });
       mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.65));
-      mob.setFontSize(42 * (a / 0.5));
+      mob.setFontSize(48 * (a / 0.5));
     });
 
     const r = new Text({ text: 'r', color: WHITE, fontSize: 42}).addUpdater((mob) => {
       mob.moveTo(addVectors(radius.getMidpoint(), scalarMult(OUT, -.25)));
       
       if (radiusProj.getLength() < .5) {
-        mob.setFontSize(42 * (radiusProj.getLength()+.5));
+        mob.setFontSize(48 * (radiusProj.getLength()+.5));
       }
 
     });
     
-    const s1 = new Sphere({radius: 1, color: WHITE, opacity: .05});
+    const s1 = new Sphere({radius: 0.25, color: WHITE, opacity: .05});
     const s2 = new Sphere({radius: 2, color: WHITE, opacity: .05});
     const s3 = new Sphere({radius: 3, color: WHITE, opacity: .05});
     const s4 = new Sphere({radius: 4, color: WHITE, opacity: .05});
@@ -365,6 +402,18 @@ containerSphCoords = html`<div style="width:749px;height:400px"></div>`
         
     scene.add(axes,  plane2, dot, radius,r ,radiusProj,radiusDown, thetaArc, theta, phiArc, phi, s1, s2, s3, s4, s5,);
     scene.addFixedOrientationMobjects( phi, r);
+
+    let resizeTimeout;
+    const resizeObserver = new ResizeObserver((entries) => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const { width, height } = entries[0].contentRect;
+        if (width > 0 && height > 0) {
+          scene.resize(width, height); // correct method name, confirmed from the docs
+        }
+      }, 100);
+    });
+    resizeObserver.observe(containerSphCoords);
     await scene.wait(Infinity);
 } 
 ```

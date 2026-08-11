@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Hamilton’s Principle — Lagrangian and Hamiltonian Dynamics – Mecânica Clássica Animada</title>
+<title>9&nbsp; Dinâmicas Lagrangiana e Hamiltoniana – Mecânica Clássica Animada</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./oscilacoes-acopladas.html" rel="next">
 <link href="./calculo-variacional.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -402,6 +403,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -448,7 +461,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./lagrange-hamilton.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hamilton’s Principle — Lagrangian and Hamiltonian Dynamics</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></h1>
 <p class="subtitle lead">Capítulo 7 (Thornton &amp; Marion)</p>
 </div>
 
@@ -575,18 +588,8 @@ m\ddot{y} + mg = 0
 </section>
 <section id="exemplo-partícula-de-massa-m-restrita-à-superfície-de-um-cone-sujeita-a-gravidade-uniforme" class="level3" data-number="9.1.4">
 <h3 data-number="9.1.4" class="anchored" data-anchor-id="exemplo-partícula-de-massa-m-restrita-à-superfície-de-um-cone-sujeita-a-gravidade-uniforme"><span class="header-section-number">9.1.4</span> Exemplo: partícula de massa <span class="math inline">\(m\)</span> restrita à superfície de um cone sujeita a gravidade uniforme</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig1_cone.png" class="img-fluid figure-img"></p>
-<figcaption>Partícula restrita à superfície de um cone de semiângulo <span class="math inline">\(\alpha\)</span>, em coordenadas cilíndricas <span class="math inline">\((s,\phi,z)\)</span></figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig1b_cone_cross_section.png" class="img-fluid figure-img"></p>
-<figcaption>Corte transversal do cone mostrando a relação entre <span class="math inline">\(s\)</span>, <span class="math inline">\(z\)</span> e <span class="math inline">\(\alpha\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Partícula restrita à superfície de um cone de semiângulo $\alpha$, em coordenadas cilíndricas $(s,\phi,z)$](figs/ch7_fig1_cone.png) -->
+<!-- ![Corte transversal do cone mostrando a relação entre $s$, $z$ e $\alpha$](figs/ch7_fig1b_cone_cross_section.png) -->
 <p>Em coordenadas cilíndricas:</p>
 <p><span class="math display">\[
 \tan\alpha = \frac{s}{z} \;\rightarrow\; \boxed{z = s\cot\alpha} \qquad \text{(Eq. de vínculo)}
@@ -627,12 +630,7 @@ U = mgz \;\longrightarrow\; L = E_C - U = \frac{m}{2}\left(s^2\dot{\phi}^2+\dot{
 </section>
 <section id="exemplo-um-pêndulo-simples-tem-o-seu-ponto-de-suporte-em-um-movimento-circular-uniforme-coplanar" class="level3" data-number="9.1.5">
 <h3 data-number="9.1.5" class="anchored" data-anchor-id="exemplo-um-pêndulo-simples-tem-o-seu-ponto-de-suporte-em-um-movimento-circular-uniforme-coplanar"><span class="header-section-number">9.1.5</span> Exemplo: um pêndulo simples tem o seu ponto de suporte em um movimento circular uniforme coplanar</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig2_pendulum_rotating_support.png" class="img-fluid figure-img"></p>
-<figcaption>Pêndulo de comprimento <span class="math inline">\(l\)</span> cujo ponto de suporte gira com velocidade angular constante <span class="math inline">\(\omega\)</span> sobre um círculo de raio <span class="math inline">\(a\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Pêndulo de comprimento $l$ cujo ponto de suporte gira com velocidade angular constante $\omega$ sobre um círculo de raio $a$](figs/ch7_fig2_pendulum_rotating_support.png) -->
 <p><span class="math display">\[
 \omega = \text{cte.}
 \]</span></p>
@@ -705,12 +703,7 @@ mal\omega\dot\theta\cos(\theta-\omega t) - mgl\,\text{sen}\,\theta - m\left[l^2\
 <section id="exemplo-miçanga-restrita-a-um-fio-com-formato-parabólico" class="level3" data-number="9.1.6">
 <h3 data-number="9.1.6" class="anchored" data-anchor-id="exemplo-miçanga-restrita-a-um-fio-com-formato-parabólico"><span class="header-section-number">9.1.6</span> Exemplo: miçanga restrita a um fio com formato parabólico</h3>
 <p>Miçanga restrita a um fio com formato parabólico <span class="math inline">\(z = cs^2\)</span> (em coordenadas cilíndricas) girando em torno do eixo de simetria da parábola com velocidade angular <span class="math inline">\(\omega\)</span> constante tal que a miçanga fica a uma distância <span class="math inline">\(R\)</span> do eixo. Quanto vale <span class="math inline">\(c\)</span>?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig3_parabolic_wire.png" class="img-fluid figure-img"></p>
-<figcaption>Miçanga sobre um fio parabólico girando com velocidade angular <span class="math inline">\(\omega\)</span> em torno do eixo <span class="math inline">\(z\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Miçanga sobre um fio parabólico girando com velocidade angular $\omega$ em torno do eixo $z$](figs/ch7_fig3_parabolic_wire.png) -->
 <p><span class="math display">\[
 E_C = \frac{m}{2}\left[\dot{s}^2 + s^2\dot\phi^2 + \dot{z}^2\right]
 \]</span></p>
@@ -754,12 +747,7 @@ s = R = \text{cte.} \;\;\longrightarrow\;\; \dot{s} = \ddot{s} = 0 \quad\therefo
 </section>
 <section id="exemplo-polias" class="level3" data-number="9.1.7">
 <h3 data-number="9.1.7" class="anchored" data-anchor-id="exemplo-polias"><span class="header-section-number">9.1.7</span> Exemplo: polias</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig4_pulleys.png" class="img-fluid figure-img"></p>
-<figcaption>Sistema de polias ideais com fios inextensíveis suspendendo massas <span class="math inline">\(m_1\)</span>, <span class="math inline">\(m_2\)</span> e <span class="math inline">\(m_3\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Sistema de polias ideais com fios inextensíveis suspendendo massas $m_1$, $m_2$ e $m_3$](figs/ch7_fig4_pulleys.png) -->
 <p>Supondo polias ideais e fios inextensíveis e considerando as massas <span class="math inline">\(m_1\)</span>, <span class="math inline">\(m_2\)</span> e <span class="math inline">\(m_3\)</span>, e comprimentos dos fios <span class="math inline">\(l_1\)</span> e <span class="math inline">\(l_2\)</span>.</p>
 <p><span class="math display">\[
 v_1 = \dot{x}
@@ -863,12 +851,7 @@ A_i = \frac{\partial f}{\partial x_i}, \qquad B = \frac{\partial f}{\partial t}
 <section id="exemplo-uma-partícula-de-massa-m-sai-do-topo-de-um-hemisfério-de-raio-a" class="level3" data-number="9.2.1">
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="exemplo-uma-partícula-de-massa-m-sai-do-topo-de-um-hemisfério-de-raio-a"><span class="header-section-number">9.2.1</span> Exemplo: uma partícula de massa <span class="math inline">\(m\)</span> sai do topo de um hemisfério de raio <span class="math inline">\(a\)</span></h3>
 <p>O vínculo é <span class="math inline">\(r=a \rightarrow f = r - a = 0\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig5_hemisphere.png" class="img-fluid figure-img"></p>
-<figcaption>Partícula sobre a superfície de um hemisfério de raio <span class="math inline">\(r\)</span>, com ângulo polar <span class="math inline">\(\theta\)</span> medido a partir do topo</figcaption>
-</figure>
-</div>
+<!-- ![Partícula sobre a superfície de um hemisfério de raio $r$, com ângulo polar $\theta$ medido a partir do topo](figs/ch7_fig5_hemisphere.png) -->
 <p><span class="math display">\[
 E_C = \frac{m}{2}\left(\dot{r}^2 + r^2\dot\theta^2\right)
 \]</span></p>
@@ -1343,12 +1326,7 @@ L(q_i,\dot{q}_i,t) = \sum_i p_i\dot{q}_i - H(q_i,p_i,t)
 \]</span></p>
 <section id="exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro" class="level3" data-number="9.5.1">
 <h3 data-number="9.5.1" class="anchored" data-anchor-id="exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro"><span class="header-section-number">9.5.1</span> Exemplo: uma partícula se move sob a ação de uma força <span class="math inline">\(F=-k\vec{r}\)</span>, <span class="math inline">\(k=\text{cst.}&gt;0\)</span> restrita à superfície de um cilindro</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch8_fig1_cylinder.png" class="img-fluid figure-img"></p>
-<figcaption>Partícula restrita à superfície de um cilindro de raio <span class="math inline">\(R\)</span>, sob a ação de <span class="math inline">\(F=-k\vec r\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Partícula restrita à superfície de um cilindro de raio $R$, sob a ação de $F=-k\vec r$](figs/ch8_fig1_cylinder.png) -->
 <p><span class="math display">\[
 U = \frac{k}{2}r^2 = \frac{k}{2}\left(x^2+y^2+z^2\right)
 \]</span></p>
@@ -1820,6 +1798,9 @@ m\ddot{z} = -kz
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./oscilacoes-acopladas.html" class="pagination-link" aria-label="Oscilações Acopladas">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

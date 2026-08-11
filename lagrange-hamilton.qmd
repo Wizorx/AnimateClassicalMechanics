@@ -147,9 +147,9 @@ $$
 
 ### Exemplo: partícula de massa $m$ restrita à superfície de um cone sujeita a gravidade uniforme
 
-![Partícula restrita à superfície de um cone de semiângulo $\alpha$, em coordenadas cilíndricas $(s,\phi,z)$](figs/ch7_fig1_cone.png)
+<!-- ![Partícula restrita à superfície de um cone de semiângulo $\alpha$, em coordenadas cilíndricas $(s,\phi,z)$](figs/ch7_fig1_cone.png) -->
 
-![Corte transversal do cone mostrando a relação entre $s$, $z$ e $\alpha$](figs/ch7_fig1b_cone_cross_section.png)
+<!-- ![Corte transversal do cone mostrando a relação entre $s$, $z$ e $\alpha$](figs/ch7_fig1b_cone_cross_section.png) -->
 
 Em coordenadas cilíndricas:
 
@@ -202,7 +202,7 @@ $$
 
 ### Exemplo: um pêndulo simples tem o seu ponto de suporte em um movimento circular uniforme coplanar
 
-![Pêndulo de comprimento $l$ cujo ponto de suporte gira com velocidade angular constante $\omega$ sobre um círculo de raio $a$](figs/ch7_fig2_pendulum_rotating_support.png)
+<!-- ![Pêndulo de comprimento $l$ cujo ponto de suporte gira com velocidade angular constante $\omega$ sobre um círculo de raio $a$](figs/ch7_fig2_pendulum_rotating_support.png) -->
 
 $$
 \omega = \text{cte.}
@@ -301,7 +301,7 @@ $$
 
 Miçanga restrita a um fio com formato parabólico $z = cs^2$ (em coordenadas cilíndricas) girando em torno do eixo de simetria da parábola com velocidade angular $\omega$ constante tal que a miçanga fica a uma distância $R$ do eixo. Quanto vale $c$?
 
-![Miçanga sobre um fio parabólico girando com velocidade angular $\omega$ em torno do eixo $z$](figs/ch7_fig3_parabolic_wire.png)
+<!-- ![Miçanga sobre um fio parabólico girando com velocidade angular $\omega$ em torno do eixo $z$](figs/ch7_fig3_parabolic_wire.png) -->
 
 $$
 E_C = \frac{m}{2}\left[\dot{s}^2 + s^2\dot\phi^2 + \dot{z}^2\right]
@@ -359,7 +359,7 @@ $$
 
 ### Exemplo: polias
 
-![Sistema de polias ideais com fios inextensíveis suspendendo massas $m_1$, $m_2$ e $m_3$](figs/ch7_fig4_pulleys.png)
+<!-- ![Sistema de polias ideais com fios inextensíveis suspendendo massas $m_1$, $m_2$ e $m_3$](figs/ch7_fig4_pulleys.png) -->
 
 Supondo polias ideais e fios inextensíveis e considerando as massas $m_1$, $m_2$ e $m_3$, e comprimentos dos fios $l_1$ e $l_2$.
 
@@ -500,7 +500,7 @@ Onde o somatório denota forças de vínculo, que apesar do nome podem não ter 
 
 O vínculo é $r=a \rightarrow f = r - a = 0$.
 
-![Partícula sobre a superfície de um hemisfério de raio $r$, com ângulo polar $\theta$ medido a partir do topo](figs/ch7_fig5_hemisphere.png)
+<!-- ![Partícula sobre a superfície de um hemisfério de raio $r$, com ângulo polar $\theta$ medido a partir do topo](figs/ch7_fig5_hemisphere.png) -->
 
 $$
 E_C = \frac{m}{2}\left(\dot{r}^2 + r^2\dot\theta^2\right)
@@ -1139,7 +1139,7 @@ $$
 
 ### Exemplo: uma partícula se move sob a ação de uma força $F=-k\vec{r}$, $k=\text{cst.}>0$ restrita à superfície de um cilindro
 
-![Partícula restrita à superfície de um cilindro de raio $R$, sob a ação de $F=-k\vec r$](figs/ch8_fig1_cylinder.png)
+<!-- ![Partícula restrita à superfície de um cilindro de raio $R$, sob a ação de $F=-k\vec r$](figs/ch8_fig1_cylinder.png) -->
 
 $$
 U = \frac{k}{2}r^2 = \frac{k}{2}\left(x^2+y^2+z^2\right)

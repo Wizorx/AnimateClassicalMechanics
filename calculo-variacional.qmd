@@ -16,7 +16,7 @@ Onde $f$ é um funcional, ou seja, uma "metafunção" que relaciona dois conjunt
 
 Vamos considerar que os limites $x_1$ e $x_2$ são fixos e iguais entre as funções:
 
-![Família de curvas entre dois pontos fixos $(x_1, y=c_1)$ e $(x_2, y=c_2)$](figs/ch6_fig1_variational_family.png)
+<!-- ![Família de curvas entre dois pontos fixos $(x_1, y=c_1)$ e $(x_2, y=c_2)$](figs/ch6_fig1_variational_family.png) -->
 
 Vamos considerar uma família de funções a um parâmetro $\alpha$, ou seja, uma cornucópia de funções a partir da qual escolhemos uma com um slider $\alpha$.
 
@@ -132,7 +132,7 @@ $$
 \vec{g} = g\hat{x}, \qquad g = \text{cte.}, \qquad \vec{F}_g = mg\hat{x}, \qquad \vec{F}_g = -\vec{\nabla}U
 $$
 
-![Trajetória de $(x_1,y_1)$ até $(x_2,y_2)$ sob a força gravitacional $\vec{F}_g$](figs/ch6_fig2_brachistochrone.png)
+<!-- ![Trajetória de $(x_1,y_1)$ até $(x_2,y_2)$ sob a força gravitacional $\vec{F}_g$](figs/ch6_fig2_brachistochrone.png) -->
 
 Na ausência de forças externas, a energia mecânica é conservada. Considerando a energia potencial gravitacional:
 
@@ -581,7 +581,7 @@ $$
 
 Agora sim um exemplo de vínculo: um disco rolando sem deslizar sobre um plano inclinado; o ângulo de um ponto na superfície em relação à normal está vinculado ao centro de massa:
 
-![Disco de raio $R$ rolando sem deslizar sobre um plano inclinado de ângulo $\beta$; $y$ é a posição do centro do disco ao longo do plano e $\theta$ é o ângulo de rotação](figs/ch6_fig3_disk_inclined_plane.png)
+<!-- ![Disco de raio $R$ rolando sem deslizar sobre um plano inclinado de ângulo $\beta$; $y$ é a posição do centro do disco ao longo do plano e $\theta$ é o ângulo de rotação](figs/ch6_fig3_disk_inclined_plane.png) -->
 
 $$
 y = R\theta \;\;\rightarrow\;\; y - R\theta = 0 \;\;\rightarrow\;\; \frac{\partial g}{\partial y}dy + \frac{\partial g}{\partial \theta}d\theta = 0
@@ -625,7 +625,7 @@ $$
 
 Por exemplo, qual a maior área ($J$) que um barbante de comprimento fixo ($K=L$) fixado sempre nos mesmos dois pontos consegue subentender?
 
-![Diferentes curvas de mesmo comprimento entre $-a$ e $a$; a semicircunferência maximiza a área subentendida](figs/ch6_fig4_isoperimetric.png)
+<!-- ![Diferentes curvas de mesmo comprimento entre $-a$ e $a$; a semicircunferência maximiza a área subentendida](figs/ch6_fig4_isoperimetric.png) -->
 
 $$
 f = y \;\;\rightarrow\;\; J = \int_{-a}^{a} y\,dx

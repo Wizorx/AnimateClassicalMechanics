@@ -403,6 +403,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -451,12 +463,7 @@ y'(x) = \frac{dy}{dx}
 \]</span></p>
 <p>Onde <span class="math inline">\(f\)</span> é um funcional, ou seja, uma “metafunção” que relaciona dois conjuntos de funções e <span class="math inline">\(J\)</span> é um funcional integral.</p>
 <p>Vamos considerar que os limites <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> são fixos e iguais entre as funções:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch6_fig1_variational_family.png" class="img-fluid figure-img"></p>
-<figcaption>Família de curvas entre dois pontos fixos <span class="math inline">\((x_1, y=c_1)\)</span> e <span class="math inline">\((x_2, y=c_2)\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Família de curvas entre dois pontos fixos $(x_1, y=c_1)$ e $(x_2, y=c_2)$](figs/ch6_fig1_variational_family.png) -->
 <p>Vamos considerar uma família de funções a um parâmetro <span class="math inline">\(\alpha\)</span>, ou seja, uma cornucópia de funções a partir da qual escolhemos uma com um slider <span class="math inline">\(\alpha\)</span>.</p>
 <p><span class="math display">\[
 y = y(\alpha, x) = y_\alpha(x)
@@ -540,12 +547,7 @@ u = \frac{\partial f}{\partial y'} \quad\text{e}\quad dv = \frac{d\eta}{dx}\,dx
 <p><span class="math display">\[
 \vec{g} = g\hat{x}, \qquad g = \text{cte.}, \qquad \vec{F}_g = mg\hat{x}, \qquad \vec{F}_g = -\vec{\nabla}U
 \]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch6_fig2_brachistochrone.png" class="img-fluid figure-img"></p>
-<figcaption>Trajetória de <span class="math inline">\((x_1,y_1)\)</span> até <span class="math inline">\((x_2,y_2)\)</span> sob a força gravitacional <span class="math inline">\(\vec{F}_g\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Trajetória de $(x_1,y_1)$ até $(x_2,y_2)$ sob a força gravitacional $\vec{F}_g$](figs/ch6_fig2_brachistochrone.png) -->
 <p>Na ausência de forças externas, a energia mecânica é conservada. Considerando a energia potencial gravitacional:</p>
 <p><span class="math display">\[
 U(x_1) = 0 \qquad E_C + U = 0
@@ -876,12 +878,7 @@ i = 1,2,3,\dots,N \qquad j = 1,2,3,\dots,M \qquad M &lt; N
 \sum_i \frac{\partial g}{\partial y_i}\,dy_i = 0
 \]</span></p>
 <p>Agora sim um exemplo de vínculo: um disco rolando sem deslizar sobre um plano inclinado; o ângulo de um ponto na superfície em relação à normal está vinculado ao centro de massa:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch6_fig3_disk_inclined_plane.png" class="img-fluid figure-img"></p>
-<figcaption>Disco de raio <span class="math inline">\(R\)</span> rolando sem deslizar sobre um plano inclinado de ângulo <span class="math inline">\(\beta\)</span>; <span class="math inline">\(y\)</span> é a posição do centro do disco ao longo do plano e <span class="math inline">\(\theta\)</span> é o ângulo de rotação</figcaption>
-</figure>
-</div>
+<!-- ![Disco de raio $R$ rolando sem deslizar sobre um plano inclinado de ângulo $\beta$; $y$ é a posição do centro do disco ao longo do plano e $\theta$ é o ângulo de rotação](figs/ch6_fig3_disk_inclined_plane.png) -->
 <p><span class="math display">\[
 y = R\theta \;\;\rightarrow\;\; y - R\theta = 0 \;\;\rightarrow\;\; \frac{\partial g}{\partial y}dy + \frac{\partial g}{\partial \theta}d\theta = 0
 \]</span></p>
@@ -911,12 +908,7 @@ J + \lambda k = \int_a^b (f + \lambda g)\,dx
 y(a) = A,\quad y(b) = B,\quad k = L
 \]</span></p>
 <p>Por exemplo, qual a maior área (<span class="math inline">\(J\)</span>) que um barbante de comprimento fixo (<span class="math inline">\(K=L\)</span>) fixado sempre nos mesmos dois pontos consegue subentender?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch6_fig4_isoperimetric.png" class="img-fluid figure-img"></p>
-<figcaption>Diferentes curvas de mesmo comprimento entre <span class="math inline">\(-a\)</span> e <span class="math inline">\(a\)</span>; a semicircunferência maximiza a área subentendida</figcaption>
-</figure>
-</div>
+<!-- ![Diferentes curvas de mesmo comprimento entre $-a$ e $a$; a semicircunferência maximiza a área subentendida](figs/ch6_fig4_isoperimetric.png) -->
 <p><span class="math display">\[
 f = y \;\;\rightarrow\;\; J = \int_{-a}^{a} y\,dx
 \]</span></p>
