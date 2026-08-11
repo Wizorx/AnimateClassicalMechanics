@@ -138,7 +138,7 @@ containerCylCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
 
     });
 
-    const plane = new PolarPlane({radius: 5, size: 10, radialDivisions:5, includeAngleLabels: true, labelFontSize:42, gridStrokeWidth: 2});
+    const plane = new PolarPlane({radius: 5, size: 10, radialDivisions:5, includeAngleLabels: true, labelFontSize:52, gridStrokeWidth: 2});
     //plane.rotation.x = Math.PI / 2;
 
     const dot = new Dot3D({ radius: 0.25, color: YELLOW }).moveTo(axes.coordsToPoint(1,1,1)).addUpdater(() => {});
@@ -162,8 +162,8 @@ containerCylCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
     const theta = new Text({ text: 'θ', color: WHITE, fontSize: 42}).addUpdater((mob) => {
       const scale = getAzimuthalAngleScale(radiusProj.getEnd());
       const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: scale});
-      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.5));
-      mob.setFontSize(48 * 2*scale);
+      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.75));
+      mob.setFontSize(52 * 2*scale);
     });
 
     const z = new Text({ text: 'z', color: WHITE, fontSize: 42}).addUpdater((mob) => {
@@ -173,7 +173,7 @@ containerCylCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
         a = .5;
       }
       const newAngle = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: 0.25 });
-      mob.setFontSize(48 * a*2);
+      mob.setFontSize(52 * a*2);
       mob.moveTo(addVectors(radiusDown.getMidpoint(), scalarMult(scalarMult(radiusProj.getEnd(), 1/radiusProj.getLength()), .4)));
     });
 
@@ -184,7 +184,7 @@ containerCylCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
       if (a > .5) {
         a = .5;
       }
-      mob.setFontSize(48 * a*2);
+      mob.setFontSize(52 * a*2);
       mob.moveTo(addVectors(radiusProj.getMidpoint(), scalarMult(OUT, .4)));
     });
     
@@ -320,7 +320,7 @@ containerSphCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
       backgroundColor: '#222222',
       phi: 75 * (Math.PI / 180),
       theta: -45 * (Math.PI / 180),
-      distance: 28,
+      distance: 23,
       fov: 30,
       enableOrbitControls: true,
       orbitControlsUp: 'z'
@@ -341,7 +341,7 @@ containerSphCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
     //plane.rotation.x = Math.PI / 2;
     //plane2.rotation.z = Math.PI / 2;
   
-    const dot = new Dot3D({ radius: 0.25, color: YELLOW }).moveTo(axes.coordsToPoint(1.75,1.75,1.75)).addUpdater(() => {});
+    const dot = new Dot3D({ radius: 0.15, color: YELLOW }).moveTo(axes.coordsToPoint(1.75,1.75,1.75)).addUpdater(() => {});
     makeDraggable(dot, scene,);
 
     const radius = new Line3D({start: [0,0,0], end: dot.getCenter(), lineWidth: 2}).addUpdater((mob) => {
@@ -350,11 +350,13 @@ containerSphCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
 
     const radiusProj = new Line3D({start: [0,0,0], end: axes.coordsToPoint(0,0,1), lineWidth: 1, opacity: 0.5}).addUpdater((mob) => {
       mob.setEnd([dot.getCenter()[0], dot.getCenter()[1], 0]);
+      mob.setStrokeOpacity(0);
     });
 
     const radiusDown = new Line3D({start: [0,0,0], end: axes.coordsToPoint(0,0,1), lineWidth: 1, opacity: 0.5}).addUpdater((mob) => {
       mob.setStart(radius.getEnd());
       mob.setEnd(radiusProj.getEnd());
+      mob.setStrokeOpacity(0);
     });
       
     
@@ -367,8 +369,8 @@ containerSphCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
     const theta = new Text({ text: 'θ', color: WHITE, fontSize: 42}).addUpdater((mob) => {
       const scale = getAzimuthalAngleScale(radiusProj.getEnd());
       const newAngle = new Angle({ points: [axes.coordsToPoint(1,0,0), axes.coordsToPoint(0,0,0), radiusProj.getEnd()] }, { radius: scale});//radiusProj.getLength() });
-      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.5));
-      mob.setFontSize(48 * 2*scale);
+      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.75));
+      mob.setFontSize(52 * 2*scale);
       //mob.rotation.x = -Math.PI / 2;
     });
         
@@ -381,15 +383,15 @@ containerSphCoords = html`<div style="width:100%;max-width:749px;aspect-ratio:74
     const phi = new Text({ text: '𝜙', color: WHITE, fontSize: 42}).addUpdater((mob) => {
       const a = getPolarAngleArcRadius(radius.getEnd());
       const newAngle = new Angle({ points: [axes.coordsToPoint(0,0,1), axes.coordsToPoint(0,0,0), radius.getEnd()] }, { radius: a });
-      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.65));
-      mob.setFontSize(48 * (a / 0.5));
+      mob.moveTo(scalarMult(newAngle.getArcMidpoint(), 1.8));
+      mob.setFontSize(52 * (a / 0.5));
     });
 
     const r = new Text({ text: 'r', color: WHITE, fontSize: 42}).addUpdater((mob) => {
       mob.moveTo(addVectors(radius.getMidpoint(), scalarMult(OUT, -.25)));
       
       if (radiusProj.getLength() < .5) {
-        mob.setFontSize(48 * (radiusProj.getLength()+.5));
+        mob.setFontSize(52 * (radiusProj.getLength()+.5));
       }
 
     });
