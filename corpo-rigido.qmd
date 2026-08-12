@@ -1,0 +1,1200 @@
+---
+title: "Corpo Rígido"
+subtitle: "Capítulo 11 — Dynamics of Rigid Bodies (Thornton & Marion)"
+format: html
+---
+
+Um corpo rígido é um conjunto de partículas no qual as distâncias relativas entre elas são constantes, ou seja, ele não pode ser deformado.
+
+<!-- ![Duas partículas de um corpo rígido, com $|\vec r_i - \vec r_j| = \text{cte}\ \forall\, i,j$](figs/ch11_fig1_rigid_body_points.png) -->
+
+$$
+|\vec r_i - \vec r_j| = \text{cte.} \quad \forall\, i,j
+$$
+
+Bora considerar um corpo rígido formado por $N$ partículas de massas $m_\alpha$: se o corpo sofrer uma rotação com uma velocidade angular instantânea $\omega$ em torno de um ponto fixo em relação ao sistema de coordenadas do corpo. Se esse ponto tiver velocidade $\vec V$ com respeito a um sistema de coordenadas fixo, então a velocidade de uma partícula é:
+
+$$
+\vec v_\alpha = \vec V + \vec\omega \times \vec r_\alpha
+$$
+
+A energia cinética total então é:
+
+<!-- ![Corpo girando com velocidade angular $\vec\omega$; $\vec r_\alpha$ é a posição da partícula $\alpha$ e $\vec v_\alpha$ sua velocidade](figs/ch11_fig2_rotating_body.png) -->
+
+$$
+E_C = \frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha\left(\vec V + \vec\omega\times\vec r_\alpha\right)^2
+$$
+
+$$
+= \frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha V^2 + \sum_{\alpha=1}^{N} \vec V\cdot\left(\vec\omega\times\vec r_\alpha\right)m_\alpha + \frac{1}{2}\sum_\alpha m_\alpha\left(\vec\omega\times\vec r_\alpha\right)^2
+$$
+
+Escolhendo o centro de massa do sistema como origem do sistema, a gente pode reescrever da seguinte forma:
+
+$$
+\sum_{\alpha=1}^{N} \vec V\cdot\left(\vec\omega\times\vec r_\alpha\right)m_\alpha = \vec V\cdot\left[\vec\omega\times\left(\sum_{\alpha=1}^{N} m_\alpha\vec r_\alpha\right)\right]
+$$
+
+$$
+= \vec V\left[\vec\omega\times\left(M\vec R\right)\right]
+\qquad \hookrightarrow\ \vec R\ \text{posição do CM}
+$$
+
+Se a origem é o centro de massa, então:
+
+$$
+\vec R = 0
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+E_C = \underbrace{\frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha V^2}_{\text{energia de translação}} + \underbrace{\frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha\left(\vec\omega\times\vec r_\alpha\right)^2}_{\text{energia de rotação}}
+$$
+
+Reescrevendo o termo de rotação:
+
+$$
+\left(\vec\omega\times\vec r_\alpha\right)^2 = \left(\vec\omega\times\vec r_\alpha\right)\cdot\left(\vec\omega\times\vec r_\alpha\right)
+$$
+
+$$
+= \omega^2 r_\alpha^2 - \left(\vec\omega\cdot\vec r_\alpha\right)^2
+$$
+
+$$
+\therefore \quad E_{C,\text{rot}} = \sum_{\alpha=1}^{N} \frac{m_\alpha}{2}\left[\omega^2 r_\alpha^2 - \left(\vec\omega\cdot\vec r_\alpha\right)^2\right]
+$$
+
+Escrevendo em termos de componentes:
+
+$$
+\omega^2 = \sum_{i=1}^{3}\omega_i^2, \qquad r_\alpha^2 = \sum_{i=1}^{3} x_{\alpha i}^2
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\vec\omega\cdot\vec r_\alpha = \sum_{i=1}^{3}\omega_i x_{\alpha i}
+$$
+
+$$
+\rightarrow \quad E_{C,\text{rot}} = \sum_{\alpha=0}^{N}\frac{m_\alpha}{2}\left[\sum_{i=1}^{3}\omega_i^2\sum_{k=1}^{3}x_{\alpha k}^2 - \left(\sum_{i=1}^{3}\omega_i x_{\alpha i}\right)\left(\sum_{j=1}^{3}\omega_j x_{\alpha j}\right)\right]
+$$
+
+Usando o delta de Kronecker:
+
+$$
+\omega_i = \sum_{j=1}^{3}\omega_j\,\delta_{ij}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+E_{C,\text{rot}} = \sum_{\alpha=1}^{N}\frac{m_\alpha}{2}\left[\sum_{i=1}^{3}\sum_{j=1}^{3}\omega_j\,\delta_{ij}\,\omega_i\sum_{k=1}^{3}x_{\alpha k}^2 - \sum_{i=1}^{3}\omega_i x_{\alpha i}\sum_{j=1}^{3}\omega_j x_{\alpha j}\right]
+$$
+
+$$
+= \sum_{\alpha=1}^{N}\frac{m_\alpha}{2}\left[\sum_{i=1}^{3}\sum_{j=1}^{3}\omega_i\omega_j\,\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - \sum_{i=1}^{3}\sum_{j=1}^{3}\omega_i\omega_j\,x_{\alpha i}x_{\alpha j}\right]
+$$
+
+$$
+= \sum_{\alpha=1}^{N}\frac{m_\alpha}{2}\sum_{i=1}^{3}\sum_{j=1}^{3}\left[\omega_i\omega_j\,\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - \omega_i\omega_j\,x_{\alpha i}x_{\alpha j}\right]
+$$
+
+Vamos esconder toda essa notação definindo o **tensor de inércia**:
+
+$$
+I_{ij} := \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}x_{\alpha j}\right)
+$$
+
+$$
+\therefore \quad E_{C,\text{rot}} = \frac{1}{2}\sum_{i=1}^{3}\sum_{j=1}^{3} I_{ij}\,\omega_i\omega_j = \vec\omega^{\,T} I\vec\omega
+$$
+
+$$
+\Updownarrow
+$$
+
+$$
+E_C = \frac{I\omega^2}{2}
+$$
+
+As componentes diagonais $I_{ii}$ são os momentos de inércia com respeito aos eixos independentes que passam pelo ponto de referência. As componentes mistas $I_{ij}$ ($i\neq j$) são os produtos de inércia. Esse tensor é simétrico com respeito à troca de índices.
+
+$$
+I_{ij} = I_{ji}
+$$
+
+Para uma distribuição contínua, o tensor de inércia vai ser então:
+
+$$
+I_{ij} = \int_V \rho(\vec r)\left(\delta_{ij}\sum_{k=1}^{3}x_k^2 - x_ix_j\right) dV
+$$
+
+$$
+= \iiint \rho(\vec r)\left(\delta_{ij}\sum_{k=1}^{3}x_k^2 - x_ix_j\right) dx_1\,dx_2\,dx_3
+$$
+
+### Exemplo: cubo homogêneo
+
+Considere um cubo de aresta $b$, homogêneo de densidade $\rho$. Calcule as componentes cartesianas do tensor de inércia.
+
+<!-- ![Cubo homogêneo de aresta $b$ com origem em um vértice](figs/ch11_fig3_cube.png) -->
+
+$$
+I_{11} = \int_0^b\!\!\int_0^b\!\!\int_0^b \left(x^2+y^2+z^2-x^2\right) dx\,dy\,dz
+$$
+
+$$
+= \rho b\int_0^b\!\!\int_0^b \left(y^2+z^2\right) dy\,dz
+$$
+
+$$
+= \rho b\left(\int_0^b\!\!\int_0^b y^2\,dy\,dz + \int_0^b\!\!\int_0^b z^2\,dy\,dz\right)
+$$
+
+$$
+= \rho b^2\left(\int_0^b y^2\,dy + \int_0^b z^2\,dz\right)
+$$
+
+$$
+= \rho b^2\left(\frac{b^3}{3}+\frac{b^3}{3}\right)
+$$
+
+$$
+= \frac{2}{3}\rho b^5 \quad\therefore\quad \boxed{I_{11} = \frac{2}{3}Mb^2}
+$$
+
+$$
+\because\ b^3 = V, \qquad \rho b^3 = M
+$$
+
+$$
+I_{12} = \rho\int_0^b\!\!\int_0^b\!\!\int_0^b -xy\,dx\,dy\,dz
+$$
+
+$$
+= -\rho b\int_0^b\!\!\int_0^b xy\,dx\,dy
+$$
+
+$$
+= -\rho b\left(\frac{b^2}{2}\right)\left(\frac{b^2}{2}\right) = -\frac{\rho b^5}{4} = -\frac{Mb^2}{4}
+$$
+
+Cubo e espaço homogêneos $\rightarrow$ $I_{12}=I_{13}=I_{23}$.
+
+$$
+\therefore \quad I = \begin{bmatrix}
+\dfrac{2}{3}Mb^2 & -\dfrac{Mb^2}{4} & -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} & \dfrac{2}{3}Mb^2 & -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} & -\dfrac{Mb^2}{4} & \dfrac{2}{3}Mb^2
+\end{bmatrix}
+$$
+
+## Momento Angular
+
+Considerando o corpo rígido formado por um conjunto de partículas. O momento angular total é:
+
+$$
+\vec L = \sum_{\alpha=1}^{N}\vec r_\alpha\times\vec p_\alpha, \qquad \vec p_\alpha = m_\alpha\vec v_\alpha
+$$
+
+Com relação a um ponto no interior do corpo, temos:
+
+$$
+\vec v_\alpha = \vec\omega\times\vec r_\alpha
+$$
+
+$$
+\vec L = \sum_{\alpha=1}^{N} m_\alpha\vec r_\alpha\times\left(\vec\omega\times\vec r_\alpha\right)
+\qquad\Big)\ \vec A\times(\vec B\times\vec A) = A^2\vec B - \vec A(\vec A\cdot\vec B)
+$$
+
+$$
+= \sum_{\alpha=1}^{N} m_\alpha\left[r_\alpha^2\vec\omega - \vec r_\alpha(\vec r_\alpha\cdot\vec\omega)\right]
+$$
+
+Reescrevendo em termos de componentes:
+
+$$
+L_i = \sum_{\alpha=1}^{N} m_\alpha\left(\omega_i\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}\sum_{j=1}^{3}x_{\alpha j}\omega_j\right)
+\qquad\Big)\ \omega_i = \sum_{j=1}^{3}\omega_j\delta_{ij}
+$$
+
+$$
+= \sum_{\alpha=1}^{N} m_\alpha\left(\sum_{j=1}^{3}\omega_j\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}\sum_{j=1}^{3}x_{\alpha j}\omega_j\right)
+$$
+
+$$
+= \sum_{j=1}^{3}\omega_j\sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}x_{\alpha j}\right)
+$$
+
+$$
+= \sum_{j=1}^{3} I_{ij}\,\omega_j
+$$
+
+Em geral, $\vec L$ e $\vec\omega$ **não** são colineares.
+
+$$
+\vec\omega\cdot\vec L = \sum_{i=1}^{3}\omega_i L_i = \sum_{i=1}^{3}\sum_{j=1}^{3} I_{ij}\,\omega_i\omega_j = 2E_{C,\text{rot}}
+$$
+
+$$
+\rightarrow \quad E_{C,\text{rot}} = \frac{\vec\omega\cdot\vec L}{2}
+$$
+
+### Exemplo: pêndulo físico com haste de massa desprezível e comprimento $b$
+
+<!-- ![Pêndulo físico formado por duas massas $m_1$ e $m_2$ ao longo de uma haste rígida de comprimento $b$](figs/ch11_fig4_physical_pendulum.png) -->
+
+$$
+\vec\omega = \dot\phi\,\hat z
+$$
+
+$$
+x_{11}=b,\quad x_{21}=b/2 \qquad x_{12}=0,\quad x_{22}=0 \qquad x_{13}=0,\quad x_{23}=0
+$$
+
+$$
+I_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha j}x_{\alpha i}\right)
+$$
+
+$$
+= m_1\left(\delta_{ij}\sum_{k=1}^{3}x_{1k}^2 - x_{1j}x_{1i}\right) + m_2\left(\delta_{ij}\sum_{k=1}^{3}x_{2k}^2 - x_{2j}x_{2i}\right)
+$$
+
+$$
+= m_1\left(\delta_{ij}b^2 - x_{1j}x_{1i}\right) + m_2\left(\delta_{ij}\frac{b^2}{4} - x_{2j}x_{2i}\right)
+$$
+
+$$
+\rightarrow \quad I_{11} = m_1\left(b^2-b^2\right) + m_2\left(\frac{b^2}{4}-\frac{b^2}{4}\right) = 0
+$$
+
+$$
+\rightarrow \quad I_{22} = m_1\left(b^2-0\cdot0\right) + m_2\left(\frac{b^2}{4}-0\cdot0\right)
+$$
+
+$$
+= m_1b^2 + m_2\frac{b^2}{4}
+$$
+
+$$
+\rightarrow \quad I_{33} = m_1\left(b^2-0\cdot0\right) + m_2\left(\frac{b^2}{4}-0\cdot0\right)
+$$
+
+$$
+= m_1b^2 + m_2\frac{b^2}{4}
+$$
+
+$$
+I_{ij}=0 \quad \forall\, i\neq j
+$$
+
+$$
+L_i = \sum_{j=1}^{3} I_{ij}\,\omega_j
+$$
+
+$$
+\rightarrow \quad L_1=0,\quad L_2=0,\quad L_3 = I_{33}\omega_3 = \left(m_1b^2+m_2\frac{b^2}{4}\right)\dot\phi
+$$
+
+$$
+\rightarrow \quad \dot{\vec L} = \vec\tau = \sum_{\alpha=1}^{N}\vec r_\alpha\times\vec F_\alpha
+$$
+
+$$
+= \vec r_1\times\vec F_1 + \vec r_2\times\vec F_2
+$$
+
+$$
+= b\hat s\times m_1\left(g\cos\phi\,\hat s - g\,\text{sen}\,\phi\,\hat\phi\right) + \frac{b}{2}\hat s\times m_2\left(g\cos\phi\,\hat s - g\,\text{sen}\,\phi\,\hat\phi\right)
+$$
+
+$$
+= -bm_1g\,\text{sen}\,\phi\,\hat z - \frac{b}{2}m_2g\,\text{sen}\,\phi\,\hat z
+$$
+
+$$
+\therefore \quad \left(m_1b^2+m_2\frac{b^2}{4}\right)\ddot\phi\,\hat z = -bg\,\text{sen}\,\phi\left(m_1+\frac{m_2}{2}\right)\hat z
+$$
+
+No limite de pequenas oscilações, a frequência natural desse sistema é:
+
+$$
+\text{sen}\,\phi \approx \phi \;\;\longrightarrow\;\; \omega_0^2 = \frac{bg\left(m_1+\dfrac{m_2}{2}\right)}{m_1b^2+m_2\dfrac{b^2}{4}}
+$$
+
+$$
+= \frac{g}{b}\frac{\left(m_1+\dfrac{m_2}{2}\right)}{\left(m_1+\dfrac{m_2}{4}\right)}
+$$
+
+## Eixos principais de inércia
+
+Os eixos principais de inércia são os eixos que tornam o tensor de inércia diagonal.
+
+Se o corpo gira em torno de um eixo principal, $\vec L$ e $\vec\omega$ vão ser colineares.
+
+$$
+L_i = \sum_{j=1}^{3} I_{ij}\,\omega_j = I_{ii}\,\omega_i \;\;\longleftrightarrow\;\; \vec L = I\vec\omega
+$$
+
+$$
+I_{ij} = I_{ii}\,\delta_{ij} \;\;\longleftrightarrow\;\; \overset{\text{matriz}}{I}\vec\omega = \lambda\vec\omega
+\qquad(\lambda\ \text{autovalor})
+$$
+
+$$
+\vec L = L_1\hat x_1+L_2\hat x_2+L_3\hat x_3 \qquad\qquad \vec\omega = \omega_1\hat x_1+\omega_2\hat x_2+\omega_3\hat x_3
+$$
+
+$$
+I\vec\omega = \lambda\omega_1\hat x_1+\lambda\omega_2\hat x_2+\lambda\omega_3\hat x_3
+$$
+
+$$
+\begin{cases}
+L_1 = \lambda\omega_1 = I_{11}\omega_1 + I_{12}\omega_2 + I_{13}\omega_3 \\
+L_2 = \lambda\omega_2 = I_{21}\omega_1 + I_{22}\omega_2 + I_{23}\omega_3 \\
+L_3 = \lambda\omega_3 = I_{31}\omega_1 + I_{32}\omega_2 + I_{33}\omega_3
+\end{cases}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\begin{cases}
+(I_{11}-\lambda)\omega_1 + I_{12}\omega_2 + I_{13}\omega_3 = 0 \\
+I_{21}\omega_1 + (I_{22}-\lambda)\omega_2 + I_{23}\omega_3 = 0 \\
+I_{31}\omega_1 + I_{32}\omega_2 + (I_{33}-\lambda)\omega_3 = 0
+\end{cases}
+$$
+
+Para que exista uma solução $(\omega_1,\omega_2,\omega_3)^T$, o determinante da matriz de coeficientes tem que ser $0$:
+
+$$
+\begin{bmatrix}
+(I_{11}-\lambda) & I_{12} & I_{13} \\
+I_{21} & (I_{22}-\lambda) & I_{23} \\
+I_{31} & I_{32} & (I_{33}-\lambda)
+\end{bmatrix} = 0
+$$
+
+### Exemplo: eixos principais do cubo homogêneo
+
+Bora encontrar os eixos principais do cubo homogêneo de aresta $b$. O tensor de inércia dele era:
+
+$$
+I = \begin{bmatrix}
+\dfrac{2}{3}Mb^2 & -\dfrac{Mb^2}{4} & -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} & \dfrac{2}{3}Mb^2 & -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} & -\dfrac{Mb^2}{4} & \dfrac{2}{3}Mb^2
+\end{bmatrix}
+$$
+
+Resolvendo para achar $I$:
+
+$$
+\begin{bmatrix}
+\left(\dfrac{2}{3}Mb^2-\lambda\right) & -\dfrac{Mb^2}{4} & -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} & \left(\dfrac{2}{3}Mb^2-\lambda\right) & -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} & -\dfrac{Mb^2}{4} & \left(\dfrac{2}{3}Mb^2-\lambda\right)
+\end{bmatrix} = 0
+$$
+
+Pela regra de Sarrus, o resultado é:
+
+$$
+\lambda_1 = \frac{Mb^2}{6}, \qquad \lambda_2 = \frac{11}{12}Mb^2, \qquad \lambda_3 = \frac{11}{12}Mb^2
+$$
+
+Substituindo no sistema:
+
+$$
+\begin{cases}
+\left(\dfrac{2}{3}Mb^2-\dfrac{Mb^2}{6}\right)\omega_1 - \dfrac{Mb^2}{4}\omega_2 - \dfrac{Mb^2}{4}\omega_3 = 0 \\[1.5ex]
+-\dfrac{Mb^2}{4}\omega_1 + \left(\dfrac{2}{3}Mb^2-\dfrac{Mb^2}{6}\right)\omega_2 - \dfrac{Mb^2}{4}\omega_3 = 0 \\[1.5ex]
+-\dfrac{Mb^2}{4}\omega_1 - \dfrac{Mb^2}{4}\omega_2 + \left(\dfrac{2}{3}Mb^2-\dfrac{Mb^2}{6}\right)\omega_3 = 0
+\end{cases}
+$$
+
+Dividindo o sistema todo por $Mb^2/4$:
+
+$$
+\begin{cases}
+2\omega_1 - \omega_2 - \omega_3 = 0 \\
+-\omega_1 + 2\omega_2 - \omega_3 = 0 \qquad\therefore\ \omega_1=\omega_2=\omega_3=\Omega\ (\text{algum número}) \\
+-\omega_1 - \omega_2 + 2\omega_3 = 0
+\end{cases}
+$$
+
+Esse eixo principal de inércia é a diagonal do cubo! Os outros dois estão no plano perpendicular a ele.
+
+## Teorema dos eixos paralelos
+
+Bora considerar dois sistemas de coordenadas fixas em relação ao corpo onde a origem de um deles é o centro de massa.
+
+<!-- ![Dois sistemas de coordenadas com eixos paralelos: $\{X_i\}$ com origem em $a$ e $\{x_i\}$ com origem no centro de massa](figs/ch11_fig5_two_coord_systems.png) -->
+
+$$
+x_1 \parallel X_1, \qquad x_2 \parallel X_2, \qquad x_3 \parallel X_3
+$$
+
+Com respeito a $O$ (centro de massa):
+
+$$
+I_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}x_{\alpha j}\right)
+$$
+
+Com respeito a $Q$ (outro ponto fixo):
+
+$$
+J_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}X_{\alpha k}^2 - X_{\alpha i}X_{\alpha j}\right)
+$$
+
+E se a gente escrever $\vec R = \vec r + \vec a$ em termos de componentes, fica $X_i = r_i + a_i$. Logo:
+
+$$
+J_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left[\delta_{ij}\sum_{k=1}^{3}\left(x_{\alpha k}+a_k\right)^2 - \left(x_{\alpha i}+a_i\right)\left(x_{\alpha j}+a_j\right)\right]
+$$
+
+$$
+= I_{ij} + \sum_{\alpha=1}^{N} m_\alpha\left[\delta_{ij}\sum_{k=1}^{3}\left(a_k^2+2x_{\alpha k}a_k\right) - x_{\alpha i}a_j - x_{\alpha j}a_i - a_ia_j\right]
+$$
+
+Como $O$ é o centro de massa:
+
+$$
+\sum_{\alpha=1}^{N} m_\alpha\vec r_\alpha = \vec 0
+$$
+
+$$
+\sum_{\alpha=1}^{N} m_\alpha x_{\alpha k} = 0, \qquad k=1,2,3
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+J_{ik} = I_{ij} + \sum_{\alpha=1}^{N} m_\alpha\left[\delta_{ij}\sum_{k=1}^{3}a_k^2 - a_ia_j\right]
+$$
+
+$$
+J_{iK} = I_{ij} + M\left(a^2\delta_{ij} - a_ia_j\right)
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\underbrace{\text{Tensor de inércia com relação ao CM}}_{}
+\qquad\qquad
+\underbrace{\text{Tensor de inércia com relação a outro ponto fixo}}_{}
+$$
+
+onde $\vec a$ é a posição do centro de massa com relação à outra origem e $M=\sum_{\alpha=1}^{N} m_\alpha$ é a massa do corpo. Esse é o **teorema dos eixos paralelos**.
+
+### Voltando ao cubo homogêneo
+
+A gente conhece o tensor de inércia com relação a um vértice:
+
+<!-- ![Cubo homogêneo com centro de massa marcado](figs/ch11_fig6_cube_cm.png) -->
+
+$$
+J = \begin{bmatrix}
+\dfrac{2}{3}Mb^2 & -\dfrac{Mb^2}{4} & -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} & \dfrac{2}{3}Mb^2 & -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} & -\dfrac{Mb^2}{4} & \dfrac{2}{3}Mb^2
+\end{bmatrix}
+$$
+
+A posição do CM com relação ao vértice:
+
+$$
+\vec a = \begin{bmatrix} b/2 \\ b/2 \\ b/2 \end{bmatrix}, \qquad\text{ou seja,}\quad a_1=a_2=a_3=b/2
+$$
+
+$$
+I_{ij} = J_{ij} - M\left(a^2\delta_{ij} - a_ia_j\right)
+$$
+
+$$
+\rightarrow \quad I_{11} = J_{11} - M\left(a^2-a_1^2\right)
+$$
+
+$$
+= J_{11} - M\left(a_1^2+a_2^2+a_3^2-a_1^2\right)
+$$
+
+$$
+= J_{11} - M\left(a_2^2+a_3^2\right)
+$$
+
+$$
+= \frac{2}{3}Mb^2 - M\left(\frac{b^2}{4}+\frac{b^2}{4}\right)
+$$
+
+$$
+= \frac{Mb^2}{6} \quad\Longleftrightarrow\quad I_{22}=I_{33}=\frac{Mb^2}{6}
+$$
+
+$$
+\rightarrow \quad I_{12} = J_{12} - M(-a_1a_2) = -\frac{Mb^2}{4} + \frac{Mb^2}{4} = 0
+$$
+
+$$
+\Longleftrightarrow \quad I_{13}=I_{23}=0
+\qquad\therefore\qquad I = \frac{Mb^2}{6}\,\mathbb{1}
+$$
+
+Com respeito ao centro de massa, os eixos principais de inércia são perpendiculares às faces do cubo.
+
+## Transformações de coordenadas
+
+Sabemos que as componentes dos vetores se alteram da seguinte maneira sob transformações de coordenadas:
+
+$$
+X_i = \sum_{j=1}^{3} \rho_{ji}\,x_j'
+$$
+
+Onde cada $\rho$ é um elemento da matriz de transformação. Se ela for invertível, então ela é ortogonal, ou seja:
+
+$$
+\sum_{j=1}^{3} \rho_{ij}\,\rho_{kj} = \delta_{ik}
+$$
+
+A gente sabe que o momento angular é uma transformação da velocidade angular:
+
+$$
+L_k = \sum_{\ell=1}^{3} I_{k\ell}\,\omega_\ell
+$$
+
+Aplicando uma transformação de coordenadas:
+
+$$
+\sum_{m=1}^{3} \rho_{mk}\,L_m' = \sum_{\ell=1}^{3} I_{k\ell}\sum_{j=1}^{3}\rho_{j\ell}\,\omega_j'
+$$
+
+$$
+\rightarrow \quad \rho_{ik}\sum_{m=1}^{3}\rho_{mk}\,L_m' = \rho_{ik}\sum_{\ell=1}^{3} I_{k\ell}\sum_{j=1}^{3}\rho_{j\ell}\,\omega_j'
+$$
+
+$$
+\rightarrow \quad \sum_{k=1}^{3}\rho_{ik}\sum_{m=1}^{3}\rho_{mk}\,L_m' = \sum_{k=1}^{3}\rho_{ik}\sum_{\ell=1}^{3} I_{k\ell}\sum_{j=1}^{3}\rho_{j\ell}\,\omega_j'
+$$
+
+$$
+\rightarrow \quad \sum_{m=1}^{3}\left(\sum_{k=1}^{3}\rho_{ik}\rho_{mk}\right)L_m' = \sum_{j=1}^{3}\left(\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{j\ell}\,I_{k\ell}\right)\omega_j'
+$$
+
+$$
+\rightarrow \quad \sum_{m=1}^{3}\delta_{im}\,L_m' = \sum_{j=1}^{3}\left(\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{j\ell}\,I_{k\ell}\right)\omega_j'
+$$
+
+$$
+\rightarrow \quad L_i' = \sum_{j=1}^{3}\left(\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{j\ell}\,I_{k\ell}\right)\omega_j'
+$$
+
+$$
+\therefore \quad L_i' = I_{ij}'\,\omega_j'
+$$
+
+Então sob uma transformação de coordenadas, o tensor de inércia se transforma assim:
+
+$$
+I_{ij}' = \sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{j\ell}\,I_{k\ell}
+$$
+
+Para um tensor $T$ qualquer:
+
+$$
+T_{abc\ldots}' = \sum_{i,j,k,\ldots}\rho_{ai}\rho_{bj}\rho_{ck}\cdots T_{ijk\ldots}
+$$
+
+Para o tensor de inércia, que é de posto 2, a gente pode escrever na forma matricial:
+
+$$
+I' = \rho\, I\, \rho^T
+$$
+
+Mas como a transformação é ortogonal:
+
+$$
+\rho^T = \rho^{-1}
+$$
+
+$$
+\therefore \quad I' = \rho\, I\,\rho^{-1}
+$$
+
+Vamos considerar um sistema de coordenadas fixo no corpo e aplicar uma rotação nos eixos, bem como que os novos eixos são eixos principais de inércia e, portanto, $I_{ij}'$ é diagonal.
+
+$$
+I_{ij}' = \sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{\ell j}\,I_{k\ell}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+I_{ij}' = I_i'\,\delta_{ij}
+$$
+
+$$
+\therefore
+$$
+
+$$
+I_i'\,\delta_{ij} = \sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{\ell j}\,I_{k\ell}
+$$
+
+$$
+\rightarrow \quad \rho_{im}\,I_i'\,\delta_{ij} = \rho_{im}\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{\ell j}\,I_{k\ell}
+$$
+
+$$
+\rightarrow \quad \sum_{i=1}^{3}\rho_{im}\,I_i'\,\delta_{ij} = \sum_{i=1}^{3}\rho_{im}\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{\ell j}\,I_{k\ell}
+$$
+
+$$
+\rightarrow \quad \rho_{jm}\,I_j' = \sum_{k=1}^{3}\sum_{\ell=1}^{3}\left(\sum_{i=1}^{3}\rho_{ik}\rho_{\ell j}\right)\rho_{jl}\,I_{k\ell}
+\qquad \underbrace{\phantom{aaaa}}_{\delta_{mk}}
+$$
+
+$$
+= \sum_{\ell=1}^{3}\rho_{j\ell}\,I_{m\ell}
+$$
+
+$$
+\rightarrow \quad \sum_{\ell=1}^{3} I_j'\,\rho_{jm}\,\delta_{m\ell} = \sum_{\ell=1}^{3}\rho_{j\ell}\,I_{m\ell}
+$$
+
+$$
+\rightarrow \quad \sum_{\ell=1}^{3}\left(I_{m\ell} - I_j'\,\delta_{m\ell}\right)\rho_{j\ell} = 0
+$$
+
+Para que exista uma solução não trivial, o determinante da matriz de coeficientes tem que ser $0$:
+
+$$
+\left(I_{m\ell} - \lambda\,\delta_{m\ell}\right) = 0
+$$
+
+Supondo que os momentos principais são todos diferentes, vamos considerar que um corpo rígido que tenha momentos principais de inércia diferentes, indicados pelo subíndice $(m)$:
+
+$$
+L_{(m)i} = I_{(m)}\,\omega_{(m)i}
+$$
+
+Mas a gente sempre pode escrever a expressão geral, logo:
+
+$$
+L_{(m)i} = \sum_{k=1}^{3} I_{ik}\,\omega_{(m)k}
+$$
+
+Então, para cada eixo principal temos:
+
+$$
+\sum_{k=1}^{3} I_{ik}\,\omega_{(m)k} = I_{(m)}\,\omega_{(m)i} \tag{1}
+$$
+
+Escrevendo isso para um outro eixo principal $(n)$, temos:
+
+$$
+\sum_{k=1}^{3} I_{ik}\,\omega_{(n)k} = I_{(n)}\,\omega_{(n)i} \tag{2}
+$$
+
+Multiplicando (1) por $\omega_{(n)i}$ e somando em $i$:
+
+$$
+\sum_{k=1}^{3}\sum_{i=1}^{3} I_{ik}\,\omega_{(m)k}\,\omega_{(n)i} = \sum_{i=1}^{3} I_{(m)}\,\omega_{(m)i}\,\omega_{(n)i}
+$$
+
+Multiplicando (2) por $\omega_{(m)i}$:
+
+$$
+\sum_{i=1}^{3}\sum_{k=1}^{3} I_{ik}\,\omega_{(m)k} = \sum_{i=1}^{3} I_{(n)}\,\omega_{(n)i}\,\omega_{(m)i}
+$$
+
+Como o tensor de inércia é simétrico ($I_{ik}=I_{ki}$), então os lados esquerdos das equações são iguais, daí a gente pode igualar os lados direitos também:
+
+$$
+\sum_{k=1}^{3}\sum_{i=1}^{3} I_{ik}\,\omega_{(m)k}\,\omega_{(n)i} = \sum_{i=1}^{3}\sum_{k=1}^{3} I_{ik}\,\omega_{(m)k}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\sum_{i=1}^{3} I_{(m)}\,\omega_{(m)i}\,\omega_{(n)i} = \sum_{i=1}^{3} I_{(n)}\,\omega_{(n)i}\,\omega_{(m)i}
+$$
+
+$$
+\rightarrow \quad I_{(m)}\sum_{i=1}^{3}\omega_{(m)i}\,\omega_{(n)i} = I_{(n)}\sum_{i=1}^{3}\omega_{(n)i}\,\omega_{(m)i}
+$$
+
+$$
+\rightarrow \quad \left(I_{(m)} - I_{(n)}\right)\sum_{\ell=1}^{3}\omega_{(m)\ell}\,\omega_{(n)\ell} = 0
+$$
+
+Então, se os momentos de inércia são diferentes, as velocidades angulares são necessariamente ortogonais entre si:
+
+$$
+I_{(m)} \neq I_{(n)} \;\;\longrightarrow\;\; \sum_{\ell=1}^{3}\omega_{(m)\ell}\,\omega_{(n)\ell} \neq 0 \;\;\longleftrightarrow\;\; \vec\omega_{(m)}\cdot\vec\omega_{(n)} = 0
+$$
+
+## Ângulos de Euler
+
+Vamos definir três rotações particulares independentes, onde cada uma delas pode ser representada por uma matriz:
+
+$$
+\vec x' = \Lambda\vec x
+$$
+
+**1) A primeira rotação é em torno de $x_3$:**
+
+<!-- ![Primeira rotação de Euler, de ângulo $\phi$, em torno do eixo $x_3\equiv x_3'$](figs/ch11_fig7_euler_rot1.png) -->
+
+$$
+\Lambda_\phi = \begin{bmatrix}
+\cos\phi & \text{sen}\,\phi & 0 \\
+-\text{sen}\,\phi & \cos\phi & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+$$
+
+**2) A segunda rotação é em torno de $x_1'$:**
+
+<!-- ![Segunda rotação de Euler, de ângulo $\theta$, em torno do eixo $x_1'\equiv x_1''$](figs/ch11_fig8_euler_rot2.png) -->
+
+$$
+\Lambda_\theta = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos\theta & \text{sen}\,\theta \\
+0 & -\text{sen}\,\theta & \cos\theta
+\end{bmatrix}
+$$
+
+**3) A terceira rotação é em torno de $x_3'''$:**
+
+<!-- ![Terceira rotação de Euler, de ângulo $\psi$, em torno do eixo $x_3''$](figs/ch11_fig9_euler_rot3.png) -->
+
+$$
+\Lambda_\psi = \begin{bmatrix}
+\cos\psi & \text{sen}\,\psi & 0 \\
+-\text{sen}\,\psi & \cos\psi & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+$$
+
+$$
+\therefore \quad \vec x''' = \Lambda_\psi\,\Lambda_\theta\,\Lambda_\phi\,\vec x = \Lambda\vec x
+$$
+
+$$
+\underbrace{\phantom{aaaaaaaaaaaaaa}}_{\vec x'}
+\qquad
+\underbrace{\phantom{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}}_{\vec x''}
+$$
+
+Os componentes da matriz que é o produto dessas três são:
+
+$$
+\lambda_{11} = \cos\psi\cos\phi - \cos\theta\,\text{sen}\,\phi\,\text{sen}\,\psi
+\qquad
+\lambda_{12} = \cos\psi\,\text{sen}\,\phi+\cos\theta\cos\phi\,\text{sen}\,\psi
+\qquad
+\lambda_{13} = \text{sen}\,\psi\,\text{sen}\,\theta
+$$
+
+$$
+\lambda_{21} = -\text{sen}\,\psi\cos\phi - \cos\theta\,\text{sen}\,\phi\cos\psi
+\qquad
+\lambda_{22} = -\text{sen}\,\psi\,\text{sen}\,\phi+\cos\theta\cos\phi\cos\psi
+\qquad
+\lambda_{23} = \cos\psi\,\text{sen}\,\theta
+$$
+
+$$
+\lambda_{31} = \text{sen}\,\theta\,\text{sen}\,\phi
+\qquad
+\lambda_{32} = -\text{sen}\,\theta\cos\phi
+\qquad
+\lambda_{33} = \cos\theta
+$$
+
+As velocidades angulares para cada rotação são:
+
+$$
+\vec\omega_\phi = \dot{\vec\phi} \qquad \vec\omega_\theta = \dot{\vec\theta} \qquad \vec\omega_\psi = \dot{\vec\psi}
+$$
+
+$\dot{\vec\phi}$ aponta na direção de $x_3$ do sistema fixo (inercial).
+
+$\dot{\vec\theta}$ aponta na direção da linha de nodos (ou seja, da interseção entre os planos $x_1x_2$ ($\equiv x_1'x_2'$) e $x_1''x_2''$).
+
+$\dot{\vec\psi}$ aponta na direção $x_3$ do sistema de coordenadas que acompanha o corpo.
+
+Em termos do sistema de coordenadas do corpo:
+
+$$
+\dot{\vec\phi} = \begin{bmatrix} \dot\phi\,\text{sen}\,\theta\,\text{sen}\,\psi \\ \dot\phi\,\text{sen}\,\theta\cos\psi \\ \dot\phi\cos\theta \end{bmatrix}
+\qquad\longleftrightarrow\qquad
+\vec x''' = \Lambda\vec x
+$$
+
+$$
+\dot{\vec\theta} = \begin{bmatrix} \dot\theta\cos\psi \\ -\dot\theta\,\text{sen}\,\psi \\ 0 \end{bmatrix}
+\qquad\longleftrightarrow\qquad
+\vec x' = \Lambda_\psi\Lambda_\theta\,\vec x''
+$$
+
+$$
+\dot{\vec\psi} = \begin{bmatrix} 0 \\ 0 \\ \dot\psi \end{bmatrix}
+\qquad\longleftrightarrow\qquad
+\vec x'' = \Lambda_\psi\,\vec x'''
+$$
+
+A velocidade angular total do corpo então é:
+
+$$
+\vec\omega = \vec\omega_\phi + \vec\omega_\theta + \vec\omega_\psi =
+\begin{bmatrix}
+\dot\phi\,\text{sen}\,\theta\,\text{sen}\,\psi + \dot\theta\cos\psi \\
+\dot\phi\,\text{sen}\,\theta\cos\psi - \dot\theta\,\text{sen}\,\psi \\
+\dot\phi\cos\theta + \dot\psi
+\end{bmatrix}
+$$
+
+## Corpo rígido livre e equações de Euler
+
+Vamos considerar o movimento de um corpo rígido livre. O movimento de translação é trivial: o centro de massa se move como uma partícula livre. A energia pode ser escrita em termos dos eixos principais de inércia:
+
+$$
+E_{C,\text{Rot}} = \frac{1}{2}\sum_{i=1}^{3} I_i\,\omega_i^2
+$$
+
+Nesse caso, como o corpo é livre, não tem energia potencial, então a Lagrangiana pode ser escrita como:
+
+$$
+L = E_{C,\text{Rot}}
+$$
+
+Podemos escolher os ângulos de Euler como coordenadas generalizadas. Para $\psi$, temos a equação de Euler-Lagrange:
+
+$$
+\frac{\partial E_{C,\text{Rot}}}{\partial \psi} - \frac{d}{dt}\left(\frac{\partial}{\partial \dot\psi}E_{C,\text{Rot}}\right) = 0
+$$
+
+$$
+\rightarrow \quad \sum_{i=1}^{3}\frac{\partial}{\partial\omega_i}E_{C,\text{Rot}}\,\frac{\partial\omega_i}{\partial\psi} - \frac{d}{dt}\left[\sum_{i=1}^{3}\frac{\partial E_{C,\text{Rot}}}{\partial\omega_i}\frac{\partial\psi}{\partial\dot\psi}\right] = 0
+$$
+
+$$
+\rightarrow \quad
+\begin{cases}
+\dfrac{\partial\omega_1}{\partial\psi} = \dot\phi\,\text{sen}\,\theta\cos\psi - \dot\theta\,\text{sen}\,\psi = \omega_2 \\
+\dfrac{\partial\omega_2}{\partial\psi} = -\dot\phi\,\text{sen}\,\theta\,\text{sen}\,\psi - \dot\theta\cos\psi = -\omega_1 \\
+\dfrac{\partial\omega_3}{\partial\psi} = 0
+\end{cases}
+\qquad
+\begin{cases}
+\dfrac{\partial\omega_1}{\partial\dot\psi}=0 \\
+\dfrac{\partial\omega_2}{\partial\dot\psi}=0 \\
+\dfrac{\partial\omega_3}{\partial\dot\psi}=1
+\end{cases}
+$$
+
+$$
+\rightarrow \quad \frac{\partial E_{C,\text{Rot}}}{\partial\omega_i} = I_i\,\omega_i
+$$
+
+Com todas essas informações em mãos, a equação de movimento fica:
+
+$$
+I_1\omega_1\omega_2 + I_2\omega_2(-\omega_1) - \frac{d}{dt}\left(I_3\omega_3\right) = 0
+$$
+
+$$
+\rightarrow \quad \left(I_1-I_2\right)\omega_1\omega_2 - I_3\dot\omega_3 = 0
+$$
+
+Mas como a escolha de qual eixo leva o nome $x_3$ é arbitrária, podemos obter outras duas equações permutando os índices:
+
+$$
+\left(I_2-I_3\right)\omega_2\omega_3 - I_1\dot\omega_1 = 0
+$$
+
+$$
+\left(I_3-I_1\right)\omega_3\omega_1 - I_2\dot\omega_2 = 0
+$$
+
+Essas são as **equações de Euler**. Na presença de uma força externa:
+
+$$
+\vec\tau = \left(\frac{d\vec L}{dt}\right)_{\substack{\text{fixo}\\\hookrightarrow\ \text{referencial inercial}}}
+$$
+
+Em termos do referencial do corpo, que é acelerado, temos:
+
+$$
+\vec\tau = \left(\frac{d\vec L}{dt}\right)_{\text{corpo}} + \vec\omega\times\vec L
+$$
+
+A componente no eixo $x_3$ é:
+
+$$
+\tau_3 = \dot L_3 + \omega_1 L_2 - \omega_2 L_1
+$$
+
+Se $x_3$ é um eixo principal de inércia, o momento angular é colinear à velocidade angular, ponderado só pelo momento principal de inércia desse mesmo eixo:
+
+$$
+L_3 = I_3\omega_3
+$$
+
+E isso vale pros outros eixos também, então:
+
+$$
+L_1 = I_1\omega_1 \qquad L_2 = I_2\omega_2
+$$
+
+Substituindo na equação:
+
+$$
+I_3\dot\omega_3 + \omega_1 I_2\omega_2 - \omega_2 I_1\omega_1 = \tau_3
+$$
+
+$$
+\rightarrow \quad
+\begin{cases}
+I_1\dot\omega_1 + \left(I_2-I_3\right)\omega_2\omega_3 = \tau_1 \\
+I_2\dot\omega_2 + \left(I_3-I_1\right)\omega_3\omega_1 = \tau_2 \\
+I_3\dot\omega_3 + \left(I_1-I_2\right)\omega_1\omega_2 = \tau_3
+\end{cases}
+$$
+
+Podemos escrever o sistema como:
+
+$$
+\left(I_i - I_j\right)\omega_i\omega_j - \sum_{k=1}^{3}\left(I_k\dot\omega_k - \tau_k\right)\varepsilon_{ijk} = 0
+$$
+
+Onde $\varepsilon_{ijk}$ é o símbolo de Levi-Civita.
+
+### Exemplo: halter (dumbbell)
+
+Considere um halter formado por duas partículas ligadas por uma haste rígida com massa desprezível de comprimento $b$:
+
+<!-- ![Halter formado por duas massas $m_1$ e $m_2$ girando com velocidade angular $\vec\omega$; $x_3$ está na direção da haste e $x_2$ na direção de $\vec L$](figs/ch11_fig10_dumbbell.png) -->
+
+$$
+\vec v_\alpha = \vec\omega\times\vec r_\alpha
+$$
+
+$$
+\vec L = m_1\vec r_1\times\vec v_1 + m_2\vec r_2\times\vec v_2
+$$
+
+$\vec L$ não é constante! $\therefore\ \vec\tau\neq 0$
+
+No sistema de coordenadas do corpo, escolhemos $x_3$ na direção da haste e $x_2$ na direção de $\vec L$:
+
+$$
+\vec L = L_2\,\hat x_2
+$$
+
+Escolhendo $r_1=r_2=b$, as componentes da velocidade angular e dos vetores posições são:
+
+$$
+\begin{cases}
+\omega_1 = 0 \\
+\omega_2 = \omega\,\text{sen}\,\theta \\
+\omega_3 = \omega\cos\theta
+\end{cases}
+\qquad
+\begin{cases}
+r_{11}=0 \\ r_{12}=0 \\ r_{13}=b
+\end{cases}
+\qquad
+\begin{cases}
+r_{21}=0 \\ r_{22}=0 \\ r_{23}=-b
+\end{cases}
+$$
+
+$$
+\therefore \quad v_1 = \omega b\,\text{sen}\,\theta, \qquad v_2 = \omega b\,\text{sen}(\pi-\theta) = \omega b\,\text{sen}\,\theta
+$$
+
+Tensor de inércia:
+
+$$
+I_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}x_{\alpha j}\right)
+$$
+
+$$
+\rightarrow \quad I_{11} = m_1\left(b^2-0\right) + m_2\left(b^2-0\right)
+$$
+
+$$
+= b^2\left(m_1+m_2\right)
+$$
+
+$$
+\rightarrow \quad I_{22} = b^2\left(m_1+m_2\right)
+$$
+
+$$
+\rightarrow \quad I_{33} = 0
+$$
+
+$$
+\rightarrow \quad I_{ij}=0 \quad \forall\, i\neq j \rightarrow\ \text{os eixos escolhidos já são os principais}
+$$
+
+Supondo $\vec\omega$ constante, então $\dot\omega_1=\dot\omega_2=\dot\omega_3=0$
+
+$$
+\begin{cases}
+-\left(I_2-I_3\right)\omega_2\omega_3 = \tau_1 \\
+-\left(I_3-I_1\right)\omega_3\omega_1 = \tau_2 \qquad\longrightarrow\quad -\left[(m_1+m_2)b^2-0\right](\omega\,\text{sen}\,\alpha)(\omega\cos\theta) = \tau_1 \\
+-\left(I_1-I_2\right)\omega_1\omega_2 = \tau_3
+\end{cases}
+$$
+
+$$
+\therefore
+$$
+
+$$
+\tau_1 = -(m_1+m_2)b^2\omega^2\,\text{sen}\,\alpha\cos\alpha
+$$
+
+$$
+\tau_2 = \tau_3 = 0
+$$
+
+## Estabilidade de Rotações
+
+Vamos considerar um corpo rígido com os três momentos principais de inércia diferentes e escolher os eixos coordenados coincidindo com os eixos principais de inércia. Considerando uma rotação em torno do eixo $x_1$:
+
+$$
+\vec\omega = \omega_1\hat x_1
+$$
+
+Vamos aplicar uma pequena perturbação na velocidade angular:
+
+$$
+\vec\omega = \omega_1\hat x_1 + \lambda\hat x_2 + \mu\hat x_3
+$$
+
+$$
+\lambda \ll \omega_1, \qquad \mu \ll \omega_1
+$$
+
+Vamos fazer uma aproximação linear desprezando termos que sejam potências de $\lambda$ e $\mu$ ou o produto entre eles. Considerando as equações de Euler-Lagrange:
+
+$$
+\left(I_2-I_3\right)\omega_2\omega_3 - I_1\dot\omega_1 = 0
+$$
+
+$$
+\left(I_3-I_1\right)\omega_3\omega_1 - I_2\dot\omega_2 = 0
+$$
+
+$$
+\left(I_1-I_2\right)\omega_1\omega_2 - I_3\dot\omega_3 = 0
+$$
+
+Substituindo $\vec\omega$, a gente tem:
+
+$$
+\left(I_2-I_3\right)\lambda\mu - I_1\dot\omega_1 = 0
+$$
+
+$$
+\left(I_3-I_1\right)\mu\omega_1 - I_2\dot\lambda = 0
+$$
+
+$$
+\left(I_1-I_2\right)\omega_1\lambda - I_3\dot\mu = 0
+$$
+
+Na aproximação linear, $\lambda\mu \approx 0$. Além disso, a gente considera a velocidade angular não perturbada constante:
+
+$$
+\omega_1 = \text{cst.} \;\;\longrightarrow\;\; \dot\omega_1 = 0
+$$
+
+Com isso, a gente tem:
+
+$$
+\begin{cases}
+\dot\lambda = \left(\dfrac{I_3-I_2}{I_3}\right)\mu\omega_1 \\[1.5ex]
+\dot\mu = \left(\dfrac{I_1-I_2}{I_3}\right)\lambda\omega_1
+\end{cases}
+$$
+
+Derivando a primeira equação no tempo:
+
+$$
+\ddot\lambda = \left(\frac{I_3-I_1}{I_2}\right)\omega_1\dot\mu
+$$
+
+E substituindo a segunda nela:
+
+$$
+\ddot\lambda = \left(\frac{I_3-I_1}{I_2}\right)\left(\frac{I_1-I_2}{I_3}\right)\lambda\omega_1^2
+$$
+
+Que podemos escrever como:
+
+$$
+\ddot\lambda + \Omega_{\lambda_1}^2\,\lambda = 0
+\qquad\text{onde}\qquad
+\Omega_{\lambda_1} := \sqrt{\left(\frac{I_1-I_3}{I_2}\right)\left(\frac{I_1-I_2}{I_3}\right)}\,\omega_1
+\quad\text{(troca de ordem!)}
+$$
+
+Supondo que $I_3 > I_2 > I_1$, então a solução geral é:
+
+$$
+\lambda(t) = Ae^{i\Omega_{\lambda_1}t} + Be^{-i\Omega_{\lambda_1}t}
+$$
+
+Nesse caso, $\Omega_{\lambda_1}$ é real e a solução é oscilatória. Logo, a rotação é estável. Supondo a velocidade angular inicial em torno de outro eixo principal, a gente obtém um resultado parecido, mas com os índices permutados, resultando em três frequências $\Omega$ diferentes.
+
+$$
+\Omega_1 = \sqrt{\left(\frac{I_1-I_3}{I_2}\right)\left(\frac{I_1-I_2}{I_3}\right)}\,\omega_1
+$$
+
+$$
+\Omega_2 = \sqrt{\left(\frac{I_3-I_1}{I_2}\right)\left(\frac{I_2-I_1}{I_3}\right)}\,\omega_2
+$$
+
+$$
+\Omega_3 = \sqrt{\left(\frac{I_2-I_1}{I_3}\right)\left(\frac{I_2-I_3}{I_1}\right)}\,\omega_3
+$$
+
+$$
+\therefore
+$$
+
+$$
+I_3 > I_2 > I_1 \;\;\longrightarrow\;\; \Omega_1,\Omega_2 \in \mathbb{R};\quad \Omega_2 \in \mathbb{I}
+$$
+
+A rotação em torno do eixo principal correspondente ao momento intermediário é sempre instável. Esse é o **teorema do eixo intermediário** (ou teorema da raquete de tênis), que leva ao efeito Dzhanibekov.

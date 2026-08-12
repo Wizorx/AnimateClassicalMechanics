@@ -22,6 +22,7 @@ book:
       chapters:
         - calculo-variacional.qmd
         - lagrange-hamilton.qmd
+        - corpo-rigido.qmd
         - oscilacoes-acopladas.qmd
         - sistemas-continuos.qmd
 

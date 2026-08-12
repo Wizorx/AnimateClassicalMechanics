@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ribamar R. R. dos Reis">
+<meta name="author" content="Luan M. Moraes">
 
-<title>11&nbsp; Oscilações Acopladas – Mecânica Clássica Animada</title>
+<title>Mecânica Clássica Animada</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +35,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./sistemas-continuos.html" rel="next">
-<link href="./corpo-rigido.html" rel="prev">
+<link href="./Sistemas.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +116,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -295,7 +296,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./oscilacoes-acopladas.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introdução</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -325,7 +326,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introdução</span></a>
   </div>
 </li>
@@ -351,8 +352,11 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Oscilacoes.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./GravitacaoEForcas.html" class="sidebar-item-text sidebar-link">
@@ -402,20 +406,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./corpo-rigido.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
   </div>
 </li>
       </ul>
@@ -425,31 +423,34 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Índice</h2>
-   
-  <ul>
-  <li><a href="#exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados" id="toc-exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados" class="nav-link active" data-scroll-target="#exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados"><span class="header-section-number">11.1</span> Exemplo: dois osciladores harmônicos simples idênticos acoplados</a></li>
-  <li><a href="#fio-com-massas" id="toc-fio-com-massas" class="nav-link" data-scroll-target="#fio-com-massas"><span class="header-section-number">11.2</span> Fio com massas</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./oscilacoes-acopladas.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></h1>
-<p class="subtitle lead">Capítulo 12 — Coupled Oscillations (Thornton &amp; Marion)</p>
+<h1 class="title">Mecânica Clássica Animada</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Autores</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ribamar R. R. dos Reis </p>
+             <p>Luan M. Moraes </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Data de Publicação</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">7 de setembro de 2027</p>
+    </div>
+  </div>
   
     
   </div>
@@ -459,242 +460,9 @@ window.Quarto = {
 </header>
 
 
-<p>Para encontrar <span class="math inline">\(\omega\)</span>, impomos o seguinte:</p>
-<p><span class="math display">\[
-\left|A_{jk} - \omega^2 m_{jk}\right| = 0
-\]</span></p>
-<p>A solução geral será uma combinação linear das soluções para cada autofrequência:</p>
-<p><span class="math display">\[
-q_j(t) = \sum_{r=1}^{n} a_{jr}\, e^{i(\omega_r t - \delta_r)}
-\]</span></p>
-<p>Tomando a parte real:</p>
-<p><span class="math display">\[
-q_j(t) = \sum_{r=1}^{n} a_{jr}\cos(\omega_r t - \delta_r)
-\]</span></p>
-<p>onde <span class="math inline">\(r\)</span> indica a autofrequência.</p>
-<section id="exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados"><span class="header-section-number">11.1</span> Exemplo: dois osciladores harmônicos simples idênticos acoplados</h2>
-<p><span class="math display">\[
-n = 2
-\]</span></p>
-<p><span class="math display">\[
-U = \frac{K}{2}x_1^2 + \frac{K}{2}x_2^2 + \frac{K_{12}}{2}(x_2-x_1)^2
-\]</span></p>
-<p><span class="math display">\[
-= (K+K_{12})\frac{x_1^2}{2} + (K+K_{12})\frac{x_2^2}{2} - K_{12}x_1x_2
-\]</span></p>
-<p><span class="math display">\[
-A_{11} = \left.\frac{\partial^2 U}{\partial x_1^2}\right|_0 = (K+K_{12})
-\]</span></p>
-<p><span class="math display">\[
-A_{12} = \left.\frac{\partial^2 U}{\partial x_1 \partial x_2}\right|_0 = -K_{12} = A_{21}
-\]</span></p>
-<p><span class="math display">\[
-A_{22} = \left.\frac{\partial^2 U}{\partial x_2^2}\right|_0 = K + K_{12}
-\]</span></p>
-<p><span class="math display">\[
-E_C = \frac{M}{2}\dot{x}_1^2 + \frac{M}{2}\dot{x}_2^2 = \frac{1}{2}\sum_{j=1}^{n}\sum_{k=1}^{n} m_{jk}\dot{x}_j\dot{x}_k
-\;\;\longrightarrow\;\; m_{11} = m_{22} = M
-\]</span></p>
-<p><span class="math display">\[
-\hookrightarrow \quad m_{12} = m_{21} = 0
-\]</span></p>
-<p><span class="math display">\[
-\therefore \quad
-\left[\begin{matrix}
-K+K_{12}-\omega^2 M &amp; -K_{12} \\
--K_{12} &amp; K+K_{12}-M\omega^2
-\end{matrix}\right] = 0
-\]</span></p>
-<p><span class="math display">\[
-\rightarrow \quad \omega = \sqrt{\frac{k+k_{12}\pm k_{12}}{M}}
-\;\;\rightarrow\;\;
-\omega_1 = \sqrt{\frac{k+2k}{M}},\qquad \omega_2 = \sqrt{\frac{k}{M}}
-\]</span></p>
-<p>Um resultado importante é que os autovetores são ortogonais entre si:</p>
-<p><span class="math display">\[
-\sum_{j=1}^{n}\sum_{k=1}^{n} m_{kj}\,a_{jr}\,a_{ks} = \delta_{rs}
-\]</span></p>
-<p>Com isso, podemos reescrever a seguinte solução geral:</p>
-<p><span class="math display">\[
-q_j(t) = \sum_r \alpha_r\, a_{jr}\, e^{i(\omega_r t - \delta_r)}
-\]</span></p>
-<p>Onde <span class="math inline">\(\alpha_r\)</span> são constantes de normalização. Definindo então o seguinte:</p>
-<p><span class="math display">\[
-\beta_r := \alpha_r\, e^{-i\delta_r}
-\;\;\longrightarrow\;\;
-q_j(t) = \sum_r \beta_r\, a_{jr}\, e^{i\omega_r t}
-\]</span></p>
-<p>Definindo as seguintes funções:</p>
-<p><span class="math display">\[
-\eta_r(t) := \beta_r\, e^{i\omega_r t}
-\;\;\longrightarrow\;\;
-q_j(t) = \sum_r a_{jr}\,\eta(t)
-\]</span></p>
-<p>Por definição, <span class="math inline">\(\eta_r\)</span> representam osciladores harmônicos desacoplados com frequência <span class="math inline">\(\omega_r\)</span>:</p>
-<p><span class="math display">\[
-\ddot\eta_r + \omega_r^2\,\eta_r = 0
-\]</span></p>
-<p>Essas são as <strong>coordenadas normais</strong> do sistema.</p>
-</section>
-<section id="fio-com-massas" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="fio-com-massas"><span class="header-section-number">11.2</span> Fio com massas</h2>
-<p>Considere <span class="math inline">\(n\)</span> partículas idênticas presas a um fio elástico em intervalos regulares no equilíbrio. O comprimento do fio, no equilíbrio, é <span class="math inline">\(L\)</span> e a distância entre as partículas é <span class="math inline">\(d\)</span>. Então:</p>
-<p><span class="math display">\[
-L = (n+1)d
-\]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch12_fig2_string_equilibrium.png" class="img-fluid figure-img"></p>
-<figcaption>Fio elástico com <span class="math inline">\(n\)</span> partículas idênticas separadas por uma distância <span class="math inline">\(d\)</span> no equilíbrio</figcaption>
-</figure>
-</div>
-<p>Vamos considerar deslocamentos transversais à direção de equilíbrio.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch12_fig3_string_transverse.png" class="img-fluid figure-img"></p>
-<figcaption>Deslocamentos transversais <span class="math inline">\(q_{j-1}\)</span>, <span class="math inline">\(q_j\)</span>, <span class="math inline">\(q_{j+1}\)</span> das partículas vizinhas, separadas por uma distância <span class="math inline">\(d\)</span>, com ângulo <span class="math inline">\(\theta\)</span> em relação à horizontal</figcaption>
-</figure>
-</div>
-<p>Supomos que a tensão <span class="math inline">\(T\)</span> no fio é a mesma ao longo do fio (ou seja, ele é homogêneo), a componente transversal da tensão é do tipo <span class="math inline">\(T\,\text{sen}\,\theta\)</span>.</p>
-<p>Se os deslocamentos <span class="math inline">\(q_j\)</span> forem suficientemente pequenos, os ângulos <span class="math inline">\(\theta\)</span> também vão ser:</p>
-<p><span class="math display">\[
-\text{sen}\,\theta \approx \tan\theta
-\]</span></p>
-<p>Com isso, a força resultante na direção transversal sobre uma partícula <span class="math inline">\(j\)</span> é:</p>
-<p><span class="math display">\[
-F_j = -\frac{T}{d}(q_j-q_{j-1}) - \frac{T}{d}(q_j-q_{j+1})
-\]</span></p>
-<p>A equação de movimento para os deslocamentos fica então:</p>
-<p><span class="math display">\[
-m\ddot{q}_j - \frac{T}{d}\left(q_{j-1} - 2q_j + q_{j+1}\right) = 0
-\]</span></p>
-<p>De novo, vamos propor uma solução do tipo:</p>
-<p><span class="math display">\[
-q_j(t) = a_j\, e^{i\omega t}
-\]</span></p>
-<p>Substituindo na equação de movimento e dividindo pela exponencial (para valer para qualquer tempo):</p>
-<p><span class="math display">\[
-\left(\frac{2T}{d} - m\omega^2\right)a_j - \frac{T}{d}a_{j-1} - \frac{T}{d}a_{j+1} = 0
-\]</span></p>
-<p><span class="math display">\[
-\lambda := \frac{2T}{d} - m\omega^2
-\]</span></p>
-<p>A matriz de coeficientes fica:</p>
-<p><span class="math display">\[
-\left[\begin{matrix}
-\lambda &amp; -\dfrac{T}{d} &amp; 0 &amp; 0 &amp; \cdots \\[1ex]
--\dfrac{T}{d} &amp; \lambda &amp; -\dfrac{T}{d} &amp; 0 &amp; \cdots \\[1ex]
-0 &amp; -\dfrac{T}{d} &amp; \lambda &amp; -\dfrac{T}{d} &amp; \cdots \\[1ex]
-0 &amp; 0 &amp; -\dfrac{T}{d} &amp; \lambda &amp; \cdots \\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
-\end{matrix}\right]
-\qquad \text{(primeiros vizinhos!)}
-\]</span></p>
-<p>De novo, temos um problema de autovalores. Para resolver o caso geral, para obter os autovetores, propomos:</p>
-<p><span class="math display">\[
-a_j = a\, e^{i(j\gamma - \delta)} \qquad (\gamma,\delta\ \text{são não arbitrários})
-\]</span></p>
-<p><span class="math display">\[
-\rightarrow \quad \left(\frac{2T}{d}-m\omega^2\right)a\, e^{i[j\gamma-\delta]} - \frac{T}{d}a\, e^{i[(j-1)\gamma-\delta]} - \frac{T}{d}a\, e^{i[(j+1)\gamma-\delta]} = 0
-\]</span></p>
-<p><span class="math display">\[
-\rightarrow \quad \left[\left(\frac{2T}{d}-m\omega^2\right) - \frac{T}{d}e^{-i\gamma} - \frac{T}{d}e^{i\gamma}\right] a\, e^{i(j\gamma-\delta)} = 0
-\]</span></p>
-<p><span class="math display">\[
-\vdots
-\]</span></p>
-<p><span class="math display">\[
-\omega^2 = \frac{2T}{md} - \frac{T}{md}\left(e^{i\gamma}+e^{i\gamma}\right)
-\]</span></p>
-<p><span class="math display">\[
-= \frac{2T}{md} - \frac{2T}{md}\cos\gamma
-\]</span></p>
-<p><span class="math display">\[
-= \frac{2T}{md}(1-\cos\gamma)
-\]</span></p>
-<p><span class="math display">\[
-= \frac{4T}{md}\,\text{sen}^2\!\left(\frac{\gamma}{2}\right)
-\]</span></p>
-<p>Tomando a parte real dos coeficientes:</p>
-<p><span class="math display">\[
-a_j = \cos(j\gamma - \delta)
-\]</span></p>
-<p>Condições de contorno: <span class="math inline">\(a_0 = 0,\ a_{n+1}=0\)</span></p>
-<p><span class="math display">\[
-\rightarrow \quad a_0 = a\cos(-\delta) = 0 \;\;\rightarrow\;\; \delta = \frac{\pi}{2}
-\]</span></p>
-<p><span class="math display">\[
-\rightarrow \quad a_{n+1} = a\cos\!\left[(n+1)\gamma - \frac{\pi}{2}\right] = 0
-\]</span></p>
-<p><span class="math display">\[
-= a\,\text{sen}\!\left[(n+1)\gamma\right] = 0
-\]</span></p>
-<p><span class="math display">\[
-\rightarrow \quad (n+1)\gamma = r\pi
-\]</span></p>
-<p><span class="math display">\[
-\rightarrow \quad \gamma_r = \frac{r\pi}{n+1} \qquad \forall\, r \in \{1,2,3,\dots,n\}
-\]</span></p>
-<p><span class="math display">\[
-\therefore \quad \omega_r = 2\sqrt{\frac{T}{md}}\,\text{sen}\!\left[\frac{r\pi}{2(n+1)}\right]
-\]</span></p>
-<p><span class="math display">\[
-a_{jr} = a\, r\,\text{sen}\!\left[\frac{jr\pi}{n+1}\right] \in \mathbb{R}
-\]</span></p>
-<p>A solução geral então fica:</p>
-<p><span class="math display">\[
-q_j(t) = \sum_r \beta_r\, a_{jr}\, e^{i\omega_r t}
-\]</span></p>
-<p><span class="math display">\[
-= \sum_r \beta_r\, a_r\,\text{sen}\!\left[\frac{jr\pi}{n+1}\right] e^{i\omega_r t}
-\]</span></p>
-<p>Vamos definir as coordenadas normais da seguinte forma, já que a gente já viu que elas só dependem de uma frequência:</p>
-<p><span class="math display">\[
-\eta_r(t) := \beta_{r*}\, e^{i\omega_r t}
-\quad\therefore\quad
-q_j(t) = \sum_r \eta_r\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right)
-\]</span></p>
-<p>onde <span class="math inline">\(\beta_{r*} := \text{sen}\!\left[\dfrac{jr\pi}{n+1}\right] e^{i\omega_r t} = \mu_r + i\nu_r \in \mathbb{C}\)</span></p>
-<p>A parte real da solução fica:</p>
-<p><span class="math display">\[
-q_j = \sum_r \text{sen}\!\left(\frac{jr\pi}{n+1}\right)\left[\mu_r\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right) - \nu_r\,\text{sen}(\omega_r t)\right]
-\]</span></p>
-<p>Condições iniciais:</p>
-<p><span class="math display">\[
-\begin{cases}
-q_j(0) = \displaystyle\sum_r \mu_r\,\text{sen}\!\left(\dfrac{jr\pi}{n+1}\right) \\[2ex]
-\dot{q}_j(0) = -\displaystyle\sum_r \omega_r\nu_r\,\text{sen}\!\left(\dfrac{jr\pi}{n+1}\right)
-\end{cases}
-\]</span></p>
-<p>Série de Fourier para achar os coeficientes:</p>
-<p><span class="math display">\[
-\sum_j q_j(0)\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right) = \sum_r\sum_j \mu_r\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right)\text{sen}\!\left(\frac{js\pi}{n+1}\right)
-\]</span></p>
-<p><span class="math display">\[
-\sum_j \mu_r\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right)\text{sen}\!\left(\frac{js\pi}{n+1}\right) = \frac{n+1}{2}\delta_{rs}
-\]</span></p>
-<p><span class="math display">\[
-\rightarrow \quad \sum_j q_j(0)\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right) = \sum_r \mu_r\,\frac{n+1}{2}\delta_r
-\]</span></p>
-<p><span class="math display">\[
-\rightarrow \quad \sum_j q_j(0)\,\text{sen}\!\left(\frac{jr\pi}{n+1}\right) = \mu_r\,\frac{n+1}{2}
-\]</span></p>
-<p><span class="math display">\[
-\therefore \quad \mu_s = \frac{2}{n+1}\sum_j q_j(0)\,\text{sen}\!\left(\frac{js\pi}{n+1}\right)
-\]</span></p>
-<p>Analogamente:</p>
-<p><span class="math display">\[
-\nu_s = -\frac{2}{\omega_r(n+1)}\sum_j \dot{q}_j(0)\,\text{sen}\!\left(\frac{js\pi}{n+1}\right)
-\]</span></p>
-<p>Para <span class="math inline">\(n=3\)</span>:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch12_fig1_normal_modes.png" class="img-fluid figure-img"></p>
-<figcaption>Modos normais para <span class="math inline">\(n=3\)</span>: os três primeiros modos (<span class="math inline">\(r=1,2,3\)</span>) e o modo nulo (<span class="math inline">\(r=4\)</span>)</figcaption>
-</figure>
-</div>
-<p><span class="math inline">\(n+1\)</span> é o modo nulo!</p>
+<section id="introdução" class="level1 unnumbered unlisted">
+<h1 class="unnumbered unlisted">Introdução</h1>
+<p>Boas-vindas a Clássica 1! Aqui você vai ter uma visão mais aprofundada e mais matematizada do que você já viu em <a href="https://app.notion.com/p/F-sica-1-156a1e41847f81caa85bf6e9c1ed27ba?pvs=21">⚛️ Física 1</a> e <a href="https://app.notion.com/p/F-sica-2-156a1e41847f818c9e59e3ecbd96db96?pvs=21">⚛️ Física 2</a> sem introduzir praticamente nada novo. Pra isso, você vai precisar de coisas lá de <a href="https://app.notion.com/p/C-lculo-3-156a1e41847f81c687cff84604511f56?pvs=21">🧮 Cálculo 3</a>, <a href="https://app.notion.com/p/lgebra-Linear-2-156a1e41847f81448378e37afe2c2ea9?pvs=21">🔡 Álgebra Linear 2</a> e uma pitada de <a href="https://app.notion.com/p/M-todos-da-F-sica-Te-rica-1-156a1e41847f81ed8294f6facb96c772?pvs=21">🖋️ Métodos da Física Teórica 1</a>. Como sempre, aqui embaixo vai a bibliografia. Caso você não queira perder tempo com a teoria, as fórmulas importantes estarão destacadas com <span class="math inline">\(\boxed{\text{uma caixa em volta}}\)</span>. Bons estudos :)</p>
 
 
 </section>
@@ -1115,13 +883,10 @@ q_j(0) = \displaystyle\sum_r \mu_r\,\text{sen}\!\left(\dfrac{jr\pi}{n+1}\right) 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./corpo-rigido.html" class="pagination-link" aria-label="Corpo Rígido">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./sistemas-continuos.html" class="pagination-link" aria-label="Sistemas Contínuos">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Sistemas.html" class="pagination-link" aria-label="Sistemas de Coordenadas">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

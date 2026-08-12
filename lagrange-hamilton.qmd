@@ -1200,3 +1200,198 @@ $\phi$ é cíclica, logo $p_\phi$ é conservado e corresponde ao momento angular
 $$
 m\ddot{z} = -kz
 $$
+
+## Teorema do Virial
+
+Considere um conjunto de partículas com posições e momentos finitos em qualquer instante, ou seja, interagentes e ligadas de alguma forma. Nesse caso, elas estão confinadas a um volume finito no espaço de fase. O momento de inércia em relação à origem é:
+
+$$
+I = \sum_\alpha m_\alpha r_\alpha^2
+$$
+
+$$
+= \sum_\alpha m_\alpha(\vec{r}_\alpha \cdot \vec{r}_\alpha)
+$$
+
+A derivada com respeito ao tempo é:
+
+$$
+\frac{dI}{dt} = \sum_\alpha 2m_\alpha \frac{d\vec{r}_\alpha}{dt}\cdot\vec{r}_\alpha
+$$
+
+$$
+= 2\sum_\alpha \vec{p}_\alpha \cdot \vec{r}_\alpha
+$$
+
+Vamos definir a seguinte grandeza:
+
+$$
+G := \frac{1}{2}\frac{dI}{dt} = \sum_\alpha \vec{p}_\alpha\cdot\vec{r}_\alpha
+$$
+
+$$
+\rightarrow \quad \frac{dG}{dt} = \sum_\alpha \left(\dot{\vec p}_\alpha \cdot \vec r_\alpha + \vec p_\alpha \cdot \dot{\vec r}_\alpha\right)
+$$
+
+O valor médio em um intervalo de tempo $\tau$ vai ser:
+
+$$
+\left\langle \frac{dG}{dt} \right\rangle = \frac{1}{\tau}\int_0^\tau \frac{dG}{dt}\,d\tau
+$$
+
+$$
+= \frac{G(\tau) - G(0)}{\tau}
+$$
+
+Se o sistema for periódico e $\tau$ é um múltiplo de período, então:
+
+$$
+G(\tau) = G(0) \;\;\rightarrow\;\; \left\langle \frac{dG}{dt} \right\rangle = 0
+$$
+
+Se o sistema não for periódico, como $\vec r_\alpha$ e $\vec p_\alpha$ são limitados, $\langle dG/d\tau\rangle$ que pode ser tão pequeno quanto a gente queira desde que a gente escolha um $\tau$ suficientemente grande. Então podemos supor que $\langle dG/d\tau\rangle$ tende a $0$.
+
+$$
+\left\langle \frac{dG}{dt} \right\rangle = \left\langle \sum_\alpha \left(\dot{\vec p}_\alpha\cdot\dot{\vec r}_\alpha + \dot{\vec p}_\alpha\cdot\hat r_\alpha\right)\right\rangle = 0
+$$
+
+$$
+= \left\langle \sum_\alpha \left(\vec p_\alpha \cdot \dot{\vec r}_\alpha\right) + \sum_\alpha\left(\dot{\vec p}_\alpha \cdot \hat r_\alpha\right)\right\rangle = 0
+$$
+
+$$
+\rightarrow \quad \left\langle \sum_\alpha \left(\vec p_\alpha \cdot \dot{\vec r}_\alpha\right) \right\rangle = -\left\langle \sum_\alpha \left(\dot{\vec p}_\alpha \cdot \hat r_\alpha\right) \right\rangle
+$$
+
+$$
+\left\langle 2\sum_\alpha E_{C\alpha}\right\rangle = -\left\langle \sum_\alpha \left(\vec F_\alpha \cdot \vec r_\alpha\right)\right\rangle
+$$
+
+$$
+\left\langle \sum_\alpha E_{C\alpha}\right\rangle = -\frac{1}{2}\left\langle \sum_\alpha \left(\vec F_\alpha \cdot \vec r_\alpha\right)\right\rangle \;\rightarrow\; \text{Esse é o Virial}
+$$
+
+Se o sistema for conservativo, então:
+
+$$
+\vec F_\alpha = -\vec\nabla U_\alpha
+$$
+
+Além disso, se a força for central e seguir uma lei de potência:
+
+$$
+F_\alpha \propto r_\alpha^n \;\;\rightarrow\;\; U_\alpha = Kr_\alpha^{n+1}
+$$
+
+$$
+\rightarrow \quad \vec F_\alpha \cdot \hat r_\alpha = -\vec r_\alpha\cdot(\vec\nabla U_\alpha)
+$$
+
+$$
+= -r\frac{\partial U_\alpha}{\partial r_\alpha}
+$$
+
+$$
+= -K(n+1)r_\alpha^{n+1}
+$$
+
+$$
+= -(n+1)U_\alpha
+$$
+
+$$
+\therefore \quad \langle E_{C\alpha}\rangle = -\frac{\langle U_\alpha\rangle}{2}\text{ para } n=-2 \text{, ou seja, gravidade!}
+$$
+
+## Espaço de fase e Teorema de Liouville
+
+Vamos considerar um espaço de fase hamiltoniano formado pelas variáveis canônicas $q_i$ e $p_i$. Para um sistema com muitas partículas, como um gás, a gente não consegue identificar um ponto nesse espaço com um estado do sistema. A gente só consegue identificar uma região composta pelos pontos que podem representar o estado do sistema. Nesse caso, é útil definir uma densidade de estados no espaço de fase. O número de estados possíveis em um volume do espaço de fase é:
+
+$$
+N = \rho\, dV, \qquad dV = dq_1\,dq_2\cdots dq_n\,dp_1\,dp_2\cdots dp_n
+$$
+
+Considere um plano $q_i \times p_i$ nesse espaço de fase, com um elemento de área $dq_\alpha\, dp_\alpha$ entre $q_\alpha$ e $q_\alpha+dq_\alpha$, e entre $p_\alpha$ e $p_\alpha+dp_\alpha$.
+
+O número de trajetórias atravessando a borda esquerda em função do tempo vai ser:
+
+$$
+\rho\,\dot{q}_\alpha\,dp_\alpha
+$$
+
+O número de trajetórias atravessando a borda de baixo em função do tempo vai ser:
+
+$$
+\rho\,\dot{p}_\alpha\,dq_\alpha
+$$
+
+O número total de pontos entrando na região é:
+
+$$
+\int \left(\dot{q}_\alpha\,dp_\alpha + \dot{p}_\alpha\,dq_\alpha\right)
+$$
+
+Analogamente, o número total saindo é:
+
+$$
+\left[\rho\dot{q}_\alpha + \frac{\partial}{\partial q_\alpha}\left(\rho\dot{q}_\alpha\right)dq_\alpha\right]dp_\alpha
++ \left[\rho\dot{p}_\alpha + \frac{\partial}{\partial p_\alpha}\left(\rho\dot{p}_\alpha\right)dp_\alpha\right]dq_\alpha
+$$
+
+A diferença entre o que entra e o que sai é:
+
+$$
+\frac{\partial \rho}{\partial t}dq_\alpha\,dp_\alpha = -\frac{\partial}{\partial q_\alpha}\left(\rho\dot{q}_\alpha\right)dq_\alpha\,dp_\alpha - \frac{\partial}{\partial p_\alpha}\left(\rho\dot{p}_\alpha\right)dq_\alpha\,dp_\alpha
+$$
+
+Como $dq_i$ e $dp_i$ são arbitrários, isso deve valer para qualquer área no espaço de fase:
+
+$$
+\frac{\partial \rho}{\partial t} = -\frac{\partial}{\partial q}\left(\rho\dot{q}\right) - \frac{\partial}{\partial p}\left(\rho\dot{p}\right)
+$$
+
+$$
+= -\frac{\partial \rho}{\partial q}\dot{q} - \rho\frac{\partial \dot{q}}{\partial q} - \frac{\partial \rho}{\partial p}\dot{p}_\alpha - \rho\frac{\partial \dot p}{\partial p}
+$$
+
+Pelas equações de Hamilton:
+
+$$
+\dot{q} = \frac{\partial H}{\partial p}, \qquad \dot{p} = -\frac{\partial H}{\partial q}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\frac{\partial \dot{q}}{\partial q} = \frac{\partial^2 H}{\partial q\,\partial p}, \qquad \frac{\partial \dot{p}}{\partial p} = -\frac{\partial^2 H}{\partial p\,\partial q}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\frac{\partial \dot{q}}{\partial q} = -\frac{\partial \dot{p}}{\partial p}
+$$
+
+Com isso, temos:
+
+$$
+\frac{\partial \rho}{\partial t} + \frac{\partial \rho}{\partial q}\dot{q} + \frac{\partial \rho}{\partial p}\dot{p} = 0
+$$
+
+Se considerarmos isso para todos os planos $q_i \times p_i$:
+
+$$
+\frac{\partial \rho}{\partial t} + \sum_{i=1}^{N} \frac{\partial \rho}{\partial q_i}\dot{q}_i + \frac{\partial \rho}{\partial p_i}\dot{p}_i = 0
+$$
+
+$$
+\therefore
+$$
+
+$$
+\frac{d\rho}{dt} = 0 \qquad \text{Teorema de Liouville!}
+$$

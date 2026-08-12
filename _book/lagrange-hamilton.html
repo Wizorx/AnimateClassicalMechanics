@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Dinâmicas Lagrangiana e Hamiltoniana – Mecânica Clássica Animada</title>
+<title>9&nbsp; Hamilton’s Principle — Lagrangian and Hamiltonian Dynamics – Mecânica Clássica Animada</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./oscilacoes-acopladas.html" rel="next">
+<link href="./corpo-rigido.html" rel="next">
 <link href="./calculo-variacional.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -405,14 +405,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./corpo-rigido.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
   </div>
 </li>
       </ul>
@@ -452,6 +458,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro" id="toc-exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro" class="nav-link" data-scroll-target="#exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro"><span class="header-section-number">9.5.1</span> Exemplo: uma partícula se move sob a ação de uma força <span class="math inline">\(F=-k\vec{r}\)</span>, <span class="math inline">\(k=\text{cst.}&gt;0\)</span> restrita à superfície de um cilindro</a></li>
   </ul></li>
+  <li><a href="#teorema-do-virial" id="toc-teorema-do-virial" class="nav-link" data-scroll-target="#teorema-do-virial"><span class="header-section-number">9.6</span> Teorema do Virial</a></li>
+  <li><a href="#espaço-de-fase-e-teorema-de-liouville" id="toc-espaço-de-fase-e-teorema-de-liouville" class="nav-link" data-scroll-target="#espaço-de-fase-e-teorema-de-liouville"><span class="header-section-number">9.7</span> Espaço de fase e Teorema de Liouville</a></li>
   </ul>
 </nav>
     </div>
@@ -461,7 +469,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./lagrange-hamilton.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hamilton’s Principle — Lagrangian and Hamiltonian Dynamics</span></h1>
 <p class="subtitle lead">Capítulo 7 (Thornton &amp; Marion)</p>
 </div>
 
@@ -588,8 +596,18 @@ m\ddot{y} + mg = 0
 </section>
 <section id="exemplo-partícula-de-massa-m-restrita-à-superfície-de-um-cone-sujeita-a-gravidade-uniforme" class="level3" data-number="9.1.4">
 <h3 data-number="9.1.4" class="anchored" data-anchor-id="exemplo-partícula-de-massa-m-restrita-à-superfície-de-um-cone-sujeita-a-gravidade-uniforme"><span class="header-section-number">9.1.4</span> Exemplo: partícula de massa <span class="math inline">\(m\)</span> restrita à superfície de um cone sujeita a gravidade uniforme</h3>
-<!-- ![Partícula restrita à superfície de um cone de semiângulo $\alpha$, em coordenadas cilíndricas $(s,\phi,z)$](figs/ch7_fig1_cone.png) -->
-<!-- ![Corte transversal do cone mostrando a relação entre $s$, $z$ e $\alpha$](figs/ch7_fig1b_cone_cross_section.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch7_fig1_cone.png" class="img-fluid figure-img"></p>
+<figcaption>Partícula restrita à superfície de um cone de semiângulo <span class="math inline">\(\alpha\)</span>, em coordenadas cilíndricas <span class="math inline">\((s,\phi,z)\)</span></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch7_fig1b_cone_cross_section.png" class="img-fluid figure-img"></p>
+<figcaption>Corte transversal do cone mostrando a relação entre <span class="math inline">\(s\)</span>, <span class="math inline">\(z\)</span> e <span class="math inline">\(\alpha\)</span></figcaption>
+</figure>
+</div>
 <p>Em coordenadas cilíndricas:</p>
 <p><span class="math display">\[
 \tan\alpha = \frac{s}{z} \;\rightarrow\; \boxed{z = s\cot\alpha} \qquad \text{(Eq. de vínculo)}
@@ -630,7 +648,12 @@ U = mgz \;\longrightarrow\; L = E_C - U = \frac{m}{2}\left(s^2\dot{\phi}^2+\dot{
 </section>
 <section id="exemplo-um-pêndulo-simples-tem-o-seu-ponto-de-suporte-em-um-movimento-circular-uniforme-coplanar" class="level3" data-number="9.1.5">
 <h3 data-number="9.1.5" class="anchored" data-anchor-id="exemplo-um-pêndulo-simples-tem-o-seu-ponto-de-suporte-em-um-movimento-circular-uniforme-coplanar"><span class="header-section-number">9.1.5</span> Exemplo: um pêndulo simples tem o seu ponto de suporte em um movimento circular uniforme coplanar</h3>
-<!-- ![Pêndulo de comprimento $l$ cujo ponto de suporte gira com velocidade angular constante $\omega$ sobre um círculo de raio $a$](figs/ch7_fig2_pendulum_rotating_support.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch7_fig2_pendulum_rotating_support.png" class="img-fluid figure-img"></p>
+<figcaption>Pêndulo de comprimento <span class="math inline">\(l\)</span> cujo ponto de suporte gira com velocidade angular constante <span class="math inline">\(\omega\)</span> sobre um círculo de raio <span class="math inline">\(a\)</span></figcaption>
+</figure>
+</div>
 <p><span class="math display">\[
 \omega = \text{cte.}
 \]</span></p>
@@ -703,7 +726,12 @@ mal\omega\dot\theta\cos(\theta-\omega t) - mgl\,\text{sen}\,\theta - m\left[l^2\
 <section id="exemplo-miçanga-restrita-a-um-fio-com-formato-parabólico" class="level3" data-number="9.1.6">
 <h3 data-number="9.1.6" class="anchored" data-anchor-id="exemplo-miçanga-restrita-a-um-fio-com-formato-parabólico"><span class="header-section-number">9.1.6</span> Exemplo: miçanga restrita a um fio com formato parabólico</h3>
 <p>Miçanga restrita a um fio com formato parabólico <span class="math inline">\(z = cs^2\)</span> (em coordenadas cilíndricas) girando em torno do eixo de simetria da parábola com velocidade angular <span class="math inline">\(\omega\)</span> constante tal que a miçanga fica a uma distância <span class="math inline">\(R\)</span> do eixo. Quanto vale <span class="math inline">\(c\)</span>?</p>
-<!-- ![Miçanga sobre um fio parabólico girando com velocidade angular $\omega$ em torno do eixo $z$](figs/ch7_fig3_parabolic_wire.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch7_fig3_parabolic_wire.png" class="img-fluid figure-img"></p>
+<figcaption>Miçanga sobre um fio parabólico girando com velocidade angular <span class="math inline">\(\omega\)</span> em torno do eixo <span class="math inline">\(z\)</span></figcaption>
+</figure>
+</div>
 <p><span class="math display">\[
 E_C = \frac{m}{2}\left[\dot{s}^2 + s^2\dot\phi^2 + \dot{z}^2\right]
 \]</span></p>
@@ -747,7 +775,12 @@ s = R = \text{cte.} \;\;\longrightarrow\;\; \dot{s} = \ddot{s} = 0 \quad\therefo
 </section>
 <section id="exemplo-polias" class="level3" data-number="9.1.7">
 <h3 data-number="9.1.7" class="anchored" data-anchor-id="exemplo-polias"><span class="header-section-number">9.1.7</span> Exemplo: polias</h3>
-<!-- ![Sistema de polias ideais com fios inextensíveis suspendendo massas $m_1$, $m_2$ e $m_3$](figs/ch7_fig4_pulleys.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch7_fig4_pulleys.png" class="img-fluid figure-img"></p>
+<figcaption>Sistema de polias ideais com fios inextensíveis suspendendo massas <span class="math inline">\(m_1\)</span>, <span class="math inline">\(m_2\)</span> e <span class="math inline">\(m_3\)</span></figcaption>
+</figure>
+</div>
 <p>Supondo polias ideais e fios inextensíveis e considerando as massas <span class="math inline">\(m_1\)</span>, <span class="math inline">\(m_2\)</span> e <span class="math inline">\(m_3\)</span>, e comprimentos dos fios <span class="math inline">\(l_1\)</span> e <span class="math inline">\(l_2\)</span>.</p>
 <p><span class="math display">\[
 v_1 = \dot{x}
@@ -851,7 +884,12 @@ A_i = \frac{\partial f}{\partial x_i}, \qquad B = \frac{\partial f}{\partial t}
 <section id="exemplo-uma-partícula-de-massa-m-sai-do-topo-de-um-hemisfério-de-raio-a" class="level3" data-number="9.2.1">
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="exemplo-uma-partícula-de-massa-m-sai-do-topo-de-um-hemisfério-de-raio-a"><span class="header-section-number">9.2.1</span> Exemplo: uma partícula de massa <span class="math inline">\(m\)</span> sai do topo de um hemisfério de raio <span class="math inline">\(a\)</span></h3>
 <p>O vínculo é <span class="math inline">\(r=a \rightarrow f = r - a = 0\)</span>.</p>
-<!-- ![Partícula sobre a superfície de um hemisfério de raio $r$, com ângulo polar $\theta$ medido a partir do topo](figs/ch7_fig5_hemisphere.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch7_fig5_hemisphere.png" class="img-fluid figure-img"></p>
+<figcaption>Partícula sobre a superfície de um hemisfério de raio <span class="math inline">\(r\)</span>, com ângulo polar <span class="math inline">\(\theta\)</span> medido a partir do topo</figcaption>
+</figure>
+</div>
 <p><span class="math display">\[
 E_C = \frac{m}{2}\left(\dot{r}^2 + r^2\dot\theta^2\right)
 \]</span></p>
@@ -1326,7 +1364,12 @@ L(q_i,\dot{q}_i,t) = \sum_i p_i\dot{q}_i - H(q_i,p_i,t)
 \]</span></p>
 <section id="exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro" class="level3" data-number="9.5.1">
 <h3 data-number="9.5.1" class="anchored" data-anchor-id="exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro"><span class="header-section-number">9.5.1</span> Exemplo: uma partícula se move sob a ação de uma força <span class="math inline">\(F=-k\vec{r}\)</span>, <span class="math inline">\(k=\text{cst.}&gt;0\)</span> restrita à superfície de um cilindro</h3>
-<!-- ![Partícula restrita à superfície de um cilindro de raio $R$, sob a ação de $F=-k\vec r$](figs/ch8_fig1_cylinder.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch8_fig1_cylinder.png" class="img-fluid figure-img"></p>
+<figcaption>Partícula restrita à superfície de um cilindro de raio <span class="math inline">\(R\)</span>, sob a ação de <span class="math inline">\(F=-k\vec r\)</span></figcaption>
+</figure>
+</div>
 <p><span class="math display">\[
 U = \frac{k}{2}r^2 = \frac{k}{2}\left(x^2+y^2+z^2\right)
 \]</span></p>
@@ -1372,9 +1415,149 @@ p_\phi = \frac{\partial L}{\partial \phi} = mR^2\dot\phi, \qquad p_z = \frac{\pa
 <p><span class="math display">\[
 m\ddot{z} = -kz
 \]</span></p>
-
-
 </section>
+</section>
+<section id="teorema-do-virial" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="teorema-do-virial"><span class="header-section-number">9.6</span> Teorema do Virial</h2>
+<p>Considere um conjunto de partículas com posições e momentos finitos em qualquer instante, ou seja, interagentes e ligadas de alguma forma. Nesse caso, elas estão confinadas a um volume finito no espaço de fase. O momento de inércia em relação à origem é:</p>
+<p><span class="math display">\[
+I = \sum_\alpha m_\alpha r_\alpha^2
+\]</span></p>
+<p><span class="math display">\[
+= \sum_\alpha m_\alpha(\vec{r}_\alpha \cdot \vec{r}_\alpha)
+\]</span></p>
+<p>A derivada com respeito ao tempo é:</p>
+<p><span class="math display">\[
+\frac{dI}{dt} = \sum_\alpha 2m_\alpha \frac{d\vec{r}_\alpha}{dt}\cdot\vec{r}_\alpha
+\]</span></p>
+<p><span class="math display">\[
+= 2\sum_\alpha \vec{p}_\alpha \cdot \vec{r}_\alpha
+\]</span></p>
+<p>Vamos definir a seguinte grandeza:</p>
+<p><span class="math display">\[
+G := \frac{1}{2}\frac{dI}{dt} = \sum_\alpha \vec{p}_\alpha\cdot\vec{r}_\alpha
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \frac{dG}{dt} = \sum_\alpha \left(\dot{\vec p}_\alpha \cdot \vec r_\alpha + \vec p_\alpha \cdot \dot{\vec r}_\alpha\right)
+\]</span></p>
+<p>O valor médio em um intervalo de tempo <span class="math inline">\(\tau\)</span> vai ser:</p>
+<p><span class="math display">\[
+\left\langle \frac{dG}{dt} \right\rangle = \frac{1}{\tau}\int_0^\tau \frac{dG}{dt}\,d\tau
+\]</span></p>
+<p><span class="math display">\[
+= \frac{G(\tau) - G(0)}{\tau}
+\]</span></p>
+<p>Se o sistema for periódico e <span class="math inline">\(\tau\)</span> é um múltiplo de período, então:</p>
+<p><span class="math display">\[
+G(\tau) = G(0) \;\;\rightarrow\;\; \left\langle \frac{dG}{dt} \right\rangle = 0
+\]</span></p>
+<p>Se o sistema não for periódico, como <span class="math inline">\(\vec r_\alpha\)</span> e <span class="math inline">\(\vec p_\alpha\)</span> são limitados, <span class="math inline">\(\langle dG/d\tau\rangle\)</span> que pode ser tão pequeno quanto a gente queira desde que a gente escolha um <span class="math inline">\(\tau\)</span> suficientemente grande. Então podemos supor que <span class="math inline">\(\langle dG/d\tau\rangle\)</span> tende a <span class="math inline">\(0\)</span>.</p>
+<p><span class="math display">\[
+\left\langle \frac{dG}{dt} \right\rangle = \left\langle \sum_\alpha \left(\dot{\vec p}_\alpha\cdot\dot{\vec r}_\alpha + \dot{\vec p}_\alpha\cdot\hat r_\alpha\right)\right\rangle = 0
+\]</span></p>
+<p><span class="math display">\[
+= \left\langle \sum_\alpha \left(\vec p_\alpha \cdot \dot{\vec r}_\alpha\right) + \sum_\alpha\left(\dot{\vec p}_\alpha \cdot \hat r_\alpha\right)\right\rangle = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \left\langle \sum_\alpha \left(\vec p_\alpha \cdot \dot{\vec r}_\alpha\right) \right\rangle = -\left\langle \sum_\alpha \left(\dot{\vec p}_\alpha \cdot \hat r_\alpha\right) \right\rangle
+\]</span></p>
+<p><span class="math display">\[
+\left\langle 2\sum_\alpha E_{C\alpha}\right\rangle = -\left\langle \sum_\alpha \left(\vec F_\alpha \cdot \vec r_\alpha\right)\right\rangle
+\]</span></p>
+<p><span class="math display">\[
+\left\langle \sum_\alpha E_{C\alpha}\right\rangle = -\frac{1}{2}\left\langle \sum_\alpha \left(\vec F_\alpha \cdot \vec r_\alpha\right)\right\rangle \;\rightarrow\; \text{Esse é o Virial}
+\]</span></p>
+<p>Se o sistema for conservativo, então:</p>
+<p><span class="math display">\[
+\vec F_\alpha = -\vec\nabla U_\alpha
+\]</span></p>
+<p>Além disso, se a força for central e seguir uma lei de potência:</p>
+<p><span class="math display">\[
+F_\alpha \propto r_\alpha^n \;\;\rightarrow\;\; U_\alpha = Kr_\alpha^{n+1}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \vec F_\alpha \cdot \hat r_\alpha = -\vec r_\alpha\cdot(\vec\nabla U_\alpha)
+\]</span></p>
+<p><span class="math display">\[
+= -r\frac{\partial U_\alpha}{\partial r_\alpha}
+\]</span></p>
+<p><span class="math display">\[
+= -K(n+1)r_\alpha^{n+1}
+\]</span></p>
+<p><span class="math display">\[
+= -(n+1)U_\alpha
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad \langle E_{C\alpha}\rangle = -\frac{\langle U_\alpha\rangle}{2}\text{ para } n=-2 \text{, ou seja, gravidade!}
+\]</span></p>
+</section>
+<section id="espaço-de-fase-e-teorema-de-liouville" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="espaço-de-fase-e-teorema-de-liouville"><span class="header-section-number">9.7</span> Espaço de fase e Teorema de Liouville</h2>
+<p>Vamos considerar um espaço de fase hamiltoniano formado pelas variáveis canônicas <span class="math inline">\(q_i\)</span> e <span class="math inline">\(p_i\)</span>. Para um sistema com muitas partículas, como um gás, a gente não consegue identificar um ponto nesse espaço com um estado do sistema. A gente só consegue identificar uma região composta pelos pontos que podem representar o estado do sistema. Nesse caso, é útil definir uma densidade de estados no espaço de fase. O número de estados possíveis em um volume do espaço de fase é:</p>
+<p><span class="math display">\[
+N = \rho\, dV, \qquad dV = dq_1\,dq_2\cdots dq_n\,dp_1\,dp_2\cdots dp_n
+\]</span></p>
+<p>Considere um plano <span class="math inline">\(q_i \times p_i\)</span> nesse espaço de fase, com um elemento de área <span class="math inline">\(dq_\alpha\, dp_\alpha\)</span> entre <span class="math inline">\(q_\alpha\)</span> e <span class="math inline">\(q_\alpha+dq_\alpha\)</span>, e entre <span class="math inline">\(p_\alpha\)</span> e <span class="math inline">\(p_\alpha+dp_\alpha\)</span>.</p>
+<p>O número de trajetórias atravessando a borda esquerda em função do tempo vai ser:</p>
+<p><span class="math display">\[
+\rho\,\dot{q}_\alpha\,dp_\alpha
+\]</span></p>
+<p>O número de trajetórias atravessando a borda de baixo em função do tempo vai ser:</p>
+<p><span class="math display">\[
+\rho\,\dot{p}_\alpha\,dq_\alpha
+\]</span></p>
+<p>O número total de pontos entrando na região é:</p>
+<p><span class="math display">\[
+\int \left(\dot{q}_\alpha\,dp_\alpha + \dot{p}_\alpha\,dq_\alpha\right)
+\]</span></p>
+<p>Analogamente, o número total saindo é:</p>
+<p><span class="math display">\[
+\left[\rho\dot{q}_\alpha + \frac{\partial}{\partial q_\alpha}\left(\rho\dot{q}_\alpha\right)dq_\alpha\right]dp_\alpha
++ \left[\rho\dot{p}_\alpha + \frac{\partial}{\partial p_\alpha}\left(\rho\dot{p}_\alpha\right)dp_\alpha\right]dq_\alpha
+\]</span></p>
+<p>A diferença entre o que entra e o que sai é:</p>
+<p><span class="math display">\[
+\frac{\partial \rho}{\partial t}dq_\alpha\,dp_\alpha = -\frac{\partial}{\partial q_\alpha}\left(\rho\dot{q}_\alpha\right)dq_\alpha\,dp_\alpha - \frac{\partial}{\partial p_\alpha}\left(\rho\dot{p}_\alpha\right)dq_\alpha\,dp_\alpha
+\]</span></p>
+<p>Como <span class="math inline">\(dq_i\)</span> e <span class="math inline">\(dp_i\)</span> são arbitrários, isso deve valer para qualquer área no espaço de fase:</p>
+<p><span class="math display">\[
+\frac{\partial \rho}{\partial t} = -\frac{\partial}{\partial q}\left(\rho\dot{q}\right) - \frac{\partial}{\partial p}\left(\rho\dot{p}\right)
+\]</span></p>
+<p><span class="math display">\[
+= -\frac{\partial \rho}{\partial q}\dot{q} - \rho\frac{\partial \dot{q}}{\partial q} - \frac{\partial \rho}{\partial p}\dot{p}_\alpha - \rho\frac{\partial \dot p}{\partial p}
+\]</span></p>
+<p>Pelas equações de Hamilton:</p>
+<p><span class="math display">\[
+\dot{q} = \frac{\partial H}{\partial p}, \qquad \dot{p} = -\frac{\partial H}{\partial q}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \dot{q}}{\partial q} = \frac{\partial^2 H}{\partial q\,\partial p}, \qquad \frac{\partial \dot{p}}{\partial p} = -\frac{\partial^2 H}{\partial p\,\partial q}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \dot{q}}{\partial q} = -\frac{\partial \dot{p}}{\partial p}
+\]</span></p>
+<p>Com isso, temos:</p>
+<p><span class="math display">\[
+\frac{\partial \rho}{\partial t} + \frac{\partial \rho}{\partial q}\dot{q} + \frac{\partial \rho}{\partial p}\dot{p} = 0
+\]</span></p>
+<p>Se considerarmos isso para todos os planos <span class="math inline">\(q_i \times p_i\)</span>:</p>
+<p><span class="math display">\[
+\frac{\partial \rho}{\partial t} + \sum_{i=1}^{N} \frac{\partial \rho}{\partial q_i}\dot{q}_i + \frac{\partial \rho}{\partial p_i}\dot{p}_i = 0
+\]</span></p>
+<p><span class="math display">\[
+\therefore
+\]</span></p>
+<p><span class="math display">\[
+\frac{d\rho}{dt} = 0 \qquad \text{Teorema de Liouville!}
+\]</span></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1798,8 +1981,8 @@ m\ddot{z} = -kz
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./oscilacoes-acopladas.html" class="pagination-link" aria-label="Oscilações Acopladas">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./corpo-rigido.html" class="pagination-link" aria-label="Corpo Rígido">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

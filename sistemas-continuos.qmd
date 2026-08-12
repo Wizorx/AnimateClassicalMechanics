@@ -426,25 +426,3 @@ $$
 $$
 \therefore \quad \frac{dx}{dt} = \frac{\omega}{k} = v
 $$
-
-## Notas finais (questões abertas)
-
-$$
-\text{p}?\qquad \Psi = F(x)G(t)\ ? \qquad \nearrow\ \text{regra do produto}
-$$
-
-Significado onda complexa na corda?
-
-$$
-\delta S = 0 \;\rightarrow\; \text{sem força?}
-$$
-
-$$
-\text{Sim}
-$$
-
-nenhuma, mas dispersão com $k \in \mathbb{C}$
-
-Analogia óptico-mecânica $\rightarrow$ frente de onda = mesma fase $\rightarrow$ frente de onda de ação?
-
-Observador que se move com a frente de onda vê uma onda estacionária. Então a luz não pode ser estacionária para nenhum observador ($\leftrightarrow$ tempo parado $\therefore$ viola causalidade!).

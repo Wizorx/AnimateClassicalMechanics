@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; Corpo Rígido – Mecânica Clássica Animada</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./oscilacoes-acopladas.html" rel="next">
+<link href="./lagrange-hamilton.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-acff971833d9769290026d534105daaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<style>
+.cell-output {
+  max-height: 500px;
+  overflow-y: auto;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./corpo-rigido.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mecânica Clássica Animada</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mecânica Clássica 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sistemas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Mec1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mecânica de uma Partícula</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">Oscilacoes.qmd</span>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./GravitacaoEForcas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./SistemasPart.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de Partículas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Teoremas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Teoremas de Conservação</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referenciais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Referenciais Não Inerciais</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mecânica Clássica 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calculo-variacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Cálculo Variacional</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lagrange-hamilton.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./corpo-rigido.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#exemplo-cubo-homogêneo" id="toc-exemplo-cubo-homogêneo" class="nav-link active" data-scroll-target="#exemplo-cubo-homogêneo"><span class="header-section-number">10.0.1</span> Exemplo: cubo homogêneo</a></li>
+  <li><a href="#momento-angular" id="toc-momento-angular" class="nav-link" data-scroll-target="#momento-angular"><span class="header-section-number">10.1</span> Momento Angular</a>
+  <ul class="collapse">
+  <li><a href="#exemplo-pêndulo-físico-com-haste-de-massa-desprezível-e-comprimento-b" id="toc-exemplo-pêndulo-físico-com-haste-de-massa-desprezível-e-comprimento-b" class="nav-link" data-scroll-target="#exemplo-pêndulo-físico-com-haste-de-massa-desprezível-e-comprimento-b"><span class="header-section-number">10.1.1</span> Exemplo: pêndulo físico com haste de massa desprezível e comprimento <span class="math inline">\(b\)</span></a></li>
+  </ul></li>
+  <li><a href="#eixos-principais-de-inércia" id="toc-eixos-principais-de-inércia" class="nav-link" data-scroll-target="#eixos-principais-de-inércia"><span class="header-section-number">10.2</span> Eixos principais de inércia</a>
+  <ul class="collapse">
+  <li><a href="#exemplo-eixos-principais-do-cubo-homogêneo" id="toc-exemplo-eixos-principais-do-cubo-homogêneo" class="nav-link" data-scroll-target="#exemplo-eixos-principais-do-cubo-homogêneo"><span class="header-section-number">10.2.1</span> Exemplo: eixos principais do cubo homogêneo</a></li>
+  </ul></li>
+  <li><a href="#teorema-dos-eixos-paralelos" id="toc-teorema-dos-eixos-paralelos" class="nav-link" data-scroll-target="#teorema-dos-eixos-paralelos"><span class="header-section-number">10.3</span> Teorema dos eixos paralelos</a>
+  <ul class="collapse">
+  <li><a href="#voltando-ao-cubo-homogêneo" id="toc-voltando-ao-cubo-homogêneo" class="nav-link" data-scroll-target="#voltando-ao-cubo-homogêneo"><span class="header-section-number">10.3.1</span> Voltando ao cubo homogêneo</a></li>
+  </ul></li>
+  <li><a href="#transformações-de-coordenadas" id="toc-transformações-de-coordenadas" class="nav-link" data-scroll-target="#transformações-de-coordenadas"><span class="header-section-number">10.4</span> Transformações de coordenadas</a></li>
+  <li><a href="#ângulos-de-euler" id="toc-ângulos-de-euler" class="nav-link" data-scroll-target="#ângulos-de-euler"><span class="header-section-number">10.5</span> Ângulos de Euler</a></li>
+  <li><a href="#corpo-rígido-livre-e-equações-de-euler" id="toc-corpo-rígido-livre-e-equações-de-euler" class="nav-link" data-scroll-target="#corpo-rígido-livre-e-equações-de-euler"><span class="header-section-number">10.6</span> Corpo rígido livre e equações de Euler</a>
+  <ul class="collapse">
+  <li><a href="#exemplo-halter-dumbbell" id="toc-exemplo-halter-dumbbell" class="nav-link" data-scroll-target="#exemplo-halter-dumbbell"><span class="header-section-number">10.6.1</span> Exemplo: halter (dumbbell)</a></li>
+  </ul></li>
+  <li><a href="#estabilidade-de-rotações" id="toc-estabilidade-de-rotações" class="nav-link" data-scroll-target="#estabilidade-de-rotações"><span class="header-section-number">10.7</span> Estabilidade de Rotações</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./corpo-rigido.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></h1>
+<p class="subtitle lead">Capítulo 11 — Dynamics of Rigid Bodies (Thornton &amp; Marion)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Um corpo rígido é um conjunto de partículas no qual as distâncias relativas entre elas são constantes, ou seja, ele não pode ser deformado.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig1_rigid_body_points.png" class="img-fluid figure-img"></p>
+<figcaption>Duas partículas de um corpo rígido, com <span class="math inline">\(|\vec r_i - \vec r_j| = \text{cte}\ \forall\, i,j\)</span></figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+|\vec r_i - \vec r_j| = \text{cte.} \quad \forall\, i,j
+\]</span></p>
+<p>Bora considerar um corpo rígido formado por <span class="math inline">\(N\)</span> partículas de massas <span class="math inline">\(m_\alpha\)</span>: se o corpo sofrer uma rotação com uma velocidade angular instantânea <span class="math inline">\(\omega\)</span> em torno de um ponto fixo em relação ao sistema de coordenadas do corpo. Se esse ponto tiver velocidade <span class="math inline">\(\vec V\)</span> com respeito a um sistema de coordenadas fixo, então a velocidade de uma partícula é:</p>
+<p><span class="math display">\[
+\vec v_\alpha = \vec V + \vec\omega \times \vec r_\alpha
+\]</span></p>
+<p>A energia cinética total então é:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig2_rotating_body.png" class="img-fluid figure-img"></p>
+<figcaption>Corpo girando com velocidade angular <span class="math inline">\(\vec\omega\)</span>; <span class="math inline">\(\vec r_\alpha\)</span> é a posição da partícula <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\vec v_\alpha\)</span> sua velocidade</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+E_C = \frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha\left(\vec V + \vec\omega\times\vec r_\alpha\right)^2
+\]</span></p>
+<p><span class="math display">\[
+= \frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha V^2 + \sum_{\alpha=1}^{N} \vec V\cdot\left(\vec\omega\times\vec r_\alpha\right)m_\alpha + \frac{1}{2}\sum_\alpha m_\alpha\left(\vec\omega\times\vec r_\alpha\right)^2
+\]</span></p>
+<p>Escolhendo o centro de massa do sistema como origem do sistema, a gente pode reescrever da seguinte forma:</p>
+<p><span class="math display">\[
+\sum_{\alpha=1}^{N} \vec V\cdot\left(\vec\omega\times\vec r_\alpha\right)m_\alpha = \vec V\cdot\left[\vec\omega\times\left(\sum_{\alpha=1}^{N} m_\alpha\vec r_\alpha\right)\right]
+\]</span></p>
+<p><span class="math display">\[
+= \vec V\left[\vec\omega\times\left(M\vec R\right)\right]
+\qquad \hookrightarrow\ \vec R\ \text{posição do CM}
+\]</span></p>
+<p>Se a origem é o centro de massa, então:</p>
+<p><span class="math display">\[
+\vec R = 0
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+E_C = \underbrace{\frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha V^2}_{\text{energia de translação}} + \underbrace{\frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha\left(\vec\omega\times\vec r_\alpha\right)^2}_{\text{energia de rotação}}
+\]</span></p>
+<p>Reescrevendo o termo de rotação:</p>
+<p><span class="math display">\[
+\left(\vec\omega\times\vec r_\alpha\right)^2 = \left(\vec\omega\times\vec r_\alpha\right)\cdot\left(\vec\omega\times\vec r_\alpha\right)
+\]</span></p>
+<p><span class="math display">\[
+= \omega^2 r_\alpha^2 - \left(\vec\omega\cdot\vec r_\alpha\right)^2
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad E_{C,\text{rot}} = \sum_{\alpha=1}^{N} \frac{m_\alpha}{2}\left[\omega^2 r_\alpha^2 - \left(\vec\omega\cdot\vec r_\alpha\right)^2\right]
+\]</span></p>
+<p>Escrevendo em termos de componentes:</p>
+<p><span class="math display">\[
+\omega^2 = \sum_{i=1}^{3}\omega_i^2, \qquad r_\alpha^2 = \sum_{i=1}^{3} x_{\alpha i}^2
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\vec\omega\cdot\vec r_\alpha = \sum_{i=1}^{3}\omega_i x_{\alpha i}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad E_{C,\text{rot}} = \sum_{\alpha=0}^{N}\frac{m_\alpha}{2}\left[\sum_{i=1}^{3}\omega_i^2\sum_{k=1}^{3}x_{\alpha k}^2 - \left(\sum_{i=1}^{3}\omega_i x_{\alpha i}\right)\left(\sum_{j=1}^{3}\omega_j x_{\alpha j}\right)\right]
+\]</span></p>
+<p>Usando o delta de Kronecker:</p>
+<p><span class="math display">\[
+\omega_i = \sum_{j=1}^{3}\omega_j\,\delta_{ij}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+E_{C,\text{rot}} = \sum_{\alpha=1}^{N}\frac{m_\alpha}{2}\left[\sum_{i=1}^{3}\sum_{j=1}^{3}\omega_j\,\delta_{ij}\,\omega_i\sum_{k=1}^{3}x_{\alpha k}^2 - \sum_{i=1}^{3}\omega_i x_{\alpha i}\sum_{j=1}^{3}\omega_j x_{\alpha j}\right]
+\]</span></p>
+<p><span class="math display">\[
+= \sum_{\alpha=1}^{N}\frac{m_\alpha}{2}\left[\sum_{i=1}^{3}\sum_{j=1}^{3}\omega_i\omega_j\,\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - \sum_{i=1}^{3}\sum_{j=1}^{3}\omega_i\omega_j\,x_{\alpha i}x_{\alpha j}\right]
+\]</span></p>
+<p><span class="math display">\[
+= \sum_{\alpha=1}^{N}\frac{m_\alpha}{2}\sum_{i=1}^{3}\sum_{j=1}^{3}\left[\omega_i\omega_j\,\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - \omega_i\omega_j\,x_{\alpha i}x_{\alpha j}\right]
+\]</span></p>
+<p>Vamos esconder toda essa notação definindo o <strong>tensor de inércia</strong>:</p>
+<p><span class="math display">\[
+I_{ij} := \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}x_{\alpha j}\right)
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad E_{C,\text{rot}} = \frac{1}{2}\sum_{i=1}^{3}\sum_{j=1}^{3} I_{ij}\,\omega_i\omega_j = \vec\omega^{\,T} I\vec\omega
+\]</span></p>
+<p><span class="math display">\[
+\Updownarrow
+\]</span></p>
+<p><span class="math display">\[
+E_C = \frac{I\omega^2}{2}
+\]</span></p>
+<p>As componentes diagonais <span class="math inline">\(I_{ii}\)</span> são os momentos de inércia com respeito aos eixos independentes que passam pelo ponto de referência. As componentes mistas <span class="math inline">\(I_{ij}\)</span> (<span class="math inline">\(i\neq j\)</span>) são os produtos de inércia. Esse tensor é simétrico com respeito à troca de índices.</p>
+<p><span class="math display">\[
+I_{ij} = I_{ji}
+\]</span></p>
+<p>Para uma distribuição contínua, o tensor de inércia vai ser então:</p>
+<p><span class="math display">\[
+I_{ij} = \int_V \rho(\vec r)\left(\delta_{ij}\sum_{k=1}^{3}x_k^2 - x_ix_j\right) dV
+\]</span></p>
+<p><span class="math display">\[
+= \iiint \rho(\vec r)\left(\delta_{ij}\sum_{k=1}^{3}x_k^2 - x_ix_j\right) dx_1\,dx_2\,dx_3
+\]</span></p>
+<section id="exemplo-cubo-homogêneo" class="level3" data-number="10.0.1">
+<h3 data-number="10.0.1" class="anchored" data-anchor-id="exemplo-cubo-homogêneo"><span class="header-section-number">10.0.1</span> Exemplo: cubo homogêneo</h3>
+<p>Considere um cubo de aresta <span class="math inline">\(b\)</span>, homogêneo de densidade <span class="math inline">\(\rho\)</span>. Calcule as componentes cartesianas do tensor de inércia.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig3_cube.png" class="img-fluid figure-img"></p>
+<figcaption>Cubo homogêneo de aresta <span class="math inline">\(b\)</span> com origem em um vértice</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+I_{11} = \int_0^b\!\!\int_0^b\!\!\int_0^b \left(x^2+y^2+z^2-x^2\right) dx\,dy\,dz
+\]</span></p>
+<p><span class="math display">\[
+= \rho b\int_0^b\!\!\int_0^b \left(y^2+z^2\right) dy\,dz
+\]</span></p>
+<p><span class="math display">\[
+= \rho b\left(\int_0^b\!\!\int_0^b y^2\,dy\,dz + \int_0^b\!\!\int_0^b z^2\,dy\,dz\right)
+\]</span></p>
+<p><span class="math display">\[
+= \rho b^2\left(\int_0^b y^2\,dy + \int_0^b z^2\,dz\right)
+\]</span></p>
+<p><span class="math display">\[
+= \rho b^2\left(\frac{b^3}{3}+\frac{b^3}{3}\right)
+\]</span></p>
+<p><span class="math display">\[
+= \frac{2}{3}\rho b^5 \quad\therefore\quad \boxed{I_{11} = \frac{2}{3}Mb^2}
+\]</span></p>
+<p><span class="math display">\[
+\because\ b^3 = V, \qquad \rho b^3 = M
+\]</span></p>
+<p><span class="math display">\[
+I_{12} = \rho\int_0^b\!\!\int_0^b\!\!\int_0^b -xy\,dx\,dy\,dz
+\]</span></p>
+<p><span class="math display">\[
+= -\rho b\int_0^b\!\!\int_0^b xy\,dx\,dy
+\]</span></p>
+<p><span class="math display">\[
+= -\rho b\left(\frac{b^2}{2}\right)\left(\frac{b^2}{2}\right) = -\frac{\rho b^5}{4} = -\frac{Mb^2}{4}
+\]</span></p>
+<p>Cubo e espaço homogêneos <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(I_{12}=I_{13}=I_{23}\)</span>.</p>
+<p><span class="math display">\[
+\therefore \quad I = \begin{bmatrix}
+\dfrac{2}{3}Mb^2 &amp; -\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} &amp; \dfrac{2}{3}Mb^2 &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} &amp; \dfrac{2}{3}Mb^2
+\end{bmatrix}
+\]</span></p>
+</section>
+<section id="momento-angular" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="momento-angular"><span class="header-section-number">10.1</span> Momento Angular</h2>
+<p>Considerando o corpo rígido formado por um conjunto de partículas. O momento angular total é:</p>
+<p><span class="math display">\[
+\vec L = \sum_{\alpha=1}^{N}\vec r_\alpha\times\vec p_\alpha, \qquad \vec p_\alpha = m_\alpha\vec v_\alpha
+\]</span></p>
+<p>Com relação a um ponto no interior do corpo, temos:</p>
+<p><span class="math display">\[
+\vec v_\alpha = \vec\omega\times\vec r_\alpha
+\]</span></p>
+<p><span class="math display">\[
+\vec L = \sum_{\alpha=1}^{N} m_\alpha\vec r_\alpha\times\left(\vec\omega\times\vec r_\alpha\right)
+\qquad\Big)\ \vec A\times(\vec B\times\vec A) = A^2\vec B - \vec A(\vec A\cdot\vec B)
+\]</span></p>
+<p><span class="math display">\[
+= \sum_{\alpha=1}^{N} m_\alpha\left[r_\alpha^2\vec\omega - \vec r_\alpha(\vec r_\alpha\cdot\vec\omega)\right]
+\]</span></p>
+<p>Reescrevendo em termos de componentes:</p>
+<p><span class="math display">\[
+L_i = \sum_{\alpha=1}^{N} m_\alpha\left(\omega_i\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}\sum_{j=1}^{3}x_{\alpha j}\omega_j\right)
+\qquad\Big)\ \omega_i = \sum_{j=1}^{3}\omega_j\delta_{ij}
+\]</span></p>
+<p><span class="math display">\[
+= \sum_{\alpha=1}^{N} m_\alpha\left(\sum_{j=1}^{3}\omega_j\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}\sum_{j=1}^{3}x_{\alpha j}\omega_j\right)
+\]</span></p>
+<p><span class="math display">\[
+= \sum_{j=1}^{3}\omega_j\sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}x_{\alpha j}\right)
+\]</span></p>
+<p><span class="math display">\[
+= \sum_{j=1}^{3} I_{ij}\,\omega_j
+\]</span></p>
+<p>Em geral, <span class="math inline">\(\vec L\)</span> e <span class="math inline">\(\vec\omega\)</span> <strong>não</strong> são colineares.</p>
+<p><span class="math display">\[
+\vec\omega\cdot\vec L = \sum_{i=1}^{3}\omega_i L_i = \sum_{i=1}^{3}\sum_{j=1}^{3} I_{ij}\,\omega_i\omega_j = 2E_{C,\text{rot}}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad E_{C,\text{rot}} = \frac{\vec\omega\cdot\vec L}{2}
+\]</span></p>
+<section id="exemplo-pêndulo-físico-com-haste-de-massa-desprezível-e-comprimento-b" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="exemplo-pêndulo-físico-com-haste-de-massa-desprezível-e-comprimento-b"><span class="header-section-number">10.1.1</span> Exemplo: pêndulo físico com haste de massa desprezível e comprimento <span class="math inline">\(b\)</span></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig4_physical_pendulum.png" class="img-fluid figure-img"></p>
+<figcaption>Pêndulo físico formado por duas massas <span class="math inline">\(m_1\)</span> e <span class="math inline">\(m_2\)</span> ao longo de uma haste rígida de comprimento <span class="math inline">\(b\)</span></figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\vec\omega = \dot\phi\,\hat z
+\]</span></p>
+<p><span class="math display">\[
+x_{11}=b,\quad x_{21}=b/2 \qquad x_{12}=0,\quad x_{22}=0 \qquad x_{13}=0,\quad x_{23}=0
+\]</span></p>
+<p><span class="math display">\[
+I_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha j}x_{\alpha i}\right)
+\]</span></p>
+<p><span class="math display">\[
+= m_1\left(\delta_{ij}\sum_{k=1}^{3}x_{1k}^2 - x_{1j}x_{1i}\right) + m_2\left(\delta_{ij}\sum_{k=1}^{3}x_{2k}^2 - x_{2j}x_{2i}\right)
+\]</span></p>
+<p><span class="math display">\[
+= m_1\left(\delta_{ij}b^2 - x_{1j}x_{1i}\right) + m_2\left(\delta_{ij}\frac{b^2}{4} - x_{2j}x_{2i}\right)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{11} = m_1\left(b^2-b^2\right) + m_2\left(\frac{b^2}{4}-\frac{b^2}{4}\right) = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{22} = m_1\left(b^2-0\cdot0\right) + m_2\left(\frac{b^2}{4}-0\cdot0\right)
+\]</span></p>
+<p><span class="math display">\[
+= m_1b^2 + m_2\frac{b^2}{4}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{33} = m_1\left(b^2-0\cdot0\right) + m_2\left(\frac{b^2}{4}-0\cdot0\right)
+\]</span></p>
+<p><span class="math display">\[
+= m_1b^2 + m_2\frac{b^2}{4}
+\]</span></p>
+<p><span class="math display">\[
+I_{ij}=0 \quad \forall\, i\neq j
+\]</span></p>
+<p><span class="math display">\[
+L_i = \sum_{j=1}^{3} I_{ij}\,\omega_j
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad L_1=0,\quad L_2=0,\quad L_3 = I_{33}\omega_3 = \left(m_1b^2+m_2\frac{b^2}{4}\right)\dot\phi
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \dot{\vec L} = \vec\tau = \sum_{\alpha=1}^{N}\vec r_\alpha\times\vec F_\alpha
+\]</span></p>
+<p><span class="math display">\[
+= \vec r_1\times\vec F_1 + \vec r_2\times\vec F_2
+\]</span></p>
+<p><span class="math display">\[
+= b\hat s\times m_1\left(g\cos\phi\,\hat s - g\,\text{sen}\,\phi\,\hat\phi\right) + \frac{b}{2}\hat s\times m_2\left(g\cos\phi\,\hat s - g\,\text{sen}\,\phi\,\hat\phi\right)
+\]</span></p>
+<p><span class="math display">\[
+= -bm_1g\,\text{sen}\,\phi\,\hat z - \frac{b}{2}m_2g\,\text{sen}\,\phi\,\hat z
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad \left(m_1b^2+m_2\frac{b^2}{4}\right)\ddot\phi\,\hat z = -bg\,\text{sen}\,\phi\left(m_1+\frac{m_2}{2}\right)\hat z
+\]</span></p>
+<p>No limite de pequenas oscilações, a frequência natural desse sistema é:</p>
+<p><span class="math display">\[
+\text{sen}\,\phi \approx \phi \;\;\longrightarrow\;\; \omega_0^2 = \frac{bg\left(m_1+\dfrac{m_2}{2}\right)}{m_1b^2+m_2\dfrac{b^2}{4}}
+\]</span></p>
+<p><span class="math display">\[
+= \frac{g}{b}\frac{\left(m_1+\dfrac{m_2}{2}\right)}{\left(m_1+\dfrac{m_2}{4}\right)}
+\]</span></p>
+</section>
+</section>
+<section id="eixos-principais-de-inércia" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="eixos-principais-de-inércia"><span class="header-section-number">10.2</span> Eixos principais de inércia</h2>
+<p>Os eixos principais de inércia são os eixos que tornam o tensor de inércia diagonal.</p>
+<p>Se o corpo gira em torno de um eixo principal, <span class="math inline">\(\vec L\)</span> e <span class="math inline">\(\vec\omega\)</span> vão ser colineares.</p>
+<p><span class="math display">\[
+L_i = \sum_{j=1}^{3} I_{ij}\,\omega_j = I_{ii}\,\omega_i \;\;\longleftrightarrow\;\; \vec L = I\vec\omega
+\]</span></p>
+<p><span class="math display">\[
+I_{ij} = I_{ii}\,\delta_{ij} \;\;\longleftrightarrow\;\; \overset{\text{matriz}}{I}\vec\omega = \lambda\vec\omega
+\qquad(\lambda\ \text{autovalor})
+\]</span></p>
+<p><span class="math display">\[
+\vec L = L_1\hat x_1+L_2\hat x_2+L_3\hat x_3 \qquad\qquad \vec\omega = \omega_1\hat x_1+\omega_2\hat x_2+\omega_3\hat x_3
+\]</span></p>
+<p><span class="math display">\[
+I\vec\omega = \lambda\omega_1\hat x_1+\lambda\omega_2\hat x_2+\lambda\omega_3\hat x_3
+\]</span></p>
+<p><span class="math display">\[
+\begin{cases}
+L_1 = \lambda\omega_1 = I_{11}\omega_1 + I_{12}\omega_2 + I_{13}\omega_3 \\
+L_2 = \lambda\omega_2 = I_{21}\omega_1 + I_{22}\omega_2 + I_{23}\omega_3 \\
+L_3 = \lambda\omega_3 = I_{31}\omega_1 + I_{32}\omega_2 + I_{33}\omega_3
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\begin{cases}
+(I_{11}-\lambda)\omega_1 + I_{12}\omega_2 + I_{13}\omega_3 = 0 \\
+I_{21}\omega_1 + (I_{22}-\lambda)\omega_2 + I_{23}\omega_3 = 0 \\
+I_{31}\omega_1 + I_{32}\omega_2 + (I_{33}-\lambda)\omega_3 = 0
+\end{cases}
+\]</span></p>
+<p>Para que exista uma solução <span class="math inline">\((\omega_1,\omega_2,\omega_3)^T\)</span>, o determinante da matriz de coeficientes tem que ser <span class="math inline">\(0\)</span>:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+(I_{11}-\lambda) &amp; I_{12} &amp; I_{13} \\
+I_{21} &amp; (I_{22}-\lambda) &amp; I_{23} \\
+I_{31} &amp; I_{32} &amp; (I_{33}-\lambda)
+\end{bmatrix} = 0
+\]</span></p>
+<section id="exemplo-eixos-principais-do-cubo-homogêneo" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="exemplo-eixos-principais-do-cubo-homogêneo"><span class="header-section-number">10.2.1</span> Exemplo: eixos principais do cubo homogêneo</h3>
+<p>Bora encontrar os eixos principais do cubo homogêneo de aresta <span class="math inline">\(b\)</span>. O tensor de inércia dele era:</p>
+<p><span class="math display">\[
+I = \begin{bmatrix}
+\dfrac{2}{3}Mb^2 &amp; -\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} &amp; \dfrac{2}{3}Mb^2 &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} &amp; \dfrac{2}{3}Mb^2
+\end{bmatrix}
+\]</span></p>
+<p>Resolvendo para achar <span class="math inline">\(I\)</span>:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+\left(\dfrac{2}{3}Mb^2-\lambda\right) &amp; -\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} &amp; \left(\dfrac{2}{3}Mb^2-\lambda\right) &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} &amp; \left(\dfrac{2}{3}Mb^2-\lambda\right)
+\end{bmatrix} = 0
+\]</span></p>
+<p>Pela regra de Sarrus, o resultado é:</p>
+<p><span class="math display">\[
+\lambda_1 = \frac{Mb^2}{6}, \qquad \lambda_2 = \frac{11}{12}Mb^2, \qquad \lambda_3 = \frac{11}{12}Mb^2
+\]</span></p>
+<p>Substituindo no sistema:</p>
+<p><span class="math display">\[
+\begin{cases}
+\left(\dfrac{2}{3}Mb^2-\dfrac{Mb^2}{6}\right)\omega_1 - \dfrac{Mb^2}{4}\omega_2 - \dfrac{Mb^2}{4}\omega_3 = 0 \\[1.5ex]
+-\dfrac{Mb^2}{4}\omega_1 + \left(\dfrac{2}{3}Mb^2-\dfrac{Mb^2}{6}\right)\omega_2 - \dfrac{Mb^2}{4}\omega_3 = 0 \\[1.5ex]
+-\dfrac{Mb^2}{4}\omega_1 - \dfrac{Mb^2}{4}\omega_2 + \left(\dfrac{2}{3}Mb^2-\dfrac{Mb^2}{6}\right)\omega_3 = 0
+\end{cases}
+\]</span></p>
+<p>Dividindo o sistema todo por <span class="math inline">\(Mb^2/4\)</span>:</p>
+<p><span class="math display">\[
+\begin{cases}
+2\omega_1 - \omega_2 - \omega_3 = 0 \\
+-\omega_1 + 2\omega_2 - \omega_3 = 0 \qquad\therefore\ \omega_1=\omega_2=\omega_3=\Omega\ (\text{algum número}) \\
+-\omega_1 - \omega_2 + 2\omega_3 = 0
+\end{cases}
+\]</span></p>
+<p>Esse eixo principal de inércia é a diagonal do cubo! Os outros dois estão no plano perpendicular a ele.</p>
+</section>
+</section>
+<section id="teorema-dos-eixos-paralelos" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="teorema-dos-eixos-paralelos"><span class="header-section-number">10.3</span> Teorema dos eixos paralelos</h2>
+<p>Bora considerar dois sistemas de coordenadas fixas em relação ao corpo onde a origem de um deles é o centro de massa.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig5_two_coord_systems.png" class="img-fluid figure-img"></p>
+<figcaption>Dois sistemas de coordenadas com eixos paralelos: <span class="math inline">\(\{X_i\}\)</span> com origem em <span class="math inline">\(a\)</span> e <span class="math inline">\(\{x_i\}\)</span> com origem no centro de massa</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+x_1 \parallel X_1, \qquad x_2 \parallel X_2, \qquad x_3 \parallel X_3
+\]</span></p>
+<p>Com respeito a <span class="math inline">\(O\)</span> (centro de massa):</p>
+<p><span class="math display">\[
+I_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}x_{\alpha j}\right)
+\]</span></p>
+<p>Com respeito a <span class="math inline">\(Q\)</span> (outro ponto fixo):</p>
+<p><span class="math display">\[
+J_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}X_{\alpha k}^2 - X_{\alpha i}X_{\alpha j}\right)
+\]</span></p>
+<p>E se a gente escrever <span class="math inline">\(\vec R = \vec r + \vec a\)</span> em termos de componentes, fica <span class="math inline">\(X_i = r_i + a_i\)</span>. Logo:</p>
+<p><span class="math display">\[
+J_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left[\delta_{ij}\sum_{k=1}^{3}\left(x_{\alpha k}+a_k\right)^2 - \left(x_{\alpha i}+a_i\right)\left(x_{\alpha j}+a_j\right)\right]
+\]</span></p>
+<p><span class="math display">\[
+= I_{ij} + \sum_{\alpha=1}^{N} m_\alpha\left[\delta_{ij}\sum_{k=1}^{3}\left(a_k^2+2x_{\alpha k}a_k\right) - x_{\alpha i}a_j - x_{\alpha j}a_i - a_ia_j\right]
+\]</span></p>
+<p>Como <span class="math inline">\(O\)</span> é o centro de massa:</p>
+<p><span class="math display">\[
+\sum_{\alpha=1}^{N} m_\alpha\vec r_\alpha = \vec 0
+\]</span></p>
+<p><span class="math display">\[
+\sum_{\alpha=1}^{N} m_\alpha x_{\alpha k} = 0, \qquad k=1,2,3
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+J_{ik} = I_{ij} + \sum_{\alpha=1}^{N} m_\alpha\left[\delta_{ij}\sum_{k=1}^{3}a_k^2 - a_ia_j\right]
+\]</span></p>
+<p><span class="math display">\[
+J_{iK} = I_{ij} + M\left(a^2\delta_{ij} - a_ia_j\right)
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\underbrace{\text{Tensor de inércia com relação ao CM}}_{}
+\qquad\qquad
+\underbrace{\text{Tensor de inércia com relação a outro ponto fixo}}_{}
+\]</span></p>
+<p>onde <span class="math inline">\(\vec a\)</span> é a posição do centro de massa com relação à outra origem e <span class="math inline">\(M=\sum_{\alpha=1}^{N} m_\alpha\)</span> é a massa do corpo. Esse é o <strong>teorema dos eixos paralelos</strong>.</p>
+<section id="voltando-ao-cubo-homogêneo" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="voltando-ao-cubo-homogêneo"><span class="header-section-number">10.3.1</span> Voltando ao cubo homogêneo</h3>
+<p>A gente conhece o tensor de inércia com relação a um vértice:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig6_cube_cm.png" class="img-fluid figure-img"></p>
+<figcaption>Cubo homogêneo com centro de massa marcado</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+J = \begin{bmatrix}
+\dfrac{2}{3}Mb^2 &amp; -\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} &amp; \dfrac{2}{3}Mb^2 &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
+-\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} &amp; \dfrac{2}{3}Mb^2
+\end{bmatrix}
+\]</span></p>
+<p>A posição do CM com relação ao vértice:</p>
+<p><span class="math display">\[
+\vec a = \begin{bmatrix} b/2 \\ b/2 \\ b/2 \end{bmatrix}, \qquad\text{ou seja,}\quad a_1=a_2=a_3=b/2
+\]</span></p>
+<p><span class="math display">\[
+I_{ij} = J_{ij} - M\left(a^2\delta_{ij} - a_ia_j\right)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{11} = J_{11} - M\left(a^2-a_1^2\right)
+\]</span></p>
+<p><span class="math display">\[
+= J_{11} - M\left(a_1^2+a_2^2+a_3^2-a_1^2\right)
+\]</span></p>
+<p><span class="math display">\[
+= J_{11} - M\left(a_2^2+a_3^2\right)
+\]</span></p>
+<p><span class="math display">\[
+= \frac{2}{3}Mb^2 - M\left(\frac{b^2}{4}+\frac{b^2}{4}\right)
+\]</span></p>
+<p><span class="math display">\[
+= \frac{Mb^2}{6} \quad\Longleftrightarrow\quad I_{22}=I_{33}=\frac{Mb^2}{6}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{12} = J_{12} - M(-a_1a_2) = -\frac{Mb^2}{4} + \frac{Mb^2}{4} = 0
+\]</span></p>
+<p><span class="math display">\[
+\Longleftrightarrow \quad I_{13}=I_{23}=0
+\qquad\therefore\qquad I = \frac{Mb^2}{6}\,\mathbb{1}
+\]</span></p>
+<p>Com respeito ao centro de massa, os eixos principais de inércia são perpendiculares às faces do cubo.</p>
+</section>
+</section>
+<section id="transformações-de-coordenadas" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="transformações-de-coordenadas"><span class="header-section-number">10.4</span> Transformações de coordenadas</h2>
+<p>Sabemos que as componentes dos vetores se alteram da seguinte maneira sob transformações de coordenadas:</p>
+<p><span class="math display">\[
+X_i = \sum_{j=1}^{3} \rho_{ji}\,x_j'
+\]</span></p>
+<p>Onde cada <span class="math inline">\(\rho\)</span> é um elemento da matriz de transformação. Se ela for invertível, então ela é ortogonal, ou seja:</p>
+<p><span class="math display">\[
+\sum_{j=1}^{3} \rho_{ij}\,\rho_{kj} = \delta_{ik}
+\]</span></p>
+<p>A gente sabe que o momento angular é uma transformação da velocidade angular:</p>
+<p><span class="math display">\[
+L_k = \sum_{\ell=1}^{3} I_{k\ell}\,\omega_\ell
+\]</span></p>
+<p>Aplicando uma transformação de coordenadas:</p>
+<p><span class="math display">\[
+\sum_{m=1}^{3} \rho_{mk}\,L_m' = \sum_{\ell=1}^{3} I_{k\ell}\sum_{j=1}^{3}\rho_{j\ell}\,\omega_j'
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \rho_{ik}\sum_{m=1}^{3}\rho_{mk}\,L_m' = \rho_{ik}\sum_{\ell=1}^{3} I_{k\ell}\sum_{j=1}^{3}\rho_{j\ell}\,\omega_j'
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sum_{k=1}^{3}\rho_{ik}\sum_{m=1}^{3}\rho_{mk}\,L_m' = \sum_{k=1}^{3}\rho_{ik}\sum_{\ell=1}^{3} I_{k\ell}\sum_{j=1}^{3}\rho_{j\ell}\,\omega_j'
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sum_{m=1}^{3}\left(\sum_{k=1}^{3}\rho_{ik}\rho_{mk}\right)L_m' = \sum_{j=1}^{3}\left(\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{j\ell}\,I_{k\ell}\right)\omega_j'
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sum_{m=1}^{3}\delta_{im}\,L_m' = \sum_{j=1}^{3}\left(\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{j\ell}\,I_{k\ell}\right)\omega_j'
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad L_i' = \sum_{j=1}^{3}\left(\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{j\ell}\,I_{k\ell}\right)\omega_j'
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad L_i' = I_{ij}'\,\omega_j'
+\]</span></p>
+<p>Então sob uma transformação de coordenadas, o tensor de inércia se transforma assim:</p>
+<p><span class="math display">\[
+I_{ij}' = \sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{j\ell}\,I_{k\ell}
+\]</span></p>
+<p>Para um tensor <span class="math inline">\(T\)</span> qualquer:</p>
+<p><span class="math display">\[
+T_{abc\ldots}' = \sum_{i,j,k,\ldots}\rho_{ai}\rho_{bj}\rho_{ck}\cdots T_{ijk\ldots}
+\]</span></p>
+<p>Para o tensor de inércia, que é de posto 2, a gente pode escrever na forma matricial:</p>
+<p><span class="math display">\[
+I' = \rho\, I\, \rho^T
+\]</span></p>
+<p>Mas como a transformação é ortogonal:</p>
+<p><span class="math display">\[
+\rho^T = \rho^{-1}
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad I' = \rho\, I\,\rho^{-1}
+\]</span></p>
+<p>Vamos considerar um sistema de coordenadas fixo no corpo e aplicar uma rotação nos eixos, bem como que os novos eixos são eixos principais de inércia e, portanto, <span class="math inline">\(I_{ij}'\)</span> é diagonal.</p>
+<p><span class="math display">\[
+I_{ij}' = \sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{\ell j}\,I_{k\ell}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+I_{ij}' = I_i'\,\delta_{ij}
+\]</span></p>
+<p><span class="math display">\[
+\therefore
+\]</span></p>
+<p><span class="math display">\[
+I_i'\,\delta_{ij} = \sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{\ell j}\,I_{k\ell}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \rho_{im}\,I_i'\,\delta_{ij} = \rho_{im}\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{\ell j}\,I_{k\ell}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sum_{i=1}^{3}\rho_{im}\,I_i'\,\delta_{ij} = \sum_{i=1}^{3}\rho_{im}\sum_{k=1}^{3}\sum_{\ell=1}^{3}\rho_{ik}\rho_{\ell j}\,I_{k\ell}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \rho_{jm}\,I_j' = \sum_{k=1}^{3}\sum_{\ell=1}^{3}\left(\sum_{i=1}^{3}\rho_{ik}\rho_{\ell j}\right)\rho_{jl}\,I_{k\ell}
+\qquad \underbrace{\phantom{aaaa}}_{\delta_{mk}}
+\]</span></p>
+<p><span class="math display">\[
+= \sum_{\ell=1}^{3}\rho_{j\ell}\,I_{m\ell}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sum_{\ell=1}^{3} I_j'\,\rho_{jm}\,\delta_{m\ell} = \sum_{\ell=1}^{3}\rho_{j\ell}\,I_{m\ell}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sum_{\ell=1}^{3}\left(I_{m\ell} - I_j'\,\delta_{m\ell}\right)\rho_{j\ell} = 0
+\]</span></p>
+<p>Para que exista uma solução não trivial, o determinante da matriz de coeficientes tem que ser <span class="math inline">\(0\)</span>:</p>
+<p><span class="math display">\[
+\left(I_{m\ell} - \lambda\,\delta_{m\ell}\right) = 0
+\]</span></p>
+<p>Supondo que os momentos principais são todos diferentes, vamos considerar que um corpo rígido que tenha momentos principais de inércia diferentes, indicados pelo subíndice <span class="math inline">\((m)\)</span>:</p>
+<p><span class="math display">\[
+L_{(m)i} = I_{(m)}\,\omega_{(m)i}
+\]</span></p>
+<p>Mas a gente sempre pode escrever a expressão geral, logo:</p>
+<p><span class="math display">\[
+L_{(m)i} = \sum_{k=1}^{3} I_{ik}\,\omega_{(m)k}
+\]</span></p>
+<p>Então, para cada eixo principal temos:</p>
+<p><span class="math display">\[
+\sum_{k=1}^{3} I_{ik}\,\omega_{(m)k} = I_{(m)}\,\omega_{(m)i} \tag{1}
+\]</span></p>
+<p>Escrevendo isso para um outro eixo principal <span class="math inline">\((n)\)</span>, temos:</p>
+<p><span class="math display">\[
+\sum_{k=1}^{3} I_{ik}\,\omega_{(n)k} = I_{(n)}\,\omega_{(n)i} \tag{2}
+\]</span></p>
+<p>Multiplicando (1) por <span class="math inline">\(\omega_{(n)i}\)</span> e somando em <span class="math inline">\(i\)</span>:</p>
+<p><span class="math display">\[
+\sum_{k=1}^{3}\sum_{i=1}^{3} I_{ik}\,\omega_{(m)k}\,\omega_{(n)i} = \sum_{i=1}^{3} I_{(m)}\,\omega_{(m)i}\,\omega_{(n)i}
+\]</span></p>
+<p>Multiplicando (2) por <span class="math inline">\(\omega_{(m)i}\)</span>:</p>
+<p><span class="math display">\[
+\sum_{i=1}^{3}\sum_{k=1}^{3} I_{ik}\,\omega_{(m)k} = \sum_{i=1}^{3} I_{(n)}\,\omega_{(n)i}\,\omega_{(m)i}
+\]</span></p>
+<p>Como o tensor de inércia é simétrico (<span class="math inline">\(I_{ik}=I_{ki}\)</span>), então os lados esquerdos das equações são iguais, daí a gente pode igualar os lados direitos também:</p>
+<p><span class="math display">\[
+\sum_{k=1}^{3}\sum_{i=1}^{3} I_{ik}\,\omega_{(m)k}\,\omega_{(n)i} = \sum_{i=1}^{3}\sum_{k=1}^{3} I_{ik}\,\omega_{(m)k}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\sum_{i=1}^{3} I_{(m)}\,\omega_{(m)i}\,\omega_{(n)i} = \sum_{i=1}^{3} I_{(n)}\,\omega_{(n)i}\,\omega_{(m)i}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{(m)}\sum_{i=1}^{3}\omega_{(m)i}\,\omega_{(n)i} = I_{(n)}\sum_{i=1}^{3}\omega_{(n)i}\,\omega_{(m)i}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \left(I_{(m)} - I_{(n)}\right)\sum_{\ell=1}^{3}\omega_{(m)\ell}\,\omega_{(n)\ell} = 0
+\]</span></p>
+<p>Então, se os momentos de inércia são diferentes, as velocidades angulares são necessariamente ortogonais entre si:</p>
+<p><span class="math display">\[
+I_{(m)} \neq I_{(n)} \;\;\longrightarrow\;\; \sum_{\ell=1}^{3}\omega_{(m)\ell}\,\omega_{(n)\ell} \neq 0 \;\;\longleftrightarrow\;\; \vec\omega_{(m)}\cdot\vec\omega_{(n)} = 0
+\]</span></p>
+</section>
+<section id="ângulos-de-euler" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="ângulos-de-euler"><span class="header-section-number">10.5</span> Ângulos de Euler</h2>
+<p>Vamos definir três rotações particulares independentes, onde cada uma delas pode ser representada por uma matriz:</p>
+<p><span class="math display">\[
+\vec x' = \Lambda\vec x
+\]</span></p>
+<p><strong>1) A primeira rotação é em torno de <span class="math inline">\(x_3\)</span>:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig7_euler_rot1.png" class="img-fluid figure-img"></p>
+<figcaption>Primeira rotação de Euler, de ângulo <span class="math inline">\(\phi\)</span>, em torno do eixo <span class="math inline">\(x_3\equiv x_3'\)</span></figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\Lambda_\phi = \begin{bmatrix}
+\cos\phi &amp; \text{sen}\,\phi &amp; 0 \\
+-\text{sen}\,\phi &amp; \cos\phi &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</span></p>
+<p><strong>2) A segunda rotação é em torno de <span class="math inline">\(x_1'\)</span>:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig8_euler_rot2.png" class="img-fluid figure-img"></p>
+<figcaption>Segunda rotação de Euler, de ângulo <span class="math inline">\(\theta\)</span>, em torno do eixo <span class="math inline">\(x_1'\equiv x_1''\)</span></figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\Lambda_\theta = \begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; \cos\theta &amp; \text{sen}\,\theta \\
+0 &amp; -\text{sen}\,\theta &amp; \cos\theta
+\end{bmatrix}
+\]</span></p>
+<p><strong>3) A terceira rotação é em torno de <span class="math inline">\(x_3'''\)</span>:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig9_euler_rot3.png" class="img-fluid figure-img"></p>
+<figcaption>Terceira rotação de Euler, de ângulo <span class="math inline">\(\psi\)</span>, em torno do eixo <span class="math inline">\(x_3''\)</span></figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\Lambda_\psi = \begin{bmatrix}
+\cos\psi &amp; \text{sen}\,\psi &amp; 0 \\
+-\text{sen}\,\psi &amp; \cos\psi &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad \vec x''' = \Lambda_\psi\,\Lambda_\theta\,\Lambda_\phi\,\vec x = \Lambda\vec x
+\]</span></p>
+<p><span class="math display">\[
+\underbrace{\phantom{aaaaaaaaaaaaaa}}_{\vec x'}
+\qquad
+\underbrace{\phantom{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}}_{\vec x''}
+\]</span></p>
+<p>Os componentes da matriz que é o produto dessas três são:</p>
+<p><span class="math display">\[
+\lambda_{11} = \cos\psi\cos\phi - \cos\theta\,\text{sen}\,\phi\,\text{sen}\,\psi
+\qquad
+\lambda_{12} = \cos\psi\,\text{sen}\,\phi+\cos\theta\cos\phi\,\text{sen}\,\psi
+\qquad
+\lambda_{13} = \text{sen}\,\psi\,\text{sen}\,\theta
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{21} = -\text{sen}\,\psi\cos\phi - \cos\theta\,\text{sen}\,\phi\cos\psi
+\qquad
+\lambda_{22} = -\text{sen}\,\psi\,\text{sen}\,\phi+\cos\theta\cos\phi\cos\psi
+\qquad
+\lambda_{23} = \cos\psi\,\text{sen}\,\theta
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{31} = \text{sen}\,\theta\,\text{sen}\,\phi
+\qquad
+\lambda_{32} = -\text{sen}\,\theta\cos\phi
+\qquad
+\lambda_{33} = \cos\theta
+\]</span></p>
+<p>As velocidades angulares para cada rotação são:</p>
+<p><span class="math display">\[
+\vec\omega_\phi = \dot{\vec\phi} \qquad \vec\omega_\theta = \dot{\vec\theta} \qquad \vec\omega_\psi = \dot{\vec\psi}
+\]</span></p>
+<p><span class="math inline">\(\dot{\vec\phi}\)</span> aponta na direção de <span class="math inline">\(x_3\)</span> do sistema fixo (inercial).</p>
+<p><span class="math inline">\(\dot{\vec\theta}\)</span> aponta na direção da linha de nodos (ou seja, da interseção entre os planos <span class="math inline">\(x_1x_2\)</span> (<span class="math inline">\(\equiv x_1'x_2'\)</span>) e <span class="math inline">\(x_1''x_2''\)</span>).</p>
+<p><span class="math inline">\(\dot{\vec\psi}\)</span> aponta na direção <span class="math inline">\(x_3\)</span> do sistema de coordenadas que acompanha o corpo.</p>
+<p>Em termos do sistema de coordenadas do corpo:</p>
+<p><span class="math display">\[
+\dot{\vec\phi} = \begin{bmatrix} \dot\phi\,\text{sen}\,\theta\,\text{sen}\,\psi \\ \dot\phi\,\text{sen}\,\theta\cos\psi \\ \dot\phi\cos\theta \end{bmatrix}
+\qquad\longleftrightarrow\qquad
+\vec x''' = \Lambda\vec x
+\]</span></p>
+<p><span class="math display">\[
+\dot{\vec\theta} = \begin{bmatrix} \dot\theta\cos\psi \\ -\dot\theta\,\text{sen}\,\psi \\ 0 \end{bmatrix}
+\qquad\longleftrightarrow\qquad
+\vec x' = \Lambda_\psi\Lambda_\theta\,\vec x''
+\]</span></p>
+<p><span class="math display">\[
+\dot{\vec\psi} = \begin{bmatrix} 0 \\ 0 \\ \dot\psi \end{bmatrix}
+\qquad\longleftrightarrow\qquad
+\vec x'' = \Lambda_\psi\,\vec x'''
+\]</span></p>
+<p>A velocidade angular total do corpo então é:</p>
+<p><span class="math display">\[
+\vec\omega = \vec\omega_\phi + \vec\omega_\theta + \vec\omega_\psi =
+\begin{bmatrix}
+\dot\phi\,\text{sen}\,\theta\,\text{sen}\,\psi + \dot\theta\cos\psi \\
+\dot\phi\,\text{sen}\,\theta\cos\psi - \dot\theta\,\text{sen}\,\psi \\
+\dot\phi\cos\theta + \dot\psi
+\end{bmatrix}
+\]</span></p>
+</section>
+<section id="corpo-rígido-livre-e-equações-de-euler" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="corpo-rígido-livre-e-equações-de-euler"><span class="header-section-number">10.6</span> Corpo rígido livre e equações de Euler</h2>
+<p>Vamos considerar o movimento de um corpo rígido livre. O movimento de translação é trivial: o centro de massa se move como uma partícula livre. A energia pode ser escrita em termos dos eixos principais de inércia:</p>
+<p><span class="math display">\[
+E_{C,\text{Rot}} = \frac{1}{2}\sum_{i=1}^{3} I_i\,\omega_i^2
+\]</span></p>
+<p>Nesse caso, como o corpo é livre, não tem energia potencial, então a Lagrangiana pode ser escrita como:</p>
+<p><span class="math display">\[
+L = E_{C,\text{Rot}}
+\]</span></p>
+<p>Podemos escolher os ângulos de Euler como coordenadas generalizadas. Para <span class="math inline">\(\psi\)</span>, temos a equação de Euler-Lagrange:</p>
+<p><span class="math display">\[
+\frac{\partial E_{C,\text{Rot}}}{\partial \psi} - \frac{d}{dt}\left(\frac{\partial}{\partial \dot\psi}E_{C,\text{Rot}}\right) = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sum_{i=1}^{3}\frac{\partial}{\partial\omega_i}E_{C,\text{Rot}}\,\frac{\partial\omega_i}{\partial\psi} - \frac{d}{dt}\left[\sum_{i=1}^{3}\frac{\partial E_{C,\text{Rot}}}{\partial\omega_i}\frac{\partial\psi}{\partial\dot\psi}\right] = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad
+\begin{cases}
+\dfrac{\partial\omega_1}{\partial\psi} = \dot\phi\,\text{sen}\,\theta\cos\psi - \dot\theta\,\text{sen}\,\psi = \omega_2 \\
+\dfrac{\partial\omega_2}{\partial\psi} = -\dot\phi\,\text{sen}\,\theta\,\text{sen}\,\psi - \dot\theta\cos\psi = -\omega_1 \\
+\dfrac{\partial\omega_3}{\partial\psi} = 0
+\end{cases}
+\qquad
+\begin{cases}
+\dfrac{\partial\omega_1}{\partial\dot\psi}=0 \\
+\dfrac{\partial\omega_2}{\partial\dot\psi}=0 \\
+\dfrac{\partial\omega_3}{\partial\dot\psi}=1
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \frac{\partial E_{C,\text{Rot}}}{\partial\omega_i} = I_i\,\omega_i
+\]</span></p>
+<p>Com todas essas informações em mãos, a equação de movimento fica:</p>
+<p><span class="math display">\[
+I_1\omega_1\omega_2 + I_2\omega_2(-\omega_1) - \frac{d}{dt}\left(I_3\omega_3\right) = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \left(I_1-I_2\right)\omega_1\omega_2 - I_3\dot\omega_3 = 0
+\]</span></p>
+<p>Mas como a escolha de qual eixo leva o nome <span class="math inline">\(x_3\)</span> é arbitrária, podemos obter outras duas equações permutando os índices:</p>
+<p><span class="math display">\[
+\left(I_2-I_3\right)\omega_2\omega_3 - I_1\dot\omega_1 = 0
+\]</span></p>
+<p><span class="math display">\[
+\left(I_3-I_1\right)\omega_3\omega_1 - I_2\dot\omega_2 = 0
+\]</span></p>
+<p>Essas são as <strong>equações de Euler</strong>. Na presença de uma força externa:</p>
+<p><span class="math display">\[
+\vec\tau = \left(\frac{d\vec L}{dt}\right)_{\substack{\text{fixo}\\\hookrightarrow\ \text{referencial inercial}}}
+\]</span></p>
+<p>Em termos do referencial do corpo, que é acelerado, temos:</p>
+<p><span class="math display">\[
+\vec\tau = \left(\frac{d\vec L}{dt}\right)_{\text{corpo}} + \vec\omega\times\vec L
+\]</span></p>
+<p>A componente no eixo <span class="math inline">\(x_3\)</span> é:</p>
+<p><span class="math display">\[
+\tau_3 = \dot L_3 + \omega_1 L_2 - \omega_2 L_1
+\]</span></p>
+<p>Se <span class="math inline">\(x_3\)</span> é um eixo principal de inércia, o momento angular é colinear à velocidade angular, ponderado só pelo momento principal de inércia desse mesmo eixo:</p>
+<p><span class="math display">\[
+L_3 = I_3\omega_3
+\]</span></p>
+<p>E isso vale pros outros eixos também, então:</p>
+<p><span class="math display">\[
+L_1 = I_1\omega_1 \qquad L_2 = I_2\omega_2
+\]</span></p>
+<p>Substituindo na equação:</p>
+<p><span class="math display">\[
+I_3\dot\omega_3 + \omega_1 I_2\omega_2 - \omega_2 I_1\omega_1 = \tau_3
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad
+\begin{cases}
+I_1\dot\omega_1 + \left(I_2-I_3\right)\omega_2\omega_3 = \tau_1 \\
+I_2\dot\omega_2 + \left(I_3-I_1\right)\omega_3\omega_1 = \tau_2 \\
+I_3\dot\omega_3 + \left(I_1-I_2\right)\omega_1\omega_2 = \tau_3
+\end{cases}
+\]</span></p>
+<p>Podemos escrever o sistema como:</p>
+<p><span class="math display">\[
+\left(I_i - I_j\right)\omega_i\omega_j - \sum_{k=1}^{3}\left(I_k\dot\omega_k - \tau_k\right)\varepsilon_{ijk} = 0
+\]</span></p>
+<p>Onde <span class="math inline">\(\varepsilon_{ijk}\)</span> é o símbolo de Levi-Civita.</p>
+<section id="exemplo-halter-dumbbell" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="exemplo-halter-dumbbell"><span class="header-section-number">10.6.1</span> Exemplo: halter (dumbbell)</h3>
+<p>Considere um halter formado por duas partículas ligadas por uma haste rígida com massa desprezível de comprimento <span class="math inline">\(b\)</span>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch11_fig10_dumbbell.png" class="img-fluid figure-img"></p>
+<figcaption>Halter formado por duas massas <span class="math inline">\(m_1\)</span> e <span class="math inline">\(m_2\)</span> girando com velocidade angular <span class="math inline">\(\vec\omega\)</span>; <span class="math inline">\(x_3\)</span> está na direção da haste e <span class="math inline">\(x_2\)</span> na direção de <span class="math inline">\(\vec L\)</span></figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\vec v_\alpha = \vec\omega\times\vec r_\alpha
+\]</span></p>
+<p><span class="math display">\[
+\vec L = m_1\vec r_1\times\vec v_1 + m_2\vec r_2\times\vec v_2
+\]</span></p>
+<p><span class="math inline">\(\vec L\)</span> não é constante! <span class="math inline">\(\therefore\ \vec\tau\neq 0\)</span></p>
+<p>No sistema de coordenadas do corpo, escolhemos <span class="math inline">\(x_3\)</span> na direção da haste e <span class="math inline">\(x_2\)</span> na direção de <span class="math inline">\(\vec L\)</span>:</p>
+<p><span class="math display">\[
+\vec L = L_2\,\hat x_2
+\]</span></p>
+<p>Escolhendo <span class="math inline">\(r_1=r_2=b\)</span>, as componentes da velocidade angular e dos vetores posições são:</p>
+<p><span class="math display">\[
+\begin{cases}
+\omega_1 = 0 \\
+\omega_2 = \omega\,\text{sen}\,\theta \\
+\omega_3 = \omega\cos\theta
+\end{cases}
+\qquad
+\begin{cases}
+r_{11}=0 \\ r_{12}=0 \\ r_{13}=b
+\end{cases}
+\qquad
+\begin{cases}
+r_{21}=0 \\ r_{22}=0 \\ r_{23}=-b
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad v_1 = \omega b\,\text{sen}\,\theta, \qquad v_2 = \omega b\,\text{sen}(\pi-\theta) = \omega b\,\text{sen}\,\theta
+\]</span></p>
+<p>Tensor de inércia:</p>
+<p><span class="math display">\[
+I_{ij} = \sum_{\alpha=1}^{N} m_\alpha\left(\delta_{ij}\sum_{k=1}^{3}x_{\alpha k}^2 - x_{\alpha i}x_{\alpha j}\right)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{11} = m_1\left(b^2-0\right) + m_2\left(b^2-0\right)
+\]</span></p>
+<p><span class="math display">\[
+= b^2\left(m_1+m_2\right)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{22} = b^2\left(m_1+m_2\right)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{33} = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad I_{ij}=0 \quad \forall\, i\neq j \rightarrow\ \text{os eixos escolhidos já são os principais}
+\]</span></p>
+<p>Supondo <span class="math inline">\(\vec\omega\)</span> constante, então <span class="math inline">\(\dot\omega_1=\dot\omega_2=\dot\omega_3=0\)</span></p>
+<p><span class="math display">\[
+\begin{cases}
+-\left(I_2-I_3\right)\omega_2\omega_3 = \tau_1 \\
+-\left(I_3-I_1\right)\omega_3\omega_1 = \tau_2 \qquad\longrightarrow\quad -\left[(m_1+m_2)b^2-0\right](\omega\,\text{sen}\,\alpha)(\omega\cos\theta) = \tau_1 \\
+-\left(I_1-I_2\right)\omega_1\omega_2 = \tau_3
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\therefore
+\]</span></p>
+<p><span class="math display">\[
+\tau_1 = -(m_1+m_2)b^2\omega^2\,\text{sen}\,\alpha\cos\alpha
+\]</span></p>
+<p><span class="math display">\[
+\tau_2 = \tau_3 = 0
+\]</span></p>
+</section>
+</section>
+<section id="estabilidade-de-rotações" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="estabilidade-de-rotações"><span class="header-section-number">10.7</span> Estabilidade de Rotações</h2>
+<p>Vamos considerar um corpo rígido com os três momentos principais de inércia diferentes e escolher os eixos coordenados coincidindo com os eixos principais de inércia. Considerando uma rotação em torno do eixo <span class="math inline">\(x_1\)</span>:</p>
+<p><span class="math display">\[
+\vec\omega = \omega_1\hat x_1
+\]</span></p>
+<p>Vamos aplicar uma pequena perturbação na velocidade angular:</p>
+<p><span class="math display">\[
+\vec\omega = \omega_1\hat x_1 + \lambda\hat x_2 + \mu\hat x_3
+\]</span></p>
+<p><span class="math display">\[
+\lambda \ll \omega_1, \qquad \mu \ll \omega_1
+\]</span></p>
+<p>Vamos fazer uma aproximação linear desprezando termos que sejam potências de <span class="math inline">\(\lambda\)</span> e <span class="math inline">\(\mu\)</span> ou o produto entre eles. Considerando as equações de Euler-Lagrange:</p>
+<p><span class="math display">\[
+\left(I_2-I_3\right)\omega_2\omega_3 - I_1\dot\omega_1 = 0
+\]</span></p>
+<p><span class="math display">\[
+\left(I_3-I_1\right)\omega_3\omega_1 - I_2\dot\omega_2 = 0
+\]</span></p>
+<p><span class="math display">\[
+\left(I_1-I_2\right)\omega_1\omega_2 - I_3\dot\omega_3 = 0
+\]</span></p>
+<p>Substituindo <span class="math inline">\(\vec\omega\)</span>, a gente tem:</p>
+<p><span class="math display">\[
+\left(I_2-I_3\right)\lambda\mu - I_1\dot\omega_1 = 0
+\]</span></p>
+<p><span class="math display">\[
+\left(I_3-I_1\right)\mu\omega_1 - I_2\dot\lambda = 0
+\]</span></p>
+<p><span class="math display">\[
+\left(I_1-I_2\right)\omega_1\lambda - I_3\dot\mu = 0
+\]</span></p>
+<p>Na aproximação linear, <span class="math inline">\(\lambda\mu \approx 0\)</span>. Além disso, a gente considera a velocidade angular não perturbada constante:</p>
+<p><span class="math display">\[
+\omega_1 = \text{cst.} \;\;\longrightarrow\;\; \dot\omega_1 = 0
+\]</span></p>
+<p>Com isso, a gente tem:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dot\lambda = \left(\dfrac{I_3-I_2}{I_3}\right)\mu\omega_1 \\[1.5ex]
+\dot\mu = \left(\dfrac{I_1-I_2}{I_3}\right)\lambda\omega_1
+\end{cases}
+\]</span></p>
+<p>Derivando a primeira equação no tempo:</p>
+<p><span class="math display">\[
+\ddot\lambda = \left(\frac{I_3-I_1}{I_2}\right)\omega_1\dot\mu
+\]</span></p>
+<p>E substituindo a segunda nela:</p>
+<p><span class="math display">\[
+\ddot\lambda = \left(\frac{I_3-I_1}{I_2}\right)\left(\frac{I_1-I_2}{I_3}\right)\lambda\omega_1^2
+\]</span></p>
+<p>Que podemos escrever como:</p>
+<p><span class="math display">\[
+\ddot\lambda + \Omega_{\lambda_1}^2\,\lambda = 0
+\qquad\text{onde}\qquad
+\Omega_{\lambda_1} := \sqrt{\left(\frac{I_1-I_3}{I_2}\right)\left(\frac{I_1-I_2}{I_3}\right)}\,\omega_1
+\quad\text{(troca de ordem!)}
+\]</span></p>
+<p>Supondo que <span class="math inline">\(I_3 &gt; I_2 &gt; I_1\)</span>, então a solução geral é:</p>
+<p><span class="math display">\[
+\lambda(t) = Ae^{i\Omega_{\lambda_1}t} + Be^{-i\Omega_{\lambda_1}t}
+\]</span></p>
+<p>Nesse caso, <span class="math inline">\(\Omega_{\lambda_1}\)</span> é real e a solução é oscilatória. Logo, a rotação é estável. Supondo a velocidade angular inicial em torno de outro eixo principal, a gente obtém um resultado parecido, mas com os índices permutados, resultando em três frequências <span class="math inline">\(\Omega\)</span> diferentes.</p>
+<p><span class="math display">\[
+\Omega_1 = \sqrt{\left(\frac{I_1-I_3}{I_2}\right)\left(\frac{I_1-I_2}{I_3}\right)}\,\omega_1
+\]</span></p>
+<p><span class="math display">\[
+\Omega_2 = \sqrt{\left(\frac{I_3-I_1}{I_2}\right)\left(\frac{I_2-I_1}{I_3}\right)}\,\omega_2
+\]</span></p>
+<p><span class="math display">\[
+\Omega_3 = \sqrt{\left(\frac{I_2-I_1}{I_3}\right)\left(\frac{I_2-I_3}{I_1}\right)}\,\omega_3
+\]</span></p>
+<p><span class="math display">\[
+\therefore
+\]</span></p>
+<p><span class="math display">\[
+I_3 &gt; I_2 &gt; I_1 \;\;\longrightarrow\;\; \Omega_1,\Omega_2 \in \mathbb{R};\quad \Omega_2 \in \mathbb{I}
+\]</span></p>
+<p>A rotação em torno do eixo principal correspondente ao momento intermediário é sempre instável. Esse é o <strong>teorema do eixo intermediário</strong> (ou teorema da raquete de tênis), que leva ao efeito Dzhanibekov.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lagrange-hamilton.html" class="pagination-link" aria-label="Dinâmicas Lagrangiana e Hamiltoniana">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./oscilacoes-acopladas.html" class="pagination-link" aria-label="Oscilações Acopladas">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
