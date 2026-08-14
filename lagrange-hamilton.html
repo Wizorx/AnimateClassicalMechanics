@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./oscilacoes-acopladas.html" rel="next">
+<link href="./corpo-rigido.html" rel="next">
 <link href="./calculo-variacional.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -352,8 +352,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -405,14 +405,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./corpo-rigido.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
   </div>
 </li>
       </ul>
@@ -452,6 +458,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro" id="toc-exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro" class="nav-link" data-scroll-target="#exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro"><span class="header-section-number">9.5.1</span> Exemplo: uma partícula se move sob a ação de uma força <span class="math inline">\(F=-k\vec{r}\)</span>, <span class="math inline">\(k=\text{cst.}&gt;0\)</span> restrita à superfície de um cilindro</a></li>
   </ul></li>
+  <li><a href="#teorema-do-virial" id="toc-teorema-do-virial" class="nav-link" data-scroll-target="#teorema-do-virial"><span class="header-section-number">9.6</span> Teorema do Virial</a></li>
+  <li><a href="#espaço-de-fase-e-teorema-de-liouville" id="toc-espaço-de-fase-e-teorema-de-liouville" class="nav-link" data-scroll-target="#espaço-de-fase-e-teorema-de-liouville"><span class="header-section-number">9.7</span> Espaço de fase e Teorema de Liouville</a></li>
   </ul>
 </nav>
     </div>
@@ -495,7 +503,7 @@ L := E_C - U
 <p><span class="math display">\[
 E_C = E_C(\dot{x}_i) \qquad U = U(x_i)
 \]</span></p>
-<p>Então se quisermos usar o formalismo da equação de Euler-Lagrange, as grandezas utilizadas são as seguintes:</p>
+<p>Então se quisermos usar o formalismo da equação de Euler-Lagrange (<a href="calculo-variacional.html#eq-euler-lagrange" class="quarto-xref">Equação&nbsp;<span>8.1</span></a>), as grandezas utilizadas são as seguintes:</p>
 <p><span class="math display">\[
 x \;\rightsquigarrow\; t
 \]</span> <span class="math display">\[
@@ -831,10 +839,7 @@ f(x_i, \dot{x}_i, t) = 0
 <p><span class="math display">\[
 A_i = \frac{\partial f}{\partial x_i}, \qquad B = \frac{\partial f}{\partial t}
 \;\;\rightarrow\;\;
-\sum_{i=1}^{3} \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t} = 0
-\]</span></p>
-<p><span class="math display">\[
-\underbrace{\phantom{\sum \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t}}}_{\text{derivada total em relação ao tempo}}
+\underbrace{\sum_{i=1}^{3} \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t}}_{\text{derivada total em relação ao tempo}} = 0
 \]</span></p>
 <p><span class="math display">\[
 \rightarrow \quad \frac{df}{dt} = 0 \;\;\rightarrow\;\; f = \text{cte} := c \quad\therefore\quad f - c = 0
@@ -1372,9 +1377,149 @@ p_\phi = \frac{\partial L}{\partial \phi} = mR^2\dot\phi, \qquad p_z = \frac{\pa
 <p><span class="math display">\[
 m\ddot{z} = -kz
 \]</span></p>
-
-
 </section>
+</section>
+<section id="teorema-do-virial" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="teorema-do-virial"><span class="header-section-number">9.6</span> Teorema do Virial</h2>
+<p>Considere um conjunto de partículas com posições e momentos finitos em qualquer instante, ou seja, interagentes e ligadas de alguma forma. Nesse caso, elas estão confinadas a um volume finito no espaço de fase. O momento de inércia em relação à origem é:</p>
+<p><span class="math display">\[
+I = \sum_\alpha m_\alpha r_\alpha^2
+\]</span></p>
+<p><span class="math display">\[
+= \sum_\alpha m_\alpha(\vec{r}_\alpha \cdot \vec{r}_\alpha)
+\]</span></p>
+<p>A derivada com respeito ao tempo é:</p>
+<p><span class="math display">\[
+\frac{dI}{dt} = \sum_\alpha 2m_\alpha \frac{d\vec{r}_\alpha}{dt}\cdot\vec{r}_\alpha
+\]</span></p>
+<p><span class="math display">\[
+= 2\sum_\alpha \vec{p}_\alpha \cdot \vec{r}_\alpha
+\]</span></p>
+<p>Vamos definir a seguinte grandeza:</p>
+<p><span class="math display">\[
+G := \frac{1}{2}\frac{dI}{dt} = \sum_\alpha \vec{p}_\alpha\cdot\vec{r}_\alpha
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \frac{dG}{dt} = \sum_\alpha \left(\dot{\vec p}_\alpha \cdot \vec r_\alpha + \vec p_\alpha \cdot \dot{\vec r}_\alpha\right)
+\]</span></p>
+<p>O valor médio em um intervalo de tempo <span class="math inline">\(\tau\)</span> vai ser:</p>
+<p><span class="math display">\[
+\left\langle \frac{dG}{dt} \right\rangle = \frac{1}{\tau}\int_0^\tau \frac{dG}{dt}\,d\tau
+\]</span></p>
+<p><span class="math display">\[
+= \frac{G(\tau) - G(0)}{\tau}
+\]</span></p>
+<p>Se o sistema for periódico e <span class="math inline">\(\tau\)</span> é um múltiplo de período, então:</p>
+<p><span class="math display">\[
+G(\tau) = G(0) \;\;\rightarrow\;\; \left\langle \frac{dG}{dt} \right\rangle = 0
+\]</span></p>
+<p>Se o sistema não for periódico, como <span class="math inline">\(\vec r_\alpha\)</span> e <span class="math inline">\(\vec p_\alpha\)</span> são limitados, <span class="math inline">\(\langle dG/d\tau\rangle\)</span> que pode ser tão pequeno quanto a gente queira desde que a gente escolha um <span class="math inline">\(\tau\)</span> suficientemente grande. Então podemos supor que <span class="math inline">\(\langle dG/d\tau\rangle\)</span> tende a <span class="math inline">\(0\)</span>.</p>
+<p><span class="math display">\[
+\left\langle \frac{dG}{dt} \right\rangle = \left\langle \sum_\alpha \left(\dot{\vec p}_\alpha\cdot\dot{\vec r}_\alpha + \dot{\vec p}_\alpha\cdot\hat r_\alpha\right)\right\rangle = 0
+\]</span></p>
+<p><span class="math display">\[
+= \left\langle \sum_\alpha \left(\vec p_\alpha \cdot \dot{\vec r}_\alpha\right) + \sum_\alpha\left(\dot{\vec p}_\alpha \cdot \hat r_\alpha\right)\right\rangle = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \left\langle \sum_\alpha \left(\vec p_\alpha \cdot \dot{\vec r}_\alpha\right) \right\rangle = -\left\langle \sum_\alpha \left(\dot{\vec p}_\alpha \cdot \hat r_\alpha\right) \right\rangle
+\]</span></p>
+<p><span class="math display">\[
+\left\langle 2\sum_\alpha E_{C\alpha}\right\rangle = -\left\langle \sum_\alpha \left(\vec F_\alpha \cdot \vec r_\alpha\right)\right\rangle
+\]</span></p>
+<p><span class="math display">\[
+\left\langle \sum_\alpha E_{C\alpha}\right\rangle = -\frac{1}{2}\left\langle \sum_\alpha \left(\vec F_\alpha \cdot \vec r_\alpha\right)\right\rangle \;\rightarrow\; \text{Esse é o Virial}
+\]</span></p>
+<p>Se o sistema for conservativo, então:</p>
+<p><span class="math display">\[
+\vec F_\alpha = -\vec\nabla U_\alpha
+\]</span></p>
+<p>Além disso, se a força for central e seguir uma lei de potência:</p>
+<p><span class="math display">\[
+F_\alpha \propto r_\alpha^n \;\;\rightarrow\;\; U_\alpha = Kr_\alpha^{n+1}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \vec F_\alpha \cdot \hat r_\alpha = -\vec r_\alpha\cdot(\vec\nabla U_\alpha)
+\]</span></p>
+<p><span class="math display">\[
+= -r\frac{\partial U_\alpha}{\partial r_\alpha}
+\]</span></p>
+<p><span class="math display">\[
+= -K(n+1)r_\alpha^{n+1}
+\]</span></p>
+<p><span class="math display">\[
+= -(n+1)U_\alpha
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad \langle E_{C\alpha}\rangle = -\frac{\langle U_\alpha\rangle}{2}\text{ para } n=-2 \text{, ou seja, gravidade!}
+\]</span></p>
+</section>
+<section id="espaço-de-fase-e-teorema-de-liouville" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="espaço-de-fase-e-teorema-de-liouville"><span class="header-section-number">9.7</span> Espaço de fase e Teorema de Liouville</h2>
+<p>Vamos considerar um espaço de fase hamiltoniano formado pelas variáveis canônicas <span class="math inline">\(q_i\)</span> e <span class="math inline">\(p_i\)</span>. Para um sistema com muitas partículas, como um gás, a gente não consegue identificar um ponto nesse espaço com um estado do sistema. A gente só consegue identificar uma região composta pelos pontos que podem representar o estado do sistema. Nesse caso, é útil definir uma densidade de estados no espaço de fase. O número de estados possíveis em um volume do espaço de fase é:</p>
+<p><span class="math display">\[
+N = \rho\, dV, \qquad dV = dq_1\,dq_2\cdots dq_n\,dp_1\,dp_2\cdots dp_n
+\]</span></p>
+<p>Considere um plano <span class="math inline">\(q_i \times p_i\)</span> nesse espaço de fase, com um elemento de área <span class="math inline">\(dq_\alpha\, dp_\alpha\)</span> entre <span class="math inline">\(q_\alpha\)</span> e <span class="math inline">\(q_\alpha+dq_\alpha\)</span>, e entre <span class="math inline">\(p_\alpha\)</span> e <span class="math inline">\(p_\alpha+dp_\alpha\)</span>.</p>
+<p>O número de trajetórias atravessando a borda esquerda em função do tempo vai ser:</p>
+<p><span class="math display">\[
+\rho\,\dot{q}_\alpha\,dp_\alpha
+\]</span></p>
+<p>O número de trajetórias atravessando a borda de baixo em função do tempo vai ser:</p>
+<p><span class="math display">\[
+\rho\,\dot{p}_\alpha\,dq_\alpha
+\]</span></p>
+<p>O número total de pontos entrando na região é:</p>
+<p><span class="math display">\[
+\int \left(\dot{q}_\alpha\,dp_\alpha + \dot{p}_\alpha\,dq_\alpha\right)
+\]</span></p>
+<p>Analogamente, o número total saindo é:</p>
+<p><span class="math display">\[
+\left[\rho\dot{q}_\alpha + \frac{\partial}{\partial q_\alpha}\left(\rho\dot{q}_\alpha\right)dq_\alpha\right]dp_\alpha
++ \left[\rho\dot{p}_\alpha + \frac{\partial}{\partial p_\alpha}\left(\rho\dot{p}_\alpha\right)dp_\alpha\right]dq_\alpha
+\]</span></p>
+<p>A diferença entre o que entra e o que sai é:</p>
+<p><span class="math display">\[
+\frac{\partial \rho}{\partial t}dq_\alpha\,dp_\alpha = -\frac{\partial}{\partial q_\alpha}\left(\rho\dot{q}_\alpha\right)dq_\alpha\,dp_\alpha - \frac{\partial}{\partial p_\alpha}\left(\rho\dot{p}_\alpha\right)dq_\alpha\,dp_\alpha
+\]</span></p>
+<p>Como <span class="math inline">\(dq_i\)</span> e <span class="math inline">\(dp_i\)</span> são arbitrários, isso deve valer para qualquer área no espaço de fase:</p>
+<p><span class="math display">\[
+\frac{\partial \rho}{\partial t} = -\frac{\partial}{\partial q}\left(\rho\dot{q}\right) - \frac{\partial}{\partial p}\left(\rho\dot{p}\right)
+\]</span></p>
+<p><span class="math display">\[
+= -\frac{\partial \rho}{\partial q}\dot{q} - \rho\frac{\partial \dot{q}}{\partial q} - \frac{\partial \rho}{\partial p}\dot{p}_\alpha - \rho\frac{\partial \dot p}{\partial p}
+\]</span></p>
+<p>Pelas equações de Hamilton:</p>
+<p><span class="math display">\[
+\dot{q} = \frac{\partial H}{\partial p}, \qquad \dot{p} = -\frac{\partial H}{\partial q}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \dot{q}}{\partial q} = \frac{\partial^2 H}{\partial q\,\partial p}, \qquad \frac{\partial \dot{p}}{\partial p} = -\frac{\partial^2 H}{\partial p\,\partial q}
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \dot{q}}{\partial q} = -\frac{\partial \dot{p}}{\partial p}
+\]</span></p>
+<p>Com isso, temos:</p>
+<p><span class="math display">\[
+\frac{\partial \rho}{\partial t} + \frac{\partial \rho}{\partial q}\dot{q} + \frac{\partial \rho}{\partial p}\dot{p} = 0
+\]</span></p>
+<p>Se considerarmos isso para todos os planos <span class="math inline">\(q_i \times p_i\)</span>:</p>
+<p><span class="math display">\[
+\frac{\partial \rho}{\partial t} + \sum_{i=1}^{N} \frac{\partial \rho}{\partial q_i}\dot{q}_i + \frac{\partial \rho}{\partial p_i}\dot{p}_i = 0
+\]</span></p>
+<p><span class="math display">\[
+\therefore
+\]</span></p>
+<p><span class="math display">\[
+\frac{d\rho}{dt} = 0 \qquad \text{Teorema de Liouville!}
+\]</span></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1798,8 +1943,8 @@ m\ddot{z} = -kz
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./oscilacoes-acopladas.html" class="pagination-link" aria-label="Oscilações Acopladas">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./corpo-rigido.html" class="pagination-link" aria-label="Corpo Rígido">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

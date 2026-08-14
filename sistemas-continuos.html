@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Sistemas Contínuos – Mecânica Clássica Animada</title>
+<title>12&nbsp; Sistemas Contínuos – Mecânica Clássica Animada</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./oscilacoes-acopladas.html" rel="prev">
+<link href="./corpo-rigido.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -294,7 +294,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./sistemas-continuos.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./sistemas-continuos.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -351,8 +351,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -404,14 +404,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./corpo-rigido.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
   </div>
 </li>
       </ul>
@@ -426,7 +432,7 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#equação-de-onda" id="toc-equação-de-onda" class="nav-link active" data-scroll-target="#equação-de-onda"><span class="header-section-number">11.1</span> Equação de onda</a></li>
+  <li><a href="#equação-de-onda" id="toc-equação-de-onda" class="nav-link active" data-scroll-target="#equação-de-onda"><span class="header-section-number">12.1</span> Equação de onda</a></li>
   </ul>
 </nav>
     </div>
@@ -434,9 +440,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./sistemas-continuos.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./sistemas-continuos.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></h1>
 <p class="subtitle lead">Capítulo 13 — Continuous Systems: Waves (Thornton &amp; Marion)</p>
 </div>
 
@@ -582,8 +588,8 @@ E_T = E_C + U = \frac{\rho L}{4}\sum_r \omega_r^2\left(\mu_r^2+\nu_r^2\right)
 \qquad\therefore\qquad
 \boxed{\langle E_C\rangle = \langle U\rangle}
 \]</span></p>
-<section id="equação-de-onda" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="equação-de-onda"><span class="header-section-number">11.1</span> Equação de onda</h2>
+<section id="equação-de-onda" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="equação-de-onda"><span class="header-section-number">12.1</span> Equação de onda</h2>
 <p>Vamos voltar na equação de movimento para uma partícula no fio carregado.</p>
 <p><span class="math display">\[
 m\ddot{q}_j = \frac{T}{d}(q_{j-1}-q_j) - \frac{T}{d}(q_j - q_{j+1})
@@ -1183,8 +1189,8 @@ T := 1-R = \frac{4k_1k_2}{(k_1+k_2)^2} = \frac{k_2}{k_1}\frac{|C|^2}{|A|^2} \qqu
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./oscilacoes-acopladas.html" class="pagination-link" aria-label="Oscilações Acopladas">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span>
+      <a href="./corpo-rigido.html" class="pagination-link" aria-label="Corpo Rígido">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

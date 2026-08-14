@@ -352,8 +352,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -405,14 +405,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./corpo-rigido.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
   </div>
 </li>
       </ul>
@@ -539,9 +545,12 @@ u = \frac{\partial f}{\partial y'} \quad\text{e}\quad dv = \frac{d\eta}{dx}\,dx
 <p>Para que <span class="math inline">\(J\)</span> seja extremo então, essa expressão deve ser nula:</p>
 <p><span class="math display">\[
 \frac{\partial J}{\partial x} = 0
-\;\;\longrightarrow\;\;
-\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0
+\]</span> <span class="math display">\[
+\;\;\Downarrow\;\;
 \]</span></p>
+<p><span id="eq-euler-lagrange"><span class="math display">\[
+\boxed{\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0}
+\tag{8.1}\]</span></span></p>
 <p>Essa é a equação de Euler-Lagrange. Com ela vamos considerar o problema da braquistócrona: qual a curva que descreve a trajetória de uma partícula que se move apenas sob a ação de um campo gravitacional constante (ou seja, uniforme e estacionário) tal que o tempo seja o menor?</p>
 <p>Considere que a partícula sai do repouso em <span class="math inline">\((x_1, y_1)\)</span> e chega em <span class="math inline">\((x_2, y_2)\)</span>. Escolhemos um sistema de coordenadas com origem em <span class="math inline">\((x_1, y_1)\)</span>, tal que o campo seja dado por:</p>
 <p><span class="math display">\[
