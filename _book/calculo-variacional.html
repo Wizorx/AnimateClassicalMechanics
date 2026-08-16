@@ -312,6 +312,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Mecânica Clássica Animada</a> 
         <div class="sidebar-tools-main">
+    <a href="https://github.com/wizorx/AnimateClassicalMechanics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
 </div>
     </div>
@@ -405,14 +406,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./corpo-rigido.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sistemas-continuos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span></a>
   </div>
 </li>
       </ul>
@@ -429,7 +436,7 @@ window.Quarto = {
   <ul>
   <li><a href="#segunda-forma-da-equação-de-euler-lagrange" id="toc-segunda-forma-da-equação-de-euler-lagrange" class="nav-link active" data-scroll-target="#segunda-forma-da-equação-de-euler-lagrange"><span class="header-section-number">8.1</span> Segunda forma da equação de Euler-Lagrange</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/edit/main/calculo-variacional.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/blob/main/calculo-variacional.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -539,9 +546,12 @@ u = \frac{\partial f}{\partial y'} \quad\text{e}\quad dv = \frac{d\eta}{dx}\,dx
 <p>Para que <span class="math inline">\(J\)</span> seja extremo então, essa expressão deve ser nula:</p>
 <p><span class="math display">\[
 \frac{\partial J}{\partial x} = 0
-\;\;\longrightarrow\;\;
-\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0
+\]</span> <span class="math display">\[
+\;\;\Downarrow\;\;
 \]</span></p>
+<p><span id="eq-euler-lagrange"><span class="math display">\[
+\boxed{\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0}
+\tag{8.1}\]</span></span></p>
 <p>Essa é a equação de Euler-Lagrange. Com ela vamos considerar o problema da braquistócrona: qual a curva que descreve a trajetória de uma partícula que se move apenas sob a ação de um campo gravitacional constante (ou seja, uniforme e estacionário) tal que o tempo seja o menor?</p>
 <p>Considere que a partícula sai do repouso em <span class="math inline">\((x_1, y_1)\)</span> e chega em <span class="math inline">\((x_2, y_2)\)</span>. Escolhemos um sistema de coordenadas com origem em <span class="math inline">\((x_1, y_1)\)</span>, tal que o campo seja dado por:</p>
 <p><span class="math display">\[
@@ -1420,4 +1430,4 @@ u := \lambda^2 - (x-c_1')^2, \qquad du := -2(x-c_1')\,dx
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/edit/main/calculo-variacional.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/blob/main/calculo-variacional.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li></ul></div></div></div></footer></body></html>

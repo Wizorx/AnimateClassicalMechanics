@@ -120,9 +120,14 @@ Para que $J$ seja extremo então, essa expressão deve ser nula:
 
 $$
 \frac{\partial J}{\partial x} = 0
-\;\;\longrightarrow\;\;
-\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0
 $$
+$$
+\;\;\Downarrow\;\;
+$$
+
+$$
+\boxed{\frac{\partial f}{\partial y} - \frac{d}{dx}\!\left(\frac{\partial f}{\partial y'}\right) = 0}
+$$ {#eq-euler-lagrange}
 
 Essa é a equação de Euler-Lagrange. Com ela vamos considerar o problema da braquistócrona: qual a curva que descreve a trajetória de uma partícula que se move apenas sob a ação de um campo gravitacional constante (ou seja, uniforme e estacionário) tal que o tempo seja o menor?
 

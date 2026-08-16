@@ -1,4 +1,4 @@
 # Introdução {.unnumbered .unlisted}
 
 
-Boas-vindas a Clássica 1! Aqui você vai ter uma visão mais aprofundada e mais matematizada do que você já viu em [⚛️ Física 1](https://app.notion.com/p/F-sica-1-156a1e41847f81caa85bf6e9c1ed27ba?pvs=21) e [⚛️ Física 2](https://app.notion.com/p/F-sica-2-156a1e41847f818c9e59e3ecbd96db96?pvs=21) sem introduzir praticamente nada novo. Pra isso, você vai precisar de coisas lá de [🧮 Cálculo 3](https://app.notion.com/p/C-lculo-3-156a1e41847f81c687cff84604511f56?pvs=21), [🔡 Álgebra Linear 2](https://app.notion.com/p/lgebra-Linear-2-156a1e41847f81448378e37afe2c2ea9?pvs=21) e uma pitada de [🖋️ Métodos da Física Teórica 1](https://app.notion.com/p/M-todos-da-F-sica-Te-rica-1-156a1e41847f81ed8294f6facb96c772?pvs=21). Como sempre, aqui embaixo vai a bibliografia. Caso você não queira perder tempo com a teoria, as fórmulas importantes estarão destacadas com $\boxed{\text{uma caixa em volta}}$. Bons estudos :)
+@eq-euler-lagrange

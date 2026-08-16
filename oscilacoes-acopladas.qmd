@@ -4,6 +4,411 @@ subtitle: "Capítulo 12 — Coupled Oscillations (Thornton & Marion)"
 format: html
 ---
 
+![Dois blocos $m_1$ e $m_2$ conectados por molas $K_1$, $K_{12}$ e $K_2$ entre duas paredes fixas](figs/ch12_fig0_two_mass_spring.png)
+
+Supondo que todas as molas obedecem à lei de Hooke e considerando que $x_1$ e $x_2$ são medidas com respeito à posição de equilíbrio, as equações de movimento ficam:
+
+$$
+m_1\ddot{x}_1 = -K_1x_1 - K_{12}(x_1-x_2)
+$$
+
+$$
+m_2\ddot{x}_2 = -K_2x_1 - K_{12}(x_2-x_1)
+$$
+
+Reescrevendo:
+
+$$
+m_1\ddot{x}_1 + (K_1+K_{12})x_1 - K_{12}x_2 = 0
+$$
+
+$$
+m_2\ddot{x}_2 + (K_2+K_{12})x_2 - K_{12}x_2 = 0
+$$
+
+Escolhendo $m_1=m_2=M$ e $k_1=k_2=K$, vamos propor uma solução do tipo:
+
+$$
+x_1(t) = B_1e^{i\omega t}
+$$
+
+$$
+x_2(t) = B_2e^{i\omega t}
+$$
+
+Onde $\omega$ precisa ser encontrado:
+
+$$
+\ddot{x}_1 = -\omega^2 B_1 e^{i\omega t}
+$$
+
+$$
+\ddot{x}_2 = -\omega^2 B_2 e^{i\omega t}
+$$
+
+$$
+\rightarrow
+\begin{cases}
+-M\omega^2 B_1e^{i\omega t} + (K+K_{12})B_1e^{i\omega t} - K_{12}B_2e^{i\omega t} = 0 \\
+-M\omega^2 B_2e^{i\omega t} + (K+K_{12})B_2e^{i\omega t} - K_{12}B_1e^{i\omega t} = 0
+\end{cases}
+$$
+
+$$
+\rightarrow
+\begin{cases}
+\left(K+K_{12}-M\omega^2\right)B_1 - K_{12}B_2 = 0 \\
+-K_{12}B_1 + \left(K+K_{12}-M\omega^2\right)B_2 = 0
+\end{cases}
+$$
+
+Na forma matricial:
+
+$$
+\begin{bmatrix}
+K+K_{12}-M\omega^2 & -K_{12} \\
+-K_{12} & K+K_{12}-M\omega^2
+\end{bmatrix}
+\begin{bmatrix} B_1 \\ B_2 \end{bmatrix}
+=
+\begin{bmatrix} 0 \\ 0 \end{bmatrix}
+$$
+
+$$
+\rightarrow \quad
+\begin{bmatrix} K+K_{12} & -K_{12} \\ -K_{12} & K+K_{12} \end{bmatrix}
+\begin{bmatrix} B_1 \\ B_2 \end{bmatrix}
+= M\omega^2 \begin{bmatrix} B_1 \\ B_2 \end{bmatrix}
+$$
+
+$$
+\therefore \quad Z\vec v = \lambda\vec v
+$$
+
+Que é um problema de autovalores! Então para que tenha solução não trivial, o determinante da matriz aqui embaixo tem que ser nulo.
+
+$$
+Z\vec v = \mathbb{1}\lambda\vec v
+$$
+
+$$
+Z\vec v - \mathbb{1}\lambda\vec v = 0
+$$
+
+$$
+\left(Z-\mathbb{1}\lambda\right)\vec v = 0
+$$
+
+$$
+\left(Z-\mathbb{1}\lambda\right)_\Box = 0
+$$
+
+$$
+\begin{bmatrix} K+K_{12}-M\omega^2 & -K_{12} \\ -K_{12} & K+K_{12}-M\omega^2 \end{bmatrix}_\Box = 0
+$$
+
+$$
+\rightarrow \quad \left(K+K_{12}-M\omega^2\right)^2 - K_{12}^2 = 0
+$$
+
+$$
+\rightarrow \quad K+K_{12}-M\omega^2 = \pm K_{12}
+$$
+
+$$
+\rightarrow \quad \omega = \pm\sqrt{\frac{K+K_{12}\mp K_{12}}{M}}
+$$
+
+Existem, nesse caso, duas frequências características (ou autofrequências):
+
+$$
+\omega_1 = \sqrt{\frac{K+2K_{12}}{M}}, \qquad \omega_2 = \sqrt{\frac{K}{M}}
+$$
+
+A solução geral fica:
+
+$$
+x_1(t) = C_1e^{i\omega_1 t} + C_2e^{-i\omega_1 t} + C_3e^{i\omega_2 t} + C_4e^{-i\omega_2 t}
+$$
+
+$$
+x_2(t) = -C_1e^{i\omega_1 t} - C_2e^{-i\omega_1 t} + C_3e^{i\omega_2 t} + C_4e^{-i\omega_2 t}
+$$
+
+E se você tiver uma sacada genial ou ficar tempo suficiente quebrando a cabeça, você pode fazer a seguinte mudança de coordenadas:
+
+$$
+\begin{cases}
+\eta_1 = x_1-x_2 \\
+\eta_2 = x_1+x_2
+\end{cases}
+\qquad\longrightarrow\qquad
+\begin{cases}
+x_1 = \dfrac{1}{2}\left(\eta_2+\eta_1\right) \\
+x_2 = \dfrac{1}{2}\left(\eta_2-\eta_1\right)
+\end{cases}
+$$
+
+$$
+\therefore
+\begin{align}
+&M\ddot{x}_1 + (K+K_{12})x_1 - K_{12}x_2 = 0 \hfill &(1) \\
+&M\ddot{x}_2 + (K+K_{12})x_2 - K_{12}x_1 = 0 \hfill &(2)
+\end{align}
+$$
+
+$$
+\rightarrow \quad \ddot{x}_1 = \frac{1}{2}\left(\ddot\eta_2+\ddot\eta_1\right), \qquad \ddot{x}_2 = \frac{1}{2}\left(\ddot\eta_2-\ddot\eta_1\right)
+$$
+
+$$
+(1) \rightarrow \quad \frac{M}{2}\left(\ddot\eta_2+\ddot\eta_1\right) + \frac{(K_1+K_{12})}{2}\left(\eta_2+\eta_1\right) - \frac{K_{12}}{2}\left(\eta_2-\eta_1\right) = 0
+$$
+
+$$
+(2) \rightarrow \quad \frac{M}{2}\left(\ddot\eta_2-\ddot\eta_1\right) + \frac{(K_1+K_{12})}{2}\left(\eta_2-\eta_1\right) - \frac{K_{12}}{2}\left(\eta_2+\eta_1\right) = 0
+$$
+
+$$
+(1)+(2) \rightarrow \quad M\ddot\eta_2 + (K+K_{12})\eta_2 - K_{12}\eta_2 = 0
+$$
+
+$$
+\rightarrow \quad M\ddot\eta_2 + K\eta_2 = 0
+$$
+
+$$
+(1)-(2) \rightarrow \quad 2M\ddot\eta_1 + (K+K_{12})2\eta_1 + 2K_{12}\eta_1 = 0
+$$
+
+Essa mudança de coordenadas então desacopla as equações de movimento. Quaisquer variáveis em termos das quais o sistema fica desacoplado recebem o nome de **coordenadas normais**. Nessas variáveis, a solução fica:
+
+$$
+\eta_1(t) = D_{1+}e^{i\omega_1 t} - D_{1-}e^{-i\omega_1 t}
+$$
+
+$$
+\eta_2(t) = D_{2+}e^{i\omega_2 t} - D_{2-}e^{-i\omega_2 t}
+$$
+
+Se a gente considerar as seguintes condições iniciais...
+
+$$
+\begin{cases}
+x_1(0) = -x_2(0) \\
+\dot{x}_1(0) = -\dot{x}_2(0)
+\end{cases}
+\qquad\longrightarrow\qquad
+\begin{cases}
+\eta_2(0) = 0 \\
+\dot\eta_2(0) = 0
+\end{cases}
+$$
+
+...acaba que, com isso, $\eta_2(t)=0\ \forall\, t$. O que resulta no **modo antissimétrico**. Mas se a gente considerar essas outras:
+
+$$
+\begin{cases}
+x_1(0) = x_2(0) \\
+\dot{x}_1(0) = \dot{x}_2(0)
+\end{cases}
+\qquad\longrightarrow\qquad
+\eta_1(t) = 0\ \forall\, t
+$$
+
+O que resulta no **modo simétrico**.
+
+Cada um dos osciladores (idênticos) tem frequência $\omega_0=\sqrt{(K+K_{12})/M}$ quando o outro é fixo. A gente pode dizer que eles estão no mesmo "estado" de movimento (ou energia). O acoplamento "quebra" esse estado em dois outros possíveis com frequências diferentes: uma maior e outra menor:
+
+![Diagrama de quebra de frequência: $\omega_0$ se separa em $\omega_1$ (maior) e $\omega_2$ (menor)](figs/ch12_fig_freq_split_2osc.png)
+
+O número de frequências que aparecem com o acoplamento depende do número de osciladores. Se o número de osciladores for ímpar, a frequência natural continua disponível.
+
+![Para três osciladores acoplados, $\omega_0$ se separa em $\omega_1$, $\omega_2=\omega_0$ e $\omega_3$](figs/ch12_fig_freq_split_3osc.png)
+
+Vamos considerar que a mola intermediária é mais fraca que as outras, ou seja, $K_{12} \ll K$. O que significa que se trata de um **acoplamento fraco**. A primeira frequência é:
+
+$$
+\omega_1 = \sqrt{\frac{K+2K_{12}}{M}} = \sqrt{\frac{K}{M}}\sqrt{1+\frac{2K_{12}}{M}}
+$$
+
+Definindo o parâmetro $\varepsilon := K_{12}/(2K)$, a frequência fica:
+
+$$
+\omega_1 = \sqrt{\frac{K}{M}}\sqrt{1+4\varepsilon}
+$$
+
+E aí sim a gente pode fazer a nossa aproximação:
+
+$$
+(1+x)^\alpha \cong 1+\alpha x, \qquad x \ll 1
+$$
+
+$$
+\rightarrow \quad \omega_1 \cong \sqrt{\frac{K}{M}}(1+2\varepsilon)
+$$
+
+$$
+\omega_0 \cong \sqrt{\frac{K+K_{12}}{M}} = \sqrt{\frac{K}{M}}(1+\varepsilon)
+$$
+
+$$
+\rightarrow \quad \sqrt{\frac{K}{M}} \cong \frac{\omega_0}{(1+\varepsilon)} = \omega(1+\varepsilon)^{-1}
+$$
+
+$$
+\cong \omega_0(1-\varepsilon)
+$$
+
+$$
+\therefore \quad \omega_1 \cong \omega_0(1-\varepsilon)(1+2\varepsilon)
+$$
+
+$$
+\cong \omega_0(1+\varepsilon)
+$$
+
+Pela mesma lógica, $\omega_2 \cong \omega_0(1-\varepsilon)$.
+
+Considerando as seguintes condições iniciais:
+
+$$
+x_1(0)=D, \qquad x_2(0)=0
+$$
+
+$$
+\dot{x}_1(0)=0, \qquad \dot{x}_2(0)=0
+$$
+
+As soluções para a partícula 1 vai ser:
+
+$$
+x_1(t) = \frac{D}{4}\left[e^{i\omega_1 t} + e^{-i\omega_1 t} + e^{i\omega_2 t} + e^{-i\omega_2 t}\right]
+$$
+
+Tomando a parte real:
+
+$$
+x_1(t) = \frac{D}{2}\left[\cos(\omega_1 t) + \cos(\omega_2 t)\right]
+$$
+
+$$
+= D\cos\left(\frac{\omega_1+\omega_2}{2}t\right)\cos\left(\frac{\omega_1-\omega_2}{2}t\right)
+$$
+
+$$
+\frac{\omega_1+\omega_2}{2} \cong \omega_0 \qquad\qquad \frac{\omega_1-\omega_2}{2} = \varepsilon\omega_0
+$$
+
+$$
+\longrightarrow \quad x_1(t) \cong D\cos(\varepsilon\omega_0 t)\cos(\omega_0 t)
+$$
+
+Para $x_2$ temos:
+
+$$
+x_2(t) = D\,\text{sen}(\varepsilon\omega_0 t)\,\text{sen}(\omega_0 t)
+$$
+
+Esse fenômeno — a amplitude de cada oscilador variando lentamente com frequência $\varepsilon\omega_0$, modulando a oscilação rápida de frequência $\omega_0$ — é o batimento (*beating*) entre os dois modos normais.
+
+## Teoria geral de pequenas oscilações
+
+Vamos considerar o problema geral considerando um sistema conservativo descrito em termos de $n$ coordenadas generalizadas $q_k$ ($k=1,2,3,\ldots,n$) e do tempo. Existe uma posição de equilíbrio tal que:
+
+$$
+q_k = q_{k_0}, \qquad \dot{q}_k = 0, \qquad \ddot{q}_k = 0 \quad \forall\, k
+$$
+
+Nessa configuração de equilíbrio, as equações de Euler-Lagrange ficam:
+
+$$
+\frac{\partial L}{\partial q_k} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_k}\right) = 0
+\qquad\longrightarrow\qquad
+\frac{\partial U}{\partial q_k} - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{q}_k}\right) = 0
+\qquad\rightarrow\qquad
+\left.\frac{\partial U}{\partial q_k}\right|_0 = 0
+$$
+
+Existe uma transformação que relaciona as coordenadas generalizadas com as coordenadas espaciais regulares. Supondo que ela não depende explicitamente do tempo:
+
+$$
+x_{\alpha i} = x_{\alpha i}(q_k)
+$$
+
+Nesse caso, a gente mostrou que a energia cinética é uma forma quadrática das velocidades:
+
+$$
+E_C = \frac{1}{2}\sum_{j=1}^{n}\sum_{k=1}^{n} m_{jk}\,\dot{q}_j\dot{q}_k
+\qquad\left(\text{onde}\quad m_{jk} = \sum_{\alpha=1}^{N} m_\alpha\sum_{i=1}^{n}\frac{\partial x_{\alpha i}}{\partial q_j}\frac{\partial x_{\alpha i}}{\partial q_k} = \sum_{\alpha=1}^{N} m_\alpha\sum_{i=1}^{n}\frac{\partial^2 x_{\alpha i}}{\partial q_j \partial q_k}\right)
+$$
+
+$$
+\frac{\partial E_C}{\partial q_k} = 0 \quad\forall\, k
+$$
+
+Vamos escolher $q_{k0}=0\ \forall\, k$. Expandindo $U$ em série de Taylor em torno da configuração de equilíbrio:
+
+$$
+U = U_0 + \sum_{k=1}^{n}\left.\frac{\partial U}{\partial q_k}\right|_0 q_k + \frac{1}{2}\sum_{j=1}^{n}\sum_{k=1}^{n}\left.\frac{\partial^2 U}{\partial q_j\partial q_k}\right|_0 q_jq_k + \frac{1}{3!}\sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n}\frac{\partial^3 U}{\partial q_i\partial q_j\partial q_k}q_iq_jq_k + \cdots
+$$
+
+A gente pode sempre escolher $U_0=0$. Além disso, vale o seguinte:
+
+$$
+\left.\frac{\partial U}{\partial q_k}\right|_0 = 0
+$$
+
+Logo, na vizinhança da configuração de equilíbrio:
+
+$$
+U = \frac{1}{2}\sum_{j=1}^{n}\sum_{k=1}^{n} A_{jk}\,q_jq_k
+\qquad\text{onde}\qquad
+A_{jk} = \left.\frac{\partial^2 U}{\partial q_j\partial q_k}\right|_0
+$$
+
+Expandindo em torno da configuração de equilíbrio:
+
+$$
+m_{jk} = m_{jk}(q_{\ell 0}) + \sum_{\ell=1}^{n}\left.\frac{\partial m_{jk}}{\partial q_\ell}\right|_0 q_\ell + \cdots
+$$
+
+Em primeira aproximação, $m_{jk}\cong m_{jk}(q_{\ell 0})$, que é constante. O acoplamento é caracterizado pelos termos não diagonais ($j\neq k$). Voltando para as equações de Euler-Lagrange:
+
+$$
+\frac{\partial L}{\partial q_k} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_k}\right) = 0
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\frac{\partial L}{\partial q_k} - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{q}_k}\right) = 0
+$$
+
+onde
+
+$$
+\frac{\partial U}{\partial q_k} = \sum_{j=1}^{n} A_{jk}\,q_j, \qquad \frac{\partial E_C}{\partial \dot{q}_k} = \sum_{j=1}^{n} m_{jk}\,\dot{q}_j
+$$
+
+$$
+\rightarrow \quad \sum_{j=1}^{n}\left(A_{jk}\,q_j + m_{jk}\,\ddot{q}_j\right) = 0 \tag{1}
+$$
+
+A solução é da forma...
+
+$$
+q_j(t) = a_j\,e^{i(\omega t-\delta)}, \qquad a_j \in \mathbb{R}\ \forall\, j \qquad \therefore\ z=Ae^{i\phi}
+$$
+
+Substituindo em (1):
+
+$$
+\sum_{j=1}^{n}\left(A_{jk}-\omega^2 m_{jk}\right)a_j = 0
+$$
+
 Para encontrar $\omega$, impomos o seguinte:
 
 $$
@@ -24,7 +429,7 @@ $$
 
 onde $r$ indica a autofrequência.
 
-## Exemplo: dois osciladores harmônicos simples idênticos acoplados
+### Exemplo: voltando ao caso inicial de dois osciladores harmônicos simples idênticos acoplados
 
 $$
 n = 2
@@ -117,11 +522,11 @@ $$
 L = (n+1)d
 $$
 
-<!-- ![Fio elástico com $n$ partículas idênticas separadas por uma distância $d$ no equilíbrio](figs/ch12_fig2_string_equilibrium.png) -->
+![Fio elástico com $n$ partículas idênticas separadas por uma distância $d$ no equilíbrio](figs/ch12_fig2_string_equilibrium.png)
 
 Vamos considerar deslocamentos transversais à direção de equilíbrio.
 
-<!-- ![Deslocamentos transversais $q_{j-1}$, $q_j$, $q_{j+1}$ das partículas vizinhas, separadas por uma distância $d$, com ângulo $\theta$ em relação à horizontal](figs/ch12_fig3_string_transverse.png) -->
+![Deslocamentos transversais $q_{j-1}$, $q_j$, $q_{j+1}$ das partículas vizinhas, separadas por uma distância $d$, com ângulo $\theta$ em relação à horizontal](figs/ch12_fig3_string_transverse.png)
 
 Supomos que a tensão $T$ no fio é a mesma ao longo do fio (ou seja, ele é homogêneo), a componente transversal da tensão é do tipo $T\,\text{sen}\,\theta$.
 
@@ -307,6 +712,6 @@ $$
 
 Para $n=3$:
 
-<!-- ![Modos normais para $n=3$: os três primeiros modos ($r=1,2,3$) e o modo nulo ($r=4$)](figs/ch12_fig1_normal_modes.png) -->
+![Modos normais para $n=3$: os três primeiros modos ($r=1,2,3$) e o modo nulo ($r=4$)](figs/ch12_fig1_normal_modes.png)
 
 $n+1$ é o modo nulo!

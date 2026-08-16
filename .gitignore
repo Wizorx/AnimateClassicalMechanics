@@ -5,6 +5,11 @@ build/
 dist/
 wheels/
 *.egg-info
+_book/
+*.py
+_extensions/
+_media/
+uv.lock
 
 # Virtual environments
 .venv

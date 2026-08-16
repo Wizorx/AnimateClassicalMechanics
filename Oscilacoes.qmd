@@ -1,0 +1,1023 @@
+---
+title: Oscilações
+jupyter: python3
+---
+
+Vamos revisar o fato de que podemos expandir uma função em série de Taylor. Se fizermos isso para a força agindo sobre o sistema, considerando que a força depende explicitamente apenas da posição e considerando o caso unidimensional, temos:
+
+$$
+\begin{aligned}
+F(x)= & F\left(x_{0}\right)+\left(x-x_{0}\right)\left(\frac{d F}{d x}\right)_{x_{0}}+\frac{\left(x-x_{0}\right)^{2}}{2!}\left(\frac{d^{2} F}{d x^{2}}\right)_{x_{0}}+ \\
+& +\frac{\left(x-x_{0}\right)^{3}}{3!}\left(\frac{d^{3} F}{d x^{3}}\right)_{x_{0}}+\cdots
+\end{aligned}
+$$
+
+Se $x_{0}$ é um ponto de equilíbrio, temos:
+
+$$
+F\left(x_{0}\right)=0
+$$
+
+Na vizinhança do ponto, $\left(x-x_{0}\right) \ll x_{0}$, e podemos escrever, em primeiras aproximações:
+
+$$
+F(x) \cong\left(x-x_{0}\right)\left(\frac{d F}{d x}\right)_{x_{0}}
+$$
+
+onde $\left(x-x_{0}\right)$ é o deslocamento da posição de equilíbrio. Como vimos antes, se o equilíbrio é estável, $x_{0}$ corresponde a um mínimo da energia potencial, logo $\left(\frac{d F}{d x}\right)_{x_{0}}<0$. Escolhendo $x_{0}=0$ e $k \equiv-\left(\frac{d F}{d x}\right)_{0}$, temos:
+
+$$
+F(x)=-k x
+$$
+
+que conhecemos como Lei de Hooke.
+
+Um oscilador harmônico simples é o sistema formado por uma partícula sujeita a uma força do tipo da Lei de Hooke. A equação de movimento do sistema é:
+
+$$
+F=m a \Rightarrow-k x=m \frac{d^{2} x}{d t^{2}}
+$$
+
+$\frac{d^{2} x}{d t^{2}}+\omega_{0}^{2} x=0 \;;\quad \omega_{0}^{2}=\frac{k}{m}$  
+Essa é uma equação diferencial ordinária de 2ª ordem, homogênea. A solução geral pode ser escrita como:
+
+$$
+x(t)=A \cos \left(\omega_{0} t+\delta\right)
+$$
+
+onde $A$ é a amplitude do movimento, $\left(\omega_{0} t+\delta\right)$ é a fase e $\delta$ é a constante de fase. $A$ e $\delta$ estão determinados pelas condições iniciais:
+
+$$
+\begin{aligned}
+& x\left(t_{0}\right)=x_{0} \\
+& \frac{d x}{d t}\left(t_{0}\right)=v_{0}
+\end{aligned}
+$$
+
+Dada a solução geral, podemos escrever a energia cinética como:
+
+$$
+E_{c}=\frac{m}{2} v^{2}=\frac{m}{2} \omega_{0}^{2} A^{2} \operatorname{sen}^{2}\left(\omega_{0} t+\delta\right)
+$$
+
+A energia potencial pode ser obtida a partir da força:
+
+$$
+F=-\frac{d U}{d x} \Rightarrow d U=+k x\, d x \Rightarrow U=\frac{k x^{2}}{2}
+$$
+
+$$
+U=\frac{m \omega_{0}^{2}}{2} A^{2} \cos ^{2}\left(\omega_{0} t+\delta\right)
+$$
+
+A energia mecânica fica:
+
+$$
+\begin{aligned}
+& E_{M}=E_{c}+U=\frac{m \omega_{0}^{2} A^{2}}{2}\left[\operatorname{sen}^{2}\left(\omega_{0} t+\delta\right)+\cos ^{2}\left(\omega_{0} t+\delta\right)\right] \\
+& E_{M}=\frac{m \omega_{0}^{2}}{2} A^{2}, \text { que é conservada. }
+\end{aligned}
+$$
+
+Podemos definir o período do movimento, tal que:
+
+$$
+x(t+T)=x(t), \forall t
+$$
+
+Com isso:
+
+$$
+T_{0}=\frac{2 \pi}{\omega_{0}}
+$$
+
+A frequência é o número de oscilações completas em um intervalo de tempo:
+
+$$
+f_{0}=\frac{1}{T_{0}}=\frac{\omega_{0}}{2 \pi}
+$$
+
+O período do oscilador harmônico simples não depende da amplitude:
+
+$$
+T_{0}=2 \pi \sqrt{\frac{m}{k}}
+$$
+
+Por isso o sistema é chamado isócrono.
+
+Se a força que age sobre o sistema não for exatamente igual a $-kx$, isso não é verdade. O exemplo mais simples disso é o pêndulo simples:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Se o fio é inextensível e sem massa, a equação de movimento fica:
+
+$$
+m \frac{d^{2}}{d t^{2}}(l \theta)=m g \operatorname{sen} \theta \Rightarrow \frac{d^{2} \theta}{d t^{2}}=\frac{g}{l} \operatorname{sen} \theta
+$$
+
+que é diferente da de um OHS.  
+Se $\theta \ll 1$ rad, então $\operatorname{sen}\theta \approx \theta$.
+
+Vamos considerar um pêndulo físico, em que consideramos o movimento de um corpo rígido em torno de um eixo que não passa pelo centro de massa. Consideremos uma esfera homogênea, de raio $R$:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+O ponto $P$ é fixo e:
+
+$$
+\vec{P}=M \vec{g}
+$$
+
+Nós vimos que a equação de movimento obedece a:
+
+$$
+\vec{\tau}=\frac{d \vec{L}}{d t}
+$$
+
+Como a esfera é homogênea, o ponto de aplicação do peso é no seu centro. A equação pode ser escrita como:
+
+$$
+\tau=I \frac{d^{2} \theta}{d t^{2}}
+$$
+
+onde $I$ é o momento de inércia do sistema:
+
+$$
+I \equiv \int r^{2} d m
+$$
+
+Para um eixo que passa pelo centro de massa da esfera:
+
+$$
+I_{CM}=\frac{2}{5} M R^{2}
+$$
+
+Mas o eixo que escolhemos não passa pelo CM. Pelo teorema dos eixos paralelos, temos que:
+
+$$
+I=I_{CM}+M R^{2} \text {, pois } R \text { é a distância do eixo ao centro de massa.}
+$$
+
+Logo:
+
+$$
+I=\frac{2}{5} M R^{2}+M R^{2}=\frac{7}{5} M R^{2}
+$$
+
+O torque do peso é:
+
+$$
+\tau=M g R \sin \theta
+$$
+
+Com isso, a equação de movimento fica:
+
+$$
+\begin{aligned}
+& M g R \operatorname{sen} \theta=\frac{7}{5} M R^{2} \frac{d^{2} \theta}{d t^{2}} \\
+& \frac{d^{2} \theta}{d t^{2}}=\frac{5}{7} \frac{g}{R} \operatorname{sen} \theta
+\end{aligned}
+$$
+
+Considerando a aproximação de pequenos ângulos, reduz-se a:
+
+$$
+\frac{d^{2} \theta}{d t^{2}}+\omega_{0}^{2} \theta=0,\quad \omega_{0}^{2}=\frac{5}{7}\frac{g}{R}
+$$
+
+## Oscilações harmônicas em duas dimensões
+
+Vamos considerar a Lei de Hooke na forma vetorial:
+
+$$
+\vec{F}=-k \vec{r}
+$$
+
+onde consideramos, para começar, que a força é isotrópica, ou seja, $k$ é o mesmo independente da direção do deslocamento. Além disso, estamos considerando o ponto de equilíbrio estável como a origem do sistema de coordenadas.
+
+Considerando coordenadas polares:
+
+$$
+\begin{aligned}
+& F_{x}=-k x=-k r \cos \theta \\
+& F_{y}=-k y=-k r \sin \theta
+\end{aligned}
+$$
+
+As equações de movimento para as coordenadas cartesianas são:
+
+$$
+\frac{d^{2} x}{d t^{2}}+\omega_{0}^{2} x=0 \quad \text { e } \quad \frac{d^{2} y}{d t^{2}}+\omega_{0}^{2} y=0
+$$
+
+As equações são desacopladas e podem ser resolvidas separadamente:
+
+$$
+\begin{aligned}
+& x(t)=A \cos \left(\omega_{0} t+\alpha\right) \\
+& y(t)=B \cos \left(\omega_{0} t+\beta\right)
+\end{aligned}
+$$
+
+Vamos eliminar $t$ para obter a trajetória $y$ vs $x$.
+
+$y=B \cos \left(\omega_{0} t+\beta\right)=B \cos \left(\omega_{0} t+\beta+\alpha-\alpha\right)$
+
+Definindo $\delta \equiv \beta-\alpha$, temos:
+
+$y=B \cos \left(\omega_{0} t+\alpha+\delta\right)$
+
+Usando que $\cos(a+b)=\cos a \cos b-\operatorname{sen} a \operatorname{sen} b$, vem:
+
+$y=B\left[\cos \left(\omega_{0} t+\alpha\right) \cos \delta-\sin \left(\omega_{0} t+\alpha\right) \sin \delta\right]$
+
+Mas $\cos \left(\omega_{0} t+\alpha\right)=\frac{x}{A}$, então:
+
+$y=\frac{B}{A}\left[x \cos \delta-\sqrt{A^{2}-x^{2}} \operatorname{sen} \delta\right]$
+
+$A y-B x \cos \delta=-B \sqrt{A^{2}-x^{2}} \operatorname{sen} \delta$
+
+Elevando os dois lados ao quadrado, obtemos:
+
+$A^{2} y^{2}+B^{2} x^{2}-2 A B x y \cos \delta=B^{2} A^{2} \operatorname{sen}^{2} \delta$.
+
+Se $\delta= \pm \frac{\pi}{2}$, temos a equação de uma elipse:
+
+$$
+\frac{x^{2}}{A^{2}}+\frac{y^{2}}{B^{2}}=1
+$$
+
+Se, além disso, as amplitudes forem iguais, temos uma circunferência:
+
+$$
+x^{2}+y^{2}=A^{2} \;;\quad A=B \;;\quad \delta= \pm \frac{\pi}{2}
+$$
+
+Se a diferença de fase $\delta=\beta-\alpha=0$, então:
+
+$$
+(B x-A y)^{2}=0 \Rightarrow y=\frac{B}{A} x \;;\quad \delta=0
+$$
+
+De maneira análoga:
+
+$$
+y=-\frac{B}{A} x \;;\quad \delta= \pm \pi
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$$
+\delta=\frac{\pi}{2}
+$$
+
+$$
+\delta=\frac{3 \pi}{4}
+$$
+
+$$
+\delta=\pi
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Se a força não for isotrópica, as frequências podem ser diferentes:
+
+$$
+\omega_{x}^{2}=\frac{k_{x}}{m} \quad \omega_{y}^{2}=\frac{k_{y}}{m}
+$$
+
+Neste caso, as trajetórias não são elipses. São conhecidas como figuras de Lissajous. As curvas são fechadas somente se as frequências forem comensuráveis:
+
+$$
+\frac{\omega_{x}}{\omega_{y}} \in \mathbb{Q} \text { (racionais) }
+$$
+
+Caso contrário, o sistema nunca retorna a uma posição anterior.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$\omega_{y}=2 \omega_{x}, \delta=0$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$\omega_{y}=2 \omega_{x}, \delta=\frac{\pi}{3}$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+$\omega_{y}=2 \omega_{0}, \delta=\frac{\pi}{2}$
+
+Espaço de fase é o espaço formado pelas posições e velocidades $\left(x(t), \frac{d x}{d t}(t)\right)$ em um sistema de coordenadas. Para condições iniciais dadas, a evolução temporal do sistema corresponde a uma curva nesse espaço. Isso pode ser feito para qualquer sistema. Aqui vamos aplicar esses conceitos a osciladores.
+
+Vimos que, para um OHS, temos o seguinte comportamento:
+
+$$
+\begin{aligned}
+& x(t)=A \cos \left(\omega_{0} t+\delta\right) \\
+& \frac{d x(t)}{d t}=-\omega_{0} A \operatorname{sen}\left(\omega_{0} t+\delta\right)
+\end{aligned}
+$$
+
+Temos novamente dois osciladores com a mesma frequência e podemos eliminar $t$ das equações da mesma maneira:
+
+$$
+\frac{x^{2}}{A^{2}}+\frac{(d x / d t)^{2}}{A^{2} \omega_{0}^{2}}=1
+$$
+
+que é uma equação de elipse. Vimos também que podemos escrever a energia mecânica do oscilador como:
+
+$$
+E_{M}=\frac{k}{2} A^{2}, \quad \text{com}\quad \omega_{0}^{2}=\frac{k}{m}
+$$
+
+A equação da elipse fica:
+
+$$
+\frac{k x^{2}}{2 E}+\frac{m(d x / d t)^{2}}{2 E}=1
+$$
+
+Cada curva do espaço de fase corresponde a um valor para a energia mecânica do sistema.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+As curvas não podem se cruzar no espaço de fase, por causa da unicidade das soluções da equação diferencial.
+
+Uma maneira de obter as curvas no espaço de fase é escrever a equação de movimento em termos de um sistema de EDOs de 1ª ordem:
+
+$$
+\frac{d^{2} x}{d t^{2}}+\omega_{0}^{2} x=0 \Rightarrow\left\{\begin{array}{l}
+\frac{d x}{d t}=v \\
+\frac{d v}{d t}=-\omega_{0}^{2} x
+\end{array}\right.
+$$
+
+Dividindo (2) por (1):
+
+$$
+\frac{d v / d t}{d x / d t}=\frac{-\omega_{0}^{2} x}{v} \Rightarrow \frac{d v}{d x}=-\frac{\omega_{0}^{2} x}{v}
+$$
+
+Para sistemas mais complicados, esse pode ser um caminho mais prático e rápido.
+
+## Oscilador amortecido
+
+O sistema está sujeito a forças de resistência proporcionais à velocidade. Por isso, costumamos estudar osciladores harmônicos sujeitos a esse tipo de força:
+
+$$
+m \frac{d^{2} x}{d t^{2}}=-k x-b \frac{d x}{d t}
+$$
+
+que costumamos escrever como:
+
+$$
+\frac{d^{2} x}{d t^{2}}+2 \beta \frac{d x}{d t}+\omega_{0}^{2} x=0
+$$
+
+onde $\omega_{0}^{2}=\frac{k}{m}$ e $\beta=\frac{b}{2 m}$.
+
+Propondo uma solução exponencial:
+
+$$
+\begin{gathered}
+z(t)=e^{p t} \\
+p^{2} e^{p t}+2 \beta p e^{p t}+\omega_{0}^{2} e^{p t}=0 \\
+p^{2}+2 \beta p+\omega_{0}^{2}=0 \\
+p=-\beta \pm \sqrt{\beta^{2}-\omega_{0}^{2}}
+\end{gathered}
+$$
+
+1. Amortecimento subcrítico ($\beta<\omega_{0}$)
+
+$$
+\begin{aligned}
+z(t) &= C e^{-\beta t}\left(e^{i \omega_{1} t}+e^{-i \omega_{1} t}\right),\quad \omega_{1}^{2} \equiv \omega_{0}^{2}-\beta^{2} \\
+x(t) &= \operatorname{Re}[z(t)]=A e^{-\beta t} \cos \left(\omega_{1} t+\delta\right)
+\end{aligned}
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+A energia não é conservada:
+
+$$
+\begin{aligned}
+E_{M} & =\frac{m}{2}\left(\frac{d x}{d t}\right)^{2}+\frac{m}{2} \omega_{0}^{2} x^{2} \\
+\frac{d E_{M}}{d t} & =m \frac{d x}{d t} \frac{d^{2} x}{d t^{2}}+m \omega_{0}^{2} x \frac{d x}{d t} \\
+& =\frac{d x}{d t}\left(m \frac{d^{2} x}{d t^{2}}+m \omega_{0}^{2} x\right)=\frac{d x}{d t}\left(-m 2 \beta \frac{d x}{d t}\right) \\
+\frac{d E_{M}}{d t} & =-2 m \beta\left(\frac{d x}{d t}\right)^{2}
+\end{aligned}
+$$
+
+Com isso, as curvas no espaço de fase não são fechadas.
+
+Para visualizar melhor, vamos fazer uma mudança de variáveis:
+
+$$
+\begin{aligned}
+& \mu \equiv \omega_{1} x,\quad w=\beta x-v \\
+& \mu=\omega_{1} A e^{-\beta t} \cos \left(\omega_{1} t+\delta\right) \\
+& w=-\omega_{1} A e^{-\beta t} \operatorname{sen}\left(\omega_{1} t+\delta\right)
+\end{aligned}
+$$
+
+Em coordenadas polares:
+
+$$
+S=\sqrt{\mu^{2}+w^{2}},\quad \phi=\omega_{1} t,\quad S=\omega_{1} A e^{-\left(\beta / \omega_{1}\right) \phi}
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+2) Amortecimento crítico ($\beta=\omega_{0}$)
+
+$$
+\begin{aligned}
+& p=-\beta \Rightarrow z(t)=e^{-\beta t}
+\end{aligned}
+$$
+
+Precisamos de outra solução. Vamos tentar:
+
+$$
+z(t)=f(t) e^{-\beta t}
+$$
+
+Substituindo na equação, obtemos $\frac{d^{2} f}{d t^{2}}=0 \Rightarrow f(t) \sim t$. Logo, a solução geral fica:
+
+$$
+x(t)=e^{-\beta t}(a+b t)
+$$
+
+3) Amortecimento supercrítico ($\beta>\omega_{0}$)
+
+$$
+\begin{aligned}
+& p=-\beta \pm \omega_{2},\quad \omega_{2}=\sqrt{\beta^{2}-\omega_{0}^{2}} \\
+& x(t)=a e^{-\left(\beta-\omega_{2}\right) t}+b e^{-\left(\beta+\omega_{2}\right) t}
+\end{aligned}
+$$
+
+Ambas as soluções são decrescentes, mas a segunda cai mais rápido que a primeira. Não há oscilação.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+## Oscilador amortecido e forçado
+
+Vamos considerar um oscilador sujeito a uma força externa harmônica:
+
+$$
+\frac{d^{2} x}{d t^{2}}+2 \beta \frac{d x}{d t}+\omega_{0}^{2} x=A \cos \omega_{E} t
+$$
+
+onde $A \equiv \frac{F_{0}}{m}$ é a amplitude da força por unidade de massa.
+
+A solução geral de uma EDO não homogênea pode ser escrita como a soma da solução geral da EDO homogênea equivalente com uma solução particular da EDO não homogênea.
+
+Para encontrar uma solução particular, é útil considerar a EDO complexa correspondente:
+
+$$
+\frac{d^{2} z}{d t^{2}}+2 \beta \frac{d z}{d t}+\omega_{0}^{2} z=A e^{i \omega_{E} t}
+$$
+
+Assim, podemos propor uma solução exponencial:
+
+$$
+z_{p}(t)=z_{0} e^{i \omega_{E} t}
+$$
+
+Com isso:
+
+$$
+z_{0}=\frac{A}{\omega_{0}^{2}-\omega_{E}^{2}+2 \beta i \omega_{E}}
+$$
+
+Como $z_{0}$ é um número complexo, podemos escrevê-lo como:
+
+$$
+z_{0}=C e^{i \delta}
+$$
+
+com $C$ e $\delta$ reais.
+
+Usando que a razão entre dois números complexos pode ser escrita como $\frac{z_{1}}{z_{2}}=\frac{\left|z_{1}\right|}{\left|z_{2}\right|} e^{i\left(\theta_{1}-\theta_{2}\right)}$, obtemos:
+
+$$
+C=\frac{A}{\sqrt{\left(\omega_{0}^{2}-\omega_{E}^{2}\right)^{2}+4 \beta^{2} \omega_{E}^{2}}}
+\quad\text{e}\quad
+\delta=-\arctan\left(\frac{2 \beta \omega_{E}}{\omega_{0}^{2}-\omega_{E}^{2}}\right)
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+A equação diferencial que resolveremos tem a forma:
+
+$$
+L x(t)=F(t)
+$$
+
+onde:
+
+$$
+L=\left(\frac{d^{2}}{d t^{2}}+a \frac{d}{d t}+b\right)
+$$
+
+é um operador linear. Ele não envolve a função $x(t)$, de modo que a equação não tem potências de $x(t)$. Operadores lineares obedecem ao princípio da superposição:
+
+$$
+L\left(x_{1}+x_{2}\right)=L x_{1}+L x_{2}
+$$
+
+Com isso, se temos duas soluções de EDOs diferentes:
+
+$$
+\begin{gathered}
+L x_{1}=F_{1} \quad \text { e } \quad L x_{2}=F_{2} \\
+L\left(a_{1} x_{1}+a_{2} x_{2}\right)=a_{1} F_{1}+a_{2} F_{2}
+\end{gathered}
+$$
+
+onde $a_{1}$ e $a_{2}$ são constantes arbitrárias.
+
+Podemos estender isso a um conjunto de soluções:
+
+$$
+L\left(\sum_{m=1}^{N} a_{m} x_{m}(t)\right)=\sum_{m=1}^{N} a_{m} F_{m}(t)
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Podemos identificar:
+
+$$
+x(t)=\sum_{m=1}^{N} a_{m} x_{m}(t) \quad \text{e} \quad F(t)=\sum_{m=1}^{N} a_{m} F_{m}(t)
+$$
+
+Considerando que cada componente $F_{m}$ é harmônica, com frequência $\omega_{m}$:
+
+$$
+F(t)=\sum_{m=1}^{N} a_{m} \cos \left(\omega_{m} t+\phi_{m}\right)
+$$
+
+A solução estacionária (particular) é:
+
+$$
+\begin{aligned}
+x(t) & =\sum_{m=1}^{N} \frac{a_{m}}{\sqrt{\left(\omega_{0}^{2}-\omega_{m}^{2}\right)^{2}+4 \beta^{2} \omega_{m}^{2}}} \cos \left(\omega_{m} t+\phi_{m}+\delta_{m}\right) \\
+\delta_{m} & =-\arctan\left(\frac{2 \beta \omega_{m}}{\omega_{0}^{2}-\omega_{m}^{2}}\right)
+\end{aligned}
+$$
+
+Isso significa que podemos resolver a equação para uma força periódica arbitrária em termos de seus componentes de Fourier.
+
+Se $F(t+T)=F(t)$, então:
+
+$$
+\begin{aligned}
+F(t) &= \frac{a_{0}}{2}+\sum_{m=1}^{\infty}\left[a_{m} \cos (m \omega t)+b_{m} \operatorname{sen}(m \omega t)\right] \\
+a_{m} &=\frac{2}{T} \int_{0}^{T} F\left(t^{\prime}\right) \cos \left(m \omega t^{\prime}\right) d t^{\prime} \\
+b_{m} &=\frac{2}{T} \int_{0}^{T} F\left(t^{\prime}\right) \sin \left(m \omega t^{\prime}\right) d t^{\prime}
+\end{aligned}
+$$
+
+Vamos relembrar alguns conceitos que vimos.
+
+Chamamos de sistemas lineares aqueles que obedecem equações de movimento lineares nas variáveis $\vec{r}$ e $\vec{v}$. O exemplo mais comum é o oscilador harmônico:
+
+$$
+\begin{aligned}
+\frac{d x}{d t} & =v \\
+\frac{d v}{d t} & =-a x-b v
+\end{aligned}
+$$
+
+Vimos que as soluções podem ser escritas em termos de exponenciais: $z=e^{p t}$, onde o fator $p$ é, em geral, um número complexo. Vimos que, se $p$ for real, temos uma evolução puramente exponencial, com as trajetórias tendendo ao ponto de equilíbrio.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Equilíbrio estável
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Equilíbrio instável
+
+Se $p$ for imaginário, temos uma oscilação harmônica:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Se $\operatorname{Re}(p) \neq 0$ e $\operatorname{Im}(p) \neq 0$, temos uma combinação desses comportamentos.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Vimos também que podemos expandir a força resultante sobre o sistema em série de Taylor, na vizinhança de um ponto de equilíbrio. Se mantivermos apenas o primeiro termo da expansão, o resultado é um sistema linear. Dizemos então que linearizamos o sistema em torno do ponto de equilíbrio (também chamado de ponto fixo ou crítico).
+
+Considerando um sistema geral em $N$ dimensões:
+
+$$
+\frac{d x_{i}}{d t}=F_{i}(\vec{x}) \quad \begin{aligned}
+& \text { Se } \vec{F} \text { não depende explicitamente } \\
+& \text { de } t \text {, o sistema é autônomo. }
+\end{aligned}
+$$
+
+Os pontos de equilíbrio, ou pontos fixos, são tais que:
+
+$$
+F_{i}\left(\vec{x}_{0}\right)=0 \text {, onde } \vec{x}_{0}=\left(x_{1}, x_{2}, \ldots, x_{N}\right)
+$$
+
+Expandindo a força em primeira ordem:
+
+$$
+F_{i}\left(\vec{x}\right)=\left.\sum_{j=1}^{N} \frac{\partial F_{i}}{\partial x_{j}}\right|_{\vec{x}_{0}}\left(x_{j}-x_{j0}\right)
+$$
+
+Substituindo no sistema de EDOs, definindo $\vec{y}\equiv \vec{x}-\vec{x}_{0}$:
+
+$$
+\frac{d y_{i}}{d t}=\left.\sum_{j=1}^{N} \frac{\partial F_{i}}{\partial x_{j}}\right|_{\vec{x}_{0}} y_{j}
+$$
+
+Ou, em forma matricial:
+
+$$
+D_{y}=D_{F} Y
+$$
+
+Para um sistema autônomo, $D_{F}$ é independente do tempo:
+
+$$
+\begin{aligned}
+& D_{F}=A=\text { constante } \\
+& D_{y}=A Y
+\end{aligned}
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Como:
+
+$$
+Y(t)=Y_{0} \exp \left[\left(t-t_{0}\right) A\right]
+$$
+
+podemos escrever a exponencial como:
+
+$$
+\exp \left[\left(t-t_{0}\right) A\right]=\sum_{n=0}^{\infty} \frac{\left(t-t_{0}\right)^{n}}{n!} A^{n}
+$$
+
+Uma maneira simples de escrever a solução é usar a matriz na forma diagonal. Se $A$ é diagonal, a exponencial também é, com autovalores:
+
+$$
+e^{\lambda_{i}\left(t-t_{0}\right)}
+$$
+
+onde $\lambda_{i}$ são os autovalores de $A$.
+
+No caso do pêndulo simples, nós linearizamos o sistema usando $\operatorname{sen}\theta \approx \theta$. Isso nos levou às equações do oscilador harmônico:
+
+$$
+\left\{\begin{array} { l }
+{ \frac { d x } { d t } = v = \frac { p } { m } } \\
+{ \frac { d v } { d t } = - \omega ^ { 2 } x }
+\end{array}\right.
+\quad\text{ou}\quad
+\left\{\begin{array}{l}
+\frac{d x_{1}}{d t}=\frac{x_{2}}{m} \\
+\frac{d x_{2}}{d t}=-m \omega^{2} x_{1}
+\end{array}\right.
+$$
+
+Com isso:
+
+$$
+A=\left(\begin{array}{cc}
+0 & \frac{1}{m} \\
+-m \omega^{2} & 0
+\end{array}\right)
+$$
+
+Os autovalores de $A$ são chamados expoentes característicos do campo $\vec{F}$ em $\vec{x}_{0}$. Para diagonalizar $A$, resolvemos a equação característica:
+
+$$
+\begin{aligned}
+& \operatorname{det}(\lambda \mathbb{1}-A)=0 \\
+& \lambda^{2}+\omega^{2}=0 \Rightarrow \lambda= \pm i \omega
+\end{aligned}
+$$
+
+No caso do pêndulo sujeito a resistência:
+
+$$
+m \ddot{x}+2 \beta m \dot{x}+m \omega^{2} x=0
+$$
+
+ou:
+
+$$
+\left\{\begin{array} { l }
+{ \frac { d x _ { 1 } } { d t } = \frac { x _ { 2 } } { m } } \\
+{ \frac { d x _ { 2 } } { d t } = - 2 \beta x _ { 2 } - m \omega ^ { 2 } x _ { 1 } }
+\end{array}\right.
+\quad\text{com}\quad
+\left\{\begin{array}{l}
+x_{1}=x \\
+x_{2}=m v
+\end{array}\right.
+$$
+
+Neste caso:
+
+$$
+A=\left(\begin{array}{cc}
+0 & \frac{1}{m} \\
+-m \omega^{2} & -2 \beta
+\end{array}\right)
+$$
+
+e:
+
+$$
+\operatorname{det}(\lambda \mathbb{1}-A)=0 \Rightarrow \lambda^{2}+2 \beta \lambda+\omega^{2}=0 \Rightarrow \lambda=-\beta \pm \sqrt{\beta^{2}-\omega^{2}}
+$$
+
+No caso geral, temos:
+
+$$
+\operatorname{det}(\lambda \mathbb{1}-A)=\left(\lambda-A_{11}\right)\left(\lambda-A_{22}\right)-A_{12} A_{21}
+$$
+
+Podemos reescrever a equação em termos do traço e do determinante de $A$:
+
+$$
+\begin{aligned}
+& t=\operatorname{Tr}(A)=A_{11}+A_{22} \\
+& d=\operatorname{det}(A)=A_{11} A_{22}-A_{12} A_{21} \\
+& \lambda^{2}-t \lambda+d=0 \\
+& \lambda=\frac{t \pm \sqrt{t^{2}-4 d}}{2}
+\end{aligned}
+$$
+
+Se $\Delta=t^{2}-4 d \geqslant 0$, os autovalores são reais. Nesse caso, se $d>0$ e $-2 \sqrt{d}<t<0$, então:
+
+$$
+\lambda_{1}<\lambda_{2}<0
+$$
+
+As trajetórias, na vizinhança do ponto fixo, são do tipo:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Se $\Delta \geqslant 0$ e $\lambda_{1}=\lambda_{2}<0$, temos:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Quando todas as trajetórias se encontram no ponto fixo, nós o chamamos de nó. Se as trajetórias convergem para o nó, é um nó estável.
+
+Se $d<0$, os autovalores têm sinais opostos:
+
+$$
+\lambda_{2}<0<\lambda_{1}
+$$
+
+O padrão das trajetórias é:
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Nesse caso, chamamos de ponto de sela.
+
+Se $\Delta<0$, os expoentes característicos são complexos. Temos as seguintes possibilidades:
+
+a) $\operatorname{Re}(\lambda)=0$ ($t=0$ e $d \geqslant 0$): existem órbitas fechadas em torno do ponto fixo. Esse é o caso do OHS; neste caso, o ponto fixo é um centro.
+
+b) $\operatorname{Re}(\lambda)<0$ e $\operatorname{Im}(\lambda)>0$ ($t<0$ e $d \geqslant 0$): as órbitas se aproximam do ponto fixo como espirais.
+
+c) $\operatorname{Re}(\lambda)>0$ e $\operatorname{Im}(\lambda)>0$ ($t>0$ e $d \geqslant 0$): as órbitas se afastam do ponto fixo como espirais.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Considere um pêndulo formado por uma partícula de massa $m$ e uma barra rígida de massa desprezível.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Esse sistema obedece à mesma equação de movimento do pêndulo simples:
+
+$$
+\frac{d^{2} \theta}{d t^{2}}+\omega_{0}^{2} \sin \theta=0,\quad \omega_{0}^{2}=\frac{g}{l}
+$$
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+
+Novamente, na aproximação linear:
+
+$$
+\frac{d^{2} \theta}{d t^{2}}+\omega_{0}^{2} \theta=0
+$$
+
+Nesta aproximação, o período é:
+
+$$
+T \cong \frac{2 \pi}{\omega_{0}}=2 \pi \sqrt{\frac{l}{g}}
+$$
+
+Vamos tentar resolver sem usar a aproximação linear, usando conservação de energia:
+
+$$
+E_{c}+U=E_{M}=\text { cte }
+$$
+
+O trabalho em um deslocamento infinitesimal é:
+
+$$
+d W=\tau d \theta,\quad \text{onde } \tau \text{ é o torque da força}
+$$
+
+$$
+\begin{aligned}
+d W&=(m g \operatorname{sen} \theta) l\, d \theta \\
+W&=m g l \int_{0}^{\theta} \sin \theta\, d \theta
+=\left.m g l(-\cos \theta)\right|_{0} ^{\theta}=m g l(1-\cos \theta)
+\end{aligned}
+$$
+
+Escolhendo $U(\theta=0)=0$:
+
+$$
+U=m g l(1-\cos \theta)
+$$
+
+Além disso:
+
+$$
+E_{c}=\frac{m v^{2}}{2}=\frac{m l^{2}}{2}\left(\frac{d \theta}{d t}\right)^{2}
+$$
+
+Só consideramos o sistema no ponto mais alto $\theta_{0}$:
+
+$$
+E_{c}\left(\theta_{0}\right)=0,\quad U\left(\theta_{0}\right)=m g l\left(1-\cos \theta_{0}\right)=E_{M}
+$$
+
+Podemos escrever:
+
+$$
+\cos \theta=1-2 \operatorname{sen}^{2}\left(\frac{\theta}{2}\right)
+$$
+
+Então:
+
+$$
+E_{M}=2 m g l \sin ^{2}\left(\frac{\theta_{0}}{2}\right)
+$$
+
+Podemos escrever $E_{c}=E_{M}-U$:
+
+$$
+\begin{aligned}
+\frac{m}{2} l^{2}\left(\frac{d \theta}{d t}\right)^{2}
+&=2 m g l\left[\sin ^{2}\left(\frac{\theta_{0}}{2}\right)-\sin ^{2}\left(\frac{\theta}{2}\right)\right] \\
+\frac{d \theta}{d t}
+&=2 \sqrt{\frac{g}{l}}\left[\sin ^{2}\left(\frac{\theta_{0}}{2}\right)-\sin ^{2}\left(\frac{\theta}{2}\right)\right]^{1 / 2}
+\end{aligned}
+$$
+
+ou:
+
+$d t=\frac{1}{2} \sqrt{\frac{l}{g}}\left[\sin ^{2}\left(\frac{\theta_{0}}{2}\right)-\sin ^{2}\left(\frac{\theta}{2}\right)\right]^{-1 / 2} d \theta$.
+
+O período é o intervalo de tempo que o sistema leva para retornar à posição $\theta_{0}$. A integral de $0$ a $\theta_{0}$ equivale a $\frac{T}{4}$:
+
+$$
+\frac{T}{4}=\frac{1}{2} \sqrt{\frac{l}{g}} \int_{0}^{\theta_{0}}\left[\sin ^{2}\left(\frac{\theta_{0}}{2}\right)-\operatorname{sen}^{2}\left(\frac{\theta}{2}\right)\right]^{-1 / 2} d \theta
+$$
+
+Isto é uma integral elíptica de 1º tipo. Fazendo a substituição:
+
+$$
+\begin{gathered}
+y=\frac{\operatorname{sen}(\theta / 2)}{\operatorname{sen}\left(\theta_{0} / 2\right)}, \quad K=\operatorname{sen}\left(\frac{\theta_{0}}{2}\right) \\
+d y=\frac{\cos (\theta / 2)}{2 \operatorname{sen}\left(\theta_{0} / 2\right)} d \theta=\frac{\sqrt{1-K^{2} y^{2}}}{2 K} d \theta \\
+T=4 \sqrt{\frac{l}{g}} \int_{0}^{1}\left[\left(1-y^{2}\right)\left(1-K^{2} y^{2}\right)\right]^{-1 / 2} d y
+\end{gathered}
+$$
+
+Para o resultado ser oscilatório, é preciso que:
+
+$$
+\left|\theta_{0}\right|<\pi \Rightarrow-1<K<1
+$$
+
+Nesse caso, podemos expandir:
+
+$$
+\left(1-K^{2} y^{2}\right)^{-1 / 2}=1+\frac{K^{2} y^{2}}{2}+\frac{3 K^{4} y^{4}}{8}+\cdots
+$$
+
+Com isso:
+
+$$
+T=4 \sqrt{\frac{l}{g}} \int_{0}^{1} \frac{d y}{\left(1-y^{2}\right)^{1 / 2}}\left[1+\frac{K^{2} y^{2}}{2}+\frac{3 K^{4} y^{4}}{8}+\ldots\right]
+$$
+
+e:
+
+$$
+T=2 \pi \sqrt{\frac{l}{g}}\left[1+\frac{K^{2}}{4}+\frac{9 K^{4}}{64}+\cdots\right]
+$$
+
+A convergência da série depende de $|K|$.
+
+A equação diferencial que obtemos a partir da conservação de energia nos permite construir o diagrama de fase.
+
+
+
+*[imagem: imagem — link externo (Notion S3), pode ter expirado]*
+

@@ -312,6 +312,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Mecânica Clássica Animada</a> 
         <div class="sidebar-tools-main">
+    <a href="https://github.com/wizorx/AnimateClassicalMechanics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
 </div>
     </div>
@@ -351,8 +352,11 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Oscilacoes.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./GravitacaoEForcas.html" class="sidebar-item-text sidebar-link">
@@ -451,7 +455,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#estabilidade-de-rotações" id="toc-estabilidade-de-rotações" class="nav-link" data-scroll-target="#estabilidade-de-rotações"><span class="header-section-number">10.7</span> Estabilidade de Rotações</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/edit/main/corpo-rigido.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/blob/main/corpo-rigido.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -478,12 +482,7 @@ window.Quarto = {
 
 
 <p>Um corpo rígido é um conjunto de partículas no qual as distâncias relativas entre elas são constantes, ou seja, ele não pode ser deformado.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig1_rigid_body_points.png" class="img-fluid figure-img"></p>
-<figcaption>Duas partículas de um corpo rígido, com <span class="math inline">\(|\vec r_i - \vec r_j| = \text{cte}\ \forall\, i,j\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Duas partículas de um corpo rígido, com $|\vec r_i - \vec r_j| = \text{cte}\ \forall\, i,j$](figs/ch11_fig1_rigid_body_points.png) -->
 <p><span class="math display">\[
 |\vec r_i - \vec r_j| = \text{cte.} \quad \forall\, i,j
 \]</span></p>
@@ -492,12 +491,7 @@ window.Quarto = {
 \vec v_\alpha = \vec V + \vec\omega \times \vec r_\alpha
 \]</span></p>
 <p>A energia cinética total então é:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig2_rotating_body.png" class="img-fluid figure-img"></p>
-<figcaption>Corpo girando com velocidade angular <span class="math inline">\(\vec\omega\)</span>; <span class="math inline">\(\vec r_\alpha\)</span> é a posição da partícula <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\vec v_\alpha\)</span> sua velocidade</figcaption>
-</figure>
-</div>
+<!-- ![Corpo girando com velocidade angular $\vec\omega$; $\vec r_\alpha$ é a posição da partícula $\alpha$ e $\vec v_\alpha$ sua velocidade](figs/ch11_fig2_rotating_body.png) -->
 <p><span class="math display">\[
 E_C = \frac{1}{2}\sum_{\alpha=1}^{N} m_\alpha\left(\vec V + \vec\omega\times\vec r_\alpha\right)^2
 \]</span></p>
@@ -588,12 +582,7 @@ I_{ij} = \int_V \rho(\vec r)\left(\delta_{ij}\sum_{k=1}^{3}x_k^2 - x_ix_j\right)
 <section id="exemplo-cubo-homogêneo" class="level3" data-number="10.0.1">
 <h3 data-number="10.0.1" class="anchored" data-anchor-id="exemplo-cubo-homogêneo"><span class="header-section-number">10.0.1</span> Exemplo: cubo homogêneo</h3>
 <p>Considere um cubo de aresta <span class="math inline">\(b\)</span>, homogêneo de densidade <span class="math inline">\(\rho\)</span>. Calcule as componentes cartesianas do tensor de inércia.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig3_cube.png" class="img-fluid figure-img"></p>
-<figcaption>Cubo homogêneo de aresta <span class="math inline">\(b\)</span> com origem em um vértice</figcaption>
-</figure>
-</div>
+<!-- ![Cubo homogêneo de aresta $b$ com origem em um vértice](figs/ch11_fig3_cube.png) -->
 <p><span class="math display">\[
 I_{11} = \int_0^b\!\!\int_0^b\!\!\int_0^b \left(x^2+y^2+z^2-x^2\right) dx\,dy\,dz
 \]</span></p>
@@ -673,12 +662,7 @@ L_i = \sum_{\alpha=1}^{N} m_\alpha\left(\omega_i\sum_{k=1}^{3}x_{\alpha k}^2 - x
 \]</span></p>
 <section id="exemplo-pêndulo-físico-com-haste-de-massa-desprezível-e-comprimento-b" class="level3" data-number="10.1.1">
 <h3 data-number="10.1.1" class="anchored" data-anchor-id="exemplo-pêndulo-físico-com-haste-de-massa-desprezível-e-comprimento-b"><span class="header-section-number">10.1.1</span> Exemplo: pêndulo físico com haste de massa desprezível e comprimento <span class="math inline">\(b\)</span></h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig4_physical_pendulum.png" class="img-fluid figure-img"></p>
-<figcaption>Pêndulo físico formado por duas massas <span class="math inline">\(m_1\)</span> e <span class="math inline">\(m_2\)</span> ao longo de uma haste rígida de comprimento <span class="math inline">\(b\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Pêndulo físico formado por duas massas $m_1$ e $m_2$ ao longo de uma haste rígida de comprimento $b$](figs/ch11_fig4_physical_pendulum.png) -->
 <p><span class="math display">\[
 \vec\omega = \dot\phi\,\hat z
 \]</span></p>
@@ -828,12 +812,7 @@ I = \begin{bmatrix}
 <section id="teorema-dos-eixos-paralelos" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="teorema-dos-eixos-paralelos"><span class="header-section-number">10.3</span> Teorema dos eixos paralelos</h2>
 <p>Bora considerar dois sistemas de coordenadas fixas em relação ao corpo onde a origem de um deles é o centro de massa.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig5_two_coord_systems.png" class="img-fluid figure-img"></p>
-<figcaption>Dois sistemas de coordenadas com eixos paralelos: <span class="math inline">\(\{X_i\}\)</span> com origem em <span class="math inline">\(a\)</span> e <span class="math inline">\(\{x_i\}\)</span> com origem no centro de massa</figcaption>
-</figure>
-</div>
+<!-- ![Dois sistemas de coordenadas com eixos paralelos: $\{X_i\}$ com origem em $a$ e $\{x_i\}$ com origem no centro de massa](figs/ch11_fig5_two_coord_systems.png) -->
 <p><span class="math display">\[
 x_1 \parallel X_1, \qquad x_2 \parallel X_2, \qquad x_3 \parallel X_3
 \]</span></p>
@@ -880,12 +859,7 @@ J_{iK} = I_{ij} + M\left(a^2\delta_{ij} - a_ia_j\right)
 <section id="voltando-ao-cubo-homogêneo" class="level3" data-number="10.3.1">
 <h3 data-number="10.3.1" class="anchored" data-anchor-id="voltando-ao-cubo-homogêneo"><span class="header-section-number">10.3.1</span> Voltando ao cubo homogêneo</h3>
 <p>A gente conhece o tensor de inércia com relação a um vértice:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig6_cube_cm.png" class="img-fluid figure-img"></p>
-<figcaption>Cubo homogêneo com centro de massa marcado</figcaption>
-</figure>
-</div>
+<!-- ![Cubo homogêneo com centro de massa marcado](figs/ch11_fig6_cube_cm.png) -->
 <p><span class="math display">\[
 J = \begin{bmatrix}
 \dfrac{2}{3}Mb^2 &amp; -\dfrac{Mb^2}{4} &amp; -\dfrac{Mb^2}{4} \\[1.5ex]
@@ -1071,12 +1045,7 @@ I_{(m)} \neq I_{(n)} \;\;\longrightarrow\;\; \sum_{\ell=1}^{3}\omega_{(m)\ell}\,
 \vec x' = \Lambda\vec x
 \]</span></p>
 <p><strong>1) A primeira rotação é em torno de <span class="math inline">\(x_3\)</span>:</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig7_euler_rot1.png" class="img-fluid figure-img"></p>
-<figcaption>Primeira rotação de Euler, de ângulo <span class="math inline">\(\phi\)</span>, em torno do eixo <span class="math inline">\(x_3\equiv x_3'\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Primeira rotação de Euler, de ângulo $\phi$, em torno do eixo $x_3\equiv x_3'$](figs/ch11_fig7_euler_rot1.png) -->
 <p><span class="math display">\[
 \Lambda_\phi = \begin{bmatrix}
 \cos\phi &amp; \text{sen}\,\phi &amp; 0 \\
@@ -1085,12 +1054,7 @@ I_{(m)} \neq I_{(n)} \;\;\longrightarrow\;\; \sum_{\ell=1}^{3}\omega_{(m)\ell}\,
 \end{bmatrix}
 \]</span></p>
 <p><strong>2) A segunda rotação é em torno de <span class="math inline">\(x_1'\)</span>:</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig8_euler_rot2.png" class="img-fluid figure-img"></p>
-<figcaption>Segunda rotação de Euler, de ângulo <span class="math inline">\(\theta\)</span>, em torno do eixo <span class="math inline">\(x_1'\equiv x_1''\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Segunda rotação de Euler, de ângulo $\theta$, em torno do eixo $x_1'\equiv x_1''$](figs/ch11_fig8_euler_rot2.png) -->
 <p><span class="math display">\[
 \Lambda_\theta = \begin{bmatrix}
 1 &amp; 0 &amp; 0 \\
@@ -1099,12 +1063,7 @@ I_{(m)} \neq I_{(n)} \;\;\longrightarrow\;\; \sum_{\ell=1}^{3}\omega_{(m)\ell}\,
 \end{bmatrix}
 \]</span></p>
 <p><strong>3) A terceira rotação é em torno de <span class="math inline">\(x_3'''\)</span>:</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig9_euler_rot3.png" class="img-fluid figure-img"></p>
-<figcaption>Terceira rotação de Euler, de ângulo <span class="math inline">\(\psi\)</span>, em torno do eixo <span class="math inline">\(x_3''\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Terceira rotação de Euler, de ângulo $\psi$, em torno do eixo $x_3''$](figs/ch11_fig9_euler_rot3.png) -->
 <p><span class="math display">\[
 \Lambda_\psi = \begin{bmatrix}
 \cos\psi &amp; \text{sen}\,\psi &amp; 0 \\
@@ -1263,12 +1222,7 @@ I_3\dot\omega_3 + \left(I_1-I_2\right)\omega_1\omega_2 = \tau_3
 <section id="exemplo-halter-dumbbell" class="level3" data-number="10.6.1">
 <h3 data-number="10.6.1" class="anchored" data-anchor-id="exemplo-halter-dumbbell"><span class="header-section-number">10.6.1</span> Exemplo: halter (dumbbell)</h3>
 <p>Considere um halter formado por duas partículas ligadas por uma haste rígida com massa desprezível de comprimento <span class="math inline">\(b\)</span>:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch11_fig10_dumbbell.png" class="img-fluid figure-img"></p>
-<figcaption>Halter formado por duas massas <span class="math inline">\(m_1\)</span> e <span class="math inline">\(m_2\)</span> girando com velocidade angular <span class="math inline">\(\vec\omega\)</span>; <span class="math inline">\(x_3\)</span> está na direção da haste e <span class="math inline">\(x_2\)</span> na direção de <span class="math inline">\(\vec L\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Halter formado por duas massas $m_1$ e $m_2$ girando com velocidade angular $\vec\omega$; $x_3$ está na direção da haste e $x_2$ na direção de $\vec L$](figs/ch11_fig10_dumbbell.png) -->
 <p><span class="math display">\[
 \vec v_\alpha = \vec\omega\times\vec r_\alpha
 \]</span></p>
@@ -1852,4 +1806,4 @@ I_3 &gt; I_2 &gt; I_1 \;\;\longrightarrow\;\; \Omega_1,\Omega_2 \in \mathbb{R};\
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/edit/main/corpo-rigido.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/blob/main/corpo-rigido.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li></ul></div></div></div></footer></body></html>

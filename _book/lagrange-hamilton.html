@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Hamilton’s Principle — Lagrangian and Hamiltonian Dynamics – Mecânica Clássica Animada</title>
+<title>9&nbsp; Dinâmicas Lagrangiana e Hamiltoniana – Mecânica Clássica Animada</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -312,6 +312,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Mecânica Clássica Animada</a> 
         <div class="sidebar-tools-main">
+    <a href="https://github.com/wizorx/AnimateClassicalMechanics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
 </div>
     </div>
@@ -461,7 +462,7 @@ window.Quarto = {
   <li><a href="#teorema-do-virial" id="toc-teorema-do-virial" class="nav-link" data-scroll-target="#teorema-do-virial"><span class="header-section-number">9.6</span> Teorema do Virial</a></li>
   <li><a href="#espaço-de-fase-e-teorema-de-liouville" id="toc-espaço-de-fase-e-teorema-de-liouville" class="nav-link" data-scroll-target="#espaço-de-fase-e-teorema-de-liouville"><span class="header-section-number">9.7</span> Espaço de fase e Teorema de Liouville</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/edit/main/lagrange-hamilton.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/blob/main/lagrange-hamilton.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -469,7 +470,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./lagrange-hamilton.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hamilton’s Principle — Lagrangian and Hamiltonian Dynamics</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dinâmicas Lagrangiana e Hamiltoniana</span></h1>
 <p class="subtitle lead">Capítulo 7 (Thornton &amp; Marion)</p>
 </div>
 
@@ -503,7 +504,7 @@ L := E_C - U
 <p><span class="math display">\[
 E_C = E_C(\dot{x}_i) \qquad U = U(x_i)
 \]</span></p>
-<p>Então se quisermos usar o formalismo da equação de Euler-Lagrange, as grandezas utilizadas são as seguintes:</p>
+<p>Então se quisermos usar o formalismo da equação de Euler-Lagrange (<a href="calculo-variacional.html#eq-euler-lagrange" class="quarto-xref">Equação&nbsp;<span>8.1</span></a>), as grandezas utilizadas são as seguintes:</p>
 <p><span class="math display">\[
 x \;\rightsquigarrow\; t
 \]</span> <span class="math display">\[
@@ -596,18 +597,8 @@ m\ddot{y} + mg = 0
 </section>
 <section id="exemplo-partícula-de-massa-m-restrita-à-superfície-de-um-cone-sujeita-a-gravidade-uniforme" class="level3" data-number="9.1.4">
 <h3 data-number="9.1.4" class="anchored" data-anchor-id="exemplo-partícula-de-massa-m-restrita-à-superfície-de-um-cone-sujeita-a-gravidade-uniforme"><span class="header-section-number">9.1.4</span> Exemplo: partícula de massa <span class="math inline">\(m\)</span> restrita à superfície de um cone sujeita a gravidade uniforme</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig1_cone.png" class="img-fluid figure-img"></p>
-<figcaption>Partícula restrita à superfície de um cone de semiângulo <span class="math inline">\(\alpha\)</span>, em coordenadas cilíndricas <span class="math inline">\((s,\phi,z)\)</span></figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig1b_cone_cross_section.png" class="img-fluid figure-img"></p>
-<figcaption>Corte transversal do cone mostrando a relação entre <span class="math inline">\(s\)</span>, <span class="math inline">\(z\)</span> e <span class="math inline">\(\alpha\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Partícula restrita à superfície de um cone de semiângulo $\alpha$, em coordenadas cilíndricas $(s,\phi,z)$](figs/ch7_fig1_cone.png) -->
+<!-- ![Corte transversal do cone mostrando a relação entre $s$, $z$ e $\alpha$](figs/ch7_fig1b_cone_cross_section.png) -->
 <p>Em coordenadas cilíndricas:</p>
 <p><span class="math display">\[
 \tan\alpha = \frac{s}{z} \;\rightarrow\; \boxed{z = s\cot\alpha} \qquad \text{(Eq. de vínculo)}
@@ -648,12 +639,7 @@ U = mgz \;\longrightarrow\; L = E_C - U = \frac{m}{2}\left(s^2\dot{\phi}^2+\dot{
 </section>
 <section id="exemplo-um-pêndulo-simples-tem-o-seu-ponto-de-suporte-em-um-movimento-circular-uniforme-coplanar" class="level3" data-number="9.1.5">
 <h3 data-number="9.1.5" class="anchored" data-anchor-id="exemplo-um-pêndulo-simples-tem-o-seu-ponto-de-suporte-em-um-movimento-circular-uniforme-coplanar"><span class="header-section-number">9.1.5</span> Exemplo: um pêndulo simples tem o seu ponto de suporte em um movimento circular uniforme coplanar</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig2_pendulum_rotating_support.png" class="img-fluid figure-img"></p>
-<figcaption>Pêndulo de comprimento <span class="math inline">\(l\)</span> cujo ponto de suporte gira com velocidade angular constante <span class="math inline">\(\omega\)</span> sobre um círculo de raio <span class="math inline">\(a\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Pêndulo de comprimento $l$ cujo ponto de suporte gira com velocidade angular constante $\omega$ sobre um círculo de raio $a$](figs/ch7_fig2_pendulum_rotating_support.png) -->
 <p><span class="math display">\[
 \omega = \text{cte.}
 \]</span></p>
@@ -726,12 +712,7 @@ mal\omega\dot\theta\cos(\theta-\omega t) - mgl\,\text{sen}\,\theta - m\left[l^2\
 <section id="exemplo-miçanga-restrita-a-um-fio-com-formato-parabólico" class="level3" data-number="9.1.6">
 <h3 data-number="9.1.6" class="anchored" data-anchor-id="exemplo-miçanga-restrita-a-um-fio-com-formato-parabólico"><span class="header-section-number">9.1.6</span> Exemplo: miçanga restrita a um fio com formato parabólico</h3>
 <p>Miçanga restrita a um fio com formato parabólico <span class="math inline">\(z = cs^2\)</span> (em coordenadas cilíndricas) girando em torno do eixo de simetria da parábola com velocidade angular <span class="math inline">\(\omega\)</span> constante tal que a miçanga fica a uma distância <span class="math inline">\(R\)</span> do eixo. Quanto vale <span class="math inline">\(c\)</span>?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig3_parabolic_wire.png" class="img-fluid figure-img"></p>
-<figcaption>Miçanga sobre um fio parabólico girando com velocidade angular <span class="math inline">\(\omega\)</span> em torno do eixo <span class="math inline">\(z\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Miçanga sobre um fio parabólico girando com velocidade angular $\omega$ em torno do eixo $z$](figs/ch7_fig3_parabolic_wire.png) -->
 <p><span class="math display">\[
 E_C = \frac{m}{2}\left[\dot{s}^2 + s^2\dot\phi^2 + \dot{z}^2\right]
 \]</span></p>
@@ -775,12 +756,7 @@ s = R = \text{cte.} \;\;\longrightarrow\;\; \dot{s} = \ddot{s} = 0 \quad\therefo
 </section>
 <section id="exemplo-polias" class="level3" data-number="9.1.7">
 <h3 data-number="9.1.7" class="anchored" data-anchor-id="exemplo-polias"><span class="header-section-number">9.1.7</span> Exemplo: polias</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig4_pulleys.png" class="img-fluid figure-img"></p>
-<figcaption>Sistema de polias ideais com fios inextensíveis suspendendo massas <span class="math inline">\(m_1\)</span>, <span class="math inline">\(m_2\)</span> e <span class="math inline">\(m_3\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Sistema de polias ideais com fios inextensíveis suspendendo massas $m_1$, $m_2$ e $m_3$](figs/ch7_fig4_pulleys.png) -->
 <p>Supondo polias ideais e fios inextensíveis e considerando as massas <span class="math inline">\(m_1\)</span>, <span class="math inline">\(m_2\)</span> e <span class="math inline">\(m_3\)</span>, e comprimentos dos fios <span class="math inline">\(l_1\)</span> e <span class="math inline">\(l_2\)</span>.</p>
 <p><span class="math display">\[
 v_1 = \dot{x}
@@ -864,10 +840,7 @@ f(x_i, \dot{x}_i, t) = 0
 <p><span class="math display">\[
 A_i = \frac{\partial f}{\partial x_i}, \qquad B = \frac{\partial f}{\partial t}
 \;\;\rightarrow\;\;
-\sum_{i=1}^{3} \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t} = 0
-\]</span></p>
-<p><span class="math display">\[
-\underbrace{\phantom{\sum \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t}}}_{\text{derivada total em relação ao tempo}}
+\underbrace{\sum_{i=1}^{3} \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t}}_{\text{derivada total em relação ao tempo}} = 0
 \]</span></p>
 <p><span class="math display">\[
 \rightarrow \quad \frac{df}{dt} = 0 \;\;\rightarrow\;\; f = \text{cte} := c \quad\therefore\quad f - c = 0
@@ -884,12 +857,7 @@ A_i = \frac{\partial f}{\partial x_i}, \qquad B = \frac{\partial f}{\partial t}
 <section id="exemplo-uma-partícula-de-massa-m-sai-do-topo-de-um-hemisfério-de-raio-a" class="level3" data-number="9.2.1">
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="exemplo-uma-partícula-de-massa-m-sai-do-topo-de-um-hemisfério-de-raio-a"><span class="header-section-number">9.2.1</span> Exemplo: uma partícula de massa <span class="math inline">\(m\)</span> sai do topo de um hemisfério de raio <span class="math inline">\(a\)</span></h3>
 <p>O vínculo é <span class="math inline">\(r=a \rightarrow f = r - a = 0\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch7_fig5_hemisphere.png" class="img-fluid figure-img"></p>
-<figcaption>Partícula sobre a superfície de um hemisfério de raio <span class="math inline">\(r\)</span>, com ângulo polar <span class="math inline">\(\theta\)</span> medido a partir do topo</figcaption>
-</figure>
-</div>
+<!-- ![Partícula sobre a superfície de um hemisfério de raio $r$, com ângulo polar $\theta$ medido a partir do topo](figs/ch7_fig5_hemisphere.png) -->
 <p><span class="math display">\[
 E_C = \frac{m}{2}\left(\dot{r}^2 + r^2\dot\theta^2\right)
 \]</span></p>
@@ -1364,12 +1332,7 @@ L(q_i,\dot{q}_i,t) = \sum_i p_i\dot{q}_i - H(q_i,p_i,t)
 \]</span></p>
 <section id="exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro" class="level3" data-number="9.5.1">
 <h3 data-number="9.5.1" class="anchored" data-anchor-id="exemplo-uma-partícula-se-move-sob-a-ação-de-uma-força-f-kvecr-ktextcst.0-restrita-à-superfície-de-um-cilindro"><span class="header-section-number">9.5.1</span> Exemplo: uma partícula se move sob a ação de uma força <span class="math inline">\(F=-k\vec{r}\)</span>, <span class="math inline">\(k=\text{cst.}&gt;0\)</span> restrita à superfície de um cilindro</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figs/ch8_fig1_cylinder.png" class="img-fluid figure-img"></p>
-<figcaption>Partícula restrita à superfície de um cilindro de raio <span class="math inline">\(R\)</span>, sob a ação de <span class="math inline">\(F=-k\vec r\)</span></figcaption>
-</figure>
-</div>
+<!-- ![Partícula restrita à superfície de um cilindro de raio $R$, sob a ação de $F=-k\vec r$](figs/ch8_fig1_cylinder.png) -->
 <p><span class="math display">\[
 U = \frac{k}{2}r^2 = \frac{k}{2}\left(x^2+y^2+z^2\right)
 \]</span></p>
@@ -1991,4 +1954,4 @@ N = \rho\, dV, \qquad dV = dq_1\,dq_2\cdots dq_n\,dp_1\,dp_2\cdots dp_n
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/edit/main/lagrange-hamilton.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/blob/main/lagrange-hamilton.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li><li><a href="https://github.com/wizorx/AnimateClassicalMechanics/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li></ul></div></div></div></footer></body></html>

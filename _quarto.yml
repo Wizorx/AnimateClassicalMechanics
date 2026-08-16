@@ -25,6 +25,8 @@ book:
         - corpo-rigido.qmd
         - oscilacoes-acopladas.qmd
         - sistemas-continuos.qmd
+  repo-url: https://github.com/wizorx/AnimateClassicalMechanics
+  repo-actions: [edit, source, issue]
 
 
 bibliography: references.bib
@@ -48,8 +50,3 @@ format:
             overflow-y: auto;
           }
           </style>
-  pdf:
-    documentclass: scrreprt
-
-
-

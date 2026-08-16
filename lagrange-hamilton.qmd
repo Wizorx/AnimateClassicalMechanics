@@ -26,7 +26,7 @@ $$
 E_C = E_C(\dot{x}_i) \qquad U = U(x_i)
 $$
 
-Então se quisermos usar o formalismo da equação de Euler-Lagrange, as grandezas utilizadas são as seguintes:
+Então se quisermos usar o formalismo da equação de Euler-Lagrange (@eq-euler-lagrange), as grandezas utilizadas são as seguintes:
 
 $$
 x \;\rightsquigarrow\; t
@@ -471,11 +471,7 @@ Onde
 $$
 A_i = \frac{\partial f}{\partial x_i}, \qquad B = \frac{\partial f}{\partial t}
 \;\;\rightarrow\;\;
-\sum_{i=1}^{3} \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t} = 0
-$$
-
-$$
-\underbrace{\phantom{\sum \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t}}}_{\text{derivada total em relação ao tempo}}
+\underbrace{\sum_{i=1}^{3} \frac{\partial f}{\partial x_i}\frac{dx_i}{dt} + \frac{\partial f}{\partial t}}_{\text{derivada total em relação ao tempo}} = 0
 $$
 
 $$
