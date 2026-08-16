@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Oscilações Acopladas – Mecânica Clássica Animada</title>
+<title>11&nbsp; Oscilações Acopladas – Mecânica Clássica Animada</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./GravitacaoEForcas.html" rel="next">
-<link href="./Mec1.html" rel="prev">
+<link href="./sistemas-continuos.html" rel="next">
+<link href="./corpo-rigido.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -295,7 +295,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Sistemas.html">Mecânica Clássica 1</a></li><li class="breadcrumb-item"><a href="./oscilacoes-acopladas.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./oscilacoes-acopladas.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -352,8 +352,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+  <a href="./Oscilacoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -411,8 +411,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
+  <a href="./oscilacoes-acopladas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -433,8 +433,11 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados" id="toc-exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados" class="nav-link active" data-scroll-target="#exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados"><span class="header-section-number">3.1</span> Exemplo: dois osciladores harmônicos simples idênticos acoplados</a></li>
-  <li><a href="#fio-com-massas" id="toc-fio-com-massas" class="nav-link" data-scroll-target="#fio-com-massas"><span class="header-section-number">3.2</span> Fio com massas</a></li>
+  <li><a href="#teoria-geral-de-pequenas-oscilações" id="toc-teoria-geral-de-pequenas-oscilações" class="nav-link active" data-scroll-target="#teoria-geral-de-pequenas-oscilações"><span class="header-section-number">11.1</span> Teoria geral de pequenas oscilações</a>
+  <ul class="collapse">
+  <li><a href="#exemplo-voltando-ao-caso-inicial-de-dois-osciladores-harmônicos-simples-idênticos-acoplados" id="toc-exemplo-voltando-ao-caso-inicial-de-dois-osciladores-harmônicos-simples-idênticos-acoplados" class="nav-link" data-scroll-target="#exemplo-voltando-ao-caso-inicial-de-dois-osciladores-harmônicos-simples-idênticos-acoplados"><span class="header-section-number">11.1.1</span> Exemplo: voltando ao caso inicial de dois osciladores harmônicos simples idênticos acoplados</a></li>
+  </ul></li>
+  <li><a href="#fio-com-massas" id="toc-fio-com-massas" class="nav-link" data-scroll-target="#fio-com-massas"><span class="header-section-number">11.2</span> Fio com massas</a></li>
   </ul>
 </nav>
     </div>
@@ -442,9 +445,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Sistemas.html">Mecânica Clássica 1</a></li><li class="breadcrumb-item"><a href="./oscilacoes-acopladas.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./calculo-variacional.html">Mecânica Clássica 2</a></li><li class="breadcrumb-item"><a href="./oscilacoes-acopladas.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Oscilações Acopladas</span></h1>
 <p class="subtitle lead">Capítulo 12 — Coupled Oscillations (Thornton &amp; Marion)</p>
 </div>
 
@@ -462,6 +465,318 @@ window.Quarto = {
 </header>
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch12_fig0_two_mass_spring.png" class="img-fluid figure-img"></p>
+<figcaption>Dois blocos <span class="math inline">\(m_1\)</span> e <span class="math inline">\(m_2\)</span> conectados por molas <span class="math inline">\(K_1\)</span>, <span class="math inline">\(K_{12}\)</span> e <span class="math inline">\(K_2\)</span> entre duas paredes fixas</figcaption>
+</figure>
+</div>
+<p>Supondo que todas as molas obedecem à lei de Hooke e considerando que <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> são medidas com respeito à posição de equilíbrio, as equações de movimento ficam:</p>
+<p><span class="math display">\[
+m_1\ddot{x}_1 = -K_1x_1 - K_{12}(x_1-x_2)
+\]</span></p>
+<p><span class="math display">\[
+m_2\ddot{x}_2 = -K_2x_1 - K_{12}(x_2-x_1)
+\]</span></p>
+<p>Reescrevendo:</p>
+<p><span class="math display">\[
+m_1\ddot{x}_1 + (K_1+K_{12})x_1 - K_{12}x_2 = 0
+\]</span></p>
+<p><span class="math display">\[
+m_2\ddot{x}_2 + (K_2+K_{12})x_2 - K_{12}x_2 = 0
+\]</span></p>
+<p>Escolhendo <span class="math inline">\(m_1=m_2=M\)</span> e <span class="math inline">\(k_1=k_2=K\)</span>, vamos propor uma solução do tipo:</p>
+<p><span class="math display">\[
+x_1(t) = B_1e^{i\omega t}
+\]</span></p>
+<p><span class="math display">\[
+x_2(t) = B_2e^{i\omega t}
+\]</span></p>
+<p>Onde <span class="math inline">\(\omega\)</span> precisa ser encontrado:</p>
+<p><span class="math display">\[
+\ddot{x}_1 = -\omega^2 B_1 e^{i\omega t}
+\]</span></p>
+<p><span class="math display">\[
+\ddot{x}_2 = -\omega^2 B_2 e^{i\omega t}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow
+\begin{cases}
+-M\omega^2 B_1e^{i\omega t} + (K+K_{12})B_1e^{i\omega t} - K_{12}B_2e^{i\omega t} = 0 \\
+-M\omega^2 B_2e^{i\omega t} + (K+K_{12})B_2e^{i\omega t} - K_{12}B_1e^{i\omega t} = 0
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow
+\begin{cases}
+\left(K+K_{12}-M\omega^2\right)B_1 - K_{12}B_2 = 0 \\
+-K_{12}B_1 + \left(K+K_{12}-M\omega^2\right)B_2 = 0
+\end{cases}
+\]</span></p>
+<p>Na forma matricial:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+K+K_{12}-M\omega^2 &amp; -K_{12} \\
+-K_{12} &amp; K+K_{12}-M\omega^2
+\end{bmatrix}
+\begin{bmatrix} B_1 \\ B_2 \end{bmatrix}
+=
+\begin{bmatrix} 0 \\ 0 \end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad
+\begin{bmatrix} K+K_{12} &amp; -K_{12} \\ -K_{12} &amp; K+K_{12} \end{bmatrix}
+\begin{bmatrix} B_1 \\ B_2 \end{bmatrix}
+= M\omega^2 \begin{bmatrix} B_1 \\ B_2 \end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad Z\vec v = \lambda\vec v
+\]</span></p>
+<p>Que é um problema de autovalores! Então para que tenha solução não trivial, o determinante da matriz aqui embaixo tem que ser nulo.</p>
+<p><span class="math display">\[
+Z\vec v = \mathbb{1}\lambda\vec v
+\]</span></p>
+<p><span class="math display">\[
+Z\vec v - \mathbb{1}\lambda\vec v = 0
+\]</span></p>
+<p><span class="math display">\[
+\left(Z-\mathbb{1}\lambda\right)\vec v = 0
+\]</span></p>
+<p><span class="math display">\[
+\left(Z-\mathbb{1}\lambda\right)_\Box = 0
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix} K+K_{12}-M\omega^2 &amp; -K_{12} \\ -K_{12} &amp; K+K_{12}-M\omega^2 \end{bmatrix}_\Box = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \left(K+K_{12}-M\omega^2\right)^2 - K_{12}^2 = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad K+K_{12}-M\omega^2 = \pm K_{12}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \omega = \pm\sqrt{\frac{K+K_{12}\mp K_{12}}{M}}
+\]</span></p>
+<p>Existem, nesse caso, duas frequências características (ou autofrequências):</p>
+<p><span class="math display">\[
+\omega_1 = \sqrt{\frac{K+2K_{12}}{M}}, \qquad \omega_2 = \sqrt{\frac{K}{M}}
+\]</span></p>
+<p>A solução geral fica:</p>
+<p><span class="math display">\[
+x_1(t) = C_1e^{i\omega_1 t} + C_2e^{-i\omega_1 t} + C_3e^{i\omega_2 t} + C_4e^{-i\omega_2 t}
+\]</span></p>
+<p><span class="math display">\[
+x_2(t) = -C_1e^{i\omega_1 t} - C_2e^{-i\omega_1 t} + C_3e^{i\omega_2 t} + C_4e^{-i\omega_2 t}
+\]</span></p>
+<p>E se você tiver uma sacada genial ou ficar tempo suficiente quebrando a cabeça, você pode fazer a seguinte mudança de coordenadas:</p>
+<p><span class="math display">\[
+\begin{cases}
+\eta_1 = x_1-x_2 \\
+\eta_2 = x_1+x_2
+\end{cases}
+\qquad\longrightarrow\qquad
+\begin{cases}
+x_1 = \dfrac{1}{2}\left(\eta_2+\eta_1\right) \\
+x_2 = \dfrac{1}{2}\left(\eta_2-\eta_1\right)
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\therefore
+\begin{align}
+&amp;M\ddot{x}_1 + (K+K_{12})x_1 - K_{12}x_2 = 0 \hfill &amp;(1) \\
+&amp;M\ddot{x}_2 + (K+K_{12})x_2 - K_{12}x_1 = 0 \hfill &amp;(2)
+\end{align}
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \ddot{x}_1 = \frac{1}{2}\left(\ddot\eta_2+\ddot\eta_1\right), \qquad \ddot{x}_2 = \frac{1}{2}\left(\ddot\eta_2-\ddot\eta_1\right)
+\]</span></p>
+<p><span class="math display">\[
+(1) \rightarrow \quad \frac{M}{2}\left(\ddot\eta_2+\ddot\eta_1\right) + \frac{(K_1+K_{12})}{2}\left(\eta_2+\eta_1\right) - \frac{K_{12}}{2}\left(\eta_2-\eta_1\right) = 0
+\]</span></p>
+<p><span class="math display">\[
+(2) \rightarrow \quad \frac{M}{2}\left(\ddot\eta_2-\ddot\eta_1\right) + \frac{(K_1+K_{12})}{2}\left(\eta_2-\eta_1\right) - \frac{K_{12}}{2}\left(\eta_2+\eta_1\right) = 0
+\]</span></p>
+<p><span class="math display">\[
+(1)+(2) \rightarrow \quad M\ddot\eta_2 + (K+K_{12})\eta_2 - K_{12}\eta_2 = 0
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad M\ddot\eta_2 + K\eta_2 = 0
+\]</span></p>
+<p><span class="math display">\[
+(1)-(2) \rightarrow \quad 2M\ddot\eta_1 + (K+K_{12})2\eta_1 + 2K_{12}\eta_1 = 0
+\]</span></p>
+<p>Essa mudança de coordenadas então desacopla as equações de movimento. Quaisquer variáveis em termos das quais o sistema fica desacoplado recebem o nome de <strong>coordenadas normais</strong>. Nessas variáveis, a solução fica:</p>
+<p><span class="math display">\[
+\eta_1(t) = D_{1+}e^{i\omega_1 t} - D_{1-}e^{-i\omega_1 t}
+\]</span></p>
+<p><span class="math display">\[
+\eta_2(t) = D_{2+}e^{i\omega_2 t} - D_{2-}e^{-i\omega_2 t}
+\]</span></p>
+<p>Se a gente considerar as seguintes condições iniciais…</p>
+<p><span class="math display">\[
+\begin{cases}
+x_1(0) = -x_2(0) \\
+\dot{x}_1(0) = -\dot{x}_2(0)
+\end{cases}
+\qquad\longrightarrow\qquad
+\begin{cases}
+\eta_2(0) = 0 \\
+\dot\eta_2(0) = 0
+\end{cases}
+\]</span></p>
+<p>…acaba que, com isso, <span class="math inline">\(\eta_2(t)=0\ \forall\, t\)</span>. O que resulta no <strong>modo antissimétrico</strong>. Mas se a gente considerar essas outras:</p>
+<p><span class="math display">\[
+\begin{cases}
+x_1(0) = x_2(0) \\
+\dot{x}_1(0) = \dot{x}_2(0)
+\end{cases}
+\qquad\longrightarrow\qquad
+\eta_1(t) = 0\ \forall\, t
+\]</span></p>
+<p>O que resulta no <strong>modo simétrico</strong>.</p>
+<p>Cada um dos osciladores (idênticos) tem frequência <span class="math inline">\(\omega_0=\sqrt{(K+K_{12})/M}\)</span> quando o outro é fixo. A gente pode dizer que eles estão no mesmo “estado” de movimento (ou energia). O acoplamento “quebra” esse estado em dois outros possíveis com frequências diferentes: uma maior e outra menor:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch12_fig_freq_split_2osc.png" class="img-fluid figure-img"></p>
+<figcaption>Diagrama de quebra de frequência: <span class="math inline">\(\omega_0\)</span> se separa em <span class="math inline">\(\omega_1\)</span> (maior) e <span class="math inline">\(\omega_2\)</span> (menor)</figcaption>
+</figure>
+</div>
+<p>O número de frequências que aparecem com o acoplamento depende do número de osciladores. Se o número de osciladores for ímpar, a frequência natural continua disponível.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch12_fig_freq_split_3osc.png" class="img-fluid figure-img"></p>
+<figcaption>Para três osciladores acoplados, <span class="math inline">\(\omega_0\)</span> se separa em <span class="math inline">\(\omega_1\)</span>, <span class="math inline">\(\omega_2=\omega_0\)</span> e <span class="math inline">\(\omega_3\)</span></figcaption>
+</figure>
+</div>
+<p>Vamos considerar que a mola intermediária é mais fraca que as outras, ou seja, <span class="math inline">\(K_{12} \ll K\)</span>. O que significa que se trata de um <strong>acoplamento fraco</strong>. A primeira frequência é:</p>
+<p><span class="math display">\[
+\omega_1 = \sqrt{\frac{K+2K_{12}}{M}} = \sqrt{\frac{K}{M}}\sqrt{1+\frac{2K_{12}}{M}}
+\]</span></p>
+<p>Definindo o parâmetro <span class="math inline">\(\varepsilon := K_{12}/(2K)\)</span>, a frequência fica:</p>
+<p><span class="math display">\[
+\omega_1 = \sqrt{\frac{K}{M}}\sqrt{1+4\varepsilon}
+\]</span></p>
+<p>E aí sim a gente pode fazer a nossa aproximação:</p>
+<p><span class="math display">\[
+(1+x)^\alpha \cong 1+\alpha x, \qquad x \ll 1
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \omega_1 \cong \sqrt{\frac{K}{M}}(1+2\varepsilon)
+\]</span></p>
+<p><span class="math display">\[
+\omega_0 \cong \sqrt{\frac{K+K_{12}}{M}} = \sqrt{\frac{K}{M}}(1+\varepsilon)
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sqrt{\frac{K}{M}} \cong \frac{\omega_0}{(1+\varepsilon)} = \omega(1+\varepsilon)^{-1}
+\]</span></p>
+<p><span class="math display">\[
+\cong \omega_0(1-\varepsilon)
+\]</span></p>
+<p><span class="math display">\[
+\therefore \quad \omega_1 \cong \omega_0(1-\varepsilon)(1+2\varepsilon)
+\]</span></p>
+<p><span class="math display">\[
+\cong \omega_0(1+\varepsilon)
+\]</span></p>
+<p>Pela mesma lógica, <span class="math inline">\(\omega_2 \cong \omega_0(1-\varepsilon)\)</span>.</p>
+<p>Considerando as seguintes condições iniciais:</p>
+<p><span class="math display">\[
+x_1(0)=D, \qquad x_2(0)=0
+\]</span></p>
+<p><span class="math display">\[
+\dot{x}_1(0)=0, \qquad \dot{x}_2(0)=0
+\]</span></p>
+<p>As soluções para a partícula 1 vai ser:</p>
+<p><span class="math display">\[
+x_1(t) = \frac{D}{4}\left[e^{i\omega_1 t} + e^{-i\omega_1 t} + e^{i\omega_2 t} + e^{-i\omega_2 t}\right]
+\]</span></p>
+<p>Tomando a parte real:</p>
+<p><span class="math display">\[
+x_1(t) = \frac{D}{2}\left[\cos(\omega_1 t) + \cos(\omega_2 t)\right]
+\]</span></p>
+<p><span class="math display">\[
+= D\cos\left(\frac{\omega_1+\omega_2}{2}t\right)\cos\left(\frac{\omega_1-\omega_2}{2}t\right)
+\]</span></p>
+<p><span class="math display">\[
+\frac{\omega_1+\omega_2}{2} \cong \omega_0 \qquad\qquad \frac{\omega_1-\omega_2}{2} = \varepsilon\omega_0
+\]</span></p>
+<p><span class="math display">\[
+\longrightarrow \quad x_1(t) \cong D\cos(\varepsilon\omega_0 t)\cos(\omega_0 t)
+\]</span></p>
+<p>Para <span class="math inline">\(x_2\)</span> temos:</p>
+<p><span class="math display">\[
+x_2(t) = D\,\text{sen}(\varepsilon\omega_0 t)\,\text{sen}(\omega_0 t)
+\]</span></p>
+<p>Esse fenômeno — a amplitude de cada oscilador variando lentamente com frequência <span class="math inline">\(\varepsilon\omega_0\)</span>, modulando a oscilação rápida de frequência <span class="math inline">\(\omega_0\)</span> — é o batimento (<em>beating</em>) entre os dois modos normais.</p>
+<section id="teoria-geral-de-pequenas-oscilações" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="teoria-geral-de-pequenas-oscilações"><span class="header-section-number">11.1</span> Teoria geral de pequenas oscilações</h2>
+<p>Vamos considerar o problema geral considerando um sistema conservativo descrito em termos de <span class="math inline">\(n\)</span> coordenadas generalizadas <span class="math inline">\(q_k\)</span> (<span class="math inline">\(k=1,2,3,\ldots,n\)</span>) e do tempo. Existe uma posição de equilíbrio tal que:</p>
+<p><span class="math display">\[
+q_k = q_{k_0}, \qquad \dot{q}_k = 0, \qquad \ddot{q}_k = 0 \quad \forall\, k
+\]</span></p>
+<p>Nessa configuração de equilíbrio, as equações de Euler-Lagrange ficam:</p>
+<p><span class="math display">\[
+\frac{\partial L}{\partial q_k} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_k}\right) = 0
+\qquad\longrightarrow\qquad
+\frac{\partial U}{\partial q_k} - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{q}_k}\right) = 0
+\qquad\rightarrow\qquad
+\left.\frac{\partial U}{\partial q_k}\right|_0 = 0
+\]</span></p>
+<p>Existe uma transformação que relaciona as coordenadas generalizadas com as coordenadas espaciais regulares. Supondo que ela não depende explicitamente do tempo:</p>
+<p><span class="math display">\[
+x_{\alpha i} = x_{\alpha i}(q_k)
+\]</span></p>
+<p>Nesse caso, a gente mostrou que a energia cinética é uma forma quadrática das velocidades:</p>
+<p><span class="math display">\[
+E_C = \frac{1}{2}\sum_{j=1}^{n}\sum_{k=1}^{n} m_{jk}\,\dot{q}_j\dot{q}_k
+\qquad\left(\text{onde}\quad m_{jk} = \sum_{\alpha=1}^{N} m_\alpha\sum_{i=1}^{n}\frac{\partial x_{\alpha i}}{\partial q_j}\frac{\partial x_{\alpha i}}{\partial q_k} = \sum_{\alpha=1}^{N} m_\alpha\sum_{i=1}^{n}\frac{\partial^2 x_{\alpha i}}{\partial q_j \partial q_k}\right)
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial E_C}{\partial q_k} = 0 \quad\forall\, k
+\]</span></p>
+<p>Vamos escolher <span class="math inline">\(q_{k0}=0\ \forall\, k\)</span>. Expandindo <span class="math inline">\(U\)</span> em série de Taylor em torno da configuração de equilíbrio:</p>
+<p><span class="math display">\[
+U = U_0 + \sum_{k=1}^{n}\left.\frac{\partial U}{\partial q_k}\right|_0 q_k + \frac{1}{2}\sum_{j=1}^{n}\sum_{k=1}^{n}\left.\frac{\partial^2 U}{\partial q_j\partial q_k}\right|_0 q_jq_k + \frac{1}{3!}\sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n}\frac{\partial^3 U}{\partial q_i\partial q_j\partial q_k}q_iq_jq_k + \cdots
+\]</span></p>
+<p>A gente pode sempre escolher <span class="math inline">\(U_0=0\)</span>. Além disso, vale o seguinte:</p>
+<p><span class="math display">\[
+\left.\frac{\partial U}{\partial q_k}\right|_0 = 0
+\]</span></p>
+<p>Logo, na vizinhança da configuração de equilíbrio:</p>
+<p><span class="math display">\[
+U = \frac{1}{2}\sum_{j=1}^{n}\sum_{k=1}^{n} A_{jk}\,q_jq_k
+\qquad\text{onde}\qquad
+A_{jk} = \left.\frac{\partial^2 U}{\partial q_j\partial q_k}\right|_0
+\]</span></p>
+<p>Expandindo em torno da configuração de equilíbrio:</p>
+<p><span class="math display">\[
+m_{jk} = m_{jk}(q_{\ell 0}) + \sum_{\ell=1}^{n}\left.\frac{\partial m_{jk}}{\partial q_\ell}\right|_0 q_\ell + \cdots
+\]</span></p>
+<p>Em primeira aproximação, <span class="math inline">\(m_{jk}\cong m_{jk}(q_{\ell 0})\)</span>, que é constante. O acoplamento é caracterizado pelos termos não diagonais (<span class="math inline">\(j\neq k\)</span>). Voltando para as equações de Euler-Lagrange:</p>
+<p><span class="math display">\[
+\frac{\partial L}{\partial q_k} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_k}\right) = 0
+\]</span></p>
+<p><span class="math display">\[
+\Downarrow
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial L}{\partial q_k} - \frac{d}{dt}\left(\frac{\partial E_C}{\partial \dot{q}_k}\right) = 0
+\]</span></p>
+<p>onde</p>
+<p><span class="math display">\[
+\frac{\partial U}{\partial q_k} = \sum_{j=1}^{n} A_{jk}\,q_j, \qquad \frac{\partial E_C}{\partial \dot{q}_k} = \sum_{j=1}^{n} m_{jk}\,\dot{q}_j
+\]</span></p>
+<p><span class="math display">\[
+\rightarrow \quad \sum_{j=1}^{n}\left(A_{jk}\,q_j + m_{jk}\,\ddot{q}_j\right) = 0 \tag{1}
+\]</span></p>
+<p>A solução é da forma…</p>
+<p><span class="math display">\[
+q_j(t) = a_j\,e^{i(\omega t-\delta)}, \qquad a_j \in \mathbb{R}\ \forall\, j \qquad \therefore\ z=Ae^{i\phi}
+\]</span></p>
+<p>Substituindo em (1):</p>
+<p><span class="math display">\[
+\sum_{j=1}^{n}\left(A_{jk}-\omega^2 m_{jk}\right)a_j = 0
+\]</span></p>
 <p>Para encontrar <span class="math inline">\(\omega\)</span>, impomos o seguinte:</p>
 <p><span class="math display">\[
 \left|A_{jk} - \omega^2 m_{jk}\right| = 0
@@ -475,8 +790,8 @@ q_j(t) = \sum_{r=1}^{n} a_{jr}\, e^{i(\omega_r t - \delta_r)}
 q_j(t) = \sum_{r=1}^{n} a_{jr}\cos(\omega_r t - \delta_r)
 \]</span></p>
 <p>onde <span class="math inline">\(r\)</span> indica a autofrequência.</p>
-<section id="exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="exemplo-dois-osciladores-harmônicos-simples-idênticos-acoplados"><span class="header-section-number">3.1</span> Exemplo: dois osciladores harmônicos simples idênticos acoplados</h2>
+<section id="exemplo-voltando-ao-caso-inicial-de-dois-osciladores-harmônicos-simples-idênticos-acoplados" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="exemplo-voltando-ao-caso-inicial-de-dois-osciladores-harmônicos-simples-idênticos-acoplados"><span class="header-section-number">11.1.1</span> Exemplo: voltando ao caso inicial de dois osciladores harmônicos simples idênticos acoplados</h3>
 <p><span class="math display">\[
 n = 2
 \]</span></p>
@@ -540,15 +855,26 @@ q_j(t) = \sum_r a_{jr}\,\eta(t)
 \]</span></p>
 <p>Essas são as <strong>coordenadas normais</strong> do sistema.</p>
 </section>
-<section id="fio-com-massas" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="fio-com-massas"><span class="header-section-number">3.2</span> Fio com massas</h2>
+</section>
+<section id="fio-com-massas" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="fio-com-massas"><span class="header-section-number">11.2</span> Fio com massas</h2>
 <p>Considere <span class="math inline">\(n\)</span> partículas idênticas presas a um fio elástico em intervalos regulares no equilíbrio. O comprimento do fio, no equilíbrio, é <span class="math inline">\(L\)</span> e a distância entre as partículas é <span class="math inline">\(d\)</span>. Então:</p>
 <p><span class="math display">\[
 L = (n+1)d
 \]</span></p>
-<!-- ![Fio elástico com $n$ partículas idênticas separadas por uma distância $d$ no equilíbrio](figs/ch12_fig2_string_equilibrium.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch12_fig2_string_equilibrium.png" class="img-fluid figure-img"></p>
+<figcaption>Fio elástico com <span class="math inline">\(n\)</span> partículas idênticas separadas por uma distância <span class="math inline">\(d\)</span> no equilíbrio</figcaption>
+</figure>
+</div>
 <p>Vamos considerar deslocamentos transversais à direção de equilíbrio.</p>
-<!-- ![Deslocamentos transversais $q_{j-1}$, $q_j$, $q_{j+1}$ das partículas vizinhas, separadas por uma distância $d$, com ângulo $\theta$ em relação à horizontal](figs/ch12_fig3_string_transverse.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch12_fig3_string_transverse.png" class="img-fluid figure-img"></p>
+<figcaption>Deslocamentos transversais <span class="math inline">\(q_{j-1}\)</span>, <span class="math inline">\(q_j\)</span>, <span class="math inline">\(q_{j+1}\)</span> das partículas vizinhas, separadas por uma distância <span class="math inline">\(d\)</span>, com ângulo <span class="math inline">\(\theta\)</span> em relação à horizontal</figcaption>
+</figure>
+</div>
 <p>Supomos que a tensão <span class="math inline">\(T\)</span> no fio é a mesma ao longo do fio (ou seja, ele é homogêneo), a componente transversal da tensão é do tipo <span class="math inline">\(T\,\text{sen}\,\theta\)</span>.</p>
 <p>Se os deslocamentos <span class="math inline">\(q_j\)</span> forem suficientemente pequenos, os ângulos <span class="math inline">\(\theta\)</span> também vão ser:</p>
 <p><span class="math display">\[
@@ -681,7 +1007,12 @@ q_j(0) = \displaystyle\sum_r \mu_r\,\text{sen}\!\left(\dfrac{jr\pi}{n+1}\right) 
 \nu_s = -\frac{2}{\omega_r(n+1)}\sum_j \dot{q}_j(0)\,\text{sen}\!\left(\frac{js\pi}{n+1}\right)
 \]</span></p>
 <p>Para <span class="math inline">\(n=3\)</span>:</p>
-<!-- ![Modos normais para $n=3$: os três primeiros modos ($r=1,2,3$) e o modo nulo ($r=4$)](figs/ch12_fig1_normal_modes.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/ch12_fig1_normal_modes.png" class="img-fluid figure-img"></p>
+<figcaption>Modos normais para <span class="math inline">\(n=3\)</span>: os três primeiros modos (<span class="math inline">\(r=1,2,3\)</span>) e o modo nulo (<span class="math inline">\(r=4\)</span>)</figcaption>
+</figure>
+</div>
 <p><span class="math inline">\(n+1\)</span> é o modo nulo!</p>
 
 
@@ -1103,13 +1434,13 @@ q_j(0) = \displaystyle\sum_r \mu_r\,\text{sen}\!\left(\dfrac{jr\pi}{n+1}\right) 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Mec1.html" class="pagination-link" aria-label="Mecânica de uma Partícula">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mecânica de uma Partícula</span></span>
+      <a href="./corpo-rigido.html" class="pagination-link" aria-label="Corpo Rígido">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Corpo Rígido</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./GravitacaoEForcas.html" class="pagination-link" aria-label="Forças Centrais e Gravitação">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forças Centrais e Gravitação</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./sistemas-continuos.html" class="pagination-link" aria-label="Sistemas Contínuos">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sistemas Contínuos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
